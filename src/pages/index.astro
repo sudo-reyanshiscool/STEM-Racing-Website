@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { getCurrentSeason, nextTimelineItem, formatDate } from '../lib/season';
+
+const season = await getCurrentSeason();
+const next = season ? nextTimelineItem(season) : undefined;
+---
+
+<Base title="Home">
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <p class="eyebrow">The British School, New Delhi</p>
+        <h1>Design it. Build it. Race it.</h1>
+        <p class="lead">
+          STEM Racing at TBS is where students design, manufacture and race miniature cars, then run the team like a
+          business.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="/season">Join a team</a>
+          <a class="btn btn--ghost" href="/programme">About the programme</a>
+        </div>
+      </div>
+      <PlaceholderImage label="Hero image: cars on the track" ratio="4 / 3" />
+    </div>
+  </section>
+
+  {
+    season && (
+      <section class="status">
+        <div class="container status__inner">
+          <div class="status__item">
+            <span class="status__label">Season</span>
+            <span class="status__value">{season.data.year}</span>
+          </div>
+          <div class="status__item">
+            <span class="status__label">Registration</span>
+            <span class="status__value">
+              <span class:list={['dot', { 'dot--open': season.data.registrationOpen }]} aria-hidden="true" />
+              {season.data.registrationOpen
+                ? `Open until ${formatDate(season.data.registrationDeadline)}`
+                : 'Closed'}
+            </span>
+          </div>
+          <div class="status__item">
+            <span class="status__label">Next up</span>
+            <span class="status__value">
+              {next ? `${next.title}, ${formatDate(next.date)}` : 'Season complete'}
+            </span>
+          </div>
+          <a class="status__link" href="/season">Full timeline</a>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        <a class="card quick" href="/season">
+          <h3>Join</h3>
+          <p>Form a team, submit a proposal booklet and interview. Three steps and you are in.</p>
+        </a>
+        <a class="card quick" href="/teams">
+          <h3>Teams</h3>
+          <p>Meet this season's teams and browse the archive of every TBS car since the programme began.</p>
+        </a>
+        <a class="card quick" href="/results">
+          <h3>Results</h3>
+          <p>Placings and awards from Regionals to the World Finals.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 7rem) clamp(2.5rem, 6vw, 5rem);
+    background:
+      radial-gradient(60% 60% at 100% 0%, var(--teal-tint), transparent 70%),
+      var(--bg);
+  }
+  .hero__inner {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+    }
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .status {
+    border-block: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .status__inner {
+    display: grid;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .status__inner {
+      grid-template-columns: auto 1fr 1.4fr auto;
+      gap: 2.5rem;
+    }
+  }
+  .status__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .status__label {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .status__value {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--grey-400);
+    flex-shrink: 0;
+  }
+  .dot--open {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--teal-tint);
+  }
+  .status__link {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .quick {
+    display: block;
+    color: inherit;
+    transition: border-color 0.15s ease;
+  }
+  .quick:hover,
+  .quick:focus-visible {
+    text-decoration: none;
+    border-color: var(--accent);
+  }
+  .quick h3 {
+    color: var(--accent);
+  }
+  .quick p {
+    color: var(--text-muted);
+  }
+</style>

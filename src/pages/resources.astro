@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const resources = await getCollection('resources');
+const categories = Array.from(new Set(resources.map((r) => r.data.category))).sort();
+const inCategory = (c: string) => resources.filter((r) => r.data.category === c).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Base title="Resources" description="Regulations, templates and guides for STEM Racing teams at TBS.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Resources</p>
+      <h1>Downloads and guides</h1>
+      <p class="lead">Everything a team needs, from the official regulations to the booking sheet for the wind tunnel.</p>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      {
+        categories.map((c) => (
+          <div class="group">
+            <h2>{c}</h2>
+            <ul class="list">
+              {inCategory(c).map((r) => (
+                <li class="card item">
+                  <div>
+                    <h3>{r.data.title}</h3>
+                    <p>{r.data.description}</p>
+                  </div>
+                  <a class="btn btn--ghost" href={r.data.fileUrl} target="_blank" rel="noopener noreferrer">
+                    Open
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .group + .group {
+    margin-top: 3rem;
+  }
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+  .item p {
+    max-width: 60ch;
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+// This route only exists in the build when src/content/event/event.json has "enabled": true.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('event');
+  const event = entries[0];
+  if (!event || !event.data.enabled) return [];
+  return [{ params: { event: 'event' }, props: { event: event.data } }];
+}
+
+const { event } = Astro.props;
+const mapQuery = encodeURIComponent(event.venue);
+---
+
+<Base title={event.name} description={`${event.name} at The British School, New Delhi. Schedule, scrutineering and what to bring.`}>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Event</p>
+      <h1>{event.name}</h1>
+      <p class="lead">{event.dates}</p>
+      <div class="venue">
+        <div>
+          <h2>Venue</h2>
+          <p>{event.venue}</p>
+          <p><a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noopener noreferrer">Open in Google Maps</a></p>
+        </div>
+        <div class="placeholder map" role="img" aria-label="Placeholder: map embed">
+          <span>Map embed goes here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      <h2>Schedule</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Time</th>
+              <th scope="col">Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              event.schedule.map((row) => (
+                <tr>
+                  <td class="time">{row.time}</td>
+                  <td>{row.activity}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>Scrutineering</h2>
+        <p class="prose muted">{event.scrutineeringInfo}</p>
+      </div>
+      <div>
+        <h2>What to bring</h2>
+        <ul class="bring">
+          {event.whatToBring.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Questions about the day go to {event.contact}.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .venue {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .venue {
+      grid-template-columns: 1fr 1.2fr;
+    }
+  }
+  .venue p {
+    color: var(--text-muted);
+  }
+  .map {
+    aspect-ratio: 16 / 9;
+  }
+  .time {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .two-col {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 900px) {
+    .two-col {
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+    }
+  }
+  .muted {
+    color: var(--text-muted);
+  }
+  .bring {
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+  }
+  .bring li + li {
+    margin-top: 0.4rem;
+  }
+</style>

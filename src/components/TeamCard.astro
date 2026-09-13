@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PlaceholderImage from './PlaceholderImage.astro';
+
+interface Props {
+  team: CollectionEntry<'teams'>;
+}
+const { team } = Astro.props;
+const { name, carName, category, members, heroImage, season, status } = team.data;
+---
+
+<article class="card team-card">
+  <PlaceholderImage label={`${carName} render`} src={heroImage || undefined} alt={`${name} car ${carName}`} />
+  <div class="team-card__head">
+    <div>
+      <h3 class="team-card__name">{name}</h3>
+      <p class="team-card__car">Car: <strong>{carName}</strong></p>
+    </div>
+    <span class={`tag ${category === 'Development' ? 'tag--muted' : ''}`}>{category}</span>
+  </div>
+  <p class="team-card__meta">
+    {season} season{status === 'archived' ? ', archived' : ''}
+  </p>
+  <p class="team-card__label">Members</p>
+  <ul class="team-card__members">
+    {members.map((m) => <li>{m}</li>)}
+  </ul>
+</article>
+
+<style>
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .team-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .team-card__name {
+    margin-bottom: 0.15rem;
+  }
+  .team-card__car {
+    color: var(--text-muted);
+  }
+  .team-card__meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .team-card__label {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0;
+  }
+  .team-card__members {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+</style>
