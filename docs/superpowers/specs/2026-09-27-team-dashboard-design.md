@@ -23,6 +23,8 @@ Success looks like this:
 | Streaks | Wanted. Weekly, as proposed and not objected to. |
 | Deliverables | The list below, given by the user |
 | Database | Supabase. Neon was proposed and refused. |
+| Codes | Chosen by the user, in the form of a word, a hyphen and four characters. The user supplied one for mentors and one for each of seven teams. |
+| Making teams | A mentor makes a new team from the mentor pages. |
 
 ## Out of scope
 
@@ -64,9 +66,12 @@ Success looks like this:
 
 - `/dashboard` shows one field, "Access code", and a button.
 - A team code opens `/dashboard/team`. The mentor code opens `/dashboard/mentor`.
-- Codes are 10 characters, in three groups, from letters and digits that are not easily confused (no `0`, `O`, `1`, `I`, `L`). Example form: `K7QM-X4P-9RT`.
-- Codes are stored as scrypt hashes with a salt for each code. The code itself is shown once, when it is made or reset.
-- The mentor code is set from the `MENTOR_CODE_HASH` environment variable, so that it cannot be changed from the dashboard.
+- A mentor types the code for a team when making the team or resetting its code. Leaving the field empty makes a code of 10 characters in three groups, from letters and digits that are not easily confused (no `0`, `O`, `1`, `I`, `L`), in the form `K7QM-X4P-9RT`.
+- A code holds 6 to 32 letters and digits. Case, spaces and hyphens are ignored when it is typed and when it is compared, so `word 2abc` and `WORD-2ABC` are one code.
+- No two teams may hold the same code, and no team may hold the mentor code. The form refuses a code that is in use.
+- Codes are stored as scrypt hashes with a salt for each code. A code is shown once, on the page that follows making or resetting it. No code is written to the repository, a log or a test.
+- The mentor code is set from the `MENTOR_CODE_HASH` environment variable, so that it cannot be changed from the dashboard. `npm run dashboard:hash` asks for a code without showing it and prints its hash.
+- The user's codes are shorter than a generated one, and each begins with a word. The limit on failed attempts is what protects them.
 - The session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`, limited to `/dashboard`, and lasts 30 days. It holds the role, the team id and an expiry, signed with HMAC-SHA-256 using `SESSION_SECRET`.
 - Resetting a team's code changes that team's `code_version`. A cookie with an older version is refused, so a reset signs everyone out.
 - Five failed attempts from one address in 15 minutes block that address for 15 minutes. The message does not say whether the code was close.
@@ -74,7 +79,7 @@ Success looks like this:
 
 ## Data
 
-All tables are in one schema. Times are stored in UTC. A "week" is Monday to Sunday in the school's timezone, set by the `SCHOOL_TIMEZONE` environment variable.
+All tables are in one schema. Times are stored in UTC. A "week" is Monday to Sunday in the school's timezone, which is `Asia/Kolkata`, as in `src/lib/season.ts`.
 
 | Table | Columns |
 |---|---|
@@ -112,8 +117,9 @@ The three portfolio names follow the site's published programme content and the 
 
 ### Which teams get a workspace
 
-- Mentors add teams in the overview. Nothing is made without a mentor's action.
-- The "Add a team" form offers the teams in `src/content/teams/` whose `stage` is `Current Regionals`, and also accepts a new name.
+- Mentors add teams from the mentor pages. Nothing is made without a mentor's action.
+- The "Add a team" form takes a name and a code. It suggests the names in `src/content/teams/` and accepts any other name.
+- The `slug` is made from the name: lower case, with each run of other characters turned into one hyphen. `N!TRO` becomes `n-tro`. A name whose slug is in use is refused.
 - No team, code or task is seeded with invented content. A new database is empty.
 
 ## Rules
@@ -186,11 +192,13 @@ Dashboard pages send `X-Robots-Tag: noindex` and `Cache-Control: no-store`. They
 | Layer | Covers | Where |
 |---|---|---|
 | Unit | Streaks: gaps, holidays, week edges, timezone, no activity. Codes: form, hash, compare. Sessions: sign, tamper, expiry, old `code_version`. Field limits. | `tests/unit/dashboard/` |
-| Routes | Every row of the rules table, as a team and as a mentor. A team asking for another team's data gets nothing. Rate limit. Form token. | `tests/dashboard/`, run against a local Postgres database made for the test run, never the Supabase project |
+| Routes | Every row of the rules table, as a team and as a mentor. A team asking for another team's data gets nothing. Rate limit. Form token. | `tests/dashboard/`, run against PGlite, which is Postgres inside the test process. Never the Supabase project. |
 | Site | The existing 212 site tests still pass. Public pages are still built as static files. Colours in dashboard CSS are tokens. | `tests/site/` |
 | By hand | Both screens at 375, 768 and 1440 wide. Scripts off. Keyboard only. | Browser |
 
-`npm run test:dashboard` is added. It is skipped with a clear message when `TEST_DATABASE_URL` is not set, so that `npm run test:all` still works on a machine with no database.
+`npm run test:dashboard` is added, and `npm run test:all` runs it. It needs no database to be installed.
+
+The adapter moves the built pages from `dist/` to `dist/client/`. The site tests and their helpers are changed to read from there.
 
 ## Stages
 
@@ -198,8 +206,8 @@ Each stage is usable when it ends.
 
 | Stage | Delivers |
 |---|---|
-| 1 | Adapter, database, keep-awake job, sign-in, team workspace: deliverables, deadline, tasks, notes and links. Teams are added by a script, since the overview does not exist yet. |
-| 2 | Mentor overview, team detail, mentor tasks, mentor notes, announcements, manage. |
+| 1 | Adapter, database, keep-awake job, sign-in for teams and mentors, team workspace: deliverables, deadline, tasks, notes and links. A mentor page that lists the teams, adds a team, resets a code and archives a team. |
+| 2 | Mentor overview table with progress and flags, team detail, mentor tasks, mentor notes, announcements. |
 | 3 | Activity log display, streaks, holidays, the "Behind" flag's 14-day rule. The `activity` table is written from stage 1, so streaks have history when they appear. |
 
 ## Needed from the user
@@ -208,5 +216,6 @@ Each stage is usable when it ends.
 |---|---|
 | Confirm the three portfolio names | On reviewing this file |
 | Create the Supabase project, in a region near the school, and put its pooler connection string in Vercel as `DATABASE_URL` | Before stage 1 is deployed. It can be built and tested locally first. |
-| Choose the mentor code | Before stage 1 is deployed |
+| Put the hash of the mentor code and a `SESSION_SECRET` in Vercel | Before stage 1 is deployed |
+| Add the seven teams from the mentor page, typing each code | After stage 1 is deployed |
 | School approval, if the school requires it for a pupil-facing tool | Before teams are given codes |
