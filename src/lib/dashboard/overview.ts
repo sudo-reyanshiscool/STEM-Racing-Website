@@ -2,14 +2,24 @@
 import { SCHOOL_TIME_ZONE } from '../season';
 import type { Db } from './db';
 import { DELIVERABLES } from './deliverables';
-import { activityDaysByTeam, listHolidays, listTeams, teamTotals, type Team } from './store';
+import {
+  activityDaysByTeam,
+  deliverableStatusesByTeam,
+  listHolidays,
+  listTeams,
+  teamTotals,
+  type Team,
+} from './store';
 import { daysWithoutChange, streak, type Holiday, type Streak } from './streak';
+import { deliverableLines, type DeliverableLine } from './workspace';
 
 /** A team with no change for this many days, holidays left out, is behind. */
 export const IDLE_DAYS = 14;
 
 export interface OverviewRow {
   team: Team;
+  /** The ten deliverables with their statuses, for the grid strip. */
+  lines: DeliverableLine[];
   doneCount: number;
   total: number;
   overdue: number;
@@ -29,13 +39,17 @@ export function behindReasons(overdue: number, idleDays: number): string[] {
 }
 
 export async function loadOverview(db: Db, today: string): Promise<OverviewRow[]> {
-  const [teams, totals, days, holidays] = await Promise.all([
+  const [teams, statuses, totals, days, holidays] = await Promise.all([
     listTeams(db),
+    deliverableStatusesByTeam(db),
     teamTotals(db, today, SCHOOL_TIME_ZONE),
     activityDaysByTeam(db, SCHOOL_TIME_ZONE),
     listHolidays(db),
   ]);
-  const rows = teams.map((team) => row(team, totals, days.get(team.id) ?? [], holidays, today));
+  const rows = teams.map((team) => ({
+    ...row(team, totals, days.get(team.id) ?? [], holidays, today),
+    lines: deliverableLines(statuses.get(team.id) ?? {}),
+  }));
   // listTeams gives open teams first, by name. Teams that are behind move to the front.
   return rows.sort((a, b) => Number(b.behind) - Number(a.behind));
 }
@@ -46,7 +60,7 @@ function row(
   days: readonly string[],
   holidays: readonly Holiday[],
   today: string,
-): OverviewRow {
+): Omit<OverviewRow, 'lines'> {
   const total = totals.find((entry) => entry.teamId === team.id);
   const overdue = total?.overdue ?? 0;
   const lastActive = days.at(-1) ?? null;

@@ -11,15 +11,33 @@ interface Props {
   value?: string;
   /** For a button that shows a choice: whether it is the one chosen. */
   pressed?: boolean;
+  /** For a button that deletes: sends the form whatever its fields hold. */
+  skipChecks?: boolean;
 }
 
-const { href, variant = 'primary', size = 'normal', external = false, name, value, pressed } = Astro.props;
+const {
+  href,
+  variant = 'primary',
+  size = 'normal',
+  external = false,
+  name,
+  value,
+  pressed,
+  skipChecks = false,
+} = Astro.props;
 const classes = ['btn', `btn--${variant}`, size === 'small' && 'btn--small'];
 ---
 
 {
   href === undefined ? (
-    <button class:list={classes} type="submit" name={name} value={value} aria-pressed={pressed}>
+    <button
+      class:list={classes}
+      type="submit"
+      name={name}
+      value={value}
+      aria-pressed={pressed}
+      formnovalidate={skipChecks}
+    >
       <slot />
     </button>
   ) : (

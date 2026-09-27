@@ -130,6 +130,21 @@ export async function deliverableStatuses(db: Db, teamId: number): Promise<Parti
   return statuses;
 }
 
+/** The same for every team at once, for the mentor overview. */
+export async function deliverableStatusesByTeam(
+  db: Db,
+): Promise<Map<number, Partial<Record<DeliverableKey, Status>>>> {
+  const rows = await db.query<{ teamId: number; key: string; status: string }>(
+    'select team_id as "teamId", key, status from deliverables',
+  );
+  const byTeam = new Map<number, Partial<Record<DeliverableKey, Status>>>();
+  for (const row of rows) {
+    if (!isDeliverableKey(row.key) || !isStatus(row.status)) continue;
+    byTeam.set(row.teamId, { ...byTeam.get(row.teamId), [row.key]: row.status });
+  }
+  return byTeam;
+}
+
 export async function setDeliverable(db: Db, teamId: number, key: DeliverableKey, status: Status): Promise<void> {
   await db.query(
     `insert into deliverables (team_id, key, status) values ($1, $2, $3)

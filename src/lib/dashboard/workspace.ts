@@ -49,6 +49,10 @@ export interface Workspace {
   deliverables: DeliverableLine[];
   doneCount: number;
   tasks: TaskLine[];
+  /** Tasks that are not ticked off. */
+  openTasks: number;
+  /** Open tasks that are past their due date. */
+  overdueCount: number;
   note: string;
   links: Link[];
 }
@@ -117,6 +121,7 @@ export async function loadWorkspace(
   ]);
   const deliverables = deliverableLines(statuses);
   const shown = options.allAnnouncements ? announcements : announcements.slice(0, ANNOUNCEMENTS_SHOWN);
+  const lines = sortTasks(tasks).map((task) => ({ ...task, overdue: isOverdue(task, today) }));
   return {
     streak: streak(days, holidays, today),
     announcements: shown,
@@ -125,7 +130,9 @@ export async function loadWorkspace(
     deadline: nextDeadline(season, today),
     deliverables,
     doneCount: deliverables.filter((line) => line.status === 'done').length,
-    tasks: sortTasks(tasks).map((task) => ({ ...task, overdue: isOverdue(task, today) })),
+    tasks: lines,
+    openTasks: lines.filter((task) => !task.done).length,
+    overdueCount: lines.filter((task) => task.overdue).length,
     note,
     links,
   };

@@ -1,0 +1,43 @@
+---
+// The ten deliverables as a starting grid: one cell for each, filled as the work is done.
+// It is a picture of the list of deliverables, which says every status in words.
+import { STATUSES } from '../../lib/dashboard/deliverables';
+import type { DeliverableLine } from '../../lib/dashboard/workspace';
+
+interface Props {
+  lines: readonly DeliverableLine[];
+  /** Large on a team's board. Small in the list of teams. */
+  size?: 'large' | 'small';
+  /** On a team's board each cell is a link to its line in the list below. */
+  linked?: boolean;
+}
+
+const { lines, size = 'large', linked = false } = Astro.props;
+const statusLabel = (value: string) => STATUSES.find((status) => status.value === value)?.label ?? value;
+const done = lines.filter((line) => line.status === 'done').length;
+---
+
+<div class:list={['dash-grid', `dash-grid--${size}`]}>
+  <ol class="dash-grid__cells">
+    {
+      lines.map((line) => (
+        <li class:list={['dash-grid__cell', `dash-grid__cell--${line.status}`]}>
+          {linked ? (
+            <a class="dash-grid__link" href={`#line-${line.key}`} title={`${line.label}: ${statusLabel(line.status)}`}>
+              <span class="sr-only">
+                {line.label}: {statusLabel(line.status)}
+              </span>
+            </a>
+          ) : (
+            <span class="sr-only">
+              {line.label}: {statusLabel(line.status)}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+  <p class="dash-grid__count">
+    <span class="dash-figure">{done}</span> of {lines.length} done
+  </p>
+</div>

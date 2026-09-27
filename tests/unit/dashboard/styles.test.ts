@@ -42,7 +42,8 @@ describe('dashboard styles', () => {
     const surface = ['--fg', '--fg-strong', '--fg-muted', '--fg-inverse', '--rule', '--card-bg', '--card-border', '--stack'];
     for (const match of css.matchAll(/var\((--[\w-]+)/g)) {
       const name = match[1] ?? '';
-      if (surface.includes(name)) continue;
+      // A variable the dashboard sets for itself is checked where it is set, by the colour test.
+      if (surface.includes(name) || css.includes(`${name}:`)) continue;
       expect(tokens, name).toContain(`${name}:`);
     }
   });
@@ -61,10 +62,10 @@ describe('dashboard styles', () => {
     for (const file of sources) expect(readFileSync(join(root, file), 'utf8'), file).not.toMatch(/<style/);
   });
 
-  it('sets nothing but a width or a gap in a style attribute', () => {
+  it('sets no style attribute, so every style is in the one file', () => {
     for (const file of sources) {
       for (const match of readFileSync(join(root, file), 'utf8').matchAll(/\sstyle=\{?["'`]([^"'`]*)/g)) {
-        expect(match[1], file).toMatch(/^(?:width: \$\{percent\}%|--stack: 0\.35rem)$/);
+        expect(match[1], file).toBe('never');
       }
     }
   });
@@ -81,5 +82,21 @@ describe('dashboard styles', () => {
     const overview = readFileSync(join(root, 'src/pages/dashboard/mentor/index.astro'), 'utf8');
     expect(overview).toMatch(/tag--behind">Behind</);
     expect(overview).toMatch(/row\.reasons\.map/);
+  });
+
+  it('says the status of every cell of the grid strip in words', () => {
+    const strip = readFileSync(join(root, 'src/components/dashboard/GridStrip.astro'), 'utf8');
+    expect(strip).toMatch(/class="sr-only"/);
+    expect(strip).toMatch(/statusLabel\(line\.status\)/);
+    // The strip is a picture of the list under it, so it is not the only place a status is shown.
+    const workspace = readFileSync(join(root, 'src/components/dashboard/Workspace.astro'), 'utf8');
+    expect(workspace).toMatch(/aria-pressed|pressed=/);
+  });
+
+  it('keeps every control big enough to touch', () => {
+    for (const rule of css.matchAll(/\.dash-(?:switch__option|fold > summary)\s*\{([^}]*)\}/g)) {
+      expect(rule[1]).toMatch(/min-height:\s*2\.75rem/);
+    }
+    expect([...css.matchAll(/\.dash-(?:switch__option|fold > summary)\s*\{/g)].length).toBe(2);
   });
 });

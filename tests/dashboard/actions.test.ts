@@ -451,5 +451,7 @@ describe('the workspace', () => {
     expect(workspace.deadline).toBeUndefined();
     expect(workspace.deliverables).toHaveLength(10);
     expect(workspace.doneCount).toBe(0);
+    expect(workspace.overdueCount).toBe(1);
+    expect(workspace.openTasks).toBe(3);
   });
 });

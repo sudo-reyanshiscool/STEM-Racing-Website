@@ -9,7 +9,6 @@ import { CODE_MAX } from '../../../../lib/dashboard/codes';
 import { text } from '../../../../lib/dashboard/fields';
 import { getDb, mentorCodeHash } from '../../../../lib/dashboard/runtime';
 import { listTeams } from '../../../../lib/dashboard/store';
-import { streakText } from '../../../../lib/dashboard/streak';
 import { loadWorkspace } from '../../../../lib/dashboard/workspace';
 import { todayIso } from '../../../../lib/season';
 import '../../../../styles/dashboard.css';
@@ -67,14 +66,11 @@ const teamError = failed && TEAM_FORMS.includes(failed.action) ? failed.errors.f
 
 <Base title={`${team.name} for mentors`} description="A team workspace, as mentors see it.">
   <Section surface="dark" labelledby="detail-title">
-    <div class="stack stack--loose">
+    <div class="dash">
       <div class="dash-head">
         <div class="stack">
           <p class="dash-crumb"><a href="/dashboard/mentor">All teams</a></p>
           <h1 id="detail-title">{team.name}</h1>
-          <p class="dash-streak">
-            {streakText(workspace.streak.current)}{workspace.streak.longest > 0 && `. Longest: ${workspace.streak.longest}`}
-          </p>
           {
             team.archived && (
               <p>
@@ -112,49 +108,55 @@ const teamError = failed && TEAM_FORMS.includes(failed.action) ? failed.errors.f
       <section class="dash-block" id="manage" aria-labelledby="manage-title">
         <h2 id="manage-title">Manage this team</h2>
         {teamError && <p class="dash-message" role="alert">{teamError}</p>}
-        <form class="dash-form stack card" method="post" action={`${here}#manage`} aria-labelledby="reset-title">
-          <h3 id="reset-title">Reset the access code</h3>
-          <input type="hidden" name="token" value={token} />
-          <input type="hidden" name="action" value="code-reset" />
-          <p>Everyone using the old code is signed out.</p>
-          <div class="dash-field dash-narrow">
-            <label for="new-code">New code</label>
-            <input
-              id="new-code"
-              name="code"
-              maxlength={CODE_MAX * 2}
-              autocomplete="off"
-              autocapitalize="characters"
-              spellcheck="false"
-              aria-invalid={reset?.errors.code ? 'true' : undefined}
-              aria-describedby={reset?.errors.code ? 'new-code-message new-code-hint' : 'new-code-hint'}
-            />
-            <p id="new-code-hint" class="dash-hint">
-              Leave empty to have a code made. Letters and digits, 6 or more. Hyphens and spaces are ignored.
-            </p>
-            {reset?.errors.code && <p id="new-code-message" class="dash-message">{reset.errors.code}</p>}
-          </div>
-          <div class="actions">
-            <Button size="small">Reset code</Button>
-          </div>
-        </form>
-        <form class="dash-form stack card" method="post" action={`${here}#manage`} aria-labelledby="archive-title">
-          <h3 id="archive-title">{team.archived ? 'Reopen the team' : 'Archive the team'}</h3>
-          <input type="hidden" name="token" value={token} />
-          <input type="hidden" name="action" value="team-archive" />
-          <p>
-            {
-              team.archived
-                ? 'The team can sign in again with its code. Nothing was deleted.'
-                : 'The team can no longer sign in. Nothing is deleted, and the team can be reopened.'
-            }
-          </p>
-          <div class="actions">
-            <Button size="small" variant="ghost" name="archived" value={team.archived ? 'false' : 'true'}>
-              {team.archived ? 'Reopen' : 'Archive'}
-            </Button>
-          </div>
-        </form>
+        <div class="dash-fields">
+          <details class="dash-fold" open={reset !== undefined}>
+            <summary>Reset the access code</summary>
+            <form class="dash-form stack" method="post" action={`${here}#manage`}>
+              <input type="hidden" name="token" value={token} />
+              <input type="hidden" name="action" value="code-reset" />
+              <p>Everyone using the old code is signed out.</p>
+              <div class="dash-field">
+                <label for="new-code">New code</label>
+                <input
+                  id="new-code"
+                  name="code"
+                  maxlength={CODE_MAX * 2}
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                  aria-invalid={reset?.errors.code ? 'true' : undefined}
+                  aria-describedby={reset?.errors.code ? 'new-code-message new-code-hint' : 'new-code-hint'}
+                />
+                <p id="new-code-hint" class="dash-hint">
+                  Leave empty to have a code made. Letters and digits, 6 or more. Hyphens and spaces are ignored.
+                </p>
+                {reset?.errors.code && <p id="new-code-message" class="dash-message">{reset.errors.code}</p>}
+              </div>
+              <div class="actions">
+                <Button size="small">Reset code</Button>
+              </div>
+            </form>
+          </details>
+          <details class="dash-fold">
+            <summary>{team.archived ? 'Reopen the team' : 'Archive the team'}</summary>
+            <form class="dash-form stack" method="post" action={`${here}#manage`}>
+              <input type="hidden" name="token" value={token} />
+              <input type="hidden" name="action" value="team-archive" />
+              <p>
+                {
+                  team.archived
+                    ? 'The team can sign in again with its code. Nothing was deleted.'
+                    : 'The team can no longer sign in. Nothing is deleted, and the team can be reopened.'
+                }
+              </p>
+              <div class="actions">
+                <Button size="small" variant="ghost" name="archived" value={team.archived ? 'false' : 'true'}>
+                  {team.archived ? 'Reopen team' : 'Archive team'}
+                </Button>
+              </div>
+            </form>
+          </details>
+        </div>
       </section>
     </div>
   </Section>

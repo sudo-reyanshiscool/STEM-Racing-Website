@@ -6,7 +6,6 @@ import Base from '../../layouts/Base.astro';
 import { getCurrentSeason, getProgramme } from '../../lib/content';
 import { noticeFor, workspaceAction, type ActionResult } from '../../lib/dashboard/actions';
 import { getDb } from '../../lib/dashboard/runtime';
-import { streakText } from '../../lib/dashboard/streak';
 import { loadWorkspace } from '../../lib/dashboard/workspace';
 import { todayIso } from '../../lib/season';
 import '../../styles/dashboard.css';
@@ -37,13 +36,9 @@ const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), tod
 
 <Base title={`${team.name} workspace`} description="A team workspace on the STEM Racing dashboard.">
   <Section surface="dark" labelledby="workspace-title">
-    <div class="stack stack--loose">
+    <div class="dash">
       <div class="dash-head">
-        <div class="stack">
-          <p class="eyebrow">Team workspace</p>
-          <h1 id="workspace-title">{team.name}</h1>
-          <p class="dash-streak">{streakText(workspace.streak.current)}</p>
-        </div>
+        <h1 id="workspace-title">{team.name}</h1>
         <form method="post" action="/dashboard/sign-out">
           <input type="hidden" name="token" value={token} />
           <Button variant="ghost" size="small">Sign out</Button>

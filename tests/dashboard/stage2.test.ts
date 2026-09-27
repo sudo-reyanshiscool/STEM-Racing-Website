@@ -333,6 +333,27 @@ describe('the mentor overview', () => {
     expect(rows.find((row) => row.team.id === two)).toMatchObject({ doneCount: 0, total: 10 });
   });
 
+  it('gives each team its ten lines with their statuses, for the grid strip', async () => {
+    const rows = await loadOverview(fresh, TODAY);
+    const lines = rows.find((row) => row.team.id === one)?.lines ?? [];
+    expect(lines).toHaveLength(10);
+    expect(lines.map((line) => line.status)).toEqual([
+      'done',
+      'not_started',
+      'done',
+      'not_started',
+      'not_started',
+      'not_started',
+      'not_started',
+      'in_progress',
+      'not_started',
+      'not_started',
+    ]);
+    expect(lines[0]).toEqual({ key: 'car', label: 'Car', status: 'done' });
+    const untouched = rows.find((row) => row.team.id === two)?.lines ?? [];
+    expect(untouched.every((line) => line.status === 'not_started')).toBe(true);
+  });
+
   it('counts a task as overdue the day after it was due, unless it is done', async () => {
     const rows = await loadOverview(fresh, TODAY);
     expect(rows.find((row) => row.team.id === two)?.overdue).toBe(2);

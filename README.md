@@ -254,7 +254,7 @@ npm run check:publish  # lists sample content
 | `tests/site` | Tests that read the built pages, including the brand rules. |
 | `src/lib/dashboard` | The team dashboard's logic. Only `runtime.ts` imports from Astro. |
 | `src/pages/dashboard` | The only pages rendered on request. Every other page is built ahead of time. |
-| `src/styles/dashboard.css` | Every dashboard style, in one file, because the dashboard's forms share them. |
+| `src/styles/dashboard.css` | Every dashboard style, in one file, because the dashboard's forms share them. The layout is a board of readings, then two columns. |
 | `supabase/migrations` | The dashboard's tables, as numbered SQL files. |
 | `tests/dashboard` | Dashboard tests that use a database inside the test process. |
 

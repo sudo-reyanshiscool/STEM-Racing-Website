@@ -39,31 +39,33 @@ if (Astro.request.method === 'POST') {
 
 <Base title="Team sign-in" description="Sign in to the STEM Racing team dashboard at The British School, New Delhi.">
   <Section surface="dark" labelledby="sign-in-title">
-    <div class="stack dash-narrow">
-      <h1 id="sign-in-title">Team sign-in</h1>
-      <p class="lead">Enter the access code your mentor gave your team.</p>
-      <form class="dash-form stack" method="post" action="/dashboard">
-        <div class="dash-field">
-          <label for="code">Access code</label>
-          <input
-            id="code"
-            name="code"
-            type="password"
-            required
-            autofocus
-            maxlength="64"
-            autocomplete="off"
-            autocapitalize="characters"
-            spellcheck="false"
-            aria-describedby={message ? 'code-message' : undefined}
-            aria-invalid={message ? 'true' : undefined}
-          />
-          {message && <p id="code-message" class="dash-message" role="alert">{message}</p>}
-        </div>
-        <div class="actions">
-          <Button>Sign in</Button>
-        </div>
-      </form>
+    <div class="dash">
+      <div class="dash-gate stack">
+        <h1 id="sign-in-title">Team sign-in</h1>
+        <p>Enter the access code your mentor gave your team.</p>
+        <form class="dash-form stack" method="post" action="/dashboard">
+          <div class="dash-field">
+            <label for="code">Access code</label>
+            <input
+              id="code"
+              name="code"
+              type="password"
+              required
+              autofocus
+              maxlength="64"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-describedby={message ? 'code-message' : undefined}
+              aria-invalid={message ? 'true' : undefined}
+            />
+            {message && <p id="code-message" class="dash-message" role="alert">{message}</p>}
+          </div>
+          <div class="actions">
+            <Button>Sign in</Button>
+          </div>
+        </form>
+      </div>
     </div>
   </Section>
 </Base>

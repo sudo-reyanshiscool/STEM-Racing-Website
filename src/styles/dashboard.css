@@ -1,10 +1,28 @@
-/* The team dashboard. Every colour comes from tokens.css, through the variables that
-   Section.astro sets for the surface the dashboard sits on. */
+/* The team dashboard, laid out as a pit wall: a board of readings on top, the work to do on
+   the left, what to read on the right. Every colour comes from tokens.css, through the
+   variables that Section.astro sets for the surface the dashboard sits on. */
+
+.dash {
+  --dash-gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --dash-line: var(--rule, var(--carbon-700));
+  display: grid;
+  gap: var(--dash-gap);
+}
+
+/* The section headings are quieter than the site's, so the team name and the board lead. */
+.dash h2 {
+  font-size: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+}
+
+.dash h3 {
+  font-size: 1.0625rem;
+}
 
 .dash-narrow {
   max-width: 32rem;
 }
 
+/* The top of the page: who it is, and the way out */
 .dash-head {
   display: flex;
   flex-wrap: wrap;
@@ -13,121 +31,214 @@
   gap: 1rem 2rem;
 }
 
-.dash-block > * + * {
-  margin-block-start: 1.25rem;
+.dash-head h1 {
+  font-size: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
 }
 
-.dash-form {
-  --stack: 1rem;
-}
-
-.dash-fields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: 1rem;
-  align-items: start;
-}
-
-.dash-field {
-  display: grid;
-  gap: 0.35rem;
-  min-width: 0;
-}
-
-.dash-field label,
-.dash-legend {
+.dash-crumb {
   font-size: var(--text-small);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-muted, var(--carbon-300));
 }
 
-.dash-field input,
-.dash-field select,
-.dash-field textarea {
-  width: 100%;
-  min-height: 3rem;
-  padding: 0.6rem 0.85rem;
-  border: 2px solid var(--fg-muted, var(--carbon-300));
-  border-radius: 0.25rem;
-  background: var(--carbon-shadow);
-  color: var(--white);
-  font: inherit;
-  color-scheme: dark;
-}
-
-.dash-field textarea {
-  min-height: 9rem;
-  resize: vertical;
-}
-
-.dash-field [aria-invalid='true'] {
-  border-color: var(--podium-gold);
-}
-
-.dash-hint {
-  font-size: var(--text-small);
-  color: var(--fg-muted, var(--carbon-300));
-}
-
-/* A message about what the person typed. The gold bar marks it without relying on colour alone:
-   the text says what is wrong. */
-.dash-message {
-  padding-inline-start: 0.75rem;
-  border-inline-start: 4px solid var(--podium-gold);
-  color: var(--fg-strong, var(--white));
-  font-weight: 500;
-}
-
-.dash-notice {
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--card-border, var(--carbon-800));
-  border-inline-start: 4px solid var(--pitlane-pink);
+/* The board: four readings in a row */
+.dash-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--dash-line);
   border-radius: var(--radius);
-  background: var(--card-bg, var(--gradient-core));
-  color: var(--fg-strong, var(--white));
-}
-
-.dash-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: var(--text-h3);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  user-select: all;
-}
-
-/* Progress */
-.dash-bar {
-  height: 0.75rem;
-  border-radius: 999px;
-  background: var(--carbon-700);
+  background: var(--dash-line);
   overflow: hidden;
 }
 
-.dash-bar__fill {
-  height: 100%;
-  border-radius: inherit;
-  background: var(--gradient-secondary);
+.dash-reading {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--carbon-shadow);
 }
 
-/* Lists of deliverables, tasks, links and teams */
+.dash-reading--wide {
+  grid-column: span 2;
+}
+
+@media (min-width: 64rem) {
+  .dash-board {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .dash-board--even {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.dash-reading--alert {
+  background: var(--carbon-800);
+}
+
+.dash-reading__name {
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-reading__value {
+  color: var(--fg-strong, var(--white));
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dash-reading__note {
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-figure {
+  color: var(--fg-strong, var(--white));
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The grid strip */
+.dash-grid {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.dash-grid__cells {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dash-grid__cell {
+  position: relative;
+  height: 1.75rem;
+  border: var(--cell-edge, 2px) solid var(--cell-line, var(--carbon-500));
+  border-radius: 0.25rem;
+  /* Each cell leans, as the bays of a starting grid do. */
+  transform: skewX(-14deg);
+}
+
+.dash-grid__cell--in_progress {
+  --cell-line: var(--pitlane-pink);
+  background: linear-gradient(90deg, var(--pitlane-pink) 0 50%, transparent 50% 100%);
+}
+
+.dash-grid__cell--done {
+  --cell-line: transparent;
+  background: var(--gradient-secondary);
+  background-size: 1000% 100%;
+}
+
+/* One gradient runs across the whole strip, so ten done cells read as one bar. */
+.dash-grid__cell--done:nth-child(1) { background-position: 0% 0; }
+.dash-grid__cell--done:nth-child(2) { background-position: 11.11% 0; }
+.dash-grid__cell--done:nth-child(3) { background-position: 22.22% 0; }
+.dash-grid__cell--done:nth-child(4) { background-position: 33.33% 0; }
+.dash-grid__cell--done:nth-child(5) { background-position: 44.44% 0; }
+.dash-grid__cell--done:nth-child(6) { background-position: 55.55% 0; }
+.dash-grid__cell--done:nth-child(7) { background-position: 66.66% 0; }
+.dash-grid__cell--done:nth-child(8) { background-position: 77.77% 0; }
+.dash-grid__cell--done:nth-child(9) { background-position: 88.88% 0; }
+.dash-grid__cell--done:nth-child(10) { background-position: 100% 0; }
+
+.dash-grid__link {
+  position: absolute;
+  inset: -0.5rem -0.125rem;
+}
+
+.dash-grid__count {
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-grid--large .dash-figure {
+  font-size: var(--text-h3);
+}
+
+.dash-grid--small .dash-grid__cell {
+  --cell-edge: 1.5px;
+  height: 1rem;
+}
+
+/* Two columns from a wide screen. On a phone: board, announcements, work, then the rest. */
+.dash-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--dash-gap);
+  align-items: start;
+}
+
+.dash-main,
+.dash-first,
+.dash-rail {
+  display: grid;
+  gap: var(--dash-gap);
+  min-width: 0;
+}
+
+@media (min-width: 64rem) {
+  .dash-cols {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(2rem, 1rem + 3vw, 4rem);
+  }
+
+  .dash-first {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .dash-main {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .dash-rail {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.dash-block {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+/* Lists: rows divided by a line, not boxes in a pile */
 .dash-list {
   display: grid;
-  gap: 0.75rem;
+  margin: 0;
   padding: 0;
+  border-block-start: 1px solid var(--dash-line);
   list-style: none;
 }
 
 .dash-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0.75rem 1.5rem;
+  gap: 0.6rem 1.5rem;
   align-items: center;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--card-border, var(--carbon-800));
-  border-radius: var(--radius);
-  background: var(--card-bg, var(--gradient-core));
+  padding: 0.85rem 0;
+  border-block-end: 1px solid var(--dash-line);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+/* A row that needs a look has a gold edge, and says why in words. */
+.dash-row--alert {
+  padding-inline-start: 1rem;
+  border-inline-start: 4px solid var(--podium-gold);
+}
+
+.dash-row--closed {
+  color: var(--fg-muted, var(--carbon-300));
 }
 
 .dash-row__title {
@@ -136,13 +247,14 @@
 }
 
 .dash-row__title--done {
+  color: var(--fg-muted, var(--carbon-300));
   text-decoration-line: line-through;
 }
 
 .dash-row__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 0.75rem;
+  gap: 0.3rem 1rem;
   align-items: center;
   font-size: var(--text-small);
   color: var(--fg-muted, var(--carbon-300));
@@ -159,14 +271,109 @@
   display: contents;
 }
 
-.dash-row details {
+.dash-row > details,
+.dash-row > .dash-row__wide {
   grid-column: 1 / -1;
 }
 
-.dash-row summary {
+.dash-note {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 40rem) {
+  .dash-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .dash-row--text {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dash-row--team {
+    grid-template-columns: minmax(0, 1fr) minmax(9rem, 14rem);
+  }
+}
+
+/* The three-way switch that sets a status */
+.dash-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  border: 1px solid var(--carbon-500);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.dash-switch__option {
+  min-height: 2.75rem;
+  padding: 0.25rem 0.85rem;
+  border: 0;
+  border-inline-start: 1px solid var(--carbon-500);
+  background: transparent;
+  color: var(--fg, var(--carbon-100));
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dash-switch__option:first-child {
+  border-inline-start: 0;
+}
+
+.dash-switch__option:hover {
+  background: var(--carbon-800);
+}
+
+.dash-switch__option:focus-visible {
+  outline-offset: -3px;
+  box-shadow: none;
+}
+
+.dash-switch__option[aria-pressed='true'] {
+  background: var(--carbon-700);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.dash-switch__option--in_progress[aria-pressed='true'] {
+  background: var(--chicane-violet);
+}
+
+.dash-switch__option--done[aria-pressed='true'] {
+  background: var(--podium-gold);
+  color: var(--carbon-shadow);
+}
+
+/* A form folded away until it is wanted */
+.dash-fold {
+  border: 1px solid var(--dash-line);
+  border-radius: var(--radius);
+}
+
+.dash-fold > summary {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  color: var(--fg-strong, var(--white));
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dash-fold[open] > summary {
+  border-block-end: 1px solid var(--dash-line);
+}
+
+.dash-fold > form,
+.dash-fold > .dash-fold__body {
+  padding: 1rem;
+}
+
+.dash-row details > summary {
   width: fit-content;
   min-height: 2.75rem;
   padding-block: 0.6rem;
+  font-size: var(--text-small);
   cursor: pointer;
   text-decoration-line: underline;
   text-decoration-color: var(--pitlane-pink);
@@ -175,10 +382,118 @@
 }
 
 .dash-row details[open] > summary {
-  margin-block-end: 0.75rem;
+  margin-block-end: 0.5rem;
 }
 
-.tag--overdue {
+/* Forms */
+.dash-form {
+  --stack: 1rem;
+}
+
+.dash-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.dash-field {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.dash-field label {
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-field input,
+.dash-field select,
+.dash-field textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--carbon-500);
+  border-radius: 0.25rem;
+  background: var(--carbon-shadow);
+  color: var(--white);
+  font: inherit;
+  color-scheme: dark;
+}
+
+.dash-field input:hover,
+.dash-field select:hover,
+.dash-field textarea:hover {
+  border-color: var(--carbon-300);
+}
+
+.dash-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.dash-field [aria-invalid='true'] {
+  border-color: var(--podium-gold);
+}
+
+.dash-hint {
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+/* A message about what the person typed. The gold bar marks it, and the text says what is wrong. */
+.dash-message {
+  padding-inline-start: 0.75rem;
+  border-inline-start: 4px solid var(--podium-gold);
+  color: var(--fg-strong, var(--white));
+  font-weight: 500;
+}
+
+.dash-notice {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--dash-line);
+  border-inline-start: 4px solid var(--pitlane-pink);
+  border-radius: 0.25rem;
+  background: var(--carbon-800);
+  color: var(--fg-strong, var(--white));
+}
+
+.dash-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--text-h3);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  user-select: all;
+}
+
+/* The sign-in page: one panel, with the brand's gradient along its top edge */
+.dash-gate {
+  max-width: 30rem;
+  padding: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+  position: relative;
+  border: 1px solid var(--dash-line);
+  border-radius: var(--radius);
+  background: var(--carbon-shadow);
+  overflow: hidden;
+}
+
+.dash-gate h1 {
+  font-size: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+}
+
+.dash-gate::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--gradient-secondary);
+}
+
+/* Tags */
+.tag--overdue,
+.tag--behind {
   border-color: var(--podium-gold);
   background: var(--podium-gold);
   color: var(--carbon-shadow);
@@ -188,36 +503,13 @@
   border-color: var(--pitlane-pink);
 }
 
-.dash-note {
-  white-space: pre-wrap;
-}
-
-/* A row that holds a paragraph, with its controls under it at every width. */
-.dash-row--text {
-  align-items: start;
-}
-
-.tag--behind {
-  border-color: var(--podium-gold);
-  background: var(--podium-gold);
-  color: var(--carbon-shadow);
-}
-
-.dash-streak {
-  color: var(--fg-strong, var(--white));
-  font-weight: 700;
-}
-
-.dash-crumb {
-  font-size: var(--text-small);
-}
-
-@media (min-width: 48rem) {
-  .dash-row {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .dash-row--text {
-    grid-template-columns: minmax(0, 1fr);
+@media (prefers-reduced-motion: no-preference) {
+  .dash-switch__option,
+  .dash-field input,
+  .dash-field select,
+  .dash-field textarea {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
   }
 }
