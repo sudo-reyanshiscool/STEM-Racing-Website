@@ -1,0 +1,50 @@
+---
+interface Props {
+  items: { value: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="stats">
+  {
+    items.map((item) => (
+      <div class="stat">
+        <dt class="stat__label">{item.label}</dt>
+        <dd class="stat__value">{item.value}</dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 2rem clamp(1.5rem, 1rem + 3vw, 4rem);
+  }
+
+  /* The label comes first in the markup and second on screen. */
+  .stat {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .stat__value {
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 2.5rem + 5vw, 6rem);
+    line-height: 0.95;
+  }
+
+  .stat__label {
+    max-width: 24ch;
+    color: var(--fg);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+</style>

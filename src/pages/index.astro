@@ -1,0 +1,241 @@
+---
+import { Picture } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import heroGradient from '../assets/brand/gradients/sr-gradient.png';
+import shapeBlack from '../assets/brand/shapes/shape-black-1.svg';
+import shapePink from '../assets/brand/shapes/shape-pink.svg';
+import Button from '../components/Button.astro';
+import SeasonStatus from '../components/SeasonStatus.astro';
+import Section from '../components/Section.astro';
+import StatBand from '../components/StatBand.astro';
+import StepCard from '../components/StepCard.astro';
+import TeamCard from '../components/TeamCard.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+import { getCurrentSeason, getSite } from '../lib/content';
+
+const site = await getSite();
+const season = await getCurrentSeason();
+const teams = (await getCollection('teams'))
+  .filter((team) => team.data.status === 'active')
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .slice(0, 3);
+
+const journey = [
+  {
+    title: 'Form a team',
+    body: 'Three to six students, with roles across engineering, enterprise and project management.',
+  },
+  {
+    title: 'Design and make',
+    body: 'CAD, analysis, manufacturing and testing, backed by a sponsorship and marketing plan.',
+  },
+  {
+    title: 'Compete',
+    body: 'Scrutineering, judging, presentations and racing, from the Regional Finals to the World Finals.',
+  },
+];
+---
+
+<Base title="STEM Racing at The British School, New Delhi" header="overlay">
+  <section class="hero" aria-labelledby="hero-title">
+    <Picture
+      src={heroGradient}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpg"
+      widths={[640, 1024, 1600, 2400]}
+      sizes="100vw"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      pictureAttributes={{ class: 'hero__bg' }}
+    />
+    <img class="hero__shape" src={shapeBlack.src} width={shapeBlack.width} height={shapeBlack.height} alt="" />
+    <div class="hero__content">
+      <TextTrack text="Accelerating Futures" layout="stacked" id="hero-title" />
+      <div class="container hero__copy">
+        <p class="lead">
+          STEM Racing at The British School, New Delhi. Students design, build and race a miniature car, and run
+          their team like a business.
+        </p>
+        <div class="actions">
+          <Button href="/programme">How it works</Button>
+          <Button href="/teams" variant="ghost">Meet the teams</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Section surface="light" labelledby="about-title">
+    <div class="stack">
+      <h2 id="about-title">What STEM Racing is</h2>
+      <div class="prose">
+        <p>
+          STEM Racing, formerly known as F1 in Schools, is one of the largest STEM competitions in the world, with
+          teams from over fifty countries. Teams of students design, engineer, manufacture and race a miniature
+          CO2-powered car.
+        </p>
+        <p>
+          At the same time they run the team as a small business: sponsorship, branding, marketing, finance and
+          project management. The strongest teams progress from school level through Regional and National Finals
+          to the World Finals.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="journey-title">
+    <div class="stack stack--loose">
+      <h2 id="journey-title">The journey</h2>
+      <ol class="grid grid--3">
+        {journey.map((step, index) => <StepCard number={index + 1} title={step.title} body={step.body} />)}
+      </ol>
+      <div class="actions">
+        <Button href="/programme" variant="ghost">See all 12 steps</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="mesh" mesh="hot" labelledby="numbers-title">
+    <div class="stack stack--loose">
+      <h2 id="numbers-title">TBS in numbers</h2>
+      <StatBand items={site.stats} />
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="season-title">
+    <div class="home-season">
+      <div class="stack">
+        <h2 id="season-title">This season</h2>
+        <SeasonStatus season={season} />
+        <div class="actions">
+          <Button href="/season" variant="ghost">Full timeline</Button>
+        </div>
+      </div>
+      <img
+        class="home-season__shape"
+        src={shapePink.src}
+        width={shapePink.width}
+        height={shapePink.height}
+        alt=""
+        loading="lazy"
+      />
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="teams-title">
+    <div class="stack stack--loose">
+      <h2 id="teams-title">Our teams</h2>
+      {
+        teams.length > 0 ? (
+          <div class="grid grid--3">
+            {teams.map((team) => (
+              <TeamCard team={team} />
+            ))}
+          </div>
+        ) : (
+          <p class="lead">Teams for this season will be announced here.</p>
+        )
+      }
+      <div class="actions">
+        <Button href="/teams" variant="ghost">All teams and results</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="gradient" labelledby="cta-title">
+    <div class="panel on-dark stack">
+      <h2 id="cta-title">Your team starts here</h2>
+      <p class="lead">
+        Selection opens at the start of each school year. See how it works, and what the season holds.
+      </p>
+      <div class="actions">
+        <Button href="/season">How to join</Button>
+        <Button href="/resources" variant="ghost">Resources</Button>
+      </div>
+    </div>
+  </Section>
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block: calc(var(--header-h) + 2rem) clamp(4rem, 12vh, 8rem);
+    overflow: clip;
+    background: var(--carbon-shadow);
+    color: var(--white);
+  }
+
+  .hero :global(.hero__bg) {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .hero :global(.hero__bg img) {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  /* A supplied track shape, in the black version made for use over gradients. */
+  .hero__shape {
+    position: absolute;
+    inset-block-end: -28%;
+    inset-inline-end: -8%;
+    z-index: -1;
+    width: min(62vw, 52rem);
+    max-width: none;
+    height: auto;
+  }
+
+  .hero__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+
+  .hero__copy {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .home-season {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .home-season__shape {
+    display: none;
+  }
+
+  @media (max-width: 47.99rem) {
+    .hero__shape {
+      inset-block-end: -6%;
+      inset-inline-end: -40%;
+      width: 95vw;
+    }
+  }
+
+  @media (min-width: 60rem) {
+    .home-season {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+
+    .home-season__shape {
+      display: block;
+      width: min(100%, 24rem);
+      height: auto;
+      margin-inline: auto;
+    }
+  }
+</style>
