@@ -30,4 +30,7 @@ for (const panel of document.querySelectorAll<HTMLElement>('[data-season-status]
   write('next-label', view.nextLabel);
   write('next-title', view.nextTitle);
   write('next-date', view.nextDate);
+  // The Register button is there when the page is built with registration open.
+  // It goes once the deadline has passed.
+  if (!view.canRegister) panel.querySelector('[data-status="action"]')?.remove();
 }

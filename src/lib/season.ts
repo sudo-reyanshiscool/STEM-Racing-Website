@@ -88,10 +88,14 @@ export function seasonHeading(season: SeasonData): string {
   return season.name ? `${season.name} · ${season.year}` : `Season ${season.year}`;
 }
 
+/** Open when the season file says so and the deadline, if it has one, has not passed. */
+export function registrationIsOpen(season: SeasonData, today: string): boolean {
+  return season.registrationOpen && !isPast(season.registrationDeadline, today);
+}
+
 export function registrationText(season: SeasonData, today: string): string {
-  if (!season.registrationOpen) return 'Registration closed';
+  if (!registrationIsOpen(season, today)) return 'Registration closed';
   if (season.registrationDeadline === undefined) return 'Registration open';
-  if (isPast(season.registrationDeadline, today)) return 'Registration open, late entries accepted';
   return `Registration open until ${formatDate(season.registrationDeadline)}`;
 }
 
@@ -110,7 +114,7 @@ export function seasonView(season: SeasonData | undefined, today: string): Seaso
   const shared = {
     heading: seasonHeading(season),
     registration: registrationText(season, today),
-    canRegister: season.registrationOpen && season.registrationUrl !== undefined,
+    canRegister: registrationIsOpen(season, today) && season.registrationUrl !== undefined,
   };
   const state = seasonState(season, today);
   switch (state.kind) {

@@ -100,7 +100,7 @@ A short paragraph about the team.
 - Leave out `date` when it is not confirmed. The site shows "Date to be confirmed" and lists the item after the dated ones.
 - The site sorts the items by date. It dims the ones that have passed and shows the next one on the home page. This is worked out in the visitor's browser each time, so it stays right between updates.
 
-3. To open registration, set `"registrationOpen": true`. Add `"registrationDeadline": "2027-09-01"` to show a deadline, and `"registrationUrl": "https://..."` to show a Register button.
+3. To open registration, set `"registrationOpen": true`. Add `"registrationDeadline": "2027-09-01"` to show a deadline, and `"registrationUrl": "https://..."` to show a Register button. The day after the deadline, the site shows "Registration closed" and takes the button away by itself. To keep registration open for longer, change the deadline or delete that line.
 4. `name` is optional, for example `"name": "Season 9"`.
 
 **Starting a new season**: copy the current file, rename it to the new year label, change `year` inside it, and replace the timeline. Then set last season's teams to `archived`.

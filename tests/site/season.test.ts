@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, sortTimeline, type SeasonData } from '../../src/lib/season';
+import { formatDate, seasonView, sortTimeline, todayIso, type SeasonData } from '../../src/lib/season';
 import { contentFiles, contentJson, page, texts } from '../helpers/site';
 
 const season = contentJson<SeasonData>(`seasons/${contentFiles('seasons', '.json').at(-1)}`);
@@ -24,8 +24,10 @@ describe('season', () => {
     expect($('.timeline [data-date]')).toHaveLength(sorted.filter((item) => item.date).length);
   });
 
-  it('only offers Register when registration is open and has a link', () => {
-    const expected = season.registrationOpen && season.registrationUrl ? 1 : 0;
+  it('only offers Register when registration is open, has a link and has not passed its deadline', () => {
+    // The page was built a moment ago, so today is the day it was built.
+    const expected = seasonView(season, todayIso()).canRegister ? 1 : 0;
     expect($('[data-season-status] a')).toHaveLength(expected);
+    expect($('[data-season-status] [data-status="action"] a')).toHaveLength(expected);
   });
 });

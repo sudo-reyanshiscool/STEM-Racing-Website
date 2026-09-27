@@ -141,8 +141,8 @@ describe('registrationText', () => {
     expect(registrationText(open, '2026-10-02')).toBe('Registration open until 2 October 2026');
   });
 
-  it('never shows a deadline that has passed', () => {
-    expect(registrationText(open, '2026-10-03')).toBe('Registration open, late entries accepted');
+  it('says closed once the deadline has passed, and makes no promise about late entries', () => {
+    expect(registrationText(open, '2026-10-03')).toBe('Registration closed');
   });
 
   it('works without a deadline', () => {
@@ -191,5 +191,19 @@ describe('seasonView', () => {
     expect(
       seasonView({ ...season, registrationUrl: 'https://example.org/form' }, '2026-09-27').canRegister,
     ).toBe(false);
+  });
+
+  it('takes the Register button away once the deadline has passed', () => {
+    const open: SeasonData = {
+      ...season,
+      registrationOpen: true,
+      registrationDeadline: '2026-10-02',
+      registrationUrl: 'https://example.org/form',
+    };
+    expect(seasonView(open, '2026-10-02').canRegister).toBe(true);
+    expect(seasonView(open, '2026-10-03')).toMatchObject({
+      registration: 'Registration closed',
+      canRegister: false,
+    });
   });
 });

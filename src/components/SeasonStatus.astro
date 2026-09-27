@@ -17,7 +17,7 @@ const view = seasonView(season, todayIso());
     <p data-status="registration">{view.registration}</p>
     {
       view.canRegister && season?.registrationUrl && (
-        <p class="status__action">
+        <p class="status__action" data-status="action">
           <Button href={season.registrationUrl} external={season.registrationUrl.startsWith('https://')}>
             Register
           </Button>
