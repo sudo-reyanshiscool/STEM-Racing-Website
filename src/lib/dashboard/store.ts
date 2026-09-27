@@ -12,6 +12,8 @@ export interface Team {
   name: string;
   codeVersion: number;
   archived: boolean;
+  /** True once the team has seen the one-time welcome on its workspace. */
+  welcomed: boolean;
 }
 
 export interface TeamWithCode extends Team {
@@ -70,7 +72,7 @@ export interface Link {
   url: string;
 }
 
-const TEAM = 'id, slug, name, code_version as "codeVersion", archived';
+const TEAM = 'id, slug, name, code_version as "codeVersion", archived, welcomed';
 const TASK =
   'id, title, owner_role as "ownerRole", to_char(due_date, \'YYYY-MM-DD\') as "dueDate", done, created_by as "createdBy"';
 
@@ -115,6 +117,11 @@ export async function resetCode(db: Db, teamId: number, codeHash: string): Promi
 export async function setArchived(db: Db, teamId: number, archived: boolean): Promise<boolean> {
   const rows = await db.query('update teams set archived = $2 where id = $1 returning id', [teamId, archived]);
   return rows.length === 1;
+}
+
+/** Marks the team as having seen its one-time welcome. Calling it again does nothing. */
+export async function markWelcomed(db: Db, teamId: number): Promise<void> {
+  await db.query('update teams set welcomed = true where id = $1', [teamId]);
 }
 
 // Deliverables

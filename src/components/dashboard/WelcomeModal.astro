@@ -1,0 +1,55 @@
+---
+// Shown once, the first time a team opens its workspace, on any device. team.astro decides
+// whether to show it and marks the team welcomed; this only draws it.
+import Button from '../Button.astro';
+
+interface Props {
+  show: boolean;
+  teamName: string;
+}
+
+const { show, teamName } = Astro.props;
+---
+
+{
+  show && (
+    <dialog class="dash-welcome" id="welcome-dialog" aria-labelledby="welcome-title">
+      <div class="dash-welcome__body">
+        <h2 id="welcome-title">Welcome to STEM Racing, {teamName}</h2>
+        <p>Here's what the dashboard holds for the team:</p>
+        <ul class="dash-welcome__list">
+          <li>
+            <strong>Deliverables</strong> — the strip at the top tracks all ten, from the car to the presentation
+            video.
+          </li>
+          <li>
+            <strong>Tasks</strong> — set your own, with an owner and a due date, so everyone knows what's next.
+          </li>
+          <li>
+            <strong>Notes and links</strong> — a shared scratchpad and a list of links, open to the whole team.
+          </li>
+          <li>
+            <strong>Announcements</strong> — anything a mentor has posted, right where the team will see it.
+          </li>
+          <li>
+            <strong>Streak</strong> — how many weeks running the team has kept moving. Holiday weeks don't count
+            against it.
+          </li>
+        </ul>
+        <form method="dialog">
+          <Button>Let's go</Button>
+        </form>
+      </div>
+    </dialog>
+  )
+}
+
+<script>
+  const dialog = document.getElementById('welcome-dialog');
+  if (dialog instanceof HTMLDialogElement) {
+    dialog.showModal();
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  }
+</script>

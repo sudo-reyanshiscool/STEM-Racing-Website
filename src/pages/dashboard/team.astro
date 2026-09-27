@@ -1,11 +1,13 @@
 ---
 import Button from '../../components/Button.astro';
 import Workspace from '../../components/dashboard/Workspace.astro';
+import WelcomeModal from '../../components/dashboard/WelcomeModal.astro';
 import Section from '../../components/Section.astro';
 import Base from '../../layouts/Base.astro';
 import { getCurrentSeason, getProgramme } from '../../lib/content';
 import { noticeFor, workspaceAction, type ActionResult } from '../../lib/dashboard/actions';
 import { getDb } from '../../lib/dashboard/runtime';
+import { markWelcomed } from '../../lib/dashboard/store';
 import { loadWorkspace } from '../../lib/dashboard/workspace';
 import { todayIso } from '../../lib/season';
 import '../../styles/dashboard.css';
@@ -32,6 +34,10 @@ const notice = noticeFor(Astro.url.searchParams.get('saved'));
 const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), todayIso(), {
   allAnnouncements: Astro.url.searchParams.has('all'),
 });
+
+// Shown once, the very first time the team opens its workspace, from any device.
+const showWelcome = !team.welcomed;
+if (showWelcome) await markWelcomed(db, team.id);
 ---
 
 <Base title={`${team.name} workspace`} description="A team workspace on the STEM Racing dashboard.">
@@ -45,6 +51,7 @@ const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), tod
         </form>
       </div>
       {notice && <p class="dash-notice" role="status">{notice}</p>}
+      <WelcomeModal show={showWelcome} teamName={team.name} />
       <Workspace
         workspace={workspace}
         author="team"

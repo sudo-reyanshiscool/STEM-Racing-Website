@@ -14,6 +14,7 @@ import {
   listTasks,
   listTeams,
   listTeamsWithCodes,
+  markWelcomed,
   recordActivity,
   resetCode,
   setArchived,
@@ -100,6 +101,7 @@ describe('teams', () => {
       name: 'Test Alpha',
       codeVersion: 1,
       archived: false,
+      welcomed: false,
     });
   });
 
@@ -130,6 +132,15 @@ describe('teams', () => {
     expect(names.at(-1)).toBe('AAA Archived');
     expect(await setArchived(db, team.id, false)).toBe(true);
     expect(await setArchived(db, 9999, true)).toBe(false);
+  });
+
+  it('marks a team welcomed once, and leaves it that way', async () => {
+    const team = (await createTeam(db, { slug: 'test-welcome', name: 'Test Welcome', codeHash: 'scrypt.i.i' }))!;
+    expect(team.welcomed).toBe(false);
+    await markWelcomed(db, team.id);
+    expect((await getTeam(db, team.id))?.welcomed).toBe(true);
+    await markWelcomed(db, team.id);
+    expect((await getTeam(db, team.id))?.welcomed).toBe(true);
   });
 });
 

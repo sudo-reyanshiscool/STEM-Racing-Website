@@ -492,6 +492,75 @@
   background: var(--gradient-secondary);
 }
 
+/* The one-time welcome, shown as a native dialog the first time a team opens its workspace */
+.dash-welcome {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  width: calc(100% - 2rem);
+  max-height: calc(100vh - 4rem);
+  margin: auto;
+  padding: 0;
+  position: relative;
+  border: 1px solid var(--dash-line, var(--carbon-700));
+  border-radius: var(--radius);
+  background: var(--carbon-shadow);
+  color: var(--carbon-100);
+  overflow: hidden;
+}
+
+.dash-welcome::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--gradient-secondary);
+}
+
+.dash-welcome::backdrop {
+  background: var(--carbon-shadow);
+  opacity: 0.75;
+}
+
+.dash-welcome__body {
+  padding: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+  overflow-y: auto;
+}
+
+.dash-welcome h2 {
+  color: var(--white);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+}
+
+.dash-welcome__list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dash-welcome__list strong {
+  color: var(--white);
+}
+
+.dash-welcome form {
+  margin-block-start: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dash-welcome {
+    animation: dash-welcome-in 0.3s ease;
+  }
+
+  @keyframes dash-welcome-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+  }
+}
+
 /* Tags */
 .tag--overdue,
 .tag--behind {
