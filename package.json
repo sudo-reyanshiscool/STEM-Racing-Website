@@ -1,17 +1,31 @@
 {
   "name": "tbs-stem-racing",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "vitest run tests/unit",
+    "test:site": "astro build && vitest run tests/site",
+    "test:all": "npm run test && npm run test:site",
+    "assets:prepare": "node scripts/prepare-brand-assets.mjs",
+    "check:publish": "node scripts/check-publish.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "astro": "^7.3.2",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.0",
+    "cheerio": "^1.2.0",
+    "sharp": "^0.35.4",
+    "vitest": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

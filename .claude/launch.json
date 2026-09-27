@@ -4,8 +4,40 @@
     {
       "name": "astro-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "4321"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4321"
+      ],
       "port": 4321
+    },
+    {
+      "name": "rebuild-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--no-install",
+        "astro",
+        "preview",
+        "--root",
+        "/private/tmp/claude-501/-Users-rg-Documents-STEM-Racing-Website/4fed1f3b-acea-4d8d-a23d-5a8220a157f2/scratchpad/probe",
+        "--port",
+        "2026"
+      ],
+      "port": 2026
+    },
+    {
+      "name": "astro-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview",
+        "--",
+        "--port",
+        "4322"
+      ],
+      "port": 4322
     }
   ]
 }
