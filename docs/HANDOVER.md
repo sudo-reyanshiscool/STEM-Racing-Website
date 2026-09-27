@@ -2,6 +2,20 @@
 
 Written 2026-09-27. This one file replaces the session summary, the review report and the notes that were spread across the workspace. Read this first, then the ledger if you need the detail.
 
+## Update after the fix pass
+
+Findings 4–8 were completed on 2026-09-27. The review now has no open Critical or Important findings.
+
+| # | Fix | Commit |
+|---|---|---|
+| 4 | Prevent narrow team cards and timeline entries from overflowing | `588f32f` |
+| 5 | Derive the World Finals count from World Finals result entries | `c41f1fb` |
+| 6 | Make the optional MachoModular Regular switch safe | `7679287` |
+| 7 | Pin the reviewed invariants with broader automated coverage | `ef2ee8f` |
+| 8 | Enforce the logo clear-space dimensions | `39c0506` |
+
+Final verification: `npm run check` reports 0 errors, warnings and hints; 190 unit tests pass; 212 site tests pass and 9 event-state tests are skipped while the event is off. At 375px, the Teams and Season pages have no horizontal overflow. At 1440px, the header is 112px high and both header and footer logos are 56px high.
+
 ## Where things are
 
 | What | Where |
@@ -16,11 +30,11 @@ Written 2026-09-27. This one file replaces the session summary, the review repor
 
 ## State on 2026-09-27
 
-- All 15 plan tasks are committed. A fresh reviewer then read the whole branch. Three of its findings are fixed and committed. Five are open. Work paused at the user's request.
-- Working tree clean. Last commit before this file: `67e123e`.
+- All 15 plan tasks are committed. A fresh reviewer then read the whole branch. All eight Important findings selected for the fix pass are fixed and committed.
+- Working tree clean after the fix pass. Last implementation commit: `39c0506`.
 - `npm run check`: 0 errors, 0 warnings, 0 hints.
-- `npm test`: 174 unit tests pass.
-- `npm run test:site`: 8 pages built, 182 tests pass, 9 skipped. The 9 are the event on/off split.
+- `npm test`: 190 unit tests pass.
+- `npm run test:site`: 8 pages built, 212 tests pass, 9 skipped. The 9 are the event on/off split.
 
 Measured after Task 15, before the review fixes:
 
@@ -51,9 +65,9 @@ Verdict: ready to merge with fixes. No critical issues.
 | 2 | After the deadline the site said late entries were accepted and kept the Register button. It now says "Registration closed" and the date script removes the button. | `3f3b472` |
 | 3 | With a date on the World Finals only, it jumped ahead of the Regional and National Finals. An item with no date now keeps its written place. | `67e123e` |
 
-### Open, in the order to fix them
+### Fixed after the hand-over was resumed
 
-Each fix needs a failing test first, then the fix, then the whole suite, then its own commit and a ledger line.
+The briefs below are retained as a record of what each completed fix addressed.
 
 **4. A long link clips a team card on phones.**
 - Seen at 375 wide: a team body 423px wide inside a 354px card, so the roles are cut off. A long unbroken word in a timeline item made the page 654px wide.
@@ -158,7 +172,7 @@ Also: `/event` is never in `ROUTES`, so it gets no structure or brand tests when
 
 **To supply:** the Season 9 teams with permission to publish names, the dates of the Finals, TBS documents for the Resources page, and a MachoModular Regular font file.
 
-**To go live:** finish the open fixes, merge `rebuild` into `main`, and push. Vercel builds from `main`.
+**To go live:** replace or remove the sample content, confirm the factual items above, merge `rebuild` into `main`, and push. Vercel builds from `main`.
 
 ## Working rules
 
@@ -170,4 +184,4 @@ Also: `/event` is never in `ROUTES`, so it gets no structure or brand tests when
 
 ## To resume
 
-Say "continue the fix pass". Start at finding 4.
+The review fix pass is complete. Continue with real content and launch preparation; do not merge or push without the user's request.
