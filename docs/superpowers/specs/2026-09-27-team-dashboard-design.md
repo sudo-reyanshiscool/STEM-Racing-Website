@@ -22,6 +22,7 @@ Success looks like this:
 | Mentor input | Mentors can add tasks, notes and announcements to one team or to all teams |
 | Streaks | Wanted. Weekly, as proposed and not objected to. |
 | Deliverables | The list below, given by the user |
+| Database | Supabase. Neon was proposed and refused. |
 
 ## Out of scope
 
@@ -35,8 +36,12 @@ Success looks like this:
 
 - Astro stays the framework. `astro.config.mjs` gains the `@astrojs/vercel` adapter. `output` stays `'static'`.
 - Every page and route under `src/pages/dashboard/` sets `export const prerender = false`. No other page does.
-- Data is held in Neon Postgres, added through the Vercel Marketplace. The connection string is the `DATABASE_URL` environment variable.
-- Queries use `@neondatabase/serverless` with SQL written by hand. No ORM.
+- Data is held in a Supabase project, which is Postgres. The connection string is the `DATABASE_URL` environment variable and points at Supabase's connection pooler in transaction mode.
+- Queries use the `postgres` package with SQL written by hand and prepared statements off, as the pooler requires. No ORM, and no Supabase client library.
+- Only the server talks to the database. The browser is never given a Supabase address or key. Supabase Auth is not used; sign-in is the shared codes below.
+- Row level security is switched on for every table with no policies, so Supabase's public API returns nothing even if its public key is found.
+- The tables are made by SQL files in `supabase/migrations/`, not by hand in the table editor.
+- Supabase pauses a free project after a week with no activity. A Vercel cron job calls `/dashboard/api/keep-awake` once a day, which runs `select 1`. The route accepts only requests carrying Vercel's `CRON_SECRET`.
 - Dashboard pages use `src/layouts/Base.astro`, the tokens in `src/styles/tokens.css` and the existing components. Every colour is a token, as the site tests require.
 - Forms post to server routes and the page reloads. The dashboard works with scripts off. A small script may add in-place updates later; it is not part of this build.
 
@@ -44,7 +49,7 @@ Success looks like this:
 
 | Unit | File | Job | Depends on |
 |---|---|---|---|
-| Database access | `src/lib/dashboard/db.ts` | One `sql` function. The only file that reads `DATABASE_URL`. | Neon driver |
+| Database access | `src/lib/dashboard/db.ts` | One `sql` function. The only file that reads `DATABASE_URL`. | `postgres` package |
 | Codes | `src/lib/dashboard/codes.ts` | Make a code, hash it, compare it | `node:crypto` |
 | Sessions | `src/lib/dashboard/session.ts` | Sign, read and clear the cookie | `node:crypto` |
 | Rate limit | `src/lib/dashboard/limit.ts` | Count failed sign-ins by address | `db.ts` |
@@ -181,7 +186,7 @@ Dashboard pages send `X-Robots-Tag: noindex` and `Cache-Control: no-store`. They
 | Layer | Covers | Where |
 |---|---|---|
 | Unit | Streaks: gaps, holidays, week edges, timezone, no activity. Codes: form, hash, compare. Sessions: sign, tamper, expiry, old `code_version`. Field limits. | `tests/unit/dashboard/` |
-| Routes | Every row of the rules table, as a team and as a mentor. A team asking for another team's data gets nothing. Rate limit. Form token. | `tests/dashboard/`, run against a Postgres database made for the test run |
+| Routes | Every row of the rules table, as a team and as a mentor. A team asking for another team's data gets nothing. Rate limit. Form token. | `tests/dashboard/`, run against a local Postgres database made for the test run, never the Supabase project |
 | Site | The existing 212 site tests still pass. Public pages are still built as static files. Colours in dashboard CSS are tokens. | `tests/site/` |
 | By hand | Both screens at 375, 768 and 1440 wide. Scripts off. Keyboard only. | Browser |
 
@@ -193,7 +198,7 @@ Each stage is usable when it ends.
 
 | Stage | Delivers |
 |---|---|
-| 1 | Adapter, database, sign-in, team workspace: deliverables, deadline, tasks, notes and links. Teams are added by a script, since the overview does not exist yet. |
+| 1 | Adapter, database, keep-awake job, sign-in, team workspace: deliverables, deadline, tasks, notes and links. Teams are added by a script, since the overview does not exist yet. |
 | 2 | Mentor overview, team detail, mentor tasks, mentor notes, announcements, manage. |
 | 3 | Activity log display, streaks, holidays, the "Behind" flag's 14-day rule. The `activity` table is written from stage 1, so streaks have history when they appear. |
 
@@ -202,6 +207,6 @@ Each stage is usable when it ends.
 | What | When |
 |---|---|
 | Confirm the three portfolio names | On reviewing this file |
-| Add the Neon database in Vercel and approve its terms | Before stage 1 is deployed. It can be built and tested locally first. |
+| Create the Supabase project, in a region near the school, and put its pooler connection string in Vercel as `DATABASE_URL` | Before stage 1 is deployed. It can be built and tested locally first. |
 | Choose the mentor code | Before stage 1 is deployed |
 | School approval, if the school requires it for a pupil-facing tool | Before teams are given codes |
