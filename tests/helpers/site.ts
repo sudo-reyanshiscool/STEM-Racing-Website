@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { load, type CheerioAPI } from 'cheerio';
 
 export const root = process.cwd();
-export const dist = join(root, 'dist');
+export const dist = join(root, 'dist', 'client');
 export const SITE_URL = 'https://stemracing-tbs.vercel.app';
 
 /** Every page the site builds, apart from the optional event page. */

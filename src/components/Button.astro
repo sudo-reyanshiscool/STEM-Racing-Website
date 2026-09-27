@@ -1,22 +1,39 @@
 ---
 interface Props {
-  href: string;
+  /** Where the link goes. Left out, the button sends the form it sits in. */
+  href?: string;
   variant?: 'primary' | 'ghost';
+  size?: 'normal' | 'small';
   /** Opens in a new tab. Use for links that leave the site. */
   external?: boolean;
+  /** For a button in a form: the field it sends. */
+  name?: string;
+  value?: string;
+  /** For a button that shows a choice: whether it is the one chosen. */
+  pressed?: boolean;
 }
 
-const { href, variant = 'primary', external = false } = Astro.props;
+const { href, variant = 'primary', size = 'normal', external = false, name, value, pressed } = Astro.props;
+const classes = ['btn', `btn--${variant}`, size === 'small' && 'btn--small'];
 ---
 
-<a
-  class:list={['btn', `btn--${variant}`]}
-  href={href}
-  target={external ? '_blank' : undefined}
-  rel={external ? 'noopener noreferrer' : undefined}
->
-  <slot />{external && <span class="sr-only"> (opens in a new tab)</span>}
-</a>
+{
+  href === undefined ? (
+    <button class:list={classes} type="submit" name={name} value={value} aria-pressed={pressed}>
+      <slot />
+    </button>
+  ) : (
+    <a
+      class:list={classes}
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      <slot />
+      {external && <span class="sr-only"> (opens in a new tab)</span>}
+    </a>
+  )
+}
 
 <style>
   .btn {
@@ -35,10 +52,17 @@ const { href, variant = 'primary', external = false } = Astro.props;
     line-height: 1.1;
     text-decoration: none;
     text-transform: uppercase;
+    cursor: pointer;
     transition:
       background-color 0.2s ease,
       border-color 0.2s ease,
       color 0.2s ease;
+  }
+
+  .btn--small {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
   }
 
   .btn--primary {
@@ -51,6 +75,8 @@ const { href, variant = 'primary', external = false } = Astro.props;
   }
 
   .btn--ghost {
+    /* A button element has a background of its own. A link has none. */
+    background: transparent;
     border-color: var(--fg-strong, var(--white));
     color: var(--fg-strong, var(--white));
   }

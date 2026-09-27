@@ -31,7 +31,7 @@ it('ships the date-refresh code on every page', () => {
   for (const route of ROUTES) {
     const src = page(route)('script[type="module"][src]').attr('src');
     expect(src, route).toBeTruthy();
-    const bundle = readFileSync(join(root, 'dist', src?.replace(/^\//, '') ?? ''), 'utf8');
+    const bundle = readFileSync(join(root, 'dist', 'client', src?.replace(/^\//, '') ?? ''), 'utf8');
     expect(bundle, route).toContain('data-season-status');
     expect(bundle, route).toContain('data-dim-past');
   }

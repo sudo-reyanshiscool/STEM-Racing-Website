@@ -47,7 +47,10 @@ describe('brand rules in the CSS', () => {
   });
 
   it('puts no shadow or rotation on either logo link', () => {
-    const links = rules.filter((rule) => ['.site-header__home', '.site-footer__home'].includes(rule.selector));
+    // The dashboard pages ship the same rules in a file of their own, so each is counted once.
+    const links = rules
+      .filter((rule) => ['.site-header__home', '.site-footer__home'].includes(rule.selector))
+      .filter((rule, index, all) => all.findIndex((other) => other.selector === rule.selector && other.body === rule.body) === index);
     expect(links).toHaveLength(2);
     for (const rule of links) expect(rule.body).not.toMatch(/(?:box-shadow|text-shadow|filter|rotate|transform):/);
   });

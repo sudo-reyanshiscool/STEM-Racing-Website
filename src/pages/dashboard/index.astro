@@ -1,0 +1,69 @@
+---
+import Button from '../../components/Button.astro';
+import Section from '../../components/Section.astro';
+import Base from '../../layouts/Base.astro';
+import { signIn } from '../../lib/dashboard/actions';
+import { getDb, mentorCodeHash, sessionSecret } from '../../lib/dashboard/runtime';
+import { SESSION_COOKIE, SESSION_SECONDS } from '../../lib/dashboard/session';
+import '../../styles/dashboard.css';
+
+export const prerender = false;
+
+let message = '';
+if (Astro.url.searchParams.has('again')) message = 'Please sign in again.';
+if (Astro.url.searchParams.has('closed')) message = 'This workspace is closed. Ask your mentor.';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const result = await signIn(getDb(), {
+    code: form.get('code'),
+    address: Astro.clientAddress,
+    secret: sessionSecret(),
+    mentorCodeHash: mentorCodeHash(),
+  });
+  if (result.ok) {
+    Astro.cookies.set(SESSION_COOKIE, result.cookie, {
+      httpOnly: true,
+      // Safari refuses a Secure cookie from http://localhost, so it is Secure on the built site only.
+      secure: import.meta.env.PROD,
+      sameSite: 'lax',
+      path: '/dashboard',
+      maxAge: SESSION_SECONDS,
+    });
+    return Astro.redirect(result.next, 303);
+  }
+  message = result.message;
+  Astro.response.status = result.reason === 'blocked' ? 429 : 401;
+}
+---
+
+<Base title="Team sign-in" description="Sign in to the STEM Racing team dashboard at The British School, New Delhi.">
+  <Section surface="dark" labelledby="sign-in-title">
+    <div class="stack dash-narrow">
+      <h1 id="sign-in-title">Team sign-in</h1>
+      <p class="lead">Enter the access code your mentor gave your team.</p>
+      <form class="dash-form stack" method="post" action="/dashboard">
+        <div class="dash-field">
+          <label for="code">Access code</label>
+          <input
+            id="code"
+            name="code"
+            type="password"
+            required
+            autofocus
+            maxlength="64"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            aria-describedby={message ? 'code-message' : undefined}
+            aria-invalid={message ? 'true' : undefined}
+          />
+          {message && <p id="code-message" class="dash-message" role="alert">{message}</p>}
+        </div>
+        <div class="actions">
+          <Button>Sign in</Button>
+        </div>
+      </form>
+    </div>
+  </Section>
+</Base>

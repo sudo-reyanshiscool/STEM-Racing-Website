@@ -1,0 +1,199 @@
+/* The team dashboard. Every colour comes from tokens.css, through the variables that
+   Section.astro sets for the surface the dashboard sits on. */
+
+.dash-narrow {
+  max-width: 32rem;
+}
+
+.dash-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.dash-block > * + * {
+  margin-block-start: 1.25rem;
+}
+
+.dash-form {
+  --stack: 1rem;
+}
+
+.dash-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.dash-field {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.dash-field label,
+.dash-legend {
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-field input,
+.dash-field select,
+.dash-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.6rem 0.85rem;
+  border: 2px solid var(--fg-muted, var(--carbon-300));
+  border-radius: 0.25rem;
+  background: var(--carbon-shadow);
+  color: var(--white);
+  font: inherit;
+  color-scheme: dark;
+}
+
+.dash-field textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.dash-field [aria-invalid='true'] {
+  border-color: var(--podium-gold);
+}
+
+.dash-hint {
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+/* A message about what the person typed. The gold bar marks it without relying on colour alone:
+   the text says what is wrong. */
+.dash-message {
+  padding-inline-start: 0.75rem;
+  border-inline-start: 4px solid var(--podium-gold);
+  color: var(--fg-strong, var(--white));
+  font-weight: 500;
+}
+
+.dash-notice {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--card-border, var(--carbon-800));
+  border-inline-start: 4px solid var(--pitlane-pink);
+  border-radius: var(--radius);
+  background: var(--card-bg, var(--gradient-core));
+  color: var(--fg-strong, var(--white));
+}
+
+.dash-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--text-h3);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  user-select: all;
+}
+
+/* Progress */
+.dash-bar {
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--carbon-700);
+  overflow: hidden;
+}
+
+.dash-bar__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gradient-secondary);
+}
+
+/* Lists of deliverables, tasks, links and teams */
+.dash-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dash-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--card-border, var(--carbon-800));
+  border-radius: var(--radius);
+  background: var(--card-bg, var(--gradient-core));
+}
+
+.dash-row__title {
+  color: var(--fg-strong, var(--white));
+  font-weight: 700;
+}
+
+.dash-row__title--done {
+  text-decoration-line: line-through;
+}
+
+.dash-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  align-items: center;
+  font-size: var(--text-small);
+  color: var(--fg-muted, var(--carbon-300));
+}
+
+.dash-row__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dash-row__actions form {
+  display: contents;
+}
+
+.dash-row details {
+  grid-column: 1 / -1;
+}
+
+.dash-row summary {
+  width: fit-content;
+  min-height: 2.75rem;
+  padding-block: 0.6rem;
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-color: var(--pitlane-pink);
+  text-decoration-thickness: 0.125em;
+  text-underline-offset: 0.22em;
+}
+
+.dash-row details[open] > summary {
+  margin-block-end: 0.75rem;
+}
+
+.tag--overdue {
+  border-color: var(--podium-gold);
+  background: var(--podium-gold);
+  color: var(--carbon-shadow);
+}
+
+.tag--mentor {
+  border-color: var(--pitlane-pink);
+}
+
+.dash-note {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 48rem) {
+  .dash-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}

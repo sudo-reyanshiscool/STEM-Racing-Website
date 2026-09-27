@@ -1,0 +1,16 @@
+---
+import Section from '../../components/Section.astro';
+import Base from '../../layouts/Base.astro';
+
+export const prerender = false;
+Astro.response.status = 503;
+---
+
+<Base title="Dashboard unavailable" description="The team dashboard is unavailable.">
+  <Section surface="dark" labelledby="unavailable-title">
+    <div class="stack">
+      <h1 id="unavailable-title">The dashboard is unavailable</h1>
+      <p class="lead">Your work is safe. Try again in a few minutes.</p>
+    </div>
+  </Section>
+</Base>

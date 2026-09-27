@@ -51,7 +51,7 @@ export function copySite(): SiteCopy {
   symlinkSync(join(root, 'node_modules'), join(dir, 'node_modules'), 'dir');
 
   const file = (route: string) =>
-    route === '/' ? join(dir, 'dist/index.html') : join(dir, 'dist', route.slice(1), 'index.html');
+    route === '/' ? join(dir, 'dist/client/index.html') : join(dir, 'dist/client', route.slice(1), 'index.html');
 
   return {
     dir,

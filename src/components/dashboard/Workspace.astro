@@ -1,0 +1,360 @@
+---
+// One team's workspace. The team sees it at /dashboard/team. In stage 2 a mentor sees the same
+// view at /dashboard/mentor/team/[slug].
+import type { ActionResult } from '../../lib/dashboard/actions';
+import { DELIVERABLES, STATUSES } from '../../lib/dashboard/deliverables';
+import { LIMITS } from '../../lib/dashboard/fields';
+import type { Author } from '../../lib/dashboard/store';
+import type { Workspace } from '../../lib/dashboard/workspace';
+import { formatDate } from '../../lib/season';
+import Button from '../Button.astro';
+
+interface Props {
+  workspace: Workspace;
+  /** Who is looking. A team may not edit a mentor's task. A mentor may not edit the note or links. */
+  author: Author;
+  /** The address the forms are sent to. */
+  action: string;
+  token: string;
+  roles: readonly string[];
+  /** The form that was refused, to show its messages and what was typed. */
+  failed?: Extract<ActionResult, { ok: false }> | undefined;
+}
+
+const { workspace, author, action, token, roles, failed } = Astro.props;
+const total = DELIVERABLES.length;
+const percent = Math.round((workspace.doneCount / total) * 100);
+const statusLabel = (value: string) => STATUSES.find((status) => status.value === value)?.label ?? value;
+
+/** The refused form, when it is the one named and, for an edit, the row named. */
+const refusal = (name: string, id?: number) =>
+  failed && failed.action === name && (id === undefined || failed.values.id === String(id)) ? failed : undefined;
+const addTask = refusal('task-add');
+const note = refusal('note');
+const addLink = refusal('link-add');
+const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'team';
+---
+
+<section class="dash-block" aria-labelledby="deadline-title">
+  <h2 id="deadline-title">Next deadline</h2>
+  {
+    workspace.deadline ? (
+      <div class="card">
+        <p class="dash-row__title">{workspace.deadline.title}</p>
+        <p>{workspace.deadline.when}</p>
+        {workspace.deadline.left && <p class="muted">{workspace.deadline.left}</p>}
+      </div>
+    ) : (
+      <p class="muted">The next deadline appears here when the season timeline has one.</p>
+    )
+  }
+</section>
+
+<section class="dash-block" id="deliverables" aria-labelledby="deliverables-title">
+  <h2 id="deliverables-title">Deliverables</h2>
+  <p>{workspace.doneCount} of {total} done</p>
+  <div class="dash-bar" aria-hidden="true">
+    <div class="dash-bar__fill" style={`width: ${percent}%`}></div>
+  </div>
+  {refusal('deliverable') && <p class="dash-message" role="alert">{refusal('deliverable')?.errors.form}</p>}
+  <ul class="dash-list">
+    {
+      workspace.deliverables.map((line) => (
+        <li class="dash-row">
+          <div>
+            <p class="dash-row__title">{line.label}</p>
+            <p class="dash-row__meta">{statusLabel(line.status)}</p>
+          </div>
+          <form class="dash-row__actions" method="post" action={`${action}#deliverables`}>
+            <input type="hidden" name="token" value={token} />
+            <input type="hidden" name="action" value="deliverable" />
+            <input type="hidden" name="key" value={line.key} />
+            {STATUSES.map((status) => (
+              <Button
+                size="small"
+                variant={status.value === line.status ? 'primary' : 'ghost'}
+                pressed={status.value === line.status}
+                name="status"
+                value={status.value}
+              >
+                {status.label}
+                <span class="sr-only">: {line.label}</span>
+              </Button>
+            ))}
+          </form>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="dash-block" id="tasks" aria-labelledby="tasks-title">
+  <h2 id="tasks-title">Tasks</h2>
+  {
+    ['task-done', 'task-delete'].map(
+      (name) => refusal(name) && <p class="dash-message" role="alert">{refusal(name)?.errors.form}</p>,
+    )
+  }
+  {
+    workspace.tasks.length === 0 ? (
+      <p class="muted">No tasks yet. Tasks from your mentor and tasks your team adds appear here.</p>
+    ) : (
+      <ul class="dash-list">
+        {workspace.tasks.map((task) => {
+          const edit = refusal('task-edit', task.id);
+          const values = edit?.values ?? {
+            title: task.title,
+            ownerRole: task.ownerRole ?? '',
+            dueDate: task.dueDate ?? '',
+          };
+          return (
+            <li class="dash-row">
+              <div>
+                <p class:list={['dash-row__title', task.done && 'dash-row__title--done']}>{task.title}</p>
+                <p class="dash-row__meta">
+                  {task.createdBy === 'mentor' && <span class="tag tag--mentor">From your mentor</span>}
+                  {task.overdue && <span class="tag tag--overdue">Overdue</span>}
+                  {task.done && <span>Done</span>}
+                  {task.ownerRole && <span>{task.ownerRole}</span>}
+                  {task.dueDate && <span>Due {formatDate(task.dueDate)}</span>}
+                </p>
+              </div>
+              <div class="dash-row__actions">
+                <form method="post" action={`${action}#tasks`}>
+                  <input type="hidden" name="token" value={token} />
+                  <input type="hidden" name="action" value="task-done" />
+                  <input type="hidden" name="id" value={task.id} />
+                  <Button size="small" name="done" value={task.done ? 'false' : 'true'}>
+                    {task.done ? 'Reopen' : 'Tick off'}
+                    <span class="sr-only">: {task.title}</span>
+                  </Button>
+                </form>
+                {canEdit(task.createdBy) && (
+                  <form method="post" action={`${action}#tasks`}>
+                    <input type="hidden" name="token" value={token} />
+                    <input type="hidden" name="id" value={task.id} />
+                    <Button size="small" variant="ghost" name="action" value="task-delete">
+                      Delete
+                      <span class="sr-only">: {task.title}</span>
+                    </Button>
+                  </form>
+                )}
+              </div>
+              {canEdit(task.createdBy) && (
+                <details open={edit !== undefined}>
+                  <summary>
+                    Edit
+                    <span class="sr-only">: {task.title}</span>
+                  </summary>
+                  <form class="dash-form stack" method="post" action={`${action}#tasks`}>
+                    <input type="hidden" name="token" value={token} />
+                    <input type="hidden" name="action" value="task-edit" />
+                    <input type="hidden" name="id" value={task.id} />
+                    {edit?.errors.form && <p class="dash-message" role="alert">{edit.errors.form}</p>}
+                    <div class="dash-fields">
+                      <div class="dash-field">
+                        <label for={`task-${task.id}-title`}>Title</label>
+                        <input
+                          id={`task-${task.id}-title`}
+                          name="title"
+                          required
+                          maxlength={LIMITS.title}
+                          value={values.title}
+                          aria-invalid={edit?.errors.title ? 'true' : undefined}
+                          aria-describedby={edit?.errors.title ? `task-${task.id}-title-message` : undefined}
+                        />
+                        {edit?.errors.title && (
+                          <p id={`task-${task.id}-title-message`} class="dash-message">{edit.errors.title}</p>
+                        )}
+                      </div>
+                      <div class="dash-field">
+                        <label for={`task-${task.id}-role`}>Owner</label>
+                        <select id={`task-${task.id}-role`} name="ownerRole">
+                          <option value="">No owner</option>
+                          {roles.map((role) => (
+                            <option value={role} selected={role === values.ownerRole}>{role}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div class="dash-field">
+                        <label for={`task-${task.id}-due`}>Due date</label>
+                        <input
+                          id={`task-${task.id}-due`}
+                          name="dueDate"
+                          type="date"
+                          value={values.dueDate}
+                          aria-invalid={edit?.errors.dueDate ? 'true' : undefined}
+                          aria-describedby={edit?.errors.dueDate ? `task-${task.id}-due-message` : undefined}
+                        />
+                        {edit?.errors.dueDate && (
+                          <p id={`task-${task.id}-due-message`} class="dash-message">{edit.errors.dueDate}</p>
+                        )}
+                      </div>
+                    </div>
+                    <div class="actions">
+                      <Button size="small">Save task</Button>
+                    </div>
+                  </form>
+                </details>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+
+  <form class="dash-form stack card" method="post" action={`${action}#tasks`} aria-labelledby="task-add-title">
+    <h3 id="task-add-title">Add a task</h3>
+    <input type="hidden" name="token" value={token} />
+    <input type="hidden" name="action" value="task-add" />
+    {addTask?.errors.form && <p class="dash-message" role="alert">{addTask.errors.form}</p>}
+    <div class="dash-fields">
+      <div class="dash-field">
+        <label for="task-title">Title</label>
+        <input
+          id="task-title"
+          name="title"
+          required
+          maxlength={LIMITS.title}
+          value={addTask?.values.title}
+          aria-invalid={addTask?.errors.title ? 'true' : undefined}
+          aria-describedby={addTask?.errors.title ? 'task-title-message' : undefined}
+        />
+        {addTask?.errors.title && <p id="task-title-message" class="dash-message">{addTask.errors.title}</p>}
+      </div>
+      <div class="dash-field">
+        <label for="task-role">Owner</label>
+        <select
+          id="task-role"
+          name="ownerRole"
+          aria-invalid={addTask?.errors.ownerRole ? 'true' : undefined}
+          aria-describedby={addTask?.errors.ownerRole ? 'task-role-message' : undefined}
+        >
+          <option value="">No owner</option>
+          {roles.map((role) => <option value={role} selected={role === addTask?.values.ownerRole}>{role}</option>)}
+        </select>
+        {addTask?.errors.ownerRole && <p id="task-role-message" class="dash-message">{addTask.errors.ownerRole}</p>}
+      </div>
+      <div class="dash-field">
+        <label for="task-due">Due date</label>
+        <input
+          id="task-due"
+          name="dueDate"
+          type="date"
+          value={addTask?.values.dueDate}
+          aria-invalid={addTask?.errors.dueDate ? 'true' : undefined}
+          aria-describedby={addTask?.errors.dueDate ? 'task-due-message' : undefined}
+        />
+        {addTask?.errors.dueDate && <p id="task-due-message" class="dash-message">{addTask.errors.dueDate}</p>}
+      </div>
+    </div>
+    <div class="actions">
+      <Button>Add task</Button>
+    </div>
+  </form>
+</section>
+
+<section class="dash-block" id="notes" aria-labelledby="notes-title">
+  <h2 id="notes-title">Notes and links</h2>
+  {
+    author === 'team' ? (
+      <form class="dash-form stack" method="post" action={`${action}#notes`}>
+        <input type="hidden" name="token" value={token} />
+        <input type="hidden" name="action" value="note" />
+        <div class="dash-field">
+          <label for="note">Status note</label>
+          <textarea
+            id="note"
+            name="note"
+            maxlength={LIMITS.note}
+            aria-invalid={note?.errors.note ? 'true' : undefined}
+            aria-describedby={note?.errors.note ? 'note-message note-hint' : 'note-hint'}
+            set:text={note?.values.note ?? workspace.note}
+          />
+          <p id="note-hint" class="dash-hint">Your mentors can read this. Up to {LIMITS.note} characters.</p>
+          {note?.errors.note && <p id="note-message" class="dash-message">{note.errors.note}</p>}
+        </div>
+        <div class="actions">
+          <Button size="small">Save note</Button>
+        </div>
+      </form>
+    ) : workspace.note ? (
+      <p class="dash-note card">{workspace.note}</p>
+    ) : (
+      <p class="muted">The team has not written a status note.</p>
+    )
+  }
+
+  <h3 id="links-title">Links</h3>
+  {refusal('link-delete') && <p class="dash-message" role="alert">{refusal('link-delete')?.errors.form}</p>}
+  {
+    workspace.links.length === 0 ? (
+      <p class="muted">No links yet. Save the address of your Drive folder or your CAD files here.</p>
+    ) : (
+      <ul class="dash-list" aria-labelledby="links-title">
+        {workspace.links.map((link) => (
+          <li class="dash-row">
+            <a href={link.url} target="_blank" rel="noopener noreferrer nofollow">
+              {link.label}
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+            {author === 'team' && (
+              <form class="dash-row__actions" method="post" action={`${action}#notes`}>
+                <input type="hidden" name="token" value={token} />
+                <input type="hidden" name="id" value={link.id} />
+                <Button size="small" variant="ghost" name="action" value="link-delete">
+                  Delete
+                  <span class="sr-only">: {link.label}</span>
+                </Button>
+              </form>
+            )}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    author === 'team' && (
+      <form class="dash-form stack card" method="post" action={`${action}#notes`} aria-labelledby="link-add-title">
+        <h3 id="link-add-title">Add a link</h3>
+        <input type="hidden" name="token" value={token} />
+        <input type="hidden" name="action" value="link-add" />
+        {addLink?.errors.form && <p class="dash-message" role="alert">{addLink.errors.form}</p>}
+        <div class="dash-fields">
+          <div class="dash-field">
+            <label for="link-label">Name</label>
+            <input
+              id="link-label"
+              name="label"
+              required
+              maxlength={LIMITS.linkLabel}
+              value={addLink?.values.label}
+              aria-invalid={addLink?.errors.label ? 'true' : undefined}
+              aria-describedby={addLink?.errors.label ? 'link-label-message' : undefined}
+            />
+            {addLink?.errors.label && <p id="link-label-message" class="dash-message">{addLink.errors.label}</p>}
+          </div>
+          <div class="dash-field">
+            <label for="link-url">Address</label>
+            <input
+              id="link-url"
+              name="url"
+              type="url"
+              required
+              maxlength={LIMITS.url}
+              placeholder="https://"
+              value={addLink?.values.url}
+              aria-invalid={addLink?.errors.url ? 'true' : undefined}
+              aria-describedby={addLink?.errors.url ? 'link-url-message' : undefined}
+            />
+            {addLink?.errors.url && <p id="link-url-message" class="dash-message">{addLink.errors.url}</p>}
+          </div>
+        </div>
+        <div class="actions">
+          <Button size="small">Add link</Button>
+        </div>
+      </form>
+    )
+  }
+</section>
