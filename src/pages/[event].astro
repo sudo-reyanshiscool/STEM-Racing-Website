@@ -1,0 +1,92 @@
+---
+// This page is only built when src/content/event/event.json has "enabled": true.
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import Section from '../components/Section.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+import { getEvent } from '../lib/content';
+
+export const getStaticPaths = (async () => {
+  const event = await getEvent();
+  if (!event || !event.enabled) return [];
+  return [{ params: { event: 'event' }, props: { event } }];
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { event } = Astro.props;
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.venue)}`;
+---
+
+<Base title={event.name} description={`${event.name}: schedule, scrutineering and what to bring.`}>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Race Day" />
+  </Section>
+
+  <Section surface="dark" labelledby="event-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <p class="eyebrow">
+          Event {event.sample && <span class="tag tag--sample">Sample entry</span>}
+        </p>
+        <h2 id="event-title">{event.name}</h2>
+        <p class="lead">{event.dates}</p>
+        <p>
+          {event.venue}. <a href={mapUrl} target="_blank" rel="noopener noreferrer">Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></a>
+        </p>
+      </div>
+      <div class="stack">
+        <h3>Schedule</h3>
+        <div class="table-wrap" role="region" aria-label="Schedule" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Activity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                event.schedule.map((row) => (
+                  <tr>
+                    <td>{row.time}</td>
+                    <td>{row.activity}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="light">
+    <div class="grid grid--2">
+      <div class="stack">
+        <h2>Scrutineering</h2>
+        <p>{event.scrutineeringInfo}</p>
+      </div>
+      <div class="stack">
+        <h2>What to bring</h2>
+        <ul class="prose event-list">
+          {event.whatToBring.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="dark">
+    <div class="stack">
+      <h2>Contact</h2>
+      <p class="lead">Questions about the day go to {event.contact}.</p>
+    </div>
+  </Section>
+</Base>
+
+<style>
+  .event-list {
+    padding-inline-start: 1.25rem;
+    list-style: disc;
+  }
+</style>
