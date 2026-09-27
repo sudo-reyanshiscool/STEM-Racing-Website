@@ -55,7 +55,6 @@ const results = groupResultsBySeason(resultEntries);
                     <th scope="col">Event</th>
                     <th scope="col">Team</th>
                     <th scope="col">Placing</th>
-                    <th scope="col">Awards</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -64,7 +63,6 @@ const results = groupResultsBySeason(resultEntries);
                       <td>{row.event}</td>
                       <td>{row.team}</td>
                       <td>{row.placing}</td>
-                      <td>{row.awards.length > 0 ? row.awards.join(', ') : 'None recorded'}</td>
                     </tr>
                   ))}
                 </tbody>

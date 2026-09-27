@@ -15,8 +15,9 @@ describe('teams', () => {
     expect(texts($, '#teams-title ~ section > h3')).toEqual(['World Finals', 'Nationals', 'Current Regionals']);
   });
 
-  it('lists every result', () => {
+  it('lists every result with Event, Team and Placing columns only', () => {
     expect($('.table tbody tr')).toHaveLength(results.length);
+    expect([...new Set(texts($, '.table thead th'))]).toEqual(['Event', 'Team', 'Placing']);
   });
 
   it('lets keyboard users scroll a wide table', () => {
