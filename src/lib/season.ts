@@ -60,12 +60,24 @@ export function isPast(date: string | undefined, today: string): boolean {
   return date !== undefined && date !== '' && date < today;
 }
 
-/** Dated items first, oldest first. Undated items follow in the order they were written. */
+/**
+ * Dated items in date order. An item with no date keeps its written place: it comes ahead of
+ * the next dated item written after it, and last when no dated item follows it.
+ */
 export function sortTimeline(items: readonly TimelineItem[]): TimelineItem[] {
-  const dated = items.filter((item) => item.date !== undefined);
-  const undated = items.filter((item) => item.date === undefined);
-  dated.sort((a, b) => (a.date ?? '').localeCompare(b.date ?? ''));
-  return [...dated, ...undated];
+  const placed = items.map((item, index) => ({
+    item,
+    index,
+    // An item with no date takes its place from the next dated item written after it.
+    place: item.date ?? items.slice(index + 1).find((later) => later.date !== undefined)?.date,
+  }));
+  placed.sort((a, b) => {
+    if (a.place === b.place) return a.index - b.index;
+    if (a.place === undefined) return 1;
+    if (b.place === undefined) return -1;
+    return a.place < b.place ? -1 : 1;
+  });
+  return placed.map((entry) => entry.item);
 }
 
 /** The current season is the one with the latest year label: "2026-27" beats "2025-26". */
@@ -76,12 +88,14 @@ export function pickCurrentSeason<T extends { year: string }>(seasons: readonly 
 export function seasonState(season: SeasonData | undefined, today: string): SeasonState {
   if (!season || season.timeline.length === 0) return { kind: 'none' };
   const sorted = sortTimeline(season.timeline);
-  const upcoming = sorted.find((item) => item.date !== undefined && item.date >= today);
-  if (upcoming) return { kind: 'upcoming', item: upcoming };
-  const unscheduled = sorted.find((item) => item.date === undefined);
-  if (unscheduled) return { kind: 'unscheduled', item: unscheduled };
-  const dated = sorted.filter((item) => item.date !== undefined);
-  return { kind: 'complete', item: dated[dated.length - 1] };
+  // Everything up to the last dated item that has passed is behind us, dated or not.
+  let lastPast = -1;
+  sorted.forEach((item, index) => {
+    if (isPast(item.date, today)) lastPast = index;
+  });
+  const next = sorted[lastPast + 1];
+  if (next) return { kind: next.date === undefined ? 'unscheduled' : 'upcoming', item: next };
+  return { kind: 'complete', item: sorted[lastPast] };
 }
 
 export function seasonHeading(season: SeasonData): string {

@@ -97,8 +97,10 @@ A short paragraph about the team.
 }
 ```
 
-- Leave out `date` when it is not confirmed. The site shows "Date to be confirmed" and lists the item after the dated ones.
-- The site sorts the items by date. It dims the ones that have passed and shows the next one on the home page. This is worked out in the visitor's browser each time, so it stays right between updates.
+- Write the items in the order they happen.
+- Leave out `date` when it is not confirmed. The site shows "Date to be confirmed" and keeps the item where you wrote it. For example, when only the World Finals has a date, the Regional and National Finals still come first.
+- The site puts the dated items in date order. It dims the ones that have passed and shows the next one on the home page. This is worked out in the visitor's browser each time, so it stays right between updates.
+- A date must be on the calendar. The build stops at `2026-09-31`.
 
 3. To open registration, set `"registrationOpen": true`. Add `"registrationDeadline": "2027-09-01"` to show a deadline, and `"registrationUrl": "https://..."` to show a Register button. The day after the deadline, the site shows "Registration closed" and takes the button away by itself. To keep registration open for longer, change the deadline or delete that line.
 4. `name` is optional, for example `"name": "Season 9"`.

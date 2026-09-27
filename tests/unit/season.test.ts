@@ -17,12 +17,15 @@ const season: SeasonData = {
   name: 'Season 9',
   registrationOpen: false,
   timeline: [
-    { title: 'Regional Finals', description: '' },
-    { date: '2026-09-16', title: "Parents' briefing", description: '' },
     { date: '2026-09-03', title: 'Interview invitations', description: '' },
+    { date: '2026-09-16', title: "Parents' briefing", description: '' },
+    { title: 'Regional Finals', description: '' },
     { title: 'National Finals', description: '' },
   ],
 };
+
+const item = (title: string, date?: string) => ({ date, title, description: '' });
+const titles = (items: readonly { title: string }[]) => items.map((entry) => entry.title);
 
 describe('todayIso', () => {
   it('uses the school time zone, not the time zone of the build server', () => {
@@ -58,19 +61,47 @@ describe('isPast', () => {
 });
 
 describe('sortTimeline', () => {
-  it('puts dated items first in date order, then undated items in written order', () => {
-    expect(sortTimeline(season.timeline).map((item) => item.title)).toEqual([
-      'Interview invitations',
-      "Parents' briefing",
+  it('puts dated items in date order', () => {
+    const written = [item('Briefing', '2026-09-16'), item('Interviews', '2026-09-03')];
+    expect(titles(sortTimeline(written))).toEqual(['Interviews', 'Briefing']);
+  });
+
+  it('keeps an item with no date ahead of the next dated item written after it', () => {
+    // The date of the World Finals is often the first one to be announced.
+    const written = [
+      item('Interviews', '2026-09-03'),
+      item('Regional Finals'),
+      item('National Finals'),
+      item('World Finals', '2027-07-01'),
+    ];
+    expect(titles(sortTimeline(written))).toEqual(['Interviews', 'Regional Finals', 'National Finals', 'World Finals']);
+  });
+
+  it('keeps an item with no date first when it is written first', () => {
+    const written = [item('Kick-off'), item('Briefing', '2026-09-16'), item('Interviews', '2026-09-03')];
+    expect(titles(sortTimeline(written))).toEqual(['Interviews', 'Kick-off', 'Briefing']);
+  });
+
+  it('lists items with no date last, in written order, when no dated item follows them', () => {
+    const written = [item('Regional Finals'), item('National Finals')];
+    expect(titles(sortTimeline([item('Interviews', '2026-09-03'), ...written]))).toEqual([
+      'Interviews',
       'Regional Finals',
       'National Finals',
     ]);
+    expect(titles(sortTimeline(written))).toEqual(['Regional Finals', 'National Finals']);
+  });
+
+  it('keeps the written order for items that share a date', () => {
+    const written = [item('Scrutineering', '2027-01-23'), item('Racing', '2027-01-23')];
+    expect(titles(sortTimeline(written))).toEqual(['Scrutineering', 'Racing']);
   });
 
   it('does not change the list it is given', () => {
-    const before = season.timeline.map((item) => item.title);
-    sortTimeline(season.timeline);
-    expect(season.timeline.map((item) => item.title)).toEqual(before);
+    const written = [item('Briefing', '2026-09-16'), item('Regional Finals'), item('Interviews', '2026-09-03')];
+    const before = titles(written);
+    sortTimeline(written);
+    expect(titles(written)).toEqual(before);
   });
 });
 
@@ -102,6 +133,34 @@ describe('seasonState', () => {
     expect(seasonState(season, '2026-09-27')).toEqual({
       kind: 'unscheduled',
       item: { title: 'Regional Finals', description: '' },
+    });
+  });
+
+  it('names an item with no date as next when it is written before the next dated item', () => {
+    const timeline = [...season.timeline, item('World Finals', '2027-07-01')];
+    expect(seasonState({ ...season, timeline }, '2026-09-27')).toEqual({
+      kind: 'unscheduled',
+      item: { title: 'Regional Finals', description: '' },
+    });
+  });
+
+  it('moves on to the dated item once it is the only one left', () => {
+    const timeline = [item('Interviews', '2026-09-03'), item('World Finals', '2027-07-01')];
+    expect(seasonState({ ...season, timeline }, '2026-09-27')).toEqual({
+      kind: 'upcoming',
+      item: item('World Finals', '2027-07-01'),
+    });
+  });
+
+  it('counts an item with no date as behind us once a dated item written after it has passed', () => {
+    const timeline = [item('Kick-off'), item('Interviews', '2026-09-03'), item('Briefing', '2026-09-16')];
+    expect(seasonState({ ...season, timeline }, '2026-09-10')).toEqual({
+      kind: 'upcoming',
+      item: item('Briefing', '2026-09-16'),
+    });
+    expect(seasonState({ ...season, timeline }, '2026-09-27')).toEqual({
+      kind: 'complete',
+      item: item('Briefing', '2026-09-16'),
     });
   });
 
@@ -161,6 +220,15 @@ describe('seasonView', () => {
       nextDate: 'Date to be confirmed',
       registration: 'Registration closed',
       canRegister: false,
+    });
+  });
+
+  it('does not skip the Regional Finals when only the World Finals has a date', () => {
+    const timeline = [...season.timeline, item('World Finals', '2027-07-01')];
+    expect(seasonView({ ...season, timeline }, '2026-09-27')).toMatchObject({
+      nextLabel: 'Next up',
+      nextTitle: 'Regional Finals',
+      nextDate: 'Date to be confirmed',
     });
   });
 

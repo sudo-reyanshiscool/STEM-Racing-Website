@@ -129,7 +129,7 @@ Current season teams as cards (name, car name, category, members with roles, car
 
 ### Season (`/season`)
 
-Vertical timeline for the current season, sorted by date, with past items dimmed. A timeline item may have no date yet: it shows "Date to be confirmed" and sorts after the dated items. Registration state, deadline and button. How selection works: form a team, submit a proposal booklet, interview.
+Vertical timeline for the current season, sorted by date, with past items dimmed. A timeline item may have no date yet: it shows "Date to be confirmed" and keeps its written place, ahead of the next dated item written after it, or last when no dated item follows. Registration state, deadline and button. Once the deadline has passed the state is "Registration closed" and the button is removed. How selection works: form a team, submit a proposal booklet, interview.
 
 ### Resources (`/resources`)
 
@@ -282,3 +282,13 @@ These were found while reading the brand pack and the TBS documents closely. Eac
 | Results are shown on the Teams page. | The first version of this spec kept the collection but gave it no page. |
 | Every build reads the content from an empty store. | Astro keeps the last build's entries when a content folder is emptied, so a deleted team or season would have stayed on the site. |
 | `programme` and `support` collections, `SeasonStatus` component, 404 page. | So the 12 steps and the role lists can be edited without touching code, and a broken link still lands on a branded page. |
+
+## Changes made after the branch review
+
+A fresh reviewer read the whole branch on 2026-09-27. These changes follow from that review. Each one is folded into the sections above.
+
+| Change | Reason |
+|---|---|
+| A date must be on the calendar. | `2026-09-31` passed the check and showed as 1 October. |
+| Registration shows as closed once the deadline has passed, and the Register button is removed. | The first version said late entries were accepted. No TBS document says so. |
+| A timeline item with no date keeps its written place. | The date of the World Finals is often announced first. Under the old rule it jumped ahead of the Regional and National Finals. |
