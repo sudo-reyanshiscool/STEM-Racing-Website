@@ -21,4 +21,14 @@ describe('our school', () => {
     expect($('.timeline[data-dim-past]')).toHaveLength(0);
     expect($('.timeline .is-past')).toHaveLength(0);
   });
+
+  it('states the number of World Finals results, not the number of heritage entries', () => {
+    const count = contentFiles('results', '.json')
+      .map((file) => contentJson<{ event: string }>(`results/${file}`))
+      .filter((result) => result.event === 'World Finals').length;
+    const wording = count === 1 ? 'once' : `${count} times`;
+    expect(texts($, '#heritage-title + .lead')).toEqual([
+      `TBS teams have represented India at the STEM Racing World Finals ${wording}.`,
+    ]);
+  });
 });

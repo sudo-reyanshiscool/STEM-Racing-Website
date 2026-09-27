@@ -5,7 +5,7 @@ import TeamCard from '../components/TeamCard.astro';
 import TextTrack from '../components/TextTrack.astro';
 import Base from '../layouts/Base.astro';
 import { getCurrentSeason } from '../lib/content';
-import { groupResultsBySeason } from '../lib/results';
+import { groupResultsBySeason, worldFinalsCount } from '../lib/results';
 import { seasonHeading } from '../lib/season';
 
 const teams = (await getCollection('teams')).sort(
@@ -13,8 +13,10 @@ const teams = (await getCollection('teams')).sort(
 );
 const active = teams.filter((team) => team.data.status === 'active');
 const archived = teams.filter((team) => team.data.status === 'archived');
-const heritageCount = (await getCollection('heritage')).length;
-const results = groupResultsBySeason((await getCollection('results')).map((entry) => entry.data));
+const resultEntries = (await getCollection('results')).map((entry) => entry.data);
+const results = groupResultsBySeason(resultEntries);
+const finalsCount = worldFinalsCount(resultEntries);
+const finalsWording = finalsCount === 1 ? 'once' : `${finalsCount} times`;
 const season = await getCurrentSeason();
 ---
 
@@ -56,12 +58,12 @@ const season = await getCurrentSeason();
               <TeamCard team={team} />
             ))}
           </div>
-        ) : (
+        ) : finalsCount > 0 ? (
           <p class="lead">
-            TBS teams have represented India at the World Finals {heritageCount} times.{' '}
+            TBS teams have represented India at the World Finals {finalsWording}.{' '}
             <a href="/school#heritage-title">See the full roll on Our School</a>.
           </p>
-        )
+        ) : null
       }
     </div>
   </Section>

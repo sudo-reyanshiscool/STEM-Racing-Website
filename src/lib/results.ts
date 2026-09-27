@@ -17,6 +17,10 @@ export interface SeasonResults {
 
 const EVENT_ORDER: Record<ResultEvent, number> = { 'World Finals': 0, Nationals: 1, Regionals: 2 };
 
+export function worldFinalsCount(results: readonly ResultData[]): number {
+  return results.filter((result) => result.event === 'World Finals').length;
+}
+
 export function groupResultsBySeason(results: readonly ResultData[]): SeasonResults[] {
   const seasons = [...new Set(results.map((result) => result.season))].sort((a, b) => b.localeCompare(a));
   return seasons.map((season) => ({

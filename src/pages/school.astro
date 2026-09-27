@@ -5,12 +5,15 @@ import TextTrack from '../components/TextTrack.astro';
 import Timeline from '../components/Timeline.astro';
 import Base from '../layouts/Base.astro';
 import { getSchool } from '../lib/content';
+import { worldFinalsCount } from '../lib/results';
 
 const school = await getSchool();
 const { Content } = await render(school);
 const heritage = (await getCollection('heritage')).sort(
   (a, b) => a.data.year.localeCompare(b.data.year) || a.data.team.localeCompare(b.data.team),
 );
+const finalsCount = worldFinalsCount((await getCollection('results')).map((entry) => entry.data));
+const finalsWording = finalsCount === 1 ? 'once' : `${finalsCount} times`;
 const items = heritage.map((entry) => ({
   label: entry.data.year,
   title: entry.data.team,
@@ -37,9 +40,13 @@ const items = heritage.map((entry) => ({
     <div class="stack stack--loose">
       <div class="stack">
         <h2 id="heritage-title">TBS on the world stage</h2>
-        <p class="lead">
-          TBS teams have represented India at the STEM Racing World Finals {heritage.length} times.
-        </p>
+        {
+          finalsCount > 0 && (
+            <p class="lead">
+              TBS teams have represented India at the STEM Racing World Finals {finalsWording}.
+            </p>
+          )
+        }
       </div>
       <Timeline items={items} />
     </div>

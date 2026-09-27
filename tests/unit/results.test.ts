@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { groupResultsBySeason, type ResultData } from '../../src/lib/results';
+import { groupResultsBySeason, worldFinalsCount, type ResultData } from '../../src/lib/results';
 
 const result = (season: string, team: string, event: ResultData['event']): ResultData => ({
   season,
@@ -37,5 +37,22 @@ describe('groupResultsBySeason', () => {
 
   it('returns an empty list when there are no results', () => {
     expect(groupResultsBySeason([])).toEqual([]);
+  });
+});
+
+describe('worldFinalsCount', () => {
+  it('counts World Finals results rather than every result', () => {
+    expect(
+      worldFinalsCount([
+        result('2025', 'SuperCharged', 'World Finals'),
+        result('2025', 'SuperCharged', 'Nationals'),
+        result('2024', 'Another team', 'Regionals'),
+        result('2023', 'Team Blaze', 'World Finals'),
+      ]),
+    ).toBe(2);
+  });
+
+  it('returns zero when no team reached the World Finals', () => {
+    expect(worldFinalsCount([result('2026-27', 'New team', 'Nationals')])).toBe(0);
   });
 });

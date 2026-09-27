@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { contentFiles, page, teamFiles, texts } from '../helpers/site';
+import { contentFiles, contentJson, page, teamFiles, texts } from '../helpers/site';
 
 const teams = teamFiles();
 
@@ -31,5 +31,15 @@ describe('teams', () => {
       expect($(wrap).attr('role')).toBe('region');
       expect($(wrap).attr('aria-label')).toBeTruthy();
     }
+  });
+
+  it('uses World Finals results for the hall-of-fame claim', () => {
+    const count = results
+      .map((file) => contentJson<{ event: string }>(`results/${file}`))
+      .filter((result) => result.event === 'World Finals').length;
+    const wording = count === 1 ? 'once' : `${count} times`;
+    expect(texts($, '#fame-title + .lead')).toEqual([
+      `TBS teams have represented India at the World Finals ${wording}. See the full roll on Our School.`,
+    ]);
   });
 });
