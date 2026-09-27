@@ -112,7 +112,8 @@
   grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: 0.25rem;
   margin: 0;
-  padding: 0;
+  /* Room for the lean of the first and last cells. */
+  padding: 0 0.3rem;
   list-style: none;
 }
 
