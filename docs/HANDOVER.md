@@ -8,6 +8,7 @@ Added on the branch `team-dashboard`. The spec is `docs/superpowers/specs/2026-0
 - Pages under `/dashboard` are rendered on request and need the four settings in the README.
 - Stages 2 and 3 were added on 2026-09-28: the mentor overview, mentor notes, announcements, posting a task to every team, holidays and streaks. They were built straight from the spec, with no plan document. The tests are in `tests/dashboard/stage2.test.ts` and `tests/unit/dashboard/streak.test.ts`.
 - A security review on 2026-09-28 found four important faults. All four are fixed. Its three minor findings: two are fixed, and one stands: refreshing the page that shows a new code sends the form again, after the browser asks.
+- On 2026-09-28 sign-in on the live site stopped answering for some minutes, then recovered by itself. The database was healthy throughout. The likely cause is a connection that was gone when Vercel woke the function. `src/lib/dashboard/db.ts` now gives a statement 5 seconds, then asks once more on a new connection.
 - The dashboard has not had a visual design pass. The user wants one.
 
 Written 2026-09-27. This one file replaces the session summary, the review report and the notes that were spread across the workspace. Read this first, then the ledger if you need the detail.
