@@ -45,10 +45,16 @@ function within<T>(work: Promise<T>, ms: number): Promise<T> {
 }
 
 /**
- * A Db that does not wait on a dead connection. Vercel pauses a function between requests,
- * and the connection it held can be gone when the function wakes. A statement sent down it
- * is never answered. So a statement with no answer in time, or a broken connection, is asked
- * once more on a new connection, and after that the dashboard is unavailable.
+ * A Db that asks one statement at a time and does not wait on a dead connection.
+ *
+ * One at a time: a page asks several things at once, and statements sent together down one
+ * connection to Supabase's pooler are never answered. That hung the live site on 2026-09-28.
+ * So each statement waits for the one before it.
+ *
+ * Dead connections: Vercel pauses a function between requests, and the connection it held can
+ * be gone when the function wakes. So a statement with no answer in time, or a broken
+ * connection, is asked once more on a new connection, and after that the dashboard is
+ * unavailable.
  *
  * A statement the database refused is a fault in the code. It is passed on and not asked again.
  */
@@ -58,6 +64,8 @@ export function resilient(
   timeoutMs: number = QUERY_TIMEOUT_MS,
 ): Db {
   let client: Client | undefined;
+  /** Settles when the statement before this one has its answer. */
+  let turn: Promise<unknown> = Promise.resolve();
 
   function drop(): void {
     // Not waited for: a dead connection may never finish closing.
@@ -68,6 +76,7 @@ export function resilient(
   async function ask(text: string, params: readonly Param[]): Promise<unknown[]> {
     client ??= open();
     try {
+      // The time starts here, so waiting for a turn is not counted against the statement.
       return await within(client.query(text, params), timeoutMs);
     } catch (error) {
       if (!isRefusal(error)) drop();
@@ -75,19 +84,26 @@ export function resilient(
     }
   }
 
+  async function askTwice(text: string, params: readonly Param[]): Promise<unknown[]> {
+    try {
+      return await ask(text, params);
+    } catch (error) {
+      if (isRefusal(error)) throw error;
+    }
+    try {
+      return await ask(text, params);
+    } catch (error) {
+      if (isRefusal(error)) throw error;
+      throw new DashboardUnavailable('The database cannot be reached', { cause: error });
+    }
+  }
+
   return {
-    async query<Row>(text: string, params: readonly Param[] = []) {
-      try {
-        return (await ask(text, params)) as Row[];
-      } catch (error) {
-        if (isRefusal(error)) throw error;
-      }
-      try {
-        return (await ask(text, params)) as Row[];
-      } catch (error) {
-        if (isRefusal(error)) throw error;
-        throw new DashboardUnavailable('The database cannot be reached', { cause: error });
-      }
+    query<Row>(text: string, params: readonly Param[] = []) {
+      const answer = turn.then(() => askTwice(text, params));
+      // The next statement goes ahead whether this one was answered or not.
+      turn = answer.catch(() => {});
+      return answer as Promise<Row[]>;
     },
   };
 }
