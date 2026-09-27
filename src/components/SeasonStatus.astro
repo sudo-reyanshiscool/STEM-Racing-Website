@@ -1,0 +1,59 @@
+---
+import Button from './Button.astro';
+import { seasonView, todayIso, type SeasonData } from '../lib/season';
+
+interface Props {
+  season: SeasonData | undefined;
+}
+
+const { season } = Astro.props;
+const view = seasonView(season, todayIso());
+---
+
+<div class="status card" data-season-status data-season={season ? JSON.stringify(season) : undefined}>
+  <div class="status__block">
+    <p class="eyebrow">Season</p>
+    <p class="status__strong">{view.heading}</p>
+    <p data-status="registration">{view.registration}</p>
+    {
+      view.canRegister && season?.registrationUrl && (
+        <p class="status__action">
+          <Button href={season.registrationUrl} external={season.registrationUrl.startsWith('https://')}>
+            Register
+          </Button>
+        </p>
+      )
+    }
+  </div>
+  <div class="status__block">
+    <p class="eyebrow" data-status="next-label">{view.nextLabel}</p>
+    <p class="status__strong" data-status="next-title">{view.nextTitle}</p>
+    <p data-status="next-date">{view.nextDate}</p>
+  </div>
+</div>
+
+<style>
+  .status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 2rem;
+  }
+
+  .status__block {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+  }
+
+  .status__strong {
+    color: var(--fg-strong);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .status__action {
+    margin-block-start: 0.75rem;
+  }
+</style>

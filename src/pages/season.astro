@@ -1,0 +1,80 @@
+---
+import Section from '../components/Section.astro';
+import SeasonStatus from '../components/SeasonStatus.astro';
+import StepCard from '../components/StepCard.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Timeline from '../components/Timeline.astro';
+import Base from '../layouts/Base.astro';
+import { getCurrentSeason } from '../lib/content';
+import { formatDate, sortTimeline, todayIso } from '../lib/season';
+
+const season = await getCurrentSeason();
+const today = todayIso();
+const items = sortTimeline(season?.timeline ?? []).map((item) => ({
+  label: item.date ? formatDate(item.date) : 'Date to be confirmed',
+  title: item.title,
+  description: item.description,
+  date: item.date,
+}));
+
+const selection = [
+  {
+    title: 'Form a team',
+    body: 'Find people who cover engineering, enterprise and project management between them.',
+  },
+  {
+    title: 'Submit a proposal booklet',
+    body: 'Every booklet is assessed against a published rubric.',
+  },
+  {
+    title: 'Interview',
+    body: 'Teams that are invited meet the STEM Racing staff and student mentors.',
+  },
+];
+---
+
+<Base
+  title="Season"
+  description="The STEM Racing season at The British School, New Delhi: key dates, registration and how selection works."
+>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Our Season" />
+  </Section>
+
+  <Section surface="dark" labelledby="status-title">
+    <div class="stack stack--loose">
+      <h2 id="status-title">Where we are</h2>
+      <SeasonStatus season={season} />
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="timeline-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="timeline-title">Timeline</h2>
+        <p class="lead">
+          Dates for external events are set by the organisers and may change.
+        </p>
+      </div>
+      {
+        items.length > 0 ? (
+          <Timeline items={items} dimPast today={today} />
+        ) : (
+          <p class="lead">Dates to be announced.</p>
+        )
+      }
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="selection-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="selection-title">How selection works</h2>
+        <p class="lead">Three steps to a place on the grid.</p>
+      </div>
+      <ol class="grid grid--3">
+        {selection.map((step, index) => <StepCard number={index + 1} title={step.title} body={step.body} />)}
+      </ol>
+    </div>
+  </Section>
+</Base>
