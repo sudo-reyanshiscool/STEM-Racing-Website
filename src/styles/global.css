@@ -22,6 +22,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   text-align: start;
+  overflow-wrap: anywhere;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
@@ -266,6 +267,10 @@ a:hover {
 
 .table-wrap {
   overflow-x: auto;
+}
+
+.table {
+  overflow-wrap: normal;
 }
 
 .table th,

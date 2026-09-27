@@ -133,6 +133,14 @@ describe('base styles', () => {
     expect(/body\s*\{[^}]*\}/.exec(css)?.[0]).toMatch(/font-weight:\s*400/);
   });
 
+  it('wraps long unbroken text before it can widen the page', () => {
+    expect(/body\s*\{[^}]*\}/.exec(css)?.[0]).toMatch(/overflow-wrap:\s*anywhere/);
+  });
+
+  it('keeps result tables readable instead of breaking words inside cells', () => {
+    expect(/\.table\s*\{[^}]*\}/.exec(css)?.[0]).toMatch(/overflow-wrap:\s*normal/);
+  });
+
   it('sets headings 1 and 2 in the display font, in italic', () => {
     const rule = /h1,\s*h2\s*\{[^}]*\}/.exec(css)?.[0] ?? '';
     expect(rule).toMatch(/font-family:\s*var\(--font-display\)/);
