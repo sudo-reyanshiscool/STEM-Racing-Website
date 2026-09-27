@@ -10,9 +10,13 @@
     "check": "astro check",
     "test": "vitest run tests/unit",
     "test:site": "astro build && vitest run tests/site",
-    "test:all": "npm run test && npm run test:site",
+    "test:all": "npm run test && npm run test:dashboard && npm run test:site",
     "assets:prepare": "node scripts/prepare-brand-assets.mjs",
-    "check:publish": "node scripts/check-publish.mjs"
+    "check:publish": "node scripts/check-publish.mjs",
+    "test:dashboard": "vitest run tests/dashboard tests/unit/dashboard",
+    "dashboard:db": "tsx scripts/dashboard-local-db.ts",
+    "dashboard:migrate": "tsx --env-file=.env scripts/dashboard-migrate.ts",
+    "dashboard:hash": "tsx scripts/dashboard-hash.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
