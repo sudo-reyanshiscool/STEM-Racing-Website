@@ -1,26 +1,107 @@
 ---
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import signifier from '../assets/brand/signifier/signifier-colour.png';
 
 interface Props {
   team: CollectionEntry<'teams'>;
   level?: 'h3' | 'h4';
+  year?: string;
 }
 
-const { team, level = 'h3' } = Astro.props;
+const { team, level = 'h3', year } = Astro.props;
+const { name, stage } = team.data;
 const Heading = level;
+const stageKey = stage.toLowerCase().replaceAll(' ', '-');
 ---
 
-<article class="team card">
-  <Heading>{team.data.name}</Heading>
+<article class:list={['team', 'card', `team--${stageKey}`]}>
+  <div class="team__bar" aria-hidden="true"></div>
+  <div class="team__body">
+    <div class="team__head">
+      <p class="team__tags">
+        <span class="tag team__stage">{stage}</span>
+        {year && <span class="tag team__year">{year}</span>}
+      </p>
+      <Image class="team__mark" src={signifier} alt="" height={36} densities={[1, 2]} />
+    </div>
+    <Heading class="team__name">{name}</Heading>
+  </div>
 </article>
 
 <style>
   .team {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    min-height: 7rem;
-    place-items: center;
-    padding: clamp(1.25rem, 1rem + 1vw, 2rem);
-    text-align: center;
+    align-content: start;
+    padding: 0;
+    overflow: clip;
+    border-color: var(--carbon-700);
+    background: var(--gradient-core);
+  }
+
+  .team__bar {
+    height: 4px;
+    background: var(--gradient-secondary);
+  }
+
+  .team--nationals .team__bar {
+    background: var(--pitlane-pink);
+  }
+
+  .team--current-regionals .team__bar {
+    background: var(--burnout-orange);
+  }
+
+  .team__body {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  }
+
+  .team__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .team__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: var(--carbon-300);
+  }
+
+  .team--world-finals .team__stage {
+    border-color: var(--podium-gold);
+    color: var(--podium-gold);
+  }
+
+  .team--nationals .team__stage {
+    border-color: var(--pitlane-pink);
+    color: var(--carbon-100);
+  }
+
+  .team--current-regionals .team__stage {
+    border-color: var(--burnout-orange);
+    color: var(--carbon-100);
+  }
+
+  .team__year {
+    border-color: var(--carbon-500);
+    color: var(--carbon-100);
+  }
+
+  .team__mark {
+    flex: none;
+    width: auto;
+    height: 2.25rem;
+  }
+
+  .team__name {
+    color: var(--white);
+    font-size: clamp(1.35rem, 1.15rem + 0.5vw, 1.65rem);
+    line-height: 1.2;
   }
 </style>

@@ -6,12 +6,42 @@ import TextTrack from '../components/TextTrack.astro';
 import Base from '../layouts/Base.astro';
 import { groupResultsBySeason } from '../lib/results';
 
-const stageOrder = ['World Finals', 'Nationals', 'Current Regionals'] as const;
+const stageMeta = [
+  {
+    stage: 'World Finals',
+    summary: 'Represented India on the world stage',
+  },
+  {
+    stage: 'Nationals',
+    summary: 'Competed at the India National Finals',
+  },
+  {
+    stage: 'Current Regionals',
+    summary: 'Competing in the current regional cycle',
+  },
+] as const;
+
 const teams = await getCollection('teams');
-const groups = stageOrder.map((stage) => ({
-  stage,
-  teams: teams.filter((team) => team.data.stage === stage),
-}));
+const heritage = await getCollection('heritage');
+const worldFinalsYears = new Map(heritage.map((entry) => [entry.data.team, entry.data.year]));
+
+const groups = stageMeta.map(({ stage, summary }) => {
+  const inStage = teams.filter((team) => team.data.stage === stage);
+  if (stage === 'World Finals') {
+    inStage.sort((a, b) => {
+      const yearA = worldFinalsYears.get(a.data.name) ?? '';
+      const yearB = worldFinalsYears.get(b.data.name) ?? '';
+      return yearA.localeCompare(yearB) || a.data.name.localeCompare(b.data.name);
+    });
+  }
+  return {
+    stage,
+    summary,
+    slug: stage.toLowerCase().replaceAll(' ', '-'),
+    teams: inStage,
+  };
+});
+
 const resultEntries = (await getCollection('results')).map((entry) => entry.data);
 const results = groupResultsBySeason(resultEntries);
 ---
@@ -27,12 +57,20 @@ const results = groupResultsBySeason(resultEntries);
   <Section surface="dark" labelledby="teams-title">
     <div class="stack stack--loose">
       <h2 id="teams-title">Teams by stage</h2>
+      <p class="lead">
+        Every TBS team across the World Finals, National Finals and the current regional competition.
+      </p>
       {
         groups.map((group) => (
-          <section class="stack" aria-labelledby={`stage-${group.stage.toLowerCase().replaceAll(' ', '-')}`}>
-            <h3 id={`stage-${group.stage.toLowerCase().replaceAll(' ', '-')}`}>{group.stage}</h3>
+          <section class="stage-group stack" aria-labelledby={`stage-${group.slug}`}>
+            <h3 id={`stage-${group.slug}`}>{group.stage}</h3>
+            <p class="eyebrow stage-group__meta">
+              {group.teams.length} {group.teams.length === 1 ? 'team' : 'teams'} &middot; {group.summary}
+            </p>
             <div class="grid grid--3">
-              {group.teams.map((team) => <TeamCard team={team} level="h4" />)}
+              {group.teams.map((team) => (
+                <TeamCard team={team} level="h4" year={worldFinalsYears.get(team.data.name)} />
+              ))}
             </div>
           </section>
         ))
@@ -74,3 +112,14 @@ const results = groupResultsBySeason(resultEntries);
     </div>
   </Section>
 </Base>
+
+<style>
+  .stage-group {
+    padding-block-start: 2rem;
+    border-block-start: 1px solid var(--carbon-700);
+  }
+
+  .stage-group__meta {
+    margin-block-start: 0.35rem;
+  }
+</style>
