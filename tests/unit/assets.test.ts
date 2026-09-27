@@ -120,4 +120,11 @@ describe('favicons', () => {
       .toBuffer({ resolveWithObject: true });
     expect([data[0], data[1], data[2]]).toEqual([5, 0, 11]);
   });
+
+  it('provides a 1200 by 630 social share image', async () => {
+    const image = sharp(join(root, 'public/og-image.png'));
+    const meta = await image.metadata();
+    expect([meta.width, meta.height]).toEqual([1200, 630]);
+    expect((await image.stats()).isOpaque).toBe(true);
+  });
 });

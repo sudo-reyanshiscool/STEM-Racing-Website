@@ -29,7 +29,7 @@ Everything you will need to change is in one folder: `src/content`.
 
 | Folder | What it holds | Format |
 |---|---|---|
-| `teams` | One file for each team | Markdown |
+| `teams` | One JSON file for each team, with its name and stage | JSON |
 | `seasons` | One file for each season | JSON |
 | `results` | One file for each result | JSON |
 | `resources` | One file for each link or download | JSON |
@@ -56,33 +56,16 @@ If a file has a mistake, the build fails and Vercel keeps the old version of the
 
 ## How to add a team
 
-1. Open `src/content/teams` and copy any file.
-2. Rename the copy in lower case with hyphens, for example `velocity-racing.md`.
-3. Edit the settings at the top:
+Open `src/content/teams`, copy any JSON file and change its two fields:
 
-```md
----
-name: Velocity Racing
-carName: Falcon
-season: "2026-27"
-category: Development
-members:
-  - Priya Sharma (Team Principal)
-  - Arnav Gupta (Design Engineer)
-  - Nia Thomas (Enterprise Manager)
-status: active
-heroImage: ./images/falcon.png
----
-
-A short paragraph about the team.
+```json
+{
+  "name": "Velocity Racing",
+  "stage": "Current Regionals"
+}
 ```
 
-- `category` is `Development` or `Professional`.
-- `status` is `active` or `archived`. Archived teams appear under Hall of fame.
-- `carName` and `heroImage` can be left out. A team with no image shows the STEM Racing mark.
-- For `heroImage`, put the picture in `src/content/teams/images` and write its path starting with `./images/`. Any size works: the site makes the small versions itself.
-- Write each member as `Name (Role)`. The role can be left out.
-- Check that you have permission to publish each student's name.
+`stage` must be `World Finals`, `Nationals` or `Current Regionals`.
 
 ## How to update the season
 

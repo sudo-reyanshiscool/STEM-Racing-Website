@@ -24,6 +24,7 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | STEM Racing TBS`
 // Pages are served without a trailing slash, so the canonical address has none either.
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = new URL(path, Astro.site).href;
+const ogImage = new URL('/og-image.png', Astro.site).href;
 const eventEnabled = await isEventEnabled();
 ---
 
@@ -46,6 +47,14 @@ const eventEnabled = await isEventEnabled();
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={SITE_NAME} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <script is:inline>
       document.documentElement.classList.add('js');
     </script>

@@ -21,18 +21,10 @@ const link = z
   .regex(/^(https:\/\/|mailto:|\/)/, 'Start with https://, mailto: or / (for a file in the public folder)');
 const point = z.strictObject({ title: text, body: text });
 
-/** Astro passes an image() helper to collection schemas. Tests pass a stand-in. */
-export const teamSchema = <T extends z.ZodType>(image: () => T) =>
-  z.strictObject({
-    name: text,
-    carName: text.optional(),
-    season: text,
-    category: z.enum(['Development', 'Professional']),
-    members: z.array(text).min(1, 'List at least one member'),
-    status: z.enum(['active', 'archived']),
-    heroImage: image().optional(),
-    sample: z.boolean().default(false),
-  });
+export const teamSchema = z.strictObject({
+  name: text,
+  stage: z.enum(['World Finals', 'Nationals', 'Current Regionals']),
+});
 
 export const seasonSchema = z.strictObject({
   year: z.string().regex(/^\d{4}-\d{2}$/, 'Use the form 2026-27'),

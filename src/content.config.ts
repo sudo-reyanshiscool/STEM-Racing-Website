@@ -33,8 +33,8 @@ function files(pattern: string, base: string): Loader {
 }
 
 const teams = defineCollection({
-  loader: files('*.md', './src/content/teams'),
-  schema: ({ image }) => teamSchema(image),
+  loader: files('*.json', './src/content/teams'),
+  schema: teamSchema,
 });
 
 const seasons = defineCollection({

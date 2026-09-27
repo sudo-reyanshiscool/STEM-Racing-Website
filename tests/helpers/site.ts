@@ -71,18 +71,11 @@ export function contentFiles(collection: string, extension: string): string[] {
 
 export interface TeamFile {
   name: string;
-  status: string;
-  sample: boolean;
+  stage: string;
 }
 
-/** The settings at the top of each team file. Enough for counting: not a full YAML reader. */
 export function teamFiles(): TeamFile[] {
-  return contentFiles('teams', '.md').map((file) => {
-    const text = readFileSync(join(root, 'src/content/teams', file), 'utf8');
-    const settings = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text)?.[1] ?? '';
-    const value = (key: string) => new RegExp(`^${key}:\\s*(.+)$`, 'm').exec(settings)?.[1]?.trim() ?? '';
-    return { name: value('name'), status: value('status'), sample: value('sample') === 'true' };
-  });
+  return contentFiles('teams', '.json').map((file) => contentJson<TeamFile>(`teams/${file}`));
 }
 
 export function eventEnabled(): boolean {

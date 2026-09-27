@@ -125,6 +125,7 @@ a:hover {
 .on-dark h2 {
   width: fit-content;
   max-width: 100%;
+  padding-inline-end: 0.15em;
   background: var(--gradient-heading);
   -webkit-background-clip: text;
   background-clip: text;

@@ -76,11 +76,16 @@ describe.each(ROUTES)('%s', (route) => {
     }
   });
 
-  it('has a title, a description and a canonical address', () => {
+  it('has a title, a description, a canonical address and a social share preview', () => {
     expect(clean($('title').text())).toMatch(/STEM Racing/);
     expect(($('meta[name="description"]').attr('content') ?? '').length).toBeGreaterThan(20);
     const path = route === '/' ? '/' : route;
     expect($('link[rel="canonical"]').attr('href')).toBe(`${SITE_URL}${path}`);
+    expect($('meta[property="og:image"]').attr('content')).toBe(`${SITE_URL}/og-image.png`);
+    expect($('meta[property="og:image:width"]').attr('content')).toBe('1200');
+    expect($('meta[property="og:image:height"]').attr('content')).toBe('630');
+    expect($('meta[name="twitter:card"]').attr('content')).toBe('summary_large_image');
+    expect($('meta[name="twitter:image"]').attr('content')).toBe(`${SITE_URL}/og-image.png`);
   });
 
   it('loads the two main fonts early', () => {

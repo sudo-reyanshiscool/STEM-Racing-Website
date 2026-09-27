@@ -28,10 +28,14 @@ describe('brand rules in the CSS', () => {
     }
   });
 
-  it('fills text with a gradient only on large headings and numerals', () => {
-    const clipped = rules.filter((rule) => /background-clip:\s*text/.test(rule.body)).map((rule) => rule.selector);
+  it('fills text with a gradient only on large headings and numerals, with room for italic overhang', () => {
+    const clippedRules = rules.filter((rule) => /background-clip:\s*text/.test(rule.body));
+    const clipped = clippedRules.map((rule) => rule.selector);
     expect(clipped).toContain('.on-dark h2');
-    for (const selector of clipped) expect(['.on-dark h2', '.step__num']).toContain(selector);
+    for (const rule of clippedRules) {
+      expect(['.on-dark h2', '.step__num']).toContain(rule.selector);
+      expect(rule.body, rule.selector).toMatch(/padding-inline-end:\s*0?\.15em/);
+    }
   });
 
   it('puts no effect on the logo', () => {

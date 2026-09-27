@@ -4,20 +4,16 @@ import Section from '../components/Section.astro';
 import TeamCard from '../components/TeamCard.astro';
 import TextTrack from '../components/TextTrack.astro';
 import Base from '../layouts/Base.astro';
-import { getCurrentSeason } from '../lib/content';
-import { groupResultsBySeason, worldFinalsCount } from '../lib/results';
-import { seasonHeading } from '../lib/season';
+import { groupResultsBySeason } from '../lib/results';
 
-const teams = (await getCollection('teams')).sort(
-  (a, b) => b.data.season.localeCompare(a.data.season) || a.data.name.localeCompare(b.data.name),
-);
-const active = teams.filter((team) => team.data.status === 'active');
-const archived = teams.filter((team) => team.data.status === 'archived');
+const stageOrder = ['World Finals', 'Nationals', 'Current Regionals'] as const;
+const teams = await getCollection('teams');
+const groups = stageOrder.map((stage) => ({
+  stage,
+  teams: teams.filter((team) => team.data.stage === stage),
+}));
 const resultEntries = (await getCollection('results')).map((entry) => entry.data);
 const results = groupResultsBySeason(resultEntries);
-const finalsCount = worldFinalsCount(resultEntries);
-const finalsWording = finalsCount === 1 ? 'once' : `${finalsCount} times`;
-const season = await getCurrentSeason();
 ---
 
 <Base
@@ -28,42 +24,18 @@ const season = await getCurrentSeason();
     <TextTrack slot="bleed" text="Our Teams" />
   </Section>
 
-  <Section surface="dark" labelledby="active-title">
+  <Section surface="dark" labelledby="teams-title">
     <div class="stack stack--loose">
-      <div class="stack">
-        <h2 id="active-title">This season</h2>
-        {season && <p class="eyebrow">{seasonHeading(season)}</p>}
-      </div>
+      <h2 id="teams-title">Teams by stage</h2>
       {
-        active.length > 0 ? (
-          <div class="grid grid--3">
-            {active.map((team) => (
-              <TeamCard team={team} />
-            ))}
-          </div>
-        ) : (
-          <p class="lead">Teams for this season will be announced here.</p>
-        )
-      }
-    </div>
-  </Section>
-
-  <Section surface="dark" labelledby="fame-title">
-    <div class="stack stack--loose">
-      <h2 id="fame-title">Hall of fame</h2>
-      {
-        archived.length > 0 ? (
-          <div class="grid grid--3">
-            {archived.map((team) => (
-              <TeamCard team={team} />
-            ))}
-          </div>
-        ) : finalsCount > 0 ? (
-          <p class="lead">
-            TBS teams have represented India at the World Finals {finalsWording}.{' '}
-            <a href="/school#heritage-title">See the full roll on Our School</a>.
-          </p>
-        ) : null
+        groups.map((group) => (
+          <section class="stack" aria-labelledby={`stage-${group.stage.toLowerCase().replaceAll(' ', '-')}`}>
+            <h3 id={`stage-${group.stage.toLowerCase().replaceAll(' ', '-')}`}>{group.stage}</h3>
+            <div class="grid grid--3">
+              {group.teams.map((team) => <TeamCard team={team} level="h4" />)}
+            </div>
+          </section>
+        ))
       }
     </div>
   </Section>

@@ -5,7 +5,7 @@ import { clean, contentFiles, contentJson, page, teamFiles, texts } from '../hel
 const seasonFile = contentFiles('seasons', '.json').at(-1);
 const season = seasonFile ? contentJson<SeasonData>(`seasons/${seasonFile}`) : undefined;
 
-const active = teamFiles().filter((team) => team.status === 'active');
+const current = teamFiles().filter((team) => team.stage === 'Current Regionals');
 
 describe('home', () => {
   const $ = page('/');
@@ -33,8 +33,8 @@ describe('home', () => {
     expect(texts($, '.stat__label')).toEqual(site.stats.map((stat) => stat.label));
   });
 
-  it('shows up to three current teams', () => {
-    expect($('.team')).toHaveLength(Math.min(3, active.length));
+  it('shows every current regional team', () => {
+    expect(texts($, '.team h3').sort()).toEqual(current.map((team) => team.name).sort());
   });
 
   it('carries the season data, so the browser can keep Next up correct', () => {

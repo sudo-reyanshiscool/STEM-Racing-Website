@@ -1,124 +1,26 @@
 ---
-import { Image } from 'astro:assets';
-import { render, type CollectionEntry } from 'astro:content';
-import signifier from '../assets/brand/signifier/signifier-colour.png';
-import { parseMember } from '../lib/teams';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   team: CollectionEntry<'teams'>;
+  level?: 'h3' | 'h4';
 }
 
-const { team } = Astro.props;
-const { name, carName, season, category, members, heroImage, sample } = team.data;
-const { Content } = await render(team);
-const people = members.map(parseMember);
+const { team, level = 'h3' } = Astro.props;
+const Heading = level;
 ---
 
 <article class="team card">
-  <div class="team__media">
-    {
-      heroImage ? (
-        <Image
-          src={heroImage}
-          alt={carName ? `${carName}, the ${name} car` : `The ${name} car`}
-          widths={[400, 800]}
-          sizes="(min-width: 60rem) 24rem, 100vw"
-        />
-      ) : (
-        <div class="team__tile">
-          <Image src={signifier} alt="" height={96} densities={[1, 2]} />
-        </div>
-      )
-    }
-  </div>
-  <div class="team__body">
-    <p class="team__tags">
-      <span class="tag">{category}</span>
-      <span class="tag">{season}</span>
-      {sample && <span class="tag tag--sample">Sample entry</span>}
-    </p>
-    <h3>{name}</h3>
-    {carName && <p class="muted">Car: {carName}</p>}
-    <div class="team__about">
-      <Content />
-    </div>
-    <ul class="team__members">
-      {
-        people.map((person) => (
-          <li>
-            <span class="team__person">{person.name}</span>
-            {person.role && <span class="muted">{person.role}</span>}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <Heading>{team.data.name}</Heading>
 </article>
 
 <style>
   .team {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    align-content: start;
-    gap: 1.25rem;
-    padding: 0;
-    overflow: clip;
-  }
-
-  .team__media {
-    aspect-ratio: 16 / 9;
-    background: var(--carbon-shadow);
-  }
-
-  .team__media :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .team__tile {
-    display: grid;
+    min-height: 7rem;
     place-items: center;
-    height: 100%;
-  }
-
-  .team__tile :global(img) {
-    width: auto;
-    height: 6rem;
-    object-fit: contain;
-  }
-
-  .team__body {
-    display: grid;
-    gap: 0.6rem;
-    padding: 0 clamp(1.25rem, 1rem + 1vw, 2rem) clamp(1.25rem, 1rem + 1vw, 2rem);
-  }
-
-  .team__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    color: var(--fg-muted);
-  }
-
-  .team__members {
-    display: grid;
-    gap: 0.4rem;
-    margin-block-start: 0.5rem;
-    padding-block-start: 1rem;
-    border-block-start: 1px solid var(--rule);
-  }
-
-  .team__members li {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0 1rem;
-  }
-
-  .team__person {
-    color: var(--fg-strong);
-    font-weight: 700;
-    overflow-wrap: anywhere;
+    padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+    text-align: center;
   }
 </style>

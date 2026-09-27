@@ -8,17 +8,11 @@ describe('teams', () => {
   const results = contentFiles('results', '.json');
 
   it('shows every team once', () => {
-    expect(texts($, '.team h3').sort()).toEqual(teams.map((team) => team.name).sort());
+    expect(texts($, '.team h4').sort()).toEqual(teams.map((team) => team.name).sort());
   });
 
-  it('labels sample entries, so nobody takes them for real teams', () => {
-    expect($('.team .tag--sample')).toHaveLength(teams.filter((team) => team.sample).length);
-  });
-
-  it('shows the brand mark when a team has no image', () => {
-    for (const card of $('.team').toArray()) {
-      expect($(card).find('.team__media img')).toHaveLength(1);
-    }
+  it('groups teams by their confirmed stage', () => {
+    expect(texts($, '#teams-title ~ section > h3')).toEqual(['World Finals', 'Nationals', 'Current Regionals']);
   });
 
   it('lists every result', () => {
@@ -33,13 +27,8 @@ describe('teams', () => {
     }
   });
 
-  it('uses World Finals results for the hall-of-fame claim', () => {
-    const count = results
-      .map((file) => contentJson<{ event: string }>(`results/${file}`))
-      .filter((result) => result.event === 'World Finals').length;
-    const wording = count === 1 ? 'once' : `${count} times`;
-    expect(texts($, '#fame-title + .lead')).toEqual([
-      `TBS teams have represented India at the World Finals ${wording}. See the full roll on Our School.`,
-    ]);
+  it('does not invent a division or other team details', () => {
+    expect($.text()).not.toContain('Professional');
+    expect($.text()).not.toContain('Development');
   });
 });

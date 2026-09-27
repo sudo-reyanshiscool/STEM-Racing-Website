@@ -13,16 +13,13 @@ import {
   teamSchema,
 } from '../../src/lib/schemas';
 
-// Astro supplies image() at build time. A plain string stands in for it here.
+// Astro supplies image() at build time. A plain string stands in for image schemas here.
 const image = () => z.string();
-const team = teamSchema(image);
+const team = teamSchema;
 
 const validTeam = {
   name: 'Velocity',
-  season: '2026-27',
-  category: 'Development',
-  members: ['Priya Sharma (Team Principal)'],
-  status: 'active',
+  stage: 'Current Regionals',
 };
 
 function issues(result: { success: boolean; error?: z.ZodError }) {
@@ -34,32 +31,26 @@ function issues(result: { success: boolean; error?: z.ZodError }) {
 }
 
 describe('team', () => {
-  it('accepts a team with no car name and no image', () => {
+  it('accepts a team name and confirmed stage', () => {
     const result = team.safeParse(validTeam);
     expect(result.success).toBe(true);
-    expect(result.data).toMatchObject({ sample: false });
   });
 
-  it('rejects the old colours field, so a team cannot bring its own colours', () => {
-    const result = team.safeParse({ ...validTeam, colours: ['#19c6d1'] });
+  it('rejects extra detail that has not been supplied', () => {
+    const result = team.safeParse({ ...validTeam, category: 'Professional' });
     expect(issues(result)).toEqual([
-      { path: '', code: 'unrecognized_keys', message: 'Unrecognized key: "colours"' },
+      { path: '', code: 'unrecognized_keys', message: 'Unrecognized key: "category"' },
     ]);
   });
 
   it('names a misspelt field', () => {
-    const result = team.safeParse({ ...validTeam, carname: 'Falcon' });
-    expect(issues(result)[0]?.message).toBe('Unrecognized key: "carname"');
+    const result = team.safeParse({ ...validTeam, stgae: 'Nationals' });
+    expect(issues(result)[0]?.message).toBe('Unrecognized key: "stgae"');
   });
 
-  it('names the field when the category is wrong', () => {
-    const result = team.safeParse({ ...validTeam, category: 'Pro' });
-    expect(issues(result)[0]?.path).toBe('category');
-  });
-
-  it('needs at least one member', () => {
-    const result = team.safeParse({ ...validTeam, members: [] });
-    expect(issues(result)).toEqual([{ path: 'members', code: 'too_small', message: 'List at least one member' }]);
+  it('only accepts the three confirmed stages', () => {
+    const result = team.safeParse({ ...validTeam, stage: 'Regionals' });
+    expect(issues(result)[0]?.path).toBe('stage');
   });
 
   it('rejects a blank name', () => {
