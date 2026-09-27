@@ -36,15 +36,15 @@
   --text-track: clamp(2.75rem, 1rem + 8.5vw, 7.5rem);
 
   /* Layout */
-  --gutter: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);
+  --gutter: clamp(1.375rem, 0.75rem + 2.5vw, 2.5rem);
   --container: 75rem;
   --section-y: clamp(3.5rem, 2.5rem + 5vw, 7rem);
   --radius: 0.5rem;
-  --header-h: 6rem;
+  --header-h: 7rem;
 }
 
 @media (max-width: 47.99rem) {
   :root {
-    --header-h: 4.75rem;
+    --header-h: 5.5rem;
   }
 }

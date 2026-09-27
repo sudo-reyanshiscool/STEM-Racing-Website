@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
   <div class="container site-footer__grid">
     <div class="site-footer__brand">
       <a class="site-footer__home" href="/">
-        <Logo variant="colour-white" height={64} alt="STEM Racing at The British School: home" />
+        <Logo variant="colour-white" height={56} alt="STEM Racing at The British School: home" />
       </a>
       <p class="site-footer__tagline">Accelerating Futures</p>
       <p>{site.address}</p>
@@ -58,7 +58,7 @@ const year = new Date().getFullYear();
 
 <style>
   .site-footer {
-    --logo-h: 4rem;
+    --logo-h: 3.5rem;
     --fg-muted: var(--carbon-300);
     background: var(--carbon-shadow);
     color: var(--carbon-100);
@@ -117,5 +117,11 @@ const year = new Date().getFullYear();
   .site-footer__base {
     padding-block: 1.5rem 2.5rem;
     border-block-start: 1px solid var(--carbon-700);
+  }
+
+  @media (max-width: 47.99rem) {
+    .site-footer {
+      --logo-h: 2.75rem;
+    }
   }
 </style>

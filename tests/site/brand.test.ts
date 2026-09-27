@@ -48,6 +48,17 @@ describe('brand rules in the CSS', () => {
     for (const rule of links) expect(rule.body).not.toMatch(/(?:box-shadow|text-shadow|filter|rotate|transform):/);
   });
 
+  it('pads the header logo link by half the logo height', () => {
+    const home = rules.find((rule) => rule.selector === '.site-header__home');
+    expect(home?.body).toMatch(/padding-block:\s*calc\(var\(--logo-h\)\s*\/\s*2\)/);
+  });
+
+  it('uses the header logo sizes in the footer at desktop and phone widths', () => {
+    const footer = rules.filter((rule) => rule.selector === '.site-footer');
+    expect(footer.some((rule) => /--logo-h:\s*3\.5rem/.test(rule.body))).toBe(true);
+    expect(footer.some((rule) => /--logo-h:\s*2\.75rem/.test(rule.body))).toBe(true);
+  });
+
   it('takes every shipped CSS colour from a token', () => {
     const declarations = [...css.matchAll(/(?:^|[;{])(?:color|background(?:-color)?|border(?:-[\w-]+)?-color|outline|box-shadow|text-shadow|fill|stroke):([^;}]+)/g)].map(
       (match) => (match[1] ?? '').trim(),
@@ -93,6 +104,10 @@ describe.each(ROUTES)('brand rules on %s', (route) => {
 
   it('uses the full colour white logo on the dark header', () => {
     expect($('header img[data-logo]').attr('data-logo')).toBe('colour-white');
+  });
+
+  it('gives the header and footer logos the same intrinsic size', () => {
+    expect($('header img[data-logo]').attr('height')).toBe($('footer img[data-logo]').attr('height'));
   });
 
   it('never claims the Formula 1 lockup', () => {

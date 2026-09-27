@@ -192,3 +192,14 @@ describe('base styles', () => {
     expect(css).not.toMatch(/\brgba?\(/);
   });
 });
+
+describe('logo clear-space layout', () => {
+  it('makes the header twice the logo height at desktop and phone sizes', () => {
+    expect(tokensCss).toMatch(/--header-h:\s*7rem/);
+    expect(tokensCss).toMatch(/@media \(max-width: 47\.99rem\)[\s\S]*--header-h:\s*5\.5rem/);
+  });
+
+  it('keeps the smallest page gutter at least half the phone logo height', () => {
+    expect(tokensCss).toMatch(/--gutter:\s*clamp\(1\.375rem,/);
+  });
+});
