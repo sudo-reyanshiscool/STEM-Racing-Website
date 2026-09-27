@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '../components/Section.astro';
+import TeamCard from '../components/TeamCard.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+import { getCurrentSeason } from '../lib/content';
+import { groupResultsBySeason } from '../lib/results';
+import { seasonHeading } from '../lib/season';
+
+const teams = (await getCollection('teams')).sort(
+  (a, b) => b.data.season.localeCompare(a.data.season) || a.data.name.localeCompare(b.data.name),
+);
+const active = teams.filter((team) => team.data.status === 'active');
+const archived = teams.filter((team) => team.data.status === 'archived');
+const heritageCount = (await getCollection('heritage')).length;
+const results = groupResultsBySeason((await getCollection('results')).map((entry) => entry.data));
+const season = await getCurrentSeason();
+---
+
+<Base
+  title="Teams"
+  description="Current and past STEM Racing teams at The British School, New Delhi, with their results."
+>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Our Teams" />
+  </Section>
+
+  <Section surface="dark" labelledby="active-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="active-title">This season</h2>
+        {season && <p class="eyebrow">{seasonHeading(season)}</p>}
+      </div>
+      {
+        active.length > 0 ? (
+          <div class="grid grid--3">
+            {active.map((team) => (
+              <TeamCard team={team} />
+            ))}
+          </div>
+        ) : (
+          <p class="lead">Teams for this season will be announced here.</p>
+        )
+      }
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="fame-title">
+    <div class="stack stack--loose">
+      <h2 id="fame-title">Hall of fame</h2>
+      {
+        archived.length > 0 ? (
+          <div class="grid grid--3">
+            {archived.map((team) => (
+              <TeamCard team={team} />
+            ))}
+          </div>
+        ) : (
+          <p class="lead">
+            TBS teams have represented India at the World Finals {heritageCount} times.{' '}
+            <a href="/school#heritage-title">See the full roll on Our School</a>.
+          </p>
+        )
+      }
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="results-title">
+    <div class="stack stack--loose">
+      <h2 id="results-title">Results</h2>
+      {results.length === 0 && <p class="lead">Results appear here after each competition.</p>}
+      {
+        results.map((group) => (
+          <div class="stack">
+            <h3>{group.season}</h3>
+            <div class="table-wrap" role="region" aria-label={`Results for ${group.season}`} tabindex="0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Placing</th>
+                    <th scope="col">Awards</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.rows.map((row) => (
+                    <tr>
+                      <td>{row.event}</td>
+                      <td>{row.team}</td>
+                      <td>{row.placing}</td>
+                      <td>{row.awards.length > 0 ? row.awards.join(', ') : 'None recorded'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</Base>
