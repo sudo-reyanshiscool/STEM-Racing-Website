@@ -2,8 +2,20 @@
 // fails the build and the error names the file and the field.
 import { z } from 'astro/zod';
 
+const DATE_FORM = /^\d{4}-\d{2}-\d{2}$/;
+
+/** False for a date such as 31 September. Text in the wrong form is left to the rule before this one. */
+function onCalendar(value: string): boolean {
+  if (!DATE_FORM.test(value)) return true;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}
+
 const text = z.string().trim().min(1, 'This field cannot be empty');
-const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD, for example 2026-10-02');
+const isoDate = z
+  .string()
+  .regex(DATE_FORM, 'Use YYYY-MM-DD, for example 2026-10-02')
+  .refine(onCalendar, 'This date is not on the calendar. Check the day and the month');
 const link = z
   .string()
   .regex(/^(https:\/\/|mailto:|\/)/, 'Start with https://, mailto: or / (for a file in the public folder)');

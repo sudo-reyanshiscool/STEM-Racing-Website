@@ -91,6 +91,32 @@ describe('season', () => {
     ]);
   });
 
+  it.each(['2026-09-31', '2027-02-29', '2026-13-45', '2026-00-10'])(
+    'rejects %s, which has the right form but is not on the calendar',
+    (date) => {
+      const milestone = seasonSchema.safeParse({
+        ...validSeason,
+        timeline: [{ date, title: 'Regional Finals', description: '' }],
+      });
+      expect(issues(milestone)).toEqual([
+        { path: 'timeline.0.date', code: 'custom', message: 'This date is not on the calendar. Check the day and the month' },
+      ]);
+
+      const deadline = seasonSchema.safeParse({ ...validSeason, registrationDeadline: date });
+      expect(issues(deadline)).toEqual([
+        {
+          path: 'registrationDeadline',
+          code: 'custom',
+          message: 'This date is not on the calendar. Check the day and the month',
+        },
+      ]);
+    },
+  );
+
+  it('accepts 29 February in a leap year', () => {
+    expect(seasonSchema.safeParse({ ...validSeason, registrationDeadline: '2028-02-29' }).success).toBe(true);
+  });
+
   it('checks the form of the year label', () => {
     const result = seasonSchema.safeParse({ ...validSeason, year: '2026/27' });
     expect(issues(result)[0]).toMatchObject({ path: 'year', message: 'Use the form 2026-27' });
