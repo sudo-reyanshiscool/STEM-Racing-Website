@@ -1,0 +1,62 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  /** Opens in a new tab. Use for links that leave the site. */
+  external?: boolean;
+}
+
+const { href, variant = 'primary', external = false } = Astro.props;
+---
+
+<a
+  class:list={['btn', `btn--${variant}`]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <slot />{external && <span class="sr-only"> (opens in a new tab)</span>}
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--chicane-violet);
+    color: var(--white);
+  }
+
+  .btn--primary:hover {
+    background: var(--ignite-indigo);
+  }
+
+  .btn--ghost {
+    border-color: var(--fg-strong, var(--white));
+    color: var(--fg-strong, var(--white));
+  }
+
+  .btn--ghost:hover {
+    background: var(--fg-strong, var(--white));
+    color: var(--fg-inverse, var(--carbon-shadow));
+  }
+</style>

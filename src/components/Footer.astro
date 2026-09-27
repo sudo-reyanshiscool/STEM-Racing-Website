@@ -1,0 +1,121 @@
+---
+import Logo from './Logo.astro';
+import { getSite } from '../lib/content';
+import { navItems } from '../lib/nav';
+
+interface Props {
+  eventEnabled?: boolean;
+}
+
+const { eventEnabled = false } = Astro.props;
+const site = await getSite();
+const items = [{ href: '/', label: 'Home' }, ...navItems(eventEnabled)];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__rule" aria-hidden="true"></div>
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="site-footer__home" href="/">
+        <Logo variant="colour-white" height={64} alt="STEM Racing at The British School: home" />
+      </a>
+      <p class="site-footer__tagline">Accelerating Futures</p>
+      <p>{site.address}</p>
+      <p><a href={site.schoolUrl}>The British School website</a></p>
+    </div>
+    <nav aria-label="Footer">
+      <p class="eyebrow">Explore</p>
+      <ul class="site-footer__list">
+        {
+          items.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div>
+      <p class="eyebrow">Contacts</p>
+      <ul class="site-footer__list">
+        {
+          site.contacts.map((contact) => (
+            <li>
+              <span class="site-footer__name">{contact.name}</span>
+              <span class="muted">{contact.role}</span>
+              {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__base">
+    <p class="eyebrow">&copy; {year} The British School, New Delhi</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    --logo-h: 4rem;
+    --fg-muted: var(--carbon-300);
+    background: var(--carbon-shadow);
+    color: var(--carbon-100);
+  }
+
+  .site-footer__rule {
+    height: 4px;
+    background: var(--gradient-secondary);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 2.5rem;
+    padding-block: clamp(3rem, 2rem + 4vw, 5rem) 2.5rem;
+  }
+
+  .site-footer__brand {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+  }
+
+  /* Clear space: half the logo height on every side. */
+  .site-footer__home {
+    display: block;
+    width: fit-content;
+    margin-block-end: calc(var(--logo-h) / 2);
+  }
+
+  .site-footer__tagline {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .site-footer__list {
+    display: grid;
+    gap: 0.75rem;
+    margin-block-start: 1rem;
+  }
+
+  .site-footer__list li {
+    display: grid;
+    gap: 0.1rem;
+  }
+
+  .site-footer__name {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .site-footer__base {
+    padding-block: 1.5rem 2.5rem;
+    border-block-start: 1px solid var(--carbon-700);
+  }
+</style>

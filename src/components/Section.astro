@@ -1,0 +1,143 @@
+---
+import { Image, Picture } from 'astro:assets';
+import meshHot from '../assets/brand/gradients/mesh-hot.png';
+import meshPinkOrange from '../assets/brand/gradients/mesh-pink-orange.png';
+import patternJagged from '../assets/brand/patterns/pattern-jagged.png';
+
+interface Props {
+  surface?: 'dark' | 'light' | 'gradient' | 'mesh';
+  /** Which mesh gradient a mesh surface shows. */
+  mesh?: 'pink-orange' | 'hot';
+  id?: string;
+  /** Id of the heading that names this section. */
+  labelledby?: string;
+  /** The background image loads first. Use for the band at the top of a page. */
+  priority?: boolean;
+  class?: string;
+}
+
+const {
+  surface = 'dark',
+  mesh = 'pink-orange',
+  id,
+  labelledby,
+  priority = false,
+  class: className,
+} = Astro.props;
+
+const tone = surface === 'light' ? 'on-light' : surface === 'dark' ? 'on-dark' : undefined;
+const meshFile = mesh === 'hot' ? meshHot : meshPinkOrange;
+---
+
+<section
+  class:list={[
+    'section',
+    `section--${surface}`,
+    surface === 'mesh' && `section--mesh-${mesh}`,
+    tone,
+    className,
+  ]}
+  id={id}
+  aria-labelledby={labelledby}
+>
+  {
+    surface === 'mesh' && (
+      <Picture
+        src={meshFile}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        widths={[640, 960, meshFile.width]}
+        sizes="100vw"
+        alt=""
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        pictureAttributes={{ class: 'section__bg' }}
+      />
+    )
+  }
+  {
+    surface === 'gradient' && (
+      <div class="section__bg section__bg--pattern">
+        <Image src={patternJagged} widths={[640, patternJagged.width]} sizes="100vw" alt="" />
+      </div>
+    )
+  }
+  <slot name="bleed" />
+  <div class="container" data-reveal>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--section-y);
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .section--dark {
+    --bg: var(--carbon-shadow);
+    --fg: var(--carbon-100);
+    --fg-strong: var(--white);
+    --fg-muted: var(--carbon-300);
+    --fg-inverse: var(--carbon-shadow);
+    --rule: var(--carbon-700);
+    --card-bg: var(--gradient-core);
+    --card-border: var(--carbon-800);
+  }
+
+  .section--light {
+    --bg: var(--surface-light);
+    --fg: var(--carbon-shadow);
+    --fg-strong: var(--carbon-shadow);
+    --fg-muted: var(--carbon-500);
+    --fg-inverse: var(--white);
+    --rule: var(--carbon-100);
+    --card-bg: var(--white);
+    --card-border: var(--carbon-100);
+  }
+
+  .section--gradient {
+    --bg: var(--gradient-secondary);
+    overflow: clip;
+  }
+
+  .section--mesh {
+    --bg: var(--chicane-violet);
+    --fg: var(--white);
+    --fg-strong: var(--white);
+    --fg-muted: var(--white);
+    --fg-inverse: var(--carbon-shadow);
+    overflow: clip;
+  }
+
+  /* Only the orange and yellow part of the Hot mesh shows, so dark text stays readable. */
+  .section--mesh-hot {
+    --bg: var(--burnout-orange);
+    --fg: var(--carbon-shadow);
+    --fg-strong: var(--carbon-shadow);
+    --fg-muted: var(--carbon-shadow);
+    --fg-inverse: var(--white);
+  }
+
+  .section__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: clip;
+  }
+
+  .section__bg :global(img) {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section--mesh-hot .section__bg :global(img) {
+    height: 220%;
+    object-position: center top;
+  }
+</style>

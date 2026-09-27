@@ -1,0 +1,66 @@
+---
+import '../styles/tokens.css';
+import '../styles/fonts.css';
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { isEventEnabled } from '../lib/content';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** overlay is for pages that open with a full-height hero. */
+  header?: 'solid' | 'overlay';
+}
+
+const SITE_NAME = 'STEM Racing at The British School, New Delhi';
+const {
+  title,
+  description = 'STEM Racing at The British School, New Delhi. Students design, build and race a miniature car, and run their team like a business.',
+  header = 'solid',
+} = Astro.props;
+
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | STEM Racing TBS`;
+// Pages are served without a trailing slash, so the canonical address has none either.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(path, Astro.site).href;
+const eventEnabled = await isEventEnabled();
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#05000B" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Magistral-BoldItalic.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/MachoModular-Medium.woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header variant={header} eventEnabled={eventEnabled} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer eventEnabled={eventEnabled} />
+    <script>
+      import '../scripts/menu.ts';
+      import '../scripts/motion.ts';
+      import '../scripts/dates.ts';
+    </script>
+  </body>
+</html>

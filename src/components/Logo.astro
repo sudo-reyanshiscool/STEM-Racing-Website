@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import colourBlack from '../assets/brand/logo/tbs-colour-black.png';
+import colourWhite from '../assets/brand/logo/tbs-colour-white.png';
+import monoBlack from '../assets/brand/logo/tbs-mono-black.png';
+import monoWhite from '../assets/brand/logo/tbs-mono-white.png';
+import { logoHeight, type LogoVariant } from '../lib/logo';
+
+interface Props {
+  variant?: LogoVariant;
+  /** Largest height the logo is shown at, in pixels. Never below the brand minimum. */
+  height?: number;
+  alt?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const {
+  variant = 'colour-white',
+  height = 56,
+  alt = 'STEM Racing, The British School',
+  loading = 'lazy',
+} = Astro.props;
+
+const files = {
+  'colour-white': colourWhite,
+  'colour-black': colourBlack,
+  'mono-white': monoWhite,
+  'mono-black': monoBlack,
+};
+---
+
+<Image
+  class="brand-logo"
+  src={files[variant]}
+  alt={alt}
+  height={logoHeight(height)}
+  densities={[1, 2, 3]}
+  loading={loading}
+  data-logo={variant}
+/>
+
+<style>
+  /* Official artwork. Only its size changes: no stretch, rotation, shadow, stroke or recolour. */
+  .brand-logo {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: max(32px, var(--logo-h, 3.5rem));
+  }
+</style>

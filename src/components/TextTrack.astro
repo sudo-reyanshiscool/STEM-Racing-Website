@@ -1,0 +1,123 @@
+---
+import { trackLines, type TrackLayout } from '../lib/track';
+
+interface Props {
+  /** Three words at most. */
+  text: string;
+  as?: 'h1' | 'h2';
+  /** banner: one line with outline rows above and below. stacked: one word per line. */
+  layout?: TrackLayout;
+  id?: string;
+}
+
+const { text, as: Tag = 'h1', layout = 'banner', id } = Astro.props as Props;
+const { lines, chars } = trackLines(text, layout);
+const trailing = [1, 2, 3];
+const ghosts = [1, 2, 3, 4, 5];
+---
+
+<Tag class:list={['track', `track--${layout}`]} id={id} style={`--track-chars:${chars}`} data-track>
+  <span class="sr-only">{text}</span>
+  <span class="track__rows" aria-hidden="true">
+    {
+      layout === 'banner' && (
+        <span class="track__row track__row--ghost" style="--dir:-1">
+          {ghosts.map(() => (
+            <span class="track__ghost">{lines[0]}</span>
+          ))}
+        </span>
+      )
+    }
+    {
+      lines.map((line, index) => (
+        <span class="track__row track__row--main" style={`--dir:${index % 2 === 0 ? 1 : -1}`}>
+          <span class="track__anchor">
+            <span class="track__ghost track__ghost--lead">{line}</span>
+            <span class="track__solid">{line}</span>
+          </span>
+          {trailing.map(() => (
+            <span class="track__ghost">{line}</span>
+          ))}
+        </span>
+      ))
+    }
+    {
+      layout === 'banner' && (
+        <span class="track__row track__row--ghost track__row--offset" style="--dir:-1">
+          {ghosts.map(() => (
+            <span class="track__ghost">{lines[0]}</span>
+          ))}
+        </span>
+      )
+    }
+  </span>
+</Tag>
+
+<style>
+  /* 0.64em is a safe average glyph width for Magistral Bold Italic, so the solid line always fits. */
+  .track {
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: min(var(--text-track), calc((100vw - 2 * var(--gutter)) / (var(--track-chars) * 0.64)));
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    overflow-wrap: normal;
+  }
+
+  .track__rows {
+    display: block;
+    padding-block: 0.06em;
+  }
+
+  .track__row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.24em;
+    white-space: nowrap;
+    transform: translate3d(calc(var(--track-shift, 0px) * var(--dir, 1)), 0, 0);
+  }
+
+  .track__row--main {
+    padding-inline-start: max(var(--gutter), calc((100% - var(--container)) / 2));
+  }
+
+  .track__row--ghost {
+    margin-inline-start: -1.6em;
+  }
+
+  .track__row--offset {
+    margin-inline-start: -3.1em;
+  }
+
+  .track__anchor {
+    position: relative;
+    flex: none;
+  }
+
+  .track__solid {
+    display: block;
+  }
+
+  .track__ghost {
+    flex: none;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--white);
+  }
+
+  .track__ghost--lead {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: calc(100% + 0.24em);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track__row {
+      transform: none;
+    }
+  }
+</style>

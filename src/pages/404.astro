@@ -1,0 +1,21 @@
+---
+import Button from '../components/Button.astro';
+import Section from '../components/Section.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="This page does not exist.">
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Off Track" />
+  </Section>
+
+  <Section surface="dark">
+    <div class="stack">
+      <p class="lead">That page is not on the circuit. Head back to the start, or use the menu.</p>
+      <div class="actions">
+        <Button href="/">Back to the start</Button>
+      </div>
+    </div>
+  </Section>
+</Base>
