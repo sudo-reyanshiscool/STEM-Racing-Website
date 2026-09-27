@@ -2,35 +2,62 @@
 
 This is the website for the STEM Racing programme at TBS. It is a static site: every page is built from plain text files, so you do not need to know how to code to keep it up to date.
 
-All the content you will ever need to change lives in one folder: `src/content`. Each subfolder is a "collection", and each file in it is one entry.
+The site follows the STEM Racing Brand Identity Guidelines v1.3, in the Secondary division theme.
 
+## Before you publish
+
+The site ships with a few sample entries so that every page has something to show. Each one carries a gold "Sample entry" label on the page.
+
+Run this before the site goes public:
+
+```bash
+npm run check:publish
 ```
-src/content/
-  teams/       one file per team (Markdown)
-  seasons/     one file per season (JSON)
-  results/     one file per result (JSON)
-  resources/   one file per download (JSON)
-  event/       a single event.json for the next big event
-```
 
-Once you edit a file and push it to GitHub, Vercel rebuilds and publishes the site automatically within a minute or two.
+It lists every sample entry and every `example.com` link. Replace each one with real content, delete its `sample` line, and run the command again until it says "Ready to publish".
 
-## Two file formats you will meet
+Also check these by eye, because only you know whether they are right:
 
-**Markdown (`.md`)**. The block between the two `---` lines is a list of settings, one per line. Anything below the second `---` is free text that appears on the page.
+- The eight teams on the Our School page and in the Results table.
+- The contacts in `src/content/site/site.json`.
+- The copy on the Our School page.
+- The dates on the Season page.
 
-**JSON (`.json`)**. Values are wrapped in double quotes and separated by commas. Lists sit inside square brackets. Rules that trip people up:
+## Where the content lives
 
-- Every line inside a list or object ends with a comma, except the last one.
+Everything you will need to change is in one folder: `src/content`.
+
+| Folder | What it holds | Format |
+|---|---|---|
+| `teams` | One file for each team | Markdown |
+| `seasons` | One file for each season | JSON |
+| `results` | One file for each result | JSON |
+| `resources` | One file for each link or download | JSON |
+| `heritage` | One file for each team on the Our School timeline | JSON |
+| `event` | `event.json`, the next big event | JSON |
+| `school` | `school.md`, the copy for the Our School page | Markdown |
+| `site` | `site.json`, the contacts, address and home page figures | JSON |
+| `programme` | `programme.json`, the 12 steps, team roles and judged areas | JSON |
+| `support` | `support.json`, the coordinator, mentor and parent roles | JSON |
+
+When you change a file and push it to GitHub, Vercel rebuilds the site within a minute or two.
+
+## Two file formats
+
+**Markdown (`.md`)**. The block between the two `---` lines is a list of settings, one on each line. Anything below the second `---` is text that appears on the page.
+
+**JSON (`.json`)**. Values sit inside double quotes, with commas between them. Lists sit inside square brackets.
+
+- Every line inside a list or an object ends with a comma, except the last one.
 - Use straight double quotes, not curly ones. If you paste from Word, check the quotes.
-- Dates are always written as `YYYY-MM-DD`, for example `2026-10-02`.
+- Dates are written as `YYYY-MM-DD`, for example `2026-10-02`.
 
-If a file has a mistake, the build fails and Vercel keeps the old version of the site online. The error message names the file and the field, so it is easy to fix.
+If a file has a mistake, the build fails and Vercel keeps the old version of the site online. The error names the file and the setting. A misspelt setting name, such as `carname` for `carName`, counts as a mistake.
 
 ## How to add a team
 
-1. Open `src/content/teams` and duplicate any existing file, for example `aeroflux.md`.
-2. Rename the copy using lower case letters and hyphens, for example `velocity-racing.md`. The file name is not shown on the site.
+1. Open `src/content/teams` and copy any file.
+2. Rename the copy in lower case with hyphens, for example `velocity-racing.md`.
 3. Edit the settings at the top:
 
 ```md
@@ -44,85 +71,134 @@ members:
   - Arnav Gupta (Design Engineer)
   - Nia Thomas (Enterprise Manager)
 status: active
-heroImage: ""
+heroImage: ./images/falcon.png
 ---
 
-A short paragraph about the team. This is optional.
+A short paragraph about the team.
 ```
 
-- `category` must be exactly `Development` or `Professional`.
-- `status` must be exactly `active` or `archived`. When a season ends, change every team from that season to `archived` and they move under the Archive heading on the Teams page.
-- `heroImage` is the car render. Leave it as `""` to show a labelled placeholder box. To use a real image, put the file in the `public/teams` folder and write the path, for example `heroImage: "/teams/falcon.png"`.
-- `colours` is optional. Delete the whole line if you do not need it.
+- `category` is `Development` or `Professional`.
+- `status` is `active` or `archived`. Archived teams appear under Hall of fame.
+- `carName` and `heroImage` can be left out. A team with no image shows the STEM Racing mark.
+- For `heroImage`, put the picture in `src/content/teams/images` and write its path starting with `./images/`. Any size works: the site makes the small versions itself.
+- Write each member as `Name (Role)`. The role can be left out.
+- Check that you have permission to publish each student's name.
 
-## How to update the season timeline
+## How to update the season
 
-1. Open `src/content/seasons`. The site treats the file with the latest year label as the current season, so `2026-27.json` beats `2025-26.json`.
+1. Open `src/content/seasons`. The file with the latest year label is the current season: `2026-27.json` beats `2025-26.json`.
 2. Each item in `timeline` looks like this:
 
 ```json
 {
   "date": "2027-01-23",
-  "title": "Regional Finals, New Delhi",
-  "description": "First race of the season."
+  "title": "Regional Finals",
+  "description": "The first competition of the season."
 }
 ```
 
-Add, remove or edit items freely. The site sorts them by date, and the home page shows the next item that has not yet happened.
+- Leave out `date` when it is not confirmed. The site shows "Date to be confirmed" and lists the item after the dated ones.
+- The site sorts the items by date. It dims the ones that have passed and shows the next one on the home page. This is worked out in the visitor's browser each time, so it stays right between updates.
 
-3. To open or close registration, change `"registrationOpen": true` to `false` or back. The button on the Season page switches between "Register" and "Registration closed", and the home page status strip updates too.
-4. `registrationDeadline` is the date shown next to the button.
+3. To open registration, set `"registrationOpen": true`. Add `"registrationDeadline": "2027-09-01"` to show a deadline, and `"registrationUrl": "https://..."` to show a Register button.
+4. `name` is optional, for example `"name": "Season 9"`.
 
-**Starting a new season**: duplicate the current file, rename it to the new year label, update the label inside the file, replace the timeline dates, and set `registrationOpen` to `true`. Then set the teams from the old season to `archived`.
+**Starting a new season**: copy the current file, rename it to the new year label, change `year` inside it, and replace the timeline. Then set last season's teams to `archived`.
 
 ## How to add a result
 
-1. Open `src/content/results` and duplicate any file.
-2. Rename it so it is easy to find later, for example `2026-27-aeroflux-regionals.json`.
-3. Edit the contents:
+Copy a file in `src/content/results` and edit it:
 
 ```json
 {
   "season": "2026-27",
-  "team": "Aeroflux",
+  "team": "Velocity Racing",
   "event": "Regionals",
-  "placing": "1st, Professional class",
-  "awards": ["Fastest Car", "Best Engineered Car"]
+  "placing": "1st, Development class",
+  "awards": ["Fastest Car"]
 }
 ```
 
-- `event` must be exactly `Regionals`, `Nationals` or `World Finals`.
-- `placing` is free text, so write whatever reads best.
-- If there were no awards, write `"awards": []`.
+- `event` is `Regionals`, `Nationals` or `World Finals`.
+- `placing` is free text.
+- With no awards, write `"awards": []`.
 
-Nationals and World Finals results automatically appear as highlight cards at the top of the Results page.
+Results appear in the table on the Teams page, newest season first.
 
 ## How to add a resource
 
-Duplicate a file in `src/content/resources` and edit `title`, `description`, `fileUrl` and `category`. The `fileUrl` can be any web link, such as a Google Drive share link. Resources are grouped by `category` on the page, and you can invent new categories just by typing a new name.
+Copy a file in `src/content/resources` and edit `title`, `description`, `fileUrl` and `category`.
 
-## How to enable the event page
+- `fileUrl` starts with `https://`. For a file of your own, put it in the `public` folder and write its path starting with `/`, for example `/downloads/booklet.pdf`.
+- Resources are grouped by `category`. Type a new name to make a new group.
 
-Open `src/content/event/event.json` and change `"enabled": false` to `"enabled": true`. The Event page appears and a link to it is added to the navigation. Set it back to `false` after the event and both disappear.
+## How to switch the event page on
 
-While you are in the file, update `name`, `dates`, `venue`, the `schedule` list, `scrutineeringInfo`, `whatToBring` and `contact`.
+Open `src/content/event/event.json` and set `"enabled": true`. The Event page appears and a link is added to the navigation. Set it back to `false` after the event and both disappear.
 
-## Contacts and copy that are not in the content folder
+Replace the sample text first, and delete the `"sample": true` line.
 
-The two named contacts on the Programme page and in the footer, and the placeholder emails, live in `src/pages/programme.astro` and `src/components/Footer.astro`. They are near the top of each file and safe to edit as plain text.
+## How to change the other pages
+
+| To change | Edit |
+|---|---|
+| Contacts, address, home page figures | `src/content/site/site.json` |
+| The 12 steps, team roles, what judges score | `src/content/programme/programme.json` |
+| Coordinator, mentor and parent roles | `src/content/support/support.json` |
+| The Our School page | `src/content/school/school.md` |
+| The Our School timeline | `src/content/heritage`, one file for each team |
+
+An email address for a contact is optional: add `"email": "name@british-school.org"` to show one.
+
+## Brand rules for editors
+
+- Do not add logos, colours or fonts. The site uses the official STEM Racing files only.
+- The large outlined headlines take three words at most. The build stops if one is longer.
+- Do not write "Supported by Formula 1". It needs permission from STEM Racing.
+- "Accelerating Futures" is the STEM Racing brand commitment. Do not reword it.
+
+## Fonts
+
+Headlines use Magistral Italic. Everything else uses MachoModular.
+
+The brand pack has no MachoModular Regular file, so body copy uses Medium. When you have the Regular file:
+
+1. Convert it to WOFF2 and save it as `public/fonts/MachoModular-Regular.woff2`.
+2. Open `src/styles/fonts.css` and remove the comment marks around the Regular rule.
+
+Body copy switches to Regular. Nothing else needs to change.
 
 ## For whoever maintains the code
 
-- Built with [Astro](https://astro.build), TypeScript and plain CSS. No UI framework, no Tailwind.
-- Colours and fonts are all defined as CSS variables in `src/styles/global.css`.
-- Content schemas are in `src/content.config.ts`. Change them if you want a new field.
-- The event page is `src/pages/[event].astro`. Its `getStaticPaths` returns nothing when the event is disabled, so the route is simply not built.
+Built with [Astro](https://astro.build), TypeScript and plain CSS. No UI framework and no Tailwind.
 
 ```bash
-npm install      # once
-npm run dev      # local preview at http://localhost:4321
-npm run build    # production build into dist/
-npm run check    # type check
+npm install           # once
+npm run dev           # local preview at http://localhost:4321
+npm run build         # production build into dist/
+npm run check         # type check
+npm test              # unit tests
+npm run test:site     # builds the site, then tests the pages in dist/
+npm run test:all      # both
+npm run check:publish # lists sample content
 ```
 
-Deployment: connect the GitHub repository to Vercel. `vercel.json` sets the framework and output directory, so no further configuration is needed.
+| Folder | What it holds |
+|---|---|
+| `src/lib` | Logic with no Astro imports. Every file has unit tests in `tests/unit`. |
+| `src/lib/schemas.ts` | The rules for each content collection. |
+| `src/components` | One component in each file, with its own scoped styles. |
+| `src/styles/tokens.css` | Every colour, font and size. Components read colours from here only. |
+| `src/scripts` | Browser scripts: the menu, the scroll effects and the date refresh. The site works without them. |
+| `src/assets/brand` | The official artwork. |
+| `tests/site` | Tests that read the built pages, including the brand rules. |
+
+**Brand artwork** is copied from the brand pack by script and never redrawn:
+
+```bash
+node scripts/prepare-brand-assets.mjs "/path/to/STEM RACING BRANDING SHARE"
+```
+
+`scripts/convert-fonts.py` converts MachoModular to WOFF2. The instructions are at the top of that file.
+
+**Deployment**: connect the GitHub repository to Vercel. `vercel.json` sets the framework and the output folder.
