@@ -153,19 +153,69 @@ The brand pack has no MachoModular Regular file, so body copy uses Medium. When 
 
 Body copy switches to Regular. Nothing else needs to change.
 
+## The team dashboard
+
+Teams and mentors sign in at `/dashboard` with an access code. The link is in the footer.
+
+| Who | Sees |
+|---|---|
+| A team | Its own workspace: deliverables, the next deadline, tasks, a status note and links |
+| A mentor | Every team, with forms to add a team, reset a code and archive a team |
+
+**Codes.** A mentor chooses a team's code or leaves the field empty to have one made. A code is shown once. Only its hash is stored, so a lost code cannot be looked up: reset it. Resetting a code signs out everyone who used the old one. Never write a code in this repository.
+
+**The next deadline** comes from the season file. See "How to update the season".
+
+**What is stored.** Team names, statuses, tasks, notes and links. No names or email addresses of pupils. A task is owned by a role, not a person.
+
+### Settings
+
+These are set in Vercel, under Settings, Environment Variables. On your own computer they go in `.env`, which git ignores. `.env.example` lists them.
+
+| Name | What it is |
+|---|---|
+| `DATABASE_URL` | The Supabase pooler address in transaction mode. It ends in `:6543/postgres`. The site signs in as the role `dashboard_app`, which can read and write the dashboard's tables and nothing else. |
+| `SESSION_SECRET` | 32 characters or more, made at random. Changing it signs everyone out. |
+| `MENTOR_CODE_HASH` | The hash of the mentor code, from `npm run dashboard:hash`. To change the mentor code, make a new hash and deploy again. |
+| `CRON_SECRET` | Made at random. Vercel sends it with the daily job that keeps the database awake. |
+
+### Working on the dashboard
+
+```bash
+npm run dashboard:db      # a database on this computer. Leave it running.
+cp .env.example .env      # once. Then fill it in as the file says.
+npm run dashboard:hash    # makes MENTOR_CODE_HASH from a code you type
+npm run dev
+```
+
+The local database is kept in `.dashboard-db/`. Delete that folder to start again.
+
+### Changing the tables
+
+Add a file to `supabase/migrations/` with the next number, for example `0002_mentor_notes.sql`. Switch row level security on for every new table. Then, with `DATABASE_URL` in `.env` naming the database you mean:
+
+```bash
+npm run dashboard:migrate
+```
+
+It prints the host of the database before it runs anything, and it runs each file once.
+
+The database is a Supabase project in Sydney, so `vercel.json` runs the dashboard in Vercel's Sydney region, `syd1`.
+
 ## For whoever maintains the code
 
 Built with [Astro](https://astro.build), TypeScript and plain CSS. No UI framework and no Tailwind.
 
 ```bash
-npm install           # once
-npm run dev           # local preview at http://localhost:4321
-npm run build         # production build into dist/
-npm run check         # type check
-npm test              # unit tests
-npm run test:site     # builds the site, then tests the pages in dist/
-npm run test:all      # both
-npm run check:publish # lists sample content
+npm install            # once
+npm run dev            # local preview at http://localhost:4321
+npm run build          # production build. The public pages go into dist/client/
+npm run check          # type check
+npm test               # unit tests
+npm run test:dashboard # dashboard tests. They need no database installed.
+npm run test:site      # builds the site, then tests the pages in dist/client/
+npm run test:all       # all three
+npm run check:publish  # lists sample content
 ```
 
 | Folder | What it holds |
@@ -177,6 +227,11 @@ npm run check:publish # lists sample content
 | `src/scripts` | Browser scripts: the menu, the scroll effects and the date refresh. The site works without them. |
 | `src/assets/brand` | The official artwork. |
 | `tests/site` | Tests that read the built pages, including the brand rules. |
+| `src/lib/dashboard` | The team dashboard's logic. Only `runtime.ts` imports from Astro. |
+| `src/pages/dashboard` | The only pages rendered on request. Every other page is built ahead of time. |
+| `src/styles/dashboard.css` | Every dashboard style, in one file, because the dashboard's forms share them. |
+| `supabase/migrations` | The dashboard's tables, as numbered SQL files. |
+| `tests/dashboard` | Dashboard tests that use a database inside the test process. |
 
 **Brand artwork** is copied from the brand pack by script and never redrawn:
 
@@ -186,4 +241,4 @@ node scripts/prepare-brand-assets.mjs "/path/to/STEM RACING BRANDING SHARE"
 
 `scripts/convert-fonts.py` converts MachoModular to WOFF2. The instructions are at the top of that file.
 
-**Deployment**: connect the GitHub repository to Vercel. `vercel.json` sets the framework and the output folder.
+**Deployment**: connect the GitHub repository to Vercel. `vercel.json` sets the framework and the daily job that keeps the database awake. The Vercel adapter decides where the build is written.

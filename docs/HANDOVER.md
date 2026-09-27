@@ -1,5 +1,13 @@
 # Hand-over: TBS STEM Racing rebuild
 
+## Team dashboard, stage 1
+
+Added on the branch `team-dashboard`. The spec is `docs/superpowers/specs/2026-09-27-team-dashboard-design.md` and the plan is `docs/superpowers/plans/2026-09-27-team-dashboard-stage-1.md`.
+
+- The site now uses the Vercel adapter. The public pages are still built ahead of time, into `dist/client/`.
+- Pages under `/dashboard` are rendered on request and need the four settings in the README.
+- Stages 2 and 3 are not built: the mentor overview table, mentor notes, announcements and streaks.
+
 Written 2026-09-27. This one file replaces the session summary, the review report and the notes that were spread across the workspace. Read this first, then the ledger if you need the detail.
 
 ## Update after the fix pass
