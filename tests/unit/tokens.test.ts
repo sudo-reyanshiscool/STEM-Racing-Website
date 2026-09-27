@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { contrast, hexToRgb, mix } from '../helpers/contrast';
@@ -98,11 +98,27 @@ describe('fonts', () => {
     const weights = faces
       .filter((face) => family(face) === 'MachoModular')
       .map((face) => /font-weight:\s*(\d+)/.exec(face)?.[1]);
-    expect(weights).toEqual(['300', '500', '700']);
+    const regularInstalled = existsSync(join(process.cwd(), 'public/fonts/MachoModular-Regular.woff2'));
+    expect(weights).toEqual(regularInstalled ? ['300', '400', '500', '700'] : ['300', '500', '700']);
   });
 
   it('keeps the Regular rule ready for the day the file arrives', () => {
     expect(fontsCss).toContain("url('/fonts/MachoModular-Regular.woff2')");
+  });
+
+  it('enables the Regular rule by deleting two marker lines without exposing prose as CSS', () => {
+    const marker = 'Delete this line when MachoModular Regular is installed.';
+    expect(fontsCss.split('\n').filter((line) => line.includes(marker))).toHaveLength(2);
+    const enabled = fontsCss
+      .split('\n')
+      .filter((line) => !line.includes(marker))
+      .join('\n');
+    const enabledFaces = [...withoutComments(enabled).matchAll(/@font-face\s*\{([^}]*)\}/g)].map(
+      (match) => match[1] ?? '',
+    );
+    expect(enabledFaces.some((face) => family(face) === 'MachoModular' && /font-weight:\s*400/.test(face))).toBe(
+      true,
+    );
   });
 
   it('swaps in the brand font as soon as it loads', () => {

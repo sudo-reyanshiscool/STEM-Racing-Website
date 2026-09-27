@@ -166,7 +166,7 @@ Headlines use Magistral Italic. Everything else uses MachoModular.
 The brand pack has no MachoModular Regular file, so body copy uses Medium. When you have the Regular file:
 
 1. Convert it to WOFF2 and save it as `public/fonts/MachoModular-Regular.woff2`.
-2. Open `src/styles/fonts.css` and remove the comment marks around the Regular rule.
+2. Open `src/styles/fonts.css` and delete the two lines that say "Delete this line when MachoModular Regular is installed."
 
 Body copy switches to Regular. Nothing else needs to change.
 

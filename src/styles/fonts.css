@@ -25,9 +25,8 @@
 }
 
 /* Body copy asks for weight 400. The brand pack has no Regular file, so browsers use
-   Medium, the nearest weight. To switch to Regular: put MachoModular-Regular.woff2 in
-   public/fonts and remove the comment marks around the rule below. Nothing else changes.
-
+   Medium, the nearest weight. The optional rule below is kept ready for a licensed file. */
+/* Delete this line when MachoModular Regular is installed.
 @font-face {
   font-family: 'MachoModular';
   src: url('/fonts/MachoModular-Regular.woff2') format('woff2');
@@ -35,7 +34,7 @@
   font-style: normal;
   font-display: swap;
 }
-*/
+Delete this line when MachoModular Regular is installed. */
 
 @font-face {
   font-family: 'MachoModular';

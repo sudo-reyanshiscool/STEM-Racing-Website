@@ -86,11 +86,11 @@ describe('fonts', () => {
   ];
 
   it('holds the five brand font files and nothing else', () => {
-    expect(
-      readdirSync(fonts)
-        .filter((name) => !name.startsWith('.'))
-        .sort(),
-    ).toEqual(files);
+    const actual = readdirSync(fonts)
+      .filter((name) => !name.startsWith('.'))
+      .sort();
+    const withRegular = [...files, 'MachoModular-Regular.woff2'].sort();
+    expect([files, withRegular]).toContainEqual(actual);
   });
 
   it.each(files)('%s is a WOFF2 file of a sensible size', (name) => {
