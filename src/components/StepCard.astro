@@ -1,0 +1,44 @@
+---
+interface Props {
+  number: number;
+  title: string;
+  body?: string;
+}
+
+const { number, title, body } = Astro.props;
+const label = String(number).padStart(2, '0');
+---
+
+<li class="step card">
+  <span class="step__num" aria-hidden="true">{label}</span>
+  <h3 class="step__title">{title}</h3>
+  {body && <p>{body}</p>}
+</li>
+
+<style>
+  .step {
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+  }
+
+  .step__num {
+    width: fit-content;
+    background: var(--gradient-heading);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  @media (forced-colors: active) {
+    .step__num {
+      background: none;
+      color: CanvasText;
+    }
+  }
+</style>

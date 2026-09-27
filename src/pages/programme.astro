@@ -1,0 +1,81 @@
+---
+import Button from '../components/Button.astro';
+import Section from '../components/Section.astro';
+import StepCard from '../components/StepCard.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+import { getProgramme } from '../lib/content';
+
+const programme = await getProgramme();
+---
+
+<Base
+  title="Programme"
+  description="How STEM Racing works at The British School, New Delhi: the 12 steps, the team roles and what judges score."
+>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Our Strategy" />
+  </Section>
+
+  <Section surface="dark" labelledby="steps-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="steps-title">12 steps to success</h2>
+        <p class="lead">Twelve steps take a team from an idea to the start line.</p>
+      </div>
+      <ol class="grid grid--4">
+        {
+          programme.steps.map((step, index) => (
+            <StepCard number={index + 1} title={step.title} body={step.body} />
+          ))
+        }
+      </ol>
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="roles-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="roles-title">How a team works</h2>
+        <p class="lead">
+          The work splits into three areas. Every member is expected to contribute to more than one.
+        </p>
+      </div>
+      <ul class="grid grid--3">
+        {
+          programme.roles.map((role) => (
+            <li class="card stack">
+              <h3>{role.title}</h3>
+              <p>{role.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="judging-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="judging-title">What judges score</h2>
+        <p class="lead">
+          Teams are judged on the whole season, not only on the race. The STEM Racing Competition Regulations set
+          the marks for each area.
+        </p>
+      </div>
+      <ul class="grid grid--3">
+        {
+          programme.judging.map((area) => (
+            <li class="card stack">
+              <h3>{area.title}</h3>
+              <p>{area.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="actions">
+        <Button href="/resources">Regulations and resources</Button>
+      </div>
+    </div>
+  </Section>
+</Base>
