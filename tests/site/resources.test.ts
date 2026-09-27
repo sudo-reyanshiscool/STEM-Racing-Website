@@ -22,9 +22,11 @@ describe('resources', () => {
   });
 
   it.each([
-    '/downloads/stem-racing-world-finals-2026-technical-regulations.pdf',
-    '/downloads/stem-racing-world-finals-2026-competition-regulations-revision-1.pdf',
-  ])('publishes the official regulation PDF at %s', (fileUrl) => {
+    '/downloads/tbs-national-finals-2025-26-competition-regulations.pdf',
+    '/downloads/tbs-national-finals-2025-26-technical-regulations.pdf',
+    '/downloads/tbs-ai-guidance-2026.pdf',
+    '/downloads/tbs-project-management-guide-2026.pdf',
+  ])('publishes the TBS document at %s', (fileUrl) => {
     expect(resources.some((resource) => resource.fileUrl === fileUrl)).toBe(true);
     const bytes = readFileSync(join(root, 'public', fileUrl));
     expect(bytes.subarray(0, 5).toString('ascii')).toBe('%PDF-');
