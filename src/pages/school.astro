@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import Section from '../components/Section.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Timeline from '../components/Timeline.astro';
+import Base from '../layouts/Base.astro';
+import { getSchool } from '../lib/content';
+
+const school = await getSchool();
+const { Content } = await render(school);
+const heritage = (await getCollection('heritage')).sort(
+  (a, b) => a.data.year.localeCompare(b.data.year) || a.data.team.localeCompare(b.data.team),
+);
+const items = heritage.map((entry) => ({
+  label: entry.data.year,
+  title: entry.data.team,
+  description: entry.data.note,
+}));
+---
+
+<Base title="Our School" description={school.data.lead}>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Our School" />
+  </Section>
+
+  <Section surface="dark">
+    <div class="stack stack--loose">
+      <p class="eyebrow">{school.data.title}</p>
+      <p class="lead">{school.data.lead}</p>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="heritage-title">
+    <div class="stack stack--loose">
+      <div class="stack">
+        <h2 id="heritage-title">TBS on the world stage</h2>
+        <p class="lead">
+          TBS teams have represented India at the STEM Racing World Finals {heritage.length} times.
+        </p>
+      </div>
+      <Timeline items={items} />
+    </div>
+  </Section>
+</Base>

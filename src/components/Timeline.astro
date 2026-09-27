@@ -1,0 +1,101 @@
+---
+import { isPast } from '../lib/season';
+
+export interface TimelineEntry {
+  /** Text shown beside the item: a formatted date, a year, or "Date to be confirmed". */
+  label: string;
+  title: string;
+  description?: string | undefined;
+  /** YYYY-MM-DD, when the item has a confirmed date. */
+  date?: string | undefined;
+}
+
+interface Props {
+  items: TimelineEntry[];
+  /** Dims items whose date has passed. */
+  dimPast?: boolean;
+  /** Today as YYYY-MM-DD. Needed when dimPast is on. */
+  today?: string;
+}
+
+const { items, dimPast = false, today = '' } = Astro.props;
+---
+
+<ol class="timeline" data-dim-past={dimPast ? 'true' : undefined}>
+  {
+    items.map((item) => (
+      <li
+        class:list={['timeline__item', { 'is-past': dimPast && isPast(item.date, today) }]}
+        data-date={item.date}
+      >
+        {item.date ? (
+          <time class="timeline__label" datetime={item.date}>
+            {item.label}
+          </time>
+        ) : (
+          <span class="timeline__label">{item.label}</span>
+        )}
+        <div class="timeline__body">
+          <h3>{item.title}</h3>
+          {item.description && <p>{item.description}</p>}
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline__item {
+    position: relative;
+    display: grid;
+    gap: 0.25rem 2rem;
+    padding: 0 0 2rem 1.75rem;
+    border-inline-start: 2px solid var(--rule);
+  }
+
+  .timeline__item:last-child {
+    padding-block-end: 0;
+  }
+
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.35rem;
+    inset-inline-start: -0.4375rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--pitlane-pink);
+  }
+
+  .timeline__label {
+    color: var(--fg-strong);
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  .timeline__body {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  /* Past items use the muted text colour, which still passes 4.5:1. Opacity is not used. */
+  .timeline__item.is-past,
+  .timeline__item.is-past .timeline__label,
+  .timeline__item.is-past :global(h3) {
+    color: var(--fg-muted);
+  }
+
+  .timeline__item.is-past::before {
+    background: var(--carbon-500);
+  }
+
+  @media (min-width: 48rem) {
+    .timeline__item {
+      grid-template-columns: 13rem 1fr;
+    }
+  }
+</style>
