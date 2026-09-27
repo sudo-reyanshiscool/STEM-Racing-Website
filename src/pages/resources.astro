@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';
+import Section from '../components/Section.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+
+const resources = (await getCollection('resources')).map((entry) => entry.data);
+const categories = [...new Set(resources.map((resource) => resource.category))].sort((a, b) => a.localeCompare(b));
+const inCategory = (category: string) =>
+  resources.filter((resource) => resource.category === category).sort((a, b) => a.title.localeCompare(b.title));
+const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+<Base
+  title="Resources"
+  description="Regulations, guides and links for STEM Racing teams at The British School, New Delhi."
+>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Resources" />
+  </Section>
+
+  <Section surface="dark">
+    <div class="stack stack--loose">
+      <p class="lead">Documents and links for competing teams.</p>
+      {categories.length === 0 && <p>Resources will be added here.</p>}
+      {
+        categories.map((category) => (
+          <section class="stack" aria-labelledby={`cat-${slug(category)}`}>
+            <h2 id={`cat-${slug(category)}`}>{category}</h2>
+            <ul class="grid">
+              {inCategory(category).map((resource) => (
+                <li class="card resource">
+                  <div class="stack">
+                    <h3>{resource.title}</h3>
+                    <p>{resource.description}</p>
+                  </div>
+                  <Button href={resource.fileUrl} variant="ghost" external={resource.fileUrl.startsWith('https://')}>
+                    Open<span class="sr-only">: {resource.title}</span>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </Section>
+</Base>
+
+<style>
+  .resource {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+  }
+
+  .resource > :global(.stack) {
+    --stack: 0.35rem;
+    flex: 1 1 18rem;
+  }
+</style>

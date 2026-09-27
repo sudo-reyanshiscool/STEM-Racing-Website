@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const { title, items } = Astro.props;
+const id = `role-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+---
+
+<section class="roles card" aria-labelledby={id}>
+  <h3 id={id}>{title}</h3>
+  <ol class="roles__list">
+    {
+      items.map((item, index) => (
+        <li class="roles__item">
+          <span class="roles__num" aria-hidden="true">
+            {index + 1}
+          </span>
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .roles {
+    display: grid;
+    align-content: start;
+    gap: 1.25rem;
+  }
+
+  .roles__list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .roles__item {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .roles__num {
+    color: var(--pitlane-pink);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+</style>

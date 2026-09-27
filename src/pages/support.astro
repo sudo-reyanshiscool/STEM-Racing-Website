@@ -1,0 +1,93 @@
+---
+import shapeYellow from '../assets/brand/shapes/shape-yellow.svg';
+import RoleList from '../components/RoleList.astro';
+import Section from '../components/Section.astro';
+import TextTrack from '../components/TextTrack.astro';
+import Base from '../layouts/Base.astro';
+import { getSite, getSupport } from '../lib/content';
+
+const support = await getSupport();
+const site = await getSite();
+---
+
+<Base
+  title="Support"
+  description="How coordinators, mentors and families support STEM Racing teams at The British School, New Delhi."
+>
+  <Section surface="mesh" priority class="page-head">
+    <TextTrack slot="bleed" text="Our Support" />
+  </Section>
+
+  <Section surface="dark" labelledby="roles-title">
+    <div class="stack stack--loose">
+      <div class="support-intro">
+        <div class="stack">
+          <h2 id="roles-title">Who does what</h2>
+          <p class="lead">Every team is backed by a coordinator, a mentor and their families.</p>
+        </div>
+        <img
+          class="support-intro__shape"
+          src={shapeYellow.src}
+          width={shapeYellow.width}
+          height={shapeYellow.height}
+          alt=""
+          loading="lazy"
+        />
+      </div>
+      <div class="grid grid--3">
+        <RoleList title="Coordinator's role" items={support.coordinator} />
+        <RoleList title="Mentor's role" items={support.mentor} />
+        <RoleList title="Parents' support" items={support.parents} />
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="contacts-title">
+    <div class="stack stack--loose">
+      <h2 id="contacts-title">Contacts</h2>
+      <ul class="grid grid--3">
+        {
+          site.contacts.map((contact) => (
+            <li class="card stack">
+              <h3>{contact.name}</h3>
+              <p class="muted">{contact.role}</p>
+              {contact.email && (
+                <p>
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </p>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+      <p>
+        {site.address}. <a href={site.schoolUrl}>The British School website</a>
+      </p>
+    </div>
+  </Section>
+</Base>
+
+<style>
+  .support-intro {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .support-intro__shape {
+    display: none;
+  }
+
+  @media (min-width: 60rem) {
+    .support-intro {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    }
+
+    .support-intro__shape {
+      display: block;
+      width: min(100%, 12rem);
+      height: auto;
+      margin-inline-start: auto;
+    }
+  }
+</style>
