@@ -2,12 +2,13 @@
 import { Image, Picture } from 'astro:assets';
 import meshHot from '../assets/brand/gradients/mesh-hot.png';
 import meshPinkOrange from '../assets/brand/gradients/mesh-pink-orange.png';
+import srGradient from '../assets/brand/gradients/sr-gradient.png';
 import patternJagged from '../assets/brand/patterns/pattern-jagged.png';
 
 interface Props {
   surface?: 'dark' | 'light' | 'gradient' | 'mesh';
   /** Which mesh gradient a mesh surface shows. */
-  mesh?: 'pink-orange' | 'hot';
+  mesh?: 'pink-orange' | 'hot' | 'violet' | 'spectrum';
   id?: string;
   /** Id of the heading that names this section. */
   labelledby?: string;
@@ -26,7 +27,12 @@ const {
 } = Astro.props;
 
 const tone = surface === 'light' ? 'on-light' : surface === 'dark' ? 'on-dark' : undefined;
-const meshFile = mesh === 'hot' ? meshHot : meshPinkOrange;
+const meshFile =
+  mesh === 'hot' || mesh === 'violet'
+    ? meshHot
+    : mesh === 'spectrum'
+      ? srGradient
+      : meshPinkOrange;
 ---
 
 <section
@@ -46,7 +52,7 @@ const meshFile = mesh === 'hot' ? meshHot : meshPinkOrange;
         src={meshFile}
         formats={['avif', 'webp']}
         fallbackFormat="jpg"
-        widths={[640, 960, meshFile.width]}
+        widths={[640, 960, Math.min(meshFile.width, 1600)]}
         sizes="100vw"
         alt=""
         loading={priority ? 'eager' : 'lazy'}
@@ -113,13 +119,21 @@ const meshFile = mesh === 'hot' ? meshHot : meshPinkOrange;
     overflow: clip;
   }
 
-  /* Only the orange and yellow part of the Hot mesh shows, so dark text stays readable. */
-  .section--mesh-hot {
+  /* Only the orange and yellow part of the Hot mesh shows on body sections, so dark text stays readable. */
+  .section--mesh-hot:not(.page-head) {
     --bg: var(--burnout-orange);
     --fg: var(--carbon-shadow);
     --fg-strong: var(--carbon-shadow);
     --fg-muted: var(--carbon-shadow);
     --fg-inverse: var(--white);
+  }
+
+  .section--mesh-violet {
+    --bg: var(--ignite-indigo);
+  }
+
+  .section--mesh-spectrum {
+    --bg: var(--chicane-violet);
   }
 
   .section__bg {
@@ -136,8 +150,20 @@ const meshFile = mesh === 'hot' ? meshHot : meshPinkOrange;
     object-fit: cover;
   }
 
-  .section--mesh-hot .section__bg :global(img) {
+  .section--mesh-hot:not(.page-head) .section__bg :global(img) {
     height: 220%;
     object-position: center top;
+  }
+
+  .section--mesh-hot.page-head .section__bg :global(img) {
+    object-position: center 55%;
+  }
+
+  .section--mesh-violet .section__bg :global(img) {
+    object-position: center bottom;
+  }
+
+  .section--mesh-spectrum .section__bg :global(img) {
+    object-position: center 75%;
   }
 </style>
