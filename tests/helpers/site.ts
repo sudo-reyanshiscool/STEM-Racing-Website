@@ -8,7 +8,17 @@ export const dist = join(root, 'dist');
 export const SITE_URL = 'https://stemracing-tbs.vercel.app';
 
 /** Every page the site builds, apart from the optional event page. */
-export const ROUTES = ['/', '/school', '/programme', '/teams', '/season', '/resources', '/support', '/404'];
+export const ROUTES = [
+  '/',
+  '/school',
+  '/programme',
+  '/teams',
+  '/season',
+  '/resources',
+  '/support',
+  ...(eventEnabled() ? ['/event'] : []),
+  '/404',
+];
 
 export function pageFile(route: string): string {
   if (route === '/') return join(dist, 'index.html');

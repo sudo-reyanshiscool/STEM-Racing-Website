@@ -6,6 +6,7 @@ import {
   programmeSchema,
   resourceSchema,
   resultSchema,
+  schoolSchema,
   seasonSchema,
   siteSchema,
   supportSchema,
@@ -206,5 +207,49 @@ describe('support, heritage and event', () => {
       contact: 'The coordinator',
     });
     expect(result.data?.sample).toBe(false);
+  });
+});
+
+describe('strict collection schemas', () => {
+  const point = { title: 'Step', body: 'Text.' };
+  const cases = [
+    ['season', seasonSchema, { year: '2026-27', registrationOpen: false, timeline: [] }],
+    ['result', resultSchema, { season: '2025', team: 'Team', event: 'World Finals', placing: '1st', awards: [] }],
+    ['resource', resourceSchema, { title: 'Guide', description: 'Text.', fileUrl: '/guide.pdf', category: 'Official' }],
+    [
+      'event',
+      eventSchema,
+      {
+        enabled: false,
+        name: 'Finals',
+        dates: 'TBC',
+        venue: 'School',
+        schedule: [],
+        scrutineeringInfo: 'Details.',
+        whatToBring: [],
+        contact: 'Coordinator',
+      },
+    ],
+    ['heritage', heritageSchema(image), { year: '2014', team: 'Team Ignite' }],
+    ['school', schoolSchema, { title: 'The British School', lead: 'Introduction.' }],
+    [
+      'site',
+      siteSchema,
+      {
+        address: 'The British School',
+        schoolUrl: 'https://www.british-school.org/',
+        stats: [{ value: '8', label: 'Teams' }],
+        contacts: [],
+      },
+    ],
+    ['programme', programmeSchema, { steps: Array.from({ length: 12 }, () => point), roles: [point], judging: [point] }],
+    ['support', supportSchema, { coordinator: ['a'], mentor: ['b'], parents: ['c'] }],
+  ] as const;
+
+  it.each(cases)('%s rejects an unknown field', (_name, schema, valid) => {
+    const result = schema.safeParse({ ...valid, unexpected: true });
+    expect(issues(result)).toEqual([
+      { path: '', code: 'unrecognized_keys', message: 'Unrecognized key: "unexpected"' },
+    ]);
   });
 });

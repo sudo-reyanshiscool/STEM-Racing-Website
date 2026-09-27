@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 import type { SeasonData } from '../../src/lib/season';
 import { clean, contentFiles, contentJson, page, teamFiles, texts } from '../helpers/site';
 
-const season = contentJson<SeasonData>(`seasons/${contentFiles('seasons', '.json').at(-1)}`);
+const seasonFile = contentFiles('seasons', '.json').at(-1);
+const season = seasonFile ? contentJson<SeasonData>(`seasons/${seasonFile}`) : undefined;
 
 const active = teamFiles().filter((team) => team.status === 'active');
 
@@ -38,7 +39,7 @@ describe('home', () => {
 
   it('carries the season data, so the browser can keep Next up correct', () => {
     const panel = $('[data-season-status]');
-    expect(JSON.parse(panel.attr('data-season') ?? '{}')).toEqual(season);
+    expect(panel.attr('data-season') ? JSON.parse(panel.attr('data-season') ?? '{}') : undefined).toEqual(season);
     for (const key of ['registration', 'next-label', 'next-title', 'next-date']) {
       expect(panel.find(`[data-status="${key}"]`)).toHaveLength(1);
     }

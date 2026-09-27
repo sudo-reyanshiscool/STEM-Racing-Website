@@ -178,6 +178,8 @@ describe('base styles', () => {
 
   it('switches motion off for people who ask for less of it', () => {
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);
+    expect(globalCss).toMatch(/@media \(prefers-reduced-motion: reduce\)[\s\S]*animation-duration:\s*0\.01ms !important/);
+    expect(globalCss).toMatch(/@media \(prefers-reduced-motion: reduce\)[\s\S]*\.reveal-pending\s*\{[\s\S]*opacity:\s*1[\s\S]*transform:\s*none/);
   });
 
   it('only hides content with classes that the script adds', () => {

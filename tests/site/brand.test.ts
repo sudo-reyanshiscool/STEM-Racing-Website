@@ -42,6 +42,31 @@ describe('brand rules in the CSS', () => {
     }
   });
 
+  it('puts no shadow or rotation on either logo link', () => {
+    const links = rules.filter((rule) => ['.site-header__home', '.site-footer__home'].includes(rule.selector));
+    expect(links).toHaveLength(2);
+    for (const rule of links) expect(rule.body).not.toMatch(/(?:box-shadow|text-shadow|filter|rotate|transform):/);
+  });
+
+  it('takes every shipped CSS colour from a token', () => {
+    const declarations = [...css.matchAll(/(?:^|[;{])(?:color|background(?:-color)?|border(?:-[\w-]+)?-color|outline|box-shadow|text-shadow|fill|stroke):([^;}]+)/g)].map(
+      (match) => (match[1] ?? '').trim(),
+    );
+    for (const value of declarations) {
+      expect(value, `non-token colour: ${value}`).toMatch(
+        /var\(--|^(?:transparent|#0000|0 0|currentColor|CanvasText|inherit|none)$/i,
+      );
+    }
+  });
+
+  it('only hides the phone navigation after JavaScript has started', () => {
+    const hiddenNav = rules.filter(
+      (rule) => rule.selector.includes('.site-nav') && /display:\s*none/.test(rule.body),
+    );
+    expect(hiddenNav.length).toBeGreaterThan(0);
+    for (const rule of hiddenNav) expect(rule.selector).toContain('.js');
+  });
+
   it('keeps the logo at or above its smallest size', () => {
     const logo = rules.find((rule) => rule.selector === '.brand-logo');
     expect(logo?.body).toMatch(/height:\s*max\(32px,/);

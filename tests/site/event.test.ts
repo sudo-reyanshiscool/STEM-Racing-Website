@@ -11,6 +11,10 @@ interface EventData {
 
 const event = contentJson<EventData>('event/event.json');
 
+it('includes the event in the shared structure and brand routes exactly when it is enabled', () => {
+  expect(ROUTES.includes('/event')).toBe(eventEnabled());
+});
+
 // This file checks whichever state event.json is in. The plan checks the other state by hand.
 describe.runIf(!eventEnabled())('event switched off', () => {
   it('builds no event page', () => {

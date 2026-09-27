@@ -1,7 +1,10 @@
 // @vitest-environment happy-dom
 // Runs src/scripts/dates.ts against pages the site has built, on a day the test chooses.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { BUILD_TIMEOUT, copySite, type SiteCopy } from '../helpers/sandbox';
+import { page, root, ROUTES } from '../helpers/site';
 
 /** Puts the body of a built page in the document, as the browser has it just before the scripts run. */
 function open(html: string): void {
@@ -22,6 +25,16 @@ const registerLinks = () => document.querySelectorAll('[data-season-status] a');
 
 afterEach(() => {
   vi.useRealTimers();
+});
+
+it('ships the date-refresh code on every page', () => {
+  for (const route of ROUTES) {
+    const src = page(route)('script[type="module"][src]').attr('src');
+    expect(src, route).toBeTruthy();
+    const bundle = readFileSync(join(root, 'dist', src?.replace(/^\//, '') ?? ''), 'utf8');
+    expect(bundle, route).toContain('data-season-status');
+    expect(bundle, route).toContain('data-dim-past');
+  }
 });
 
 describe('a season with a registration deadline', () => {

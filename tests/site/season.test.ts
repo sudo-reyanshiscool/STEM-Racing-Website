@@ -2,11 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { formatDate, seasonView, sortTimeline, todayIso, type SeasonData } from '../../src/lib/season';
 import { contentFiles, contentJson, page, texts } from '../helpers/site';
 
-const season = contentJson<SeasonData>(`seasons/${contentFiles('seasons', '.json').at(-1)}`);
+const seasonFile = contentFiles('seasons', '.json').at(-1);
+const season = seasonFile ? contentJson<SeasonData>(`seasons/${seasonFile}`) : undefined;
 
 describe('season', () => {
   const $ = page('/season');
-  const sorted = sortTimeline(season.timeline);
+  const sorted = sortTimeline(season?.timeline ?? []);
 
   it('lists the timeline in order', () => {
     expect(texts($, '.timeline h3')).toEqual(sorted.map((item) => item.title));

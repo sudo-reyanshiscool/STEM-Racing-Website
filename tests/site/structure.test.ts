@@ -103,6 +103,10 @@ describe.each(ROUTES)('%s', (route) => {
     expect($(`footer a[href="${site.schoolUrl}"]`)).toHaveLength(1);
   });
 
+  it('keeps the approved footer tagline word for word', () => {
+    expect(clean($('.site-footer__tagline').text())).toBe('Accelerating Futures');
+  });
+
   it('works before any script runs: nothing is hidden in the markup', () => {
     expect($('[hidden]')).toHaveLength(0);
     expect($('.reveal-pending')).toHaveLength(0);
