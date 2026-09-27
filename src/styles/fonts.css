@@ -1,0 +1,76 @@
+/* Brand fonts, self-hosted from the STEM Racing brand pack.
+   Magistral is declared in italic only, so it can never appear upright. */
+@font-face {
+  font-family: 'Magistral';
+  src: url('/fonts/Magistral-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Magistral';
+  src: url('/fonts/Magistral-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MachoModular';
+  src: url('/fonts/MachoModular-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body copy asks for weight 400. The brand pack has no Regular file, so browsers use
+   Medium, the nearest weight. To switch to Regular: put MachoModular-Regular.woff2 in
+   public/fonts and remove the comment marks around the rule below. Nothing else changes.
+
+@font-face {
+  font-family: 'MachoModular';
+  src: url('/fonts/MachoModular-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+@font-face {
+  font-family: 'MachoModular';
+  src: url('/fonts/MachoModular-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MachoModular';
+  src: url('/fonts/MachoModular-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Metric-matched stand-ins. They hold the layout still while the brand fonts load.
+   Figures come from the font files: average glyph width, ascent, descent and line gap. */
+@font-face {
+  font-family: 'Magistral Fallback';
+  src: local('Arial Bold Italic'), local('Arial-BoldItalicMT');
+  font-style: italic;
+  font-weight: 500 700;
+  size-adjust: 100.53%;
+  ascent-override: 69.63%;
+  descent-override: 16.91%;
+  line-gap-override: 32.82%;
+}
+
+@font-face {
+  font-family: 'MachoModular Fallback';
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 96.7%;
+  ascent-override: 93.07%;
+  descent-override: 25.85%;
+  line-gap-override: 0%;
+}

@@ -1,0 +1,50 @@
+/* Brand tokens. Source: STEM Racing Brand Identity Guidelines v1.3, Secondary division theme.
+   Tint values are sampled from the guide. tests/unit/tokens.test.ts reads this file, so keep
+   one declaration per line. */
+:root {
+  /* Core */
+  --carbon-shadow: #05000B;
+  --carbon-800: #261A3D;
+  --carbon-700: #2E2347;
+  --carbon-500: #5B5376;
+  --carbon-300: #A39FB8;
+  --carbon-100: #D7D6E3;
+  --surface-light: #F3F3F7;
+  --white: #FFFFFF;
+
+  /* Secondary division */
+  --ignite-indigo: #312783;
+  --chicane-violet: #961B81;
+  --pitlane-pink: #E6007E;
+  --burnout-orange: #ED6D05;
+  --podium-gold: #FCBC00;
+
+  /* Gradients */
+  --gradient-core: linear-gradient(90deg, var(--carbon-shadow) 0%, var(--carbon-700) 100%);
+  --gradient-secondary: linear-gradient(90deg, var(--ignite-indigo) 0%, var(--chicane-violet) 27%, var(--pitlane-pink) 50%, var(--burnout-orange) 73%, var(--podium-gold) 100%);
+  --gradient-heading: linear-gradient(90deg, var(--chicane-violet) -15%, var(--pitlane-pink) 52%, var(--burnout-orange) 100%);
+
+  /* Type */
+  --font-display: 'Magistral', 'Magistral Fallback', system-ui, sans-serif;
+  --font-body: 'MachoModular', 'MachoModular Fallback', system-ui, sans-serif;
+  --text-small: 0.8125rem;
+  --text-body: 1.0625rem;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-h2: clamp(2rem, 1.55rem + 2vw, 3rem);
+  --text-h1: clamp(2.5rem, 1.6rem + 4.5vw, 5rem);
+  --text-track: clamp(2.75rem, 1rem + 8.5vw, 7.5rem);
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem);
+  --container: 75rem;
+  --section-y: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+  --radius: 0.5rem;
+  --header-h: 6rem;
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --header-h: 4.75rem;
+  }
+}
