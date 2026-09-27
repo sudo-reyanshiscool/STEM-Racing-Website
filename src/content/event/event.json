@@ -1,0 +1,23 @@
+{
+  "enabled": false,
+  "sample": true,
+  "name": "Sample event",
+  "dates": "Date to be confirmed",
+  "venue": "The British School, Dr Jose P Rizal Marg, Chanakyapuri, New Delhi 110021",
+  "schedule": [
+    { "time": "08:00", "activity": "Team registration and pit booth set-up" },
+    { "time": "09:00", "activity": "Scrutineering" },
+    { "time": "10:30", "activity": "Judging and verbal presentations" },
+    { "time": "14:00", "activity": "Racing" },
+    { "time": "16:00", "activity": "Awards" }
+  ],
+  "scrutineeringInfo": "Bring the car fully assembled. Officials check it against the Technical Regulations for the season before it races.",
+  "whatToBring": [
+    "Race cars",
+    "Printed portfolios",
+    "Verbal presentation files",
+    "Pit booth display",
+    "Team uniform"
+  ],
+  "contact": "Ms Sonica Puri, Coordinator, STEM Racing TBS"
+}

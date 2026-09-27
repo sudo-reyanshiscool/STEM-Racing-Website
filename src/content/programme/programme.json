@@ -1,0 +1,29 @@
+{
+  "steps": [
+    { "title": "Form a team", "body": "Three to six students agree roles that cover engineering, enterprise and project management." },
+    { "title": "Business and sponsorship", "body": "Set a budget, write a sponsorship plan and approach partners who can support the season." },
+    { "title": "Design", "body": "Model the car in CAD, working inside the Technical Regulations from the first sketch." },
+    { "title": "Analyse", "body": "Use virtual testing to compare ideas before anything is made." },
+    { "title": "Make", "body": "Manufacture the car body and its components, then finish and assemble them." },
+    { "title": "Test", "body": "Test the car, record the results and improve the design." },
+    { "title": "Pit booth", "body": "Design and build the display that presents the team and its work at the event." },
+    { "title": "Scrutineering", "body": "Officials measure the car against the Technical Regulations before it races." },
+    { "title": "Engineering judging", "body": "Explain the design and manufacturing decisions to the engineering judges." },
+    { "title": "Verbal presentation", "body": "Present the season to a panel of judges." },
+    { "title": "Portfolios", "body": "Submit the portfolios that document the engineering and enterprise work." },
+    { "title": "Race", "body": "Race the car on the 20 metre track." }
+  ],
+  "roles": [
+    { "title": "Design and engineering", "body": "Model, analyse, make and test the car. This group owns the Technical Regulations and the engineering portfolio." },
+    { "title": "Enterprise", "body": "Raise sponsorship, manage the budget and build the team identity. This group owns the enterprise portfolio and the pit booth." },
+    { "title": "Project management", "body": "Set the schedule, run team meetings, track risks and make sure every deadline is met." }
+  ],
+  "judging": [
+    { "title": "Scrutineering", "body": "The race cars are measured against the Technical Regulations." },
+    { "title": "Engineering", "body": "Judges question the team on how the car was designed, analysed, made and tested." },
+    { "title": "Portfolios", "body": "Written evidence of the engineering work and of how the team ran its enterprise and its project." },
+    { "title": "Pit booth", "body": "The display that presents the team, its identity and its partners." },
+    { "title": "Verbal presentation", "body": "A presentation of the season to a panel of judges." },
+    { "title": "Racing", "body": "Performance on the 20 metre track." }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "address": "The British School, Dr Jose P Rizal Marg, Chanakyapuri, New Delhi 110021",
+  "schoolUrl": "https://www.british-school.org/",
+  "stats": [
+    { "value": "8", "label": "TBS teams have represented India at the World Finals" },
+    { "value": "9", "label": "Seasons of STEM Racing at TBS" },
+    { "value": "50+", "label": "Countries take part in STEM Racing" }
+  ],
+  "contacts": [
+    { "name": "Ms Sonica Puri", "role": "Coordinator, STEM Racing TBS" },
+    { "name": "Student mentors", "role": "First point of contact for every team" }
+  ]
+}

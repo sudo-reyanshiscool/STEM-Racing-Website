@@ -1,0 +1,29 @@
+{
+  "year": "2026-27",
+  "name": "Season 9",
+  "registrationOpen": false,
+  "timeline": [
+    {
+      "date": "2026-09-03",
+      "title": "Interview invitations",
+      "description": "Every proposal booklet was reviewed against the published rubric, and teams were invited to interview."
+    },
+    {
+      "date": "2026-09-16",
+      "title": "Parents' briefing",
+      "description": "3:20 pm in the Innovation Lab. The structure of the competition, the judging categories, the season timeline and how families can help."
+    },
+    {
+      "title": "Regional Finals",
+      "description": "The first competition of the season. The organisers set the date and venue."
+    },
+    {
+      "title": "National Finals",
+      "description": "For teams that qualify at the Regional Finals."
+    },
+    {
+      "title": "World Finals",
+      "description": "For teams that qualify at the National Finals."
+    }
+  ]
+}
