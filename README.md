@@ -176,8 +176,26 @@ These are set in Vercel, under Settings, Environment Variables. On your own comp
 |---|---|
 | `DATABASE_URL` | The Supabase pooler address in transaction mode. It ends in `:6543/postgres`. The site signs in as the role `dashboard_app`, which can read and write the dashboard's tables and nothing else. |
 | `SESSION_SECRET` | 32 characters or more, made at random. Changing it signs everyone out. |
-| `MENTOR_CODE_HASH` | The hash of the mentor code, from `npm run dashboard:hash`. To change the mentor code, make a new hash and deploy again. |
+| `MENTOR_CODE_HASH` | The hash of the mentor code, from `npm run dashboard:hash`. To change the mentor code, make a new hash, save it in Vercel and deploy again. That signs out every mentor. |
 | `CRON_SECRET` | Made at random. Vercel sends it with the daily job that keeps the database awake. |
+
+**Sign-in limit.** After 20 wrong codes from one address in 15 minutes, that address is refused for the rest of the 15 minutes. A school shares one address, so this limit is shared by everyone at school.
+
+### The database role
+
+The site signs in to Postgres as `dashboard_app`, not as `postgres`. The role is made once, by hand, in the Supabase SQL editor. Its password is made at random and kept in `DATABASE_URL` in Vercel, and nowhere else.
+
+```sql
+create role dashboard_app login password '<a long random password>' bypassrls;
+grant usage on schema public to dashboard_app;
+grant select, insert, update, delete
+  on teams, deliverables, tasks, notes, links, activity, signin_failures
+  to dashboard_app;
+```
+
+Every table has row level security switched on with no policies, so Supabase's public API returns nothing. `bypassrls` lets this one role past that. A new table needs a `grant` of its own.
+
+In `DATABASE_URL` the user is `dashboard_app.<project ref>`.
 
 ### Working on the dashboard
 

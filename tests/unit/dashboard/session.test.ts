@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   formToken,
+  mentorSessionStands,
+  mentorVersion,
   formTokenMatches,
   newSession,
   readSession,
@@ -72,6 +74,31 @@ describe('sessions', () => {
 
   it('will not sign with a short secret', () => {
     expect(() => signSession(team, 'short')).toThrow('SESSION_SECRET needs 32 characters or more');
+  });
+});
+
+describe('mentor sessions', () => {
+  const HASH = 'scrypt.aaaa.bbbb';
+
+  it('carries a number made from the hash of the mentor code', () => {
+    const version = mentorVersion(HASH, SECRET);
+    expect(Number.isInteger(version)).toBe(true);
+    expect(version).toBeGreaterThan(0);
+    expect(version).toBe(mentorVersion(HASH, SECRET));
+    expect(version).not.toBe(mentorVersion('scrypt.aaaa.cccc', SECRET));
+  });
+
+  it('stands while the mentor code is the one it signed in with', () => {
+    const mentor = newSession('mentor', null, mentorVersion(HASH, SECRET), NOW);
+    expect(mentorSessionStands(mentor, HASH, SECRET)).toBe(true);
+    expect(mentorSessionStands(mentor, 'scrypt.aaaa.cccc', SECRET)).toBe(false);
+    expect(mentorSessionStands(mentor, undefined, SECRET)).toBe(false);
+    expect(mentorSessionStands(mentor, '', SECRET)).toBe(false);
+  });
+
+  it('never stands for a team session or for the old version 0', () => {
+    expect(mentorSessionStands(team, HASH, SECRET)).toBe(false);
+    expect(mentorSessionStands(newSession('mentor', null, 0, NOW), HASH, SECRET)).toBe(false);
   });
 });
 

@@ -4,8 +4,8 @@ import { codeMatches, hashCode, makeCode, normaliseCode } from './codes';
 import type { Db } from './db';
 import { isDeliverableKey, isStatus } from './deliverables';
 import { checkId, checkLink, checkNote, checkTask, LIMITS, text, type Errors } from './fields';
-import { hashAddress, isBlocked, recordFailure } from './limit';
-import { newSession, signSession, type Session } from './session';
+import { countAttempts, forgetAttempt, hashAddress, MAX_FAILURES, recordAttempt } from './limit';
+import { mentorVersion, newSession, signSession, type Session } from './session';
 import {
   addLink,
   addTask,
@@ -53,22 +53,30 @@ function refused(reason: keyof typeof SIGN_IN_MESSAGES): SignInResult {
 export async function signIn(db: Db, input: SignInInput): Promise<SignInResult> {
   const now = input.now ?? new Date();
   const address = hashAddress(input.address, input.secret);
-  if (await isBlocked(db, address, now)) return refused('blocked');
+  // Written down before the code is looked at, so that guesses sent together count together.
+  const attempt = await recordAttempt(db, address, now);
+  const forgotten = async (result: SignInResult) => {
+    await forgetAttempt(db, attempt);
+    return result;
+  };
+  // A refused attempt is forgotten, so that trying while blocked does not make the block longer.
+  if ((await countAttempts(db, address, now)) > MAX_FAILURES) return forgotten(refused('blocked'));
 
   const code = normaliseCode(text(input.code));
   if (code !== undefined) {
     if (input.mentorCodeHash && (await codeMatches(code, input.mentorCodeHash))) {
-      const session = newSession('mentor', null, 0, now.getTime());
-      return { ok: true, session, cookie: signSession(session, input.secret), next: '/dashboard/mentor' };
+      const version = mentorVersion(input.mentorCodeHash, input.secret);
+      const session = newSession('mentor', null, version, now.getTime());
+      return forgotten({ ok: true, session, cookie: signSession(session, input.secret), next: '/dashboard/mentor' });
     }
     for (const team of await listTeamsWithCodes(db)) {
       if (!(await codeMatches(code, team.codeHash))) continue;
-      if (team.archived) return refused('closed');
+      if (team.archived) return forgotten(refused('closed'));
       const session = newSession('team', team.id, team.codeVersion, now.getTime());
-      return { ok: true, session, cookie: signSession(session, input.secret), next: '/dashboard/team' };
+      return forgotten({ ok: true, session, cookie: signSession(session, input.secret), next: '/dashboard/team' });
     }
   }
-  await recordFailure(db, address, now);
+  // The attempt stays written down: it failed.
   return refused('unknown');
 }
 

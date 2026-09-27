@@ -9,7 +9,7 @@ export interface Session {
   role: 'team' | 'mentor';
   /** The team a team session belongs to. Null for a mentor. */
   teamId: number | null;
-  /** The team's code_version when the session began. 0 for a mentor. */
+  /** For a team, its code_version when the session began. For a mentor, mentorVersion(). */
   codeVersion: number;
   /** When the session ends, in seconds since 1970. */
   expires: number;
@@ -58,6 +58,20 @@ export function readSession(value: string | undefined, secret: string, now = Dat
   }
   if (!isSession(parsed) || parsed.expires * 1000 <= now) return undefined;
   return parsed;
+}
+
+/**
+ * A number that stands for the mentor code, made from its hash. A mentor session carries it,
+ * so changing the mentor code ends every mentor session, as resetting a team's code does.
+ */
+export function mentorVersion(mentorCodeHash: string, secret: string): number {
+  // 31 bits, and never 0, which sessions made before this check carried.
+  return (mac(`mentor:${mentorCodeHash}`, secret).readUInt32BE(0) & 0x7fffffff) || 1;
+}
+
+export function mentorSessionStands(session: Session, mentorCodeHash: string | undefined, secret: string): boolean {
+  if (session.role !== 'mentor' || !mentorCodeHash) return false;
+  return session.codeVersion === mentorVersion(mentorCodeHash, secret);
 }
 
 /** The token a form carries. It belongs to one cookie value, so it ends when the session does. */

@@ -69,6 +69,15 @@ describe('the tables', () => {
   });
 });
 
+describe('the sign-in table', () => {
+  it('gives each attempt an id, so that one attempt can be forgotten', async () => {
+    const columns = await db.query<{ name: string }>(
+      `select column_name as name from information_schema.columns where table_name = 'signin_failures' order by 1`,
+    );
+    expect(columns.map((column) => column.name)).toEqual(['address_hash', 'happened_at', 'id']);
+  });
+});
+
 describe('teams', () => {
   it('makes a team that is open, at version 1', async () => {
     expect(await getTeam(db, alpha)).toEqual({

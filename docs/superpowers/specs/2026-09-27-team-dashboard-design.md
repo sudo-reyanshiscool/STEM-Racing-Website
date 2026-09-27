@@ -74,7 +74,9 @@ Success looks like this:
 - The user's codes are shorter than a generated one, and each begins with a word. The limit on failed attempts is what protects them.
 - The session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`, limited to `/dashboard`, and lasts 30 days. It holds the role, the team id and an expiry, signed with HMAC-SHA-256 using `SESSION_SECRET`.
 - Resetting a team's code changes that team's `code_version`. A cookie with an older version is refused, so a reset signs everyone out.
-- Five failed attempts from one address in 15 minutes block that address for 15 minutes. The message does not say whether the code was close.
+- Twenty failed attempts from one address in 15 minutes block that address until the oldest of them is 15 minutes old. The message does not say whether the code was close. The number was 5 until the review of 2026-09-28: a school shares one address, so five wrong codes from one pupil locked out every team.
+- An attempt is recorded before the code is checked and forgotten if the code was right, so guesses sent at the same moment count against each other.
+- A mentor session carries a number made from the hash of the mentor code. Changing the mentor code ends every mentor session.
 - Every form that changes data carries a token tied to the session, checked on the server.
 
 ## Data

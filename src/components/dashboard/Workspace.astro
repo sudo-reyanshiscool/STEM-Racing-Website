@@ -91,8 +91,13 @@ const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'tea
 <section class="dash-block" id="tasks" aria-labelledby="tasks-title">
   <h2 id="tasks-title">Tasks</h2>
   {
-    ['task-done', 'task-delete'].map(
-      (name) => refusal(name) && <p class="dash-message" role="alert">{refusal(name)?.errors.form}</p>,
+    // An edit to a task that has gone has no row to sit beside, so its message is shown here.
+    ['task-done', 'task-delete', 'task-edit'].map(
+      (name) =>
+        refusal(name)?.errors.form &&
+        refusal(name)?.values.id === undefined && (
+          <p class="dash-message" role="alert">{refusal(name)?.errors.form}</p>
+        ),
     )
   }
   {

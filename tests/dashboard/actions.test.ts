@@ -1,7 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { mentorAction, noticeFor, signIn, slugify, workspaceAction } from '../../src/lib/dashboard/actions';
 import { hashCode } from '../../src/lib/dashboard/codes';
-import { readSession } from '../../src/lib/dashboard/session';
+import { MAX_FAILURES } from '../../src/lib/dashboard/limit';
+import { mentorSessionStands, readSession } from '../../src/lib/dashboard/session';
 import { countActivity, getNote, getTeam, listLinks, listTasks, listTeams } from '../../src/lib/dashboard/store';
 import { loadWorkspace } from '../../src/lib/dashboard/workspace';
 import { testDb, type TestDb } from '../helpers/database';
@@ -121,9 +122,9 @@ describe('signing in', () => {
     });
   });
 
-  it('blocks an address after five failures, even with the right code, for 15 minutes', async () => {
+  it('blocks an address after twenty failures, even with the right code, for 15 minutes', async () => {
     const address = '198.51.100.20';
-    for (let i = 0; i < 5; i += 1) expect(await enter('TEST-WRONG-01', address)).toMatchObject({ reason: 'unknown' });
+    for (let i = 0; i < MAX_FAILURES; i += 1) expect(await enter('TEST-WRONG-01', address)).toMatchObject({ reason: 'unknown' });
     expect(await enter(ALPHA_CODE, address)).toEqual({
       ok: false,
       reason: 'blocked',
@@ -136,9 +137,32 @@ describe('signing in', () => {
 
   it('does not count a blocked attempt as a new failure', async () => {
     const address = '198.51.100.22';
-    for (let i = 0; i < 5; i += 1) await enter('TEST-WRONG-01', address);
+    for (let i = 0; i < MAX_FAILURES; i += 1) await enter('TEST-WRONG-01', address);
     for (let i = 0; i < 20; i += 1) await enter('TEST-WRONG-01', address, new Date(NOW.getTime() + 14 * 60_000));
     expect(await enter(ALPHA_CODE, address, new Date(NOW.getTime() + 15 * 60_000))).toMatchObject({ ok: true });
+  });
+
+  it('does not count a sign-in that worked', async () => {
+    const address = '198.51.100.23';
+    for (let i = 0; i < MAX_FAILURES * 2; i += 1) expect(await enter(ALPHA_CODE, address)).toMatchObject({ ok: true });
+  });
+
+  it('lets through no more than twenty of 60 guesses sent at the same moment', async () => {
+    const address = '198.51.100.24';
+    const results = await Promise.all(Array.from({ length: 60 }, () => enter('TEST-WRONG-01', address)));
+    const checked = results.filter((result) => !result.ok && result.reason === 'unknown');
+    const refusedUnread = results.filter((result) => !result.ok && result.reason === 'blocked');
+    expect(checked.length).toBeLessThanOrEqual(MAX_FAILURES);
+    expect(checked.length + refusedUnread.length).toBe(60);
+  });
+
+  it('ends a mentor session when the mentor code is changed or taken away', async () => {
+    const result = await enter(MENTOR_CODE);
+    if (!result.ok) throw new Error('The mentor could not sign in');
+    expect(mentorSessionStands(result.session, mentorHash, SECRET)).toBe(true);
+    expect(mentorSessionStands(result.session, await hashCode('TEST-MENTOR-02'), SECRET)).toBe(false);
+    expect(mentorSessionStands(result.session, undefined, SECRET)).toBe(false);
+    expect(mentorSessionStands(result.session, mentorHash, 't'.repeat(32))).toBe(false);
   });
 
   it('tells an archived team that its workspace is closed', async () => {

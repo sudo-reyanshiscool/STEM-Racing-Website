@@ -12,6 +12,10 @@
 
 **Stages 2 and 3** (mentor overview table, mentor notes, announcements, streaks, holidays) get plans of their own when this one is done.
 
+## After the review
+
+The branch was reviewed on 2026-09-28 after the tasks below were built. Four findings were fixed in the commit "fix: close the findings of the security review", so the code now differs from the listings below in `limit.ts`, `session.ts`, `actions.ts`, `middleware.ts`, `runtime.ts` and `Workspace.astro`, and there is a second migration. The spec holds the rules as they now stand.
+
 ## How this plan was made
 
 Every file in this plan was drafted and run in a scratch copy of the site before it was written down. In that copy: 647 tests pass and 9 are skipped, `npm run check` reports 0 errors and 0 warnings, and the sign-in, team and mentor pages were exercised over HTTP and looked at in a browser at 375 and 800 wide. The scratch copy is thrown away. Nothing in the repository was changed.

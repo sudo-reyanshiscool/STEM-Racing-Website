@@ -17,7 +17,9 @@ export function getDb(): Db {
 }
 
 export function sessionSecret(): string {
-  return need('SESSION_SECRET');
+  const secret = need('SESSION_SECRET');
+  if (secret.length < 32) throw new DashboardUnavailable('SESSION_SECRET needs 32 characters or more');
+  return secret;
 }
 
 /** Undefined when no mentor code has been set. Then no one can sign in as a mentor. */

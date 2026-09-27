@@ -1,13 +1,20 @@
 // Guards every page under /dashboard. The public pages are built ahead of time and pass through.
 import { defineMiddleware } from 'astro:middleware';
 import { DashboardUnavailable } from './lib/dashboard/db';
-import { getDb, sessionSecret } from './lib/dashboard/runtime';
-import { formToken, formTokenMatches, readSession, SESSION_COOKIE } from './lib/dashboard/session';
+import { getDb, mentorCodeHash, sessionSecret } from './lib/dashboard/runtime';
+import {
+  formToken,
+  formTokenMatches,
+  mentorSessionStands,
+  readSession,
+  SESSION_COOKIE,
+} from './lib/dashboard/session';
 import { getTeam } from './lib/dashboard/store';
 
 const SIGN_IN = '/dashboard';
+const UNAVAILABLE = '/dashboard/unavailable';
 /** Pages that need no session. */
-const OPEN = new Set([SIGN_IN, '/dashboard/unavailable', '/dashboard/api/keep-awake']);
+const OPEN = new Set([SIGN_IN, UNAVAILABLE, '/dashboard/api/keep-awake']);
 
 function isDashboard(path: string): boolean {
   return path === SIGN_IN || path.startsWith(`${SIGN_IN}/`);
@@ -19,12 +26,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   let response: Response;
   try {
-    response = await guard();
+    // This page is shown when a setting is missing, so it must need none.
+    response = path === UNAVAILABLE ? await next() : await guard();
   } catch (error) {
     if (!(error instanceof DashboardUnavailable)) throw error;
     console.error('Dashboard unavailable:', error.message);
     // A new request, because a form's body may have been read and cannot be sent on twice.
-    response = await context.rewrite(new Request(new URL('/dashboard/unavailable', context.url)));
+    response = await context.rewrite(new Request(new URL(UNAVAILABLE, context.url)));
   }
   response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   response.headers.set('Cache-Control', 'no-store');
@@ -44,7 +52,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
 
     let team;
-    if (session.role === 'team') {
+    if (session.role === 'mentor') {
+      // Changing the mentor code, or taking it away, ends every mentor session.
+      if (!mentorSessionStands(session, mentorCodeHash(), sessionSecret())) return leave('again');
+    } else {
       team = session.teamId === null ? undefined : await getTeam(getDb(), session.teamId);
       if (!team || team.codeVersion !== session.codeVersion) return leave('again');
       if (team.archived) return leave('closed');
