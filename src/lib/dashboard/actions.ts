@@ -3,17 +3,36 @@
 import { codeMatches, hashCode, makeCode, normaliseCode } from './codes';
 import type { Db } from './db';
 import { isDeliverableKey, isStatus } from './deliverables';
-import { checkId, checkLink, checkNote, checkTask, LIMITS, text, type Errors } from './fields';
+import {
+  checkBody,
+  checkHoliday,
+  checkId,
+  checkLink,
+  checkNote,
+  checkTask,
+  LIMITS,
+  text,
+  type Errors,
+} from './fields';
 import { countAttempts, forgetAttempt, hashAddress, MAX_FAILURES, recordAttempt } from './limit';
 import { mentorVersion, newSession, signSession, type Session } from './session';
 import {
+  addAnnouncement,
+  addHoliday,
   addLink,
+  addMentorNote,
   addTask,
   createTeam,
+  deleteAnnouncement,
+  deleteHoliday,
   deleteLink,
+  deleteMentorNote,
   deleteTask,
+  editAnnouncement,
+  editMentorNote,
   editTask,
   getTeam,
+  listTeams,
   listTeamsWithCodes,
   recordActivity,
   resetCode,
@@ -104,6 +123,15 @@ const NOTICES: Readonly<Record<string, string>> = {
   'link-add': 'Link added.',
   'link-delete': 'Link deleted.',
   'team-archive': 'Team updated.',
+  announce: 'Announcement posted.',
+  'announcement-edit': 'Announcement saved.',
+  'announcement-delete': 'Announcement deleted.',
+  'mentor-note-add': 'Note added.',
+  'mentor-note-edit': 'Note saved.',
+  'mentor-note-delete': 'Note deleted.',
+  'holiday-add': 'Holiday added.',
+  'holiday-delete': 'Holiday deleted.',
+  'task-post': 'Task posted.',
 };
 
 /** The text for a form's name. Undefined for any other text, so an address cannot choose what the page says. */
@@ -114,6 +142,8 @@ export function noticeFor(action: string | null): string | undefined {
 function done(action: string): ActionResult {
   return { ok: true, action, notice: noticeFor(action) ?? 'Saved.' };
 }
+
+const UNKNOWN = 'That form was not recognised.';
 
 /** For a form that names a row that is not there, or not this team's. */
 const GONE = 'That item is no longer there.';
@@ -216,8 +246,32 @@ async function runWorkspaceAction(
       if (id === undefined || !(await deleteLink(db, teamId, id))) return fail(action, { form: GONE });
       return done(action);
     }
+    case 'mentor-note-add':
+    case 'mentor-note-edit':
+    case 'mentor-note-delete': {
+      // A team is told nothing about forms that are a mentor's.
+      if (author !== 'mentor') return fail(action, { form: UNKNOWN });
+      if (action === 'mentor-note-add') {
+        const values = { body: typeof form.get('body') === 'string' ? (form.get('body') as string) : '' };
+        const checked = checkBody(values.body, 'note');
+        if (!checked.ok) return fail(action, checked.errors, values);
+        await addMentorNote(db, teamId, checked.value);
+        return done(action);
+      }
+      const id = checkId(form.get('id'));
+      if (id === undefined) return fail(action, { form: GONE });
+      if (action === 'mentor-note-delete') {
+        if (!(await deleteMentorNote(db, teamId, id))) return fail(action, { form: GONE });
+        return done(action);
+      }
+      const values = { id: String(id), body: typeof form.get('body') === 'string' ? (form.get('body') as string) : '' };
+      const checked = checkBody(values.body, 'note');
+      if (!checked.ok) return fail(action, checked.errors, values);
+      if (!(await editMentorNote(db, teamId, id, checked.value))) return fail(action, { form: GONE });
+      return done(action);
+    }
     default:
-      return fail(action, { form: 'That form was not recognised.' });
+      return fail(action, { form: UNKNOWN });
   }
 }
 
@@ -254,7 +308,22 @@ async function chooseCode(
   return { ok: true, code: typed.toUpperCase().replace(/\s+/g, ' ') };
 }
 
-export async function mentorAction(db: Db, form: FormData, mentorCodeHash: string | undefined): Promise<ActionResult> {
+/** The teams a mentor posts to: one open team, or every open team. Undefined when the choice is neither. */
+async function targetTeams(db: Db, target: string): Promise<{ all: boolean; ids: number[] } | undefined> {
+  const open = (await listTeams(db)).filter((team) => !team.archived);
+  if (target === 'all') return { all: true, ids: open.map((team) => team.id) };
+  const id = checkId(target);
+  return id !== undefined && open.some((team) => team.id === id) ? { all: false, ids: [id] } : undefined;
+}
+
+const NO_TARGET = 'Choose a team from the list.';
+
+export async function mentorAction(
+  db: Db,
+  form: FormData,
+  mentorCodeHash: string | undefined,
+  roles: readonly string[] = [],
+): Promise<ActionResult> {
   const action = text(form.get('action'));
   switch (action) {
     case 'team-add': {
@@ -293,8 +362,57 @@ export async function mentorAction(db: Db, form: FormData, mentorCodeHash: strin
       if (!team || !(await setArchived(db, team.id, archived))) return fail(action, { form: GONE });
       return done(action);
     }
+    case 'announce': {
+      const values = {
+        target: text(form.get('target')),
+        body: typeof form.get('body') === 'string' ? (form.get('body') as string) : '',
+      };
+      const checked = checkBody(values.body, 'announcement');
+      const target = await targetTeams(db, values.target);
+      const errors: Errors = { ...(checked.ok ? {} : checked.errors), ...(target ? {} : { target: NO_TARGET }) };
+      if (!checked.ok || !target) return fail(action, errors, values);
+      await addAnnouncement(db, target.all ? null : (target.ids[0] ?? null), checked.value);
+      return done(action);
+    }
+    case 'announcement-edit': {
+      const id = checkId(form.get('id'));
+      if (id === undefined) return fail(action, { form: GONE });
+      const values = { id: String(id), body: typeof form.get('body') === 'string' ? (form.get('body') as string) : '' };
+      const checked = checkBody(values.body, 'announcement');
+      if (!checked.ok) return fail(action, checked.errors, values);
+      if (!(await editAnnouncement(db, id, checked.value))) return fail(action, { form: GONE });
+      return done(action);
+    }
+    case 'announcement-delete': {
+      const id = checkId(form.get('id'));
+      if (id === undefined || !(await deleteAnnouncement(db, id))) return fail(action, { form: GONE });
+      return done(action);
+    }
+    case 'task-post': {
+      const values = fields(form, ['target', 'title', 'ownerRole', 'dueDate']);
+      const checked = checkTask(values, roles);
+      const target = await targetTeams(db, values.target);
+      const errors: Errors = { ...(checked.ok ? {} : checked.errors), ...(target ? {} : { target: NO_TARGET }) };
+      if (!checked.ok || !target) return fail(action, errors, values);
+      let posted = 0;
+      for (const id of target.ids) if ((await addTask(db, id, checked.value, 'mentor')) !== undefined) posted += 1;
+      if (posted === 0) return fail(action, { form: 'No team could take the task.' }, values);
+      return { ok: true, action, notice: posted === 1 ? 'Task posted to 1 team.' : `Task posted to ${posted} teams.` };
+    }
+    case 'holiday-add': {
+      const values = fields(form, ['label', 'startsOn', 'endsOn']);
+      const checked = checkHoliday(values);
+      if (!checked.ok) return fail(action, checked.errors, values);
+      await addHoliday(db, checked.value);
+      return done(action);
+    }
+    case 'holiday-delete': {
+      const id = checkId(form.get('id'));
+      if (id === undefined || !(await deleteHoliday(db, id))) return fail(action, { form: GONE });
+      return done(action);
+    }
     default:
-      return fail(action, { form: 'That form was not recognised.' });
+      return fail(action, { form: UNKNOWN });
   }
 }
 

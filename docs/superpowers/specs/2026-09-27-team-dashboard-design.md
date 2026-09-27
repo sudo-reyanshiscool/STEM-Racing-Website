@@ -212,6 +212,13 @@ Each stage is usable when it ends.
 | 2 | Mentor overview table with progress and flags, team detail, mentor tasks, mentor notes, announcements. |
 | 3 | Activity log display, streaks, holidays, the "Behind" flag's 14-day rule. The `activity` table is written from stage 1, so streaks have history when they appear. |
 
+## Changes made while building stages 2 and 3
+
+- Resetting a code and archiving a team are on the team's page for mentors, under "Manage this team", not on the list of teams.
+- The overview is a list of rows at every width, each with its figures in words, in place of a table that turns into cards.
+- A task posted to every team goes to every open team. Archived teams get none.
+- A team that has never made a change is counted as idle from the day it was made.
+
 ## Needed from the user
 
 | What | When |

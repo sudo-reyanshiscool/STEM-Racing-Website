@@ -6,7 +6,9 @@ Added on the branch `team-dashboard`. The spec is `docs/superpowers/specs/2026-0
 
 - The site now uses the Vercel adapter. The public pages are still built ahead of time, into `dist/client/`.
 - Pages under `/dashboard` are rendered on request and need the four settings in the README.
-- Stages 2 and 3 are not built: the mentor overview table, mentor notes, announcements and streaks.
+- Stages 2 and 3 were added on 2026-09-28: the mentor overview, mentor notes, announcements, posting a task to every team, holidays and streaks. They were built straight from the spec, with no plan document. The tests are in `tests/dashboard/stage2.test.ts` and `tests/unit/dashboard/streak.test.ts`.
+- A security review on 2026-09-28 found four important faults. All four are fixed. Its three minor findings: two are fixed, and one stands: refreshing the page that shows a new code sends the form again, after the browser asks.
+- The dashboard has not had a visual design pass. The user wants one.
 
 Written 2026-09-27. This one file replaces the session summary, the review report and the notes that were spread across the workspace. Read this first, then the ledger if you need the detail.
 

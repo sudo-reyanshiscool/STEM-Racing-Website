@@ -31,7 +31,7 @@ export interface SeasonView {
   canRegister: boolean;
 }
 
-const SCHOOL_TIME_ZONE = 'Asia/Kolkata';
+export const SCHOOL_TIME_ZONE = 'Asia/Kolkata';
 
 /** Today's date as YYYY-MM-DD in the school's time zone. */
 export function todayIso(now: Date = new Date(), timeZone: string = SCHOOL_TIME_ZONE): string {

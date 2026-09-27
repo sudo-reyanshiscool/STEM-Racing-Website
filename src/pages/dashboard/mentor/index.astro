@@ -1,0 +1,439 @@
+---
+import { getCollection } from 'astro:content';
+import Button from '../../../components/Button.astro';
+import Section from '../../../components/Section.astro';
+import Base from '../../../layouts/Base.astro';
+import { getProgramme } from '../../../lib/content';
+import { mentorAction, noticeFor, type ActionResult } from '../../../lib/dashboard/actions';
+import { CODE_MAX } from '../../../lib/dashboard/codes';
+import { LIMITS } from '../../../lib/dashboard/fields';
+import { loadOverview } from '../../../lib/dashboard/overview';
+import { getDb, mentorCodeHash } from '../../../lib/dashboard/runtime';
+import { listAllAnnouncements, listHolidays } from '../../../lib/dashboard/store';
+import { streakText } from '../../../lib/dashboard/streak';
+import { formatDate, SCHOOL_TIME_ZONE, todayIso } from '../../../lib/season';
+import '../../../styles/dashboard.css';
+
+export const prerender = false;
+
+const dashboard = Astro.locals.dashboard;
+// The middleware sends anyone without a mentor session away before this runs.
+if (dashboard?.session.role !== 'mentor') return Astro.redirect('/dashboard', 303);
+const { token } = dashboard;
+
+const db = getDb();
+const roles = (await getProgramme()).roles.map((role) => role.title);
+let failed: Extract<ActionResult, { ok: false }> | undefined;
+let shown: { team: string; code: string } | undefined;
+let notice = noticeFor(Astro.url.searchParams.get('saved'));
+
+if (Astro.request.method === 'POST') {
+  const result = await mentorAction(db, await Astro.request.formData(), mentorCodeHash(), roles);
+  if (!result.ok) {
+    failed = result;
+    Astro.response.status = 422;
+  } else if (result.shownCode) {
+    // A code is shown on this page alone. It is in no address, so it is in no history.
+    shown = result.shownCode;
+    notice = result.notice;
+  } else {
+    return Astro.redirect(`/dashboard/mentor?saved=${encodeURIComponent(result.action)}`, 303);
+  }
+}
+
+const [rows, announcements, holidays] = await Promise.all([
+  loadOverview(db, todayIso()),
+  listAllAnnouncements(db, SCHOOL_TIME_ZONE),
+  listHolidays(db),
+]);
+const open = rows.filter((row) => !row.team.archived);
+const behind = open.filter((row) => row.behind).length;
+const taken = new Set(rows.map((row) => row.team.name.toLowerCase()));
+const suggestions = (await getCollection('teams'))
+  .map((entry) => entry.data.name)
+  .filter((name, index, names) => names.indexOf(name) === index && !taken.has(name.toLowerCase()))
+  .sort((a, b) => a.localeCompare(b));
+
+const refusal = (name: string, id?: number) =>
+  failed && failed.action === name && (id === undefined || failed.values.id === String(id)) ? failed : undefined;
+const add = refusal('team-add');
+const announce = refusal('announce');
+const post = refusal('task-post');
+const holiday = refusal('holiday-add');
+const gone = failed && failed.errors.form && failed.values.id === undefined ? failed.errors.form : undefined;
+---
+
+<Base title="Mentor dashboard" description="The mentor pages of the STEM Racing dashboard.">
+  <Section surface="dark" labelledby="mentor-title">
+    <div class="stack stack--loose">
+      <div class="dash-head">
+        <div class="stack">
+          <p class="eyebrow">Mentors</p>
+          <h1 id="mentor-title">Teams</h1>
+        </div>
+        <form method="post" action="/dashboard/sign-out">
+          <input type="hidden" name="token" value={token} />
+          <Button variant="ghost" size="small">Sign out</Button>
+        </form>
+      </div>
+
+      {notice && <p class="dash-notice" role="status">{notice}</p>}
+      {
+        shown && (
+          <div class="dash-notice stack" role="status">
+            <p>The code for {shown.team} is below. It is shown once. Write it down now and give it to the team.</p>
+            <p class="dash-code">{shown.code}</p>
+          </div>
+        )
+      }
+      {gone && <p class="dash-message" role="alert">{gone}</p>}
+
+      <section class="dash-block" id="teams" aria-labelledby="teams-title">
+        <h2 id="teams-title">All teams</h2>
+        {
+          rows.length === 0 ? (
+            <p class="muted">No teams yet. Add the first team below.</p>
+          ) : (
+            <>
+              <p>
+                {
+                  behind === 0
+                    ? 'No team is behind.'
+                    : behind === 1
+                      ? '1 team is behind. It is listed first.'
+                      : `${behind} teams are behind. They are listed first.`
+                }
+              </p>
+              <ul class="dash-list">
+                {rows.map((row) => (
+                  <li class="dash-row">
+                    <div class="stack" style="--stack: 0.35rem">
+                      <p class="dash-row__title">
+                        <a href={`/dashboard/mentor/team/${row.team.slug}`}>{row.team.name}</a>
+                      </p>
+                      <p class="dash-row__meta">
+                        {row.team.archived && <span class="tag">Archived</span>}
+                        {row.behind && <span class="tag tag--behind">Behind</span>}
+                        {row.reasons.map((reason) => <span>{reason}</span>)}
+                      </p>
+                      <p class="dash-row__meta">
+                        <span>{row.doneCount} of {row.total} done</span>
+                        {!row.behind && <span>{row.overdue === 0 ? 'Nothing overdue' : `${row.overdue} overdue`}</span>}
+                        <span>
+                          {streakText(row.streak.current)}{row.streak.longest > 0 && `, longest ${row.streak.longest}`}
+                        </span>
+                        <span>
+                          {row.lastActive ? `Last change ${formatDate(row.lastActive)}` : 'No change yet'}
+                        </span>
+                      </p>
+                    </div>
+                    <div class="dash-row__actions">
+                      <Button size="small" variant="ghost" href={`/dashboard/mentor/team/${row.team.slug}`}>
+                        Open
+                        <span class="sr-only">: {row.team.name}</span>
+                      </Button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+      </section>
+
+      <section class="dash-block" id="post" aria-labelledby="post-title">
+        <h2 id="post-title">Post to teams</h2>
+        <form class="dash-form stack card" method="post" action="/dashboard/mentor#post" aria-labelledby="announce-title">
+          <h3 id="announce-title">Post an announcement</h3>
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="announce" />
+          <div class="dash-field dash-narrow">
+            <label for="announce-target">For</label>
+            <select
+              id="announce-target"
+              name="target"
+              aria-invalid={announce?.errors.target ? 'true' : undefined}
+              aria-describedby={announce?.errors.target ? 'announce-target-message' : undefined}
+            >
+              <option value="all">Every team</option>
+              {open.map((row) => (
+                <option value={row.team.id} selected={String(row.team.id) === announce?.values.target}>
+                  {row.team.name}
+                </option>
+              ))}
+            </select>
+            {announce?.errors.target && <p id="announce-target-message" class="dash-message">{announce.errors.target}</p>}
+          </div>
+          <div class="dash-field">
+            <label for="announce-body">Announcement</label>
+            <textarea
+              id="announce-body"
+              name="body"
+              required
+              maxlength={LIMITS.announcement}
+              aria-invalid={announce?.errors.body ? 'true' : undefined}
+              aria-describedby={announce?.errors.body ? 'announce-body-message announce-body-hint' : 'announce-body-hint'}
+              set:text={announce?.values.body ?? ''}
+            />
+            <p id="announce-body-hint" class="dash-hint">Up to {LIMITS.announcement} characters.</p>
+            {announce?.errors.body && <p id="announce-body-message" class="dash-message">{announce.errors.body}</p>}
+          </div>
+          <div class="actions">
+            <Button size="small">Post announcement</Button>
+          </div>
+        </form>
+
+        <form class="dash-form stack card" method="post" action="/dashboard/mentor#post" aria-labelledby="task-post-title">
+          <h3 id="task-post-title">Set a task</h3>
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="task-post" />
+          {post?.errors.form && <p class="dash-message" role="alert">{post.errors.form}</p>}
+          <div class="dash-fields">
+            <div class="dash-field">
+              <label for="post-target">For</label>
+              <select
+                id="post-target"
+                name="target"
+                aria-invalid={post?.errors.target ? 'true' : undefined}
+                aria-describedby={post?.errors.target ? 'post-target-message' : undefined}
+              >
+                <option value="all">Every team</option>
+                {open.map((row) => (
+                  <option value={row.team.id} selected={String(row.team.id) === post?.values.target}>
+                    {row.team.name}
+                  </option>
+                ))}
+              </select>
+              {post?.errors.target && <p id="post-target-message" class="dash-message">{post.errors.target}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="post-title-field">Title</label>
+              <input
+                id="post-title-field"
+                name="title"
+                required
+                maxlength={LIMITS.title}
+                value={post?.values.title}
+                aria-invalid={post?.errors.title ? 'true' : undefined}
+                aria-describedby={post?.errors.title ? 'post-title-message' : undefined}
+              />
+              {post?.errors.title && <p id="post-title-message" class="dash-message">{post.errors.title}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="post-role">Owner</label>
+              <select id="post-role" name="ownerRole">
+                <option value="">No owner</option>
+                {roles.map((role) => <option value={role} selected={role === post?.values.ownerRole}>{role}</option>)}
+              </select>
+              {post?.errors.ownerRole && <p class="dash-message">{post.errors.ownerRole}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="post-due">Due date</label>
+              <input
+                id="post-due"
+                name="dueDate"
+                type="date"
+                value={post?.values.dueDate}
+                aria-invalid={post?.errors.dueDate ? 'true' : undefined}
+                aria-describedby={post?.errors.dueDate ? 'post-due-message' : undefined}
+              />
+              {post?.errors.dueDate && <p id="post-due-message" class="dash-message">{post.errors.dueDate}</p>}
+            </div>
+          </div>
+          <div class="actions">
+            <Button size="small">Set task</Button>
+          </div>
+        </form>
+      </section>
+
+      <section class="dash-block" id="announcements" aria-labelledby="posted-title">
+        <h2 id="posted-title">Announcements posted</h2>
+        {
+          announcements.length === 0 ? (
+            <p class="muted">No announcements yet. What you post above appears here.</p>
+          ) : (
+            <ul class="dash-list">
+              {announcements.map((entry) => {
+                const edit = refusal('announcement-edit', entry.id);
+                return (
+                  <li class="dash-row dash-row--text">
+                    <p class="dash-note">{entry.body}</p>
+                    <p class="dash-row__meta">
+                      <span>{formatDate(entry.postedOn)}</span>
+                      <span>{entry.teamName === null ? 'For every team' : `For ${entry.teamName}`}</span>
+                    </p>
+                    <div class="dash-row__actions">
+                      <form method="post" action="/dashboard/mentor#announcements">
+                        <input type="hidden" name="token" value={token} />
+                        <input type="hidden" name="id" value={entry.id} />
+                        <Button size="small" variant="ghost" name="action" value="announcement-delete">
+                          Delete
+                          <span class="sr-only"> announcement of {formatDate(entry.postedOn)}</span>
+                        </Button>
+                      </form>
+                    </div>
+                    <details open={edit !== undefined}>
+                      <summary>
+                        Edit
+                        <span class="sr-only"> announcement of {formatDate(entry.postedOn)}</span>
+                      </summary>
+                      <form class="dash-form stack" method="post" action="/dashboard/mentor#announcements">
+                        <input type="hidden" name="token" value={token} />
+                        <input type="hidden" name="action" value="announcement-edit" />
+                        <input type="hidden" name="id" value={entry.id} />
+                        {edit?.errors.form && <p class="dash-message" role="alert">{edit.errors.form}</p>}
+                        <div class="dash-field">
+                          <label for={`announcement-${entry.id}`}>Announcement</label>
+                          <textarea
+                            id={`announcement-${entry.id}`}
+                            name="body"
+                            required
+                            maxlength={LIMITS.announcement}
+                            aria-invalid={edit?.errors.body ? 'true' : undefined}
+                            set:text={edit?.values.body ?? entry.body}
+                          />
+                          {edit?.errors.body && <p class="dash-message">{edit.errors.body}</p>}
+                        </div>
+                        <div class="actions">
+                          <Button size="small">Save announcement</Button>
+                        </div>
+                      </form>
+                    </details>
+                  </li>
+                );
+              })}
+            </ul>
+          )
+        }
+      </section>
+
+      <section class="dash-block" id="holidays" aria-labelledby="holidays-title">
+        <h2 id="holidays-title">Holidays</h2>
+        <p>A week that is all holiday does not break a streak, and holiday days do not count toward being behind.</p>
+        {
+          holidays.length === 0 ? (
+            <p class="muted">No holidays yet. Add the school's holiday dates below.</p>
+          ) : (
+            <ul class="dash-list">
+              {holidays.map((entry) => (
+                <li class="dash-row">
+                  <div>
+                    <p class="dash-row__title">{entry.label}</p>
+                    <p class="dash-row__meta">
+                      {entry.startsOn === entry.endsOn
+                        ? formatDate(entry.startsOn)
+                        : `${formatDate(entry.startsOn)} to ${formatDate(entry.endsOn)}`}
+                    </p>
+                  </div>
+                  <form class="dash-row__actions" method="post" action="/dashboard/mentor#holidays">
+                    <input type="hidden" name="token" value={token} />
+                    <input type="hidden" name="id" value={entry.id} />
+                    <Button size="small" variant="ghost" name="action" value="holiday-delete">
+                      Delete
+                      <span class="sr-only">: {entry.label}</span>
+                    </Button>
+                  </form>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <form class="dash-form stack card" method="post" action="/dashboard/mentor#holidays" aria-labelledby="holiday-add-title">
+          <h3 id="holiday-add-title">Add a holiday</h3>
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="holiday-add" />
+          <div class="dash-fields">
+            <div class="dash-field">
+              <label for="holiday-label">Name</label>
+              <input
+                id="holiday-label"
+                name="label"
+                required
+                maxlength={LIMITS.holidayLabel}
+                value={holiday?.values.label}
+                aria-invalid={holiday?.errors.label ? 'true' : undefined}
+                aria-describedby={holiday?.errors.label ? 'holiday-label-message' : undefined}
+              />
+              {holiday?.errors.label && <p id="holiday-label-message" class="dash-message">{holiday.errors.label}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="holiday-start">First day</label>
+              <input
+                id="holiday-start"
+                name="startsOn"
+                type="date"
+                required
+                value={holiday?.values.startsOn}
+                aria-invalid={holiday?.errors.startsOn ? 'true' : undefined}
+                aria-describedby={holiday?.errors.startsOn ? 'holiday-start-message' : undefined}
+              />
+              {holiday?.errors.startsOn && <p id="holiday-start-message" class="dash-message">{holiday.errors.startsOn}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="holiday-end">Last day</label>
+              <input
+                id="holiday-end"
+                name="endsOn"
+                type="date"
+                required
+                value={holiday?.values.endsOn}
+                aria-invalid={holiday?.errors.endsOn ? 'true' : undefined}
+                aria-describedby={holiday?.errors.endsOn ? 'holiday-end-message' : undefined}
+              />
+              {holiday?.errors.endsOn && <p id="holiday-end-message" class="dash-message">{holiday.errors.endsOn}</p>}
+            </div>
+          </div>
+          <div class="actions">
+            <Button size="small">Add holiday</Button>
+          </div>
+        </form>
+      </section>
+
+      <section class="dash-block" id="add" aria-labelledby="add-title">
+        <h2 id="add-title">Add a team</h2>
+        <form class="dash-form stack card" method="post" action="/dashboard/mentor#add">
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="team-add" />
+          <div class="dash-fields">
+            <div class="dash-field">
+              <label for="team-name">Team name</label>
+              <input
+                id="team-name"
+                name="name"
+                required
+                maxlength="80"
+                list="team-names"
+                autocomplete="off"
+                value={add?.values.name}
+                aria-invalid={add?.errors.name ? 'true' : undefined}
+                aria-describedby={add?.errors.name ? 'team-name-message' : undefined}
+              />
+              <datalist id="team-names">{suggestions.map((name) => <option value={name} />)}</datalist>
+              {add?.errors.name && <p id="team-name-message" class="dash-message">{add.errors.name}</p>}
+            </div>
+            <div class="dash-field">
+              <label for="team-code">Access code</label>
+              <input
+                id="team-code"
+                name="code"
+                maxlength={CODE_MAX * 2}
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-invalid={add?.errors.code ? 'true' : undefined}
+                aria-describedby={add?.errors.code ? 'team-code-message team-code-hint' : 'team-code-hint'}
+              />
+              <p id="team-code-hint" class="dash-hint">
+                Leave empty to have a code made. Letters and digits, 6 or more. Hyphens and spaces are ignored.
+              </p>
+              {add?.errors.code && <p id="team-code-message" class="dash-message">{add.errors.code}</p>}
+            </div>
+          </div>
+          <div class="actions">
+            <Button>Add team</Button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </Section>
+</Base>

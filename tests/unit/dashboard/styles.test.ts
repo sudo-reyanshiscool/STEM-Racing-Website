@@ -61,10 +61,10 @@ describe('dashboard styles', () => {
     for (const file of sources) expect(readFileSync(join(root, file), 'utf8'), file).not.toMatch(/<style/);
   });
 
-  it('sets nothing but a width in a style attribute', () => {
+  it('sets nothing but a width or a gap in a style attribute', () => {
     for (const file of sources) {
       for (const match of readFileSync(join(root, file), 'utf8').matchAll(/\sstyle=\{?["'`]([^"'`]*)/g)) {
-        expect(match[1], file).toMatch(/^width: \$\{percent\}%$/);
+        expect(match[1], file).toMatch(/^(?:width: \$\{percent\}%|--stack: 0\.35rem)$/);
       }
     }
   });
@@ -78,5 +78,8 @@ describe('dashboard styles', () => {
     const workspace = readFileSync(join(root, 'src/components/dashboard/Workspace.astro'), 'utf8');
     expect(workspace).toMatch(/tag--overdue">Overdue</);
     expect(workspace).toMatch(/tag--mentor">From your mentor</);
+    const overview = readFileSync(join(root, 'src/pages/dashboard/mentor/index.astro'), 'utf8');
+    expect(overview).toMatch(/tag--behind">Behind</);
+    expect(overview).toMatch(/row\.reasons\.map/);
   });
 });

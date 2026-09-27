@@ -4,6 +4,10 @@ export const LIMITS = {
   title: 120,
   note: 2000,
   linkLabel: 60,
+  mentorNote: 2000,
+  announcement: 1000,
+  holidayLabel: 60,
+  holidayDays: 366,
   url: 2000,
   tasks: 200,
   links: 30,
@@ -94,4 +98,42 @@ export function checkId(input: unknown): number | undefined {
   const value = text(input);
   if (!/^[1-9]\d{0,8}$/.test(value)) return undefined;
   return Number(value);
+}
+
+/** Text a mentor writes for a team: a note or an announcement. The name is used in the messages. */
+export function checkBody(input: unknown, name: 'note' | 'announcement'): Checked<string> {
+  const body = text(input);
+  const limit = name === 'note' ? LIMITS.mentorNote : LIMITS.announcement;
+  if (body === '') return { ok: false, errors: { body: `Write the ${name}.` } };
+  if (length(body) > limit) {
+    return { ok: false, errors: { body: `Keep the ${name} to ${limit} characters or fewer.` } };
+  }
+  return { ok: true, value: body };
+}
+
+export interface HolidayFields {
+  label: string;
+  startsOn: string;
+  endsOn: string;
+}
+
+export function checkHoliday(input: { label: unknown; startsOn: unknown; endsOn: unknown }): Checked<HolidayFields> {
+  const label = text(input.label);
+  const startsOn = text(input.startsOn);
+  const endsOn = text(input.endsOn);
+  const errors: Errors = {};
+  const badDate = 'Use a date on the calendar, in the form 2026-10-02.';
+  if (label === '') errors.label = 'Give the holiday a name.';
+  else if (length(label) > LIMITS.holidayLabel) {
+    errors.label = `Keep the name to ${LIMITS.holidayLabel} characters or fewer.`;
+  }
+  if (!isIsoDate(startsOn)) errors.startsOn = badDate;
+  if (!isIsoDate(endsOn)) errors.endsOn = badDate;
+  if (isIsoDate(startsOn) && isIsoDate(endsOn)) {
+    const days = (Date.parse(`${endsOn}T00:00:00Z`) - Date.parse(`${startsOn}T00:00:00Z`)) / 86_400_000;
+    if (days < 0) errors.endsOn = 'The last day cannot be before the first.';
+    else if (days >= LIMITS.holidayDays) errors.endsOn = 'A holiday can last a year at most.';
+  }
+  if (Object.keys(errors).length > 0) return { ok: false, errors };
+  return { ok: true, value: { label, startsOn, endsOn } };
 }

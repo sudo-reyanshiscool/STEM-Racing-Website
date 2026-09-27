@@ -2,7 +2,7 @@
 // id as its second argument and names it in the statement, so no row of another team can match.
 import type { Db } from './db';
 import { isDeliverableKey, isStatus, type DeliverableKey, type Status } from './deliverables';
-import { LIMITS, type LinkFields, type TaskFields } from './fields';
+import { LIMITS, type HolidayFields, type LinkFields, type TaskFields } from './fields';
 
 export type Author = 'team' | 'mentor';
 
@@ -26,6 +26,42 @@ export interface Task {
   dueDate: string | null;
   done: boolean;
   createdBy: Author;
+}
+
+export interface Announcement {
+  id: number;
+  /** Null when the announcement is for every team. */
+  teamId: number | null;
+  body: string;
+  /** YYYY-MM-DD in the school's time. */
+  postedOn: string;
+}
+
+export interface AnnouncementForMentor extends Announcement {
+  /** Null when the announcement is for every team. */
+  teamName: string | null;
+}
+
+export interface MentorNote {
+  id: number;
+  body: string;
+  /** YYYY-MM-DD in the school's time. */
+  writtenOn: string;
+}
+
+export interface HolidayRow {
+  id: number;
+  label: string;
+  startsOn: string;
+  endsOn: string;
+}
+
+export interface TeamTotals {
+  teamId: number;
+  doneCount: number;
+  overdue: number;
+  /** YYYY-MM-DD in the school's time. */
+  createdOn: string;
 }
 
 export interface Link {
@@ -209,4 +245,122 @@ export async function countActivity(db: Db, teamId: number): Promise<number> {
     [teamId],
   );
   return rows[0]?.count ?? 0;
+}
+
+/** The days on which a team made a change, in the school's time, oldest first. */
+export async function activityDays(db: Db, teamId: number, timeZone: string): Promise<string[]> {
+  const rows = await db.query<{ day: string }>(
+    `select distinct to_char(happened_at at time zone $2, 'YYYY-MM-DD') as day
+     from activity where team_id = $1 order by day`,
+    [teamId, timeZone],
+  );
+  return rows.map((row) => row.day);
+}
+
+/** The same for every team at once, for the mentor overview. */
+export async function activityDaysByTeam(db: Db, timeZone: string): Promise<Map<number, string[]>> {
+  const rows = await db.query<{ teamId: number; day: string }>(
+    `select distinct team_id as "teamId", to_char(happened_at at time zone $1, 'YYYY-MM-DD') as day
+     from activity order by day`,
+    [timeZone],
+  );
+  const days = new Map<number, string[]>();
+  for (const row of rows) days.set(row.teamId, [...(days.get(row.teamId) ?? []), row.day]);
+  return days;
+}
+
+/** For each team: lines done, tasks overdue on the day given, and the day the team was made. */
+export function teamTotals(db: Db, today: string, timeZone: string): Promise<TeamTotals[]> {
+  return db.query<TeamTotals>(
+    `select t.id as "teamId",
+       (select count(*)::int from deliverables d where d.team_id = t.id and d.status = 'done') as "doneCount",
+       (select count(*)::int from tasks k where k.team_id = t.id and not k.done and k.due_date < $1::date) as overdue,
+       to_char(t.created_at at time zone $2, 'YYYY-MM-DD') as "createdOn"
+     from teams t`,
+    [today, timeZone],
+  );
+}
+
+// What mentors write
+
+const ANNOUNCEMENT = `a.id, a.team_id as "teamId", a.body, to_char(a.created_at at time zone $1, 'YYYY-MM-DD') as "postedOn"`;
+
+/** Announcements for one team and for every team, newest first. */
+export function listAnnouncements(db: Db, teamId: number, timeZone = 'UTC'): Promise<Announcement[]> {
+  return db.query<Announcement>(
+    `select ${ANNOUNCEMENT} from announcements a
+     where a.team_id = $2 or a.team_id is null
+     order by a.created_at desc, a.id desc`,
+    [timeZone, teamId],
+  );
+}
+
+export function listAllAnnouncements(db: Db, timeZone = 'UTC'): Promise<AnnouncementForMentor[]> {
+  return db.query<AnnouncementForMentor>(
+    `select ${ANNOUNCEMENT}, t.name as "teamName"
+     from announcements a left join teams t on t.id = a.team_id
+     order by a.created_at desc, a.id desc`,
+    [timeZone],
+  );
+}
+
+export async function addAnnouncement(db: Db, teamId: number | null, body: string): Promise<void> {
+  await db.query('insert into announcements (team_id, body) values ($1, $2)', [teamId, body]);
+}
+
+export async function editAnnouncement(db: Db, id: number, body: string): Promise<boolean> {
+  const rows = await db.query('update announcements set body = $2 where id = $1 returning id', [id, body]);
+  return rows.length === 1;
+}
+
+export async function deleteAnnouncement(db: Db, id: number): Promise<boolean> {
+  const rows = await db.query('delete from announcements where id = $1 returning id', [id]);
+  return rows.length === 1;
+}
+
+export function listMentorNotes(db: Db, teamId: number, timeZone = 'UTC'): Promise<MentorNote[]> {
+  return db.query<MentorNote>(
+    `select id, body, to_char(created_at at time zone $2, 'YYYY-MM-DD') as "writtenOn"
+     from mentor_notes where team_id = $1 order by created_at desc, id desc`,
+    [teamId, timeZone],
+  );
+}
+
+export async function addMentorNote(db: Db, teamId: number, body: string): Promise<void> {
+  await db.query('insert into mentor_notes (team_id, body) values ($1, $2)', [teamId, body]);
+}
+
+export async function editMentorNote(db: Db, teamId: number, id: number, body: string): Promise<boolean> {
+  const rows = await db.query(
+    'update mentor_notes set body = $3 where team_id = $1 and id = $2 returning id',
+    [teamId, id, body],
+  );
+  return rows.length === 1;
+}
+
+export async function deleteMentorNote(db: Db, teamId: number, id: number): Promise<boolean> {
+  const rows = await db.query('delete from mentor_notes where team_id = $1 and id = $2 returning id', [teamId, id]);
+  return rows.length === 1;
+}
+
+// Holidays
+
+export function listHolidays(db: Db): Promise<HolidayRow[]> {
+  return db.query<HolidayRow>(
+    `select id, label, to_char(starts_on, 'YYYY-MM-DD') as "startsOn", to_char(ends_on, 'YYYY-MM-DD') as "endsOn"
+     from holidays order by starts_on, id`,
+  );
+}
+
+export async function addHoliday(db: Db, holiday: HolidayFields): Promise<void> {
+  await db.query('insert into holidays (label, starts_on, ends_on) values ($1, $2::date, $3::date)', [
+    holiday.label,
+    holiday.startsOn,
+    holiday.endsOn,
+  ]);
+}
+
+export async function deleteHoliday(db: Db, id: number): Promise<boolean> {
+  const rows = await db.query('delete from holidays where id = $1 returning id', [id]);
+  return rows.length === 1;
 }

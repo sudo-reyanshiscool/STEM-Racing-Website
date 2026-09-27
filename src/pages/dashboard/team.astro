@@ -6,6 +6,7 @@ import Base from '../../layouts/Base.astro';
 import { getCurrentSeason, getProgramme } from '../../lib/content';
 import { noticeFor, workspaceAction, type ActionResult } from '../../lib/dashboard/actions';
 import { getDb } from '../../lib/dashboard/runtime';
+import { streakText } from '../../lib/dashboard/streak';
 import { loadWorkspace } from '../../lib/dashboard/workspace';
 import { todayIso } from '../../lib/season';
 import '../../styles/dashboard.css';
@@ -29,7 +30,9 @@ if (Astro.request.method === 'POST') {
 }
 
 const notice = noticeFor(Astro.url.searchParams.get('saved'));
-const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), todayIso());
+const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), todayIso(), {
+  allAnnouncements: Astro.url.searchParams.has('all'),
+});
 ---
 
 <Base title={`${team.name} workspace`} description="A team workspace on the STEM Racing dashboard.">
@@ -39,6 +42,7 @@ const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), tod
         <div class="stack">
           <p class="eyebrow">Team workspace</p>
           <h1 id="workspace-title">{team.name}</h1>
+          <p class="dash-streak">{streakText(workspace.streak.current)}</p>
         </div>
         <form method="post" action="/dashboard/sign-out">
           <input type="hidden" name="token" value={token} />
@@ -46,7 +50,15 @@ const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), tod
         </form>
       </div>
       {notice && <p class="dash-notice" role="status">{notice}</p>}
-      <Workspace workspace={workspace} author="team" action="/dashboard/team" token={token} roles={roles} failed={failed} />
+      <Workspace
+        workspace={workspace}
+        author="team"
+        action="/dashboard/team"
+        token={token}
+        roles={roles}
+        allAnnouncementsHref="/dashboard/team?all=1#announcements"
+        failed={failed}
+      />
     </div>
   </Section>
 </Base>

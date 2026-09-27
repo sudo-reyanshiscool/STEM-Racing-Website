@@ -159,8 +159,8 @@ Teams and mentors sign in at `/dashboard` with an access code. The link is in th
 
 | Who | Sees |
 |---|---|
-| A team | Its own workspace: deliverables, the next deadline, tasks, a status note and links |
-| A mentor | Every team, with forms to add a team, reset a code and archive a team |
+| A team | Its own workspace: announcements, the next deadline, deliverables, tasks, notes from mentors, its own status note and links, and its streak |
+| A mentor | Every team in one list, with the teams that are behind first. Forms to post an announcement or a task to one team or all, set holidays and add a team. Each team's page has its workspace, notes for the team, and forms to reset its code or archive it. |
 
 **Codes.** A mentor chooses a team's code or leaves the field empty to have one made. A code is shown once. Only its hash is stored, so a lost code cannot be looked up: reset it. Resetting a code signs out everyone who used the old one. Never write a code in this repository.
 
@@ -179,6 +179,12 @@ These are set in Vercel, under Settings, Environment Variables. On your own comp
 | `MENTOR_CODE_HASH` | The hash of the mentor code, from `npm run dashboard:hash`. To change the mentor code, make a new hash, save it in Vercel and deploy again. That signs out every mentor. |
 | `CRON_SECRET` | Made at random. Vercel sends it with the daily job that keeps the database awake. |
 
+**Behind.** A team is marked "Behind" when it has an overdue task, or has made no change for 14 days. Days inside a holiday are left out. The list says which.
+
+**Streaks.** A week runs from Monday to Sunday, in New Delhi time, and counts when the team made one change or more. A week that is all holiday neither counts nor breaks the streak. Only the team's own changes count, not a mentor's.
+
+**Holidays** are set by mentors on the mentor page. Add the school's holiday dates before the first break, or streaks will end over it.
+
 **Sign-in limit.** After 20 wrong codes from one address in 15 minutes, that address is refused for the rest of the 15 minutes. A school shares one address, so this limit is shared by everyone at school.
 
 ### The database role
@@ -189,11 +195,12 @@ The site signs in to Postgres as `dashboard_app`, not as `postgres`. The role is
 create role dashboard_app login password '<a long random password>' bypassrls;
 grant usage on schema public to dashboard_app;
 grant select, insert, update, delete
-  on teams, deliverables, tasks, notes, links, activity, signin_failures
+  on teams, deliverables, tasks, notes, links, activity, signin_failures,
+     mentor_notes, announcements, holidays
   to dashboard_app;
 ```
 
-Every table has row level security switched on with no policies, so Supabase's public API returns nothing. `bypassrls` lets this one role past that. A new table needs a `grant` of its own.
+Every table has row level security switched on with no policies, so Supabase's public API returns nothing. `bypassrls` lets this one role past that. A new table needs a `grant` of its own. Put it in the migration inside a check that the role exists, as `0003_dashboard_stages_2_3.sql` does, because the role is not there in a test database.
 
 In `DATABASE_URL` the user is `dashboard_app.<project ref>`.
 

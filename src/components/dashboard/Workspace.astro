@@ -1,6 +1,6 @@
 ---
-// One team's workspace. The team sees it at /dashboard/team. In stage 2 a mentor sees the same
-// view at /dashboard/mentor/team/[slug].
+// One team's workspace. The team sees it at /dashboard/team. A mentor sees the same view, with
+// the forms that are a mentor's, at /dashboard/mentor/team/[slug].
 import type { ActionResult } from '../../lib/dashboard/actions';
 import { DELIVERABLES, STATUSES } from '../../lib/dashboard/deliverables';
 import { LIMITS } from '../../lib/dashboard/fields';
@@ -17,11 +17,13 @@ interface Props {
   action: string;
   token: string;
   roles: readonly string[];
+  /** Where the link to the older announcements goes. */
+  allAnnouncementsHref: string;
   /** The form that was refused, to show its messages and what was typed. */
   failed?: Extract<ActionResult, { ok: false }> | undefined;
 }
 
-const { workspace, author, action, token, roles, failed } = Astro.props;
+const { workspace, author, action, token, roles, allAnnouncementsHref, failed } = Astro.props;
 const total = DELIVERABLES.length;
 const percent = Math.round((workspace.doneCount / total) * 100);
 const statusLabel = (value: string) => STATUSES.find((status) => status.value === value)?.label ?? value;
@@ -32,8 +34,39 @@ const refusal = (name: string, id?: number) =>
 const addTask = refusal('task-add');
 const note = refusal('note');
 const addLink = refusal('link-add');
+const addMentorNote = refusal('mentor-note-add');
 const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'team';
 ---
+
+<section class="dash-block" id="announcements" aria-labelledby="announcements-title">
+  <h2 id="announcements-title">Announcements</h2>
+  {
+    workspace.announcements.length === 0 ? (
+      <p class="muted">No announcements yet. What your mentors post for your team appears here.</p>
+    ) : (
+      <ul class="dash-list">
+        {workspace.announcements.map((entry) => (
+          <li class="dash-row dash-row--text">
+            <p class="dash-note">{entry.body}</p>
+            <p class="dash-row__meta">
+              <span>{formatDate(entry.postedOn)}</span>
+              <span>{entry.teamId === null ? 'For every team' : 'For this team'}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    workspace.moreAnnouncements > 0 && (
+      <p>
+        <a href={allAnnouncementsHref}>
+          Show {workspace.moreAnnouncements} older {workspace.moreAnnouncements === 1 ? 'announcement' : 'announcements'}
+        </a>
+      </p>
+    )
+  }
+</section>
 
 <section class="dash-block" aria-labelledby="deadline-title">
   <h2 id="deadline-title">Next deadline</h2>
@@ -102,7 +135,7 @@ const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'tea
   }
   {
     workspace.tasks.length === 0 ? (
-      <p class="muted">No tasks yet. Tasks from your mentor and tasks your team adds appear here.</p>
+      <p class="muted">No tasks yet. Tasks from mentors and tasks the team adds appear here.</p>
     ) : (
       <ul class="dash-list">
         {workspace.tasks.map((task) => {
@@ -210,7 +243,7 @@ const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'tea
   }
 
   <form class="dash-form stack card" method="post" action={`${action}#tasks`} aria-labelledby="task-add-title">
-    <h3 id="task-add-title">Add a task</h3>
+    <h3 id="task-add-title">{author === 'mentor' ? 'Set a task for this team' : 'Add a task'}</h3>
     <input type="hidden" name="token" value={token} />
     <input type="hidden" name="action" value="task-add" />
     {addTask?.errors.form && <p class="dash-message" role="alert">{addTask.errors.form}</p>}
@@ -260,8 +293,99 @@ const canEdit = (createdBy: Author) => author === 'mentor' || createdBy === 'tea
   </form>
 </section>
 
+<section class="dash-block" id="mentor-notes" aria-labelledby="mentor-notes-title">
+  <h2 id="mentor-notes-title">Notes from your mentor</h2>
+  {refusal('mentor-note-delete') && <p class="dash-message" role="alert">{refusal('mentor-note-delete')?.errors.form}</p>}
+  {
+    workspace.mentorNotes.length === 0 ? (
+      <p class="muted">No notes yet. What your mentors write for your team appears here.</p>
+    ) : (
+      <ul class="dash-list">
+        {workspace.mentorNotes.map((entry) => {
+          const edit = refusal('mentor-note-edit', entry.id);
+          return (
+            <li class="dash-row dash-row--text">
+              <p class="dash-note">{entry.body}</p>
+              <p class="dash-row__meta">
+                <span>{formatDate(entry.writtenOn)}</span>
+              </p>
+              {author === 'mentor' && (
+                <div class="dash-row__actions">
+                  <form method="post" action={`${action}#mentor-notes`}>
+                    <input type="hidden" name="token" value={token} />
+                    <input type="hidden" name="id" value={entry.id} />
+                    <Button size="small" variant="ghost" name="action" value="mentor-note-delete">
+                      Delete
+                      <span class="sr-only"> note of {formatDate(entry.writtenOn)}</span>
+                    </Button>
+                  </form>
+                </div>
+              )}
+              {author === 'mentor' && (
+                <details open={edit !== undefined}>
+                  <summary>
+                    Edit
+                    <span class="sr-only"> note of {formatDate(entry.writtenOn)}</span>
+                  </summary>
+                  <form class="dash-form stack" method="post" action={`${action}#mentor-notes`}>
+                    <input type="hidden" name="token" value={token} />
+                    <input type="hidden" name="action" value="mentor-note-edit" />
+                    <input type="hidden" name="id" value={entry.id} />
+                    {edit?.errors.form && <p class="dash-message" role="alert">{edit.errors.form}</p>}
+                    <div class="dash-field">
+                      <label for={`mentor-note-${entry.id}`}>Note</label>
+                      <textarea
+                        id={`mentor-note-${entry.id}`}
+                        name="body"
+                        required
+                        maxlength={LIMITS.mentorNote}
+                        aria-invalid={edit?.errors.body ? 'true' : undefined}
+                        set:text={edit?.values.body ?? entry.body}
+                      />
+                      {edit?.errors.body && <p class="dash-message">{edit.errors.body}</p>}
+                    </div>
+                    <div class="actions">
+                      <Button size="small">Save note</Button>
+                    </div>
+                  </form>
+                </details>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+  {
+    author === 'mentor' && (
+      <form class="dash-form stack card" method="post" action={`${action}#mentor-notes`} aria-labelledby="mentor-note-add-title">
+        <h3 id="mentor-note-add-title">Write a note for this team</h3>
+        <input type="hidden" name="token" value={token} />
+        <input type="hidden" name="action" value="mentor-note-add" />
+        <div class="dash-field">
+          <label for="mentor-note">Note</label>
+          <textarea
+            id="mentor-note"
+            name="body"
+            required
+            maxlength={LIMITS.mentorNote}
+            aria-invalid={addMentorNote?.errors.body ? 'true' : undefined}
+            aria-describedby={addMentorNote?.errors.body ? 'mentor-note-message mentor-note-hint' : 'mentor-note-hint'}
+            set:text={addMentorNote?.values.body ?? ''}
+          />
+          <p id="mentor-note-hint" class="dash-hint">The team can read this. Up to {LIMITS.mentorNote} characters.</p>
+          {addMentorNote?.errors.body && <p id="mentor-note-message" class="dash-message">{addMentorNote.errors.body}</p>}
+        </div>
+        <div class="actions">
+          <Button size="small">Add note</Button>
+        </div>
+      </form>
+    )
+  }
+</section>
+
 <section class="dash-block" id="notes" aria-labelledby="notes-title">
-  <h2 id="notes-title">Notes and links</h2>
+  <h2 id="notes-title">{author === 'team' ? 'Your notes and links' : 'The team\'s notes and links'}</h2>
   {
     author === 'team' ? (
       <form class="dash-form stack" method="post" action={`${action}#notes`}>

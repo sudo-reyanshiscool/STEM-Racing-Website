@@ -1,0 +1,161 @@
+---
+import Button from '../../../../components/Button.astro';
+import Workspace from '../../../../components/dashboard/Workspace.astro';
+import Section from '../../../../components/Section.astro';
+import Base from '../../../../layouts/Base.astro';
+import { getCurrentSeason, getProgramme } from '../../../../lib/content';
+import { mentorAction, noticeFor, workspaceAction, type ActionResult } from '../../../../lib/dashboard/actions';
+import { CODE_MAX } from '../../../../lib/dashboard/codes';
+import { text } from '../../../../lib/dashboard/fields';
+import { getDb, mentorCodeHash } from '../../../../lib/dashboard/runtime';
+import { listTeams } from '../../../../lib/dashboard/store';
+import { streakText } from '../../../../lib/dashboard/streak';
+import { loadWorkspace } from '../../../../lib/dashboard/workspace';
+import { todayIso } from '../../../../lib/season';
+import '../../../../styles/dashboard.css';
+
+export const prerender = false;
+
+const dashboard = Astro.locals.dashboard;
+// The middleware sends anyone without a mentor session away before this runs.
+if (dashboard?.session.role !== 'mentor') return Astro.redirect('/dashboard', 303);
+const { token } = dashboard;
+
+const db = getDb();
+const found = (await listTeams(db)).find((entry) => entry.slug === Astro.params.slug);
+if (!found) return Astro.redirect('/dashboard/mentor', 303);
+let team = found;
+const here = `/dashboard/mentor/team/${team.slug}`;
+const roles = (await getProgramme()).roles.map((role) => role.title);
+
+/** The forms that change the team itself. Every other form changes its workspace. */
+const TEAM_FORMS = ['code-reset', 'team-archive'];
+
+let failed: Extract<ActionResult, { ok: false }> | undefined;
+let shown: { team: string; code: string } | undefined;
+let notice = noticeFor(Astro.url.searchParams.get('saved'));
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  let result: ActionResult;
+  if (TEAM_FORMS.includes(text(form.get('action')))) {
+    // The team comes from the address of this page, never from the form.
+    form.set('id', String(team.id));
+    result = await mentorAction(db, form, mentorCodeHash(), roles);
+  } else {
+    result = await workspaceAction(db, team.id, 'mentor', form, roles);
+  }
+  if (!result.ok) {
+    failed = result;
+    Astro.response.status = 422;
+  } else if (result.shownCode) {
+    // A code is shown on this page alone. It is in no address, so it is in no history.
+    shown = result.shownCode;
+    notice = result.notice;
+  } else {
+    return Astro.redirect(`${here}?saved=${encodeURIComponent(result.action)}`, 303);
+  }
+  team = (await listTeams(db)).find((entry) => entry.id === team.id) ?? team;
+}
+
+const workspace = await loadWorkspace(db, team.id, await getCurrentSeason(), todayIso(), {
+  allAnnouncements: Astro.url.searchParams.has('all'),
+});
+const reset = failed?.action === 'code-reset' ? failed : undefined;
+const teamError = failed && TEAM_FORMS.includes(failed.action) ? failed.errors.form : undefined;
+---
+
+<Base title={`${team.name} for mentors`} description="A team workspace, as mentors see it.">
+  <Section surface="dark" labelledby="detail-title">
+    <div class="stack stack--loose">
+      <div class="dash-head">
+        <div class="stack">
+          <p class="dash-crumb"><a href="/dashboard/mentor">All teams</a></p>
+          <h1 id="detail-title">{team.name}</h1>
+          <p class="dash-streak">
+            {streakText(workspace.streak.current)}{workspace.streak.longest > 0 && `. Longest: ${workspace.streak.longest}`}
+          </p>
+          {
+            team.archived && (
+              <p>
+                <span class="tag">Archived</span> The team cannot sign in.
+              </p>
+            )
+          }
+        </div>
+        <form method="post" action="/dashboard/sign-out">
+          <input type="hidden" name="token" value={token} />
+          <Button variant="ghost" size="small">Sign out</Button>
+        </form>
+      </div>
+
+      {notice && <p class="dash-notice" role="status">{notice}</p>}
+      {
+        shown && (
+          <div class="dash-notice stack" role="status">
+            <p>The code for {shown.team} is below. It is shown once. Write it down now and give it to the team.</p>
+            <p class="dash-code">{shown.code}</p>
+          </div>
+        )
+      }
+
+      <Workspace
+        workspace={workspace}
+        author="mentor"
+        action={here}
+        token={token}
+        roles={roles}
+        allAnnouncementsHref={`${here}?all=1#announcements`}
+        failed={failed}
+      />
+
+      <section class="dash-block" id="manage" aria-labelledby="manage-title">
+        <h2 id="manage-title">Manage this team</h2>
+        {teamError && <p class="dash-message" role="alert">{teamError}</p>}
+        <form class="dash-form stack card" method="post" action={`${here}#manage`} aria-labelledby="reset-title">
+          <h3 id="reset-title">Reset the access code</h3>
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="code-reset" />
+          <p>Everyone using the old code is signed out.</p>
+          <div class="dash-field dash-narrow">
+            <label for="new-code">New code</label>
+            <input
+              id="new-code"
+              name="code"
+              maxlength={CODE_MAX * 2}
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-invalid={reset?.errors.code ? 'true' : undefined}
+              aria-describedby={reset?.errors.code ? 'new-code-message new-code-hint' : 'new-code-hint'}
+            />
+            <p id="new-code-hint" class="dash-hint">
+              Leave empty to have a code made. Letters and digits, 6 or more. Hyphens and spaces are ignored.
+            </p>
+            {reset?.errors.code && <p id="new-code-message" class="dash-message">{reset.errors.code}</p>}
+          </div>
+          <div class="actions">
+            <Button size="small">Reset code</Button>
+          </div>
+        </form>
+        <form class="dash-form stack card" method="post" action={`${here}#manage`} aria-labelledby="archive-title">
+          <h3 id="archive-title">{team.archived ? 'Reopen the team' : 'Archive the team'}</h3>
+          <input type="hidden" name="token" value={token} />
+          <input type="hidden" name="action" value="team-archive" />
+          <p>
+            {
+              team.archived
+                ? 'The team can sign in again with its code. Nothing was deleted.'
+                : 'The team can no longer sign in. Nothing is deleted, and the team can be reopened.'
+            }
+          </p>
+          <div class="actions">
+            <Button size="small" variant="ghost" name="archived" value={team.archived ? 'false' : 'true'}>
+              {team.archived ? 'Reopen' : 'Archive'}
+            </Button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </Section>
+</Base>

@@ -45,8 +45,11 @@ describe('the tables', () => {
     );
     expect(tables.map((table) => table.name)).toEqual([
       'activity',
+      'announcements',
       'deliverables',
+      'holidays',
       'links',
+      'mentor_notes',
       'notes',
       'signin_failures',
       'tasks',
@@ -62,7 +65,18 @@ describe('the tables', () => {
 
   it('starts with no invented content', async () => {
     const fresh = await testDb();
-    for (const table of ['teams', 'tasks', 'links', 'notes', 'deliverables', 'activity', 'signin_failures']) {
+    for (const table of [
+      'teams',
+      'tasks',
+      'links',
+      'notes',
+      'deliverables',
+      'activity',
+      'signin_failures',
+      'announcements',
+      'mentor_notes',
+      'holidays',
+    ]) {
       expect(await fresh.query(`select 1 from ${table}`), table).toEqual([]);
     }
     await fresh.close();

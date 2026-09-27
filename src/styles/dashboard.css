@@ -192,8 +192,32 @@
   white-space: pre-wrap;
 }
 
+/* A row that holds a paragraph, with its controls under it at every width. */
+.dash-row--text {
+  align-items: start;
+}
+
+.tag--behind {
+  border-color: var(--podium-gold);
+  background: var(--podium-gold);
+  color: var(--carbon-shadow);
+}
+
+.dash-streak {
+  color: var(--fg-strong, var(--white));
+  font-weight: 700;
+}
+
+.dash-crumb {
+  font-size: var(--text-small);
+}
+
 @media (min-width: 48rem) {
   .dash-row {
     grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .dash-row--text {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

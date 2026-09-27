@@ -27,7 +27,15 @@ describe('the public site beside the dashboard', () => {
 });
 
 describe('the dashboard pages', () => {
-  const pages = ['index.astro', 'team.astro', 'mentor.astro', 'unavailable.astro', 'sign-out.ts', 'api/keep-awake.ts'];
+  const pages = [
+    'index.astro',
+    'team.astro',
+    'mentor/index.astro',
+    'mentor/team/[slug].astro',
+    'unavailable.astro',
+    'sign-out.ts',
+    'api/keep-awake.ts',
+  ];
 
   it.each(pages)('renders %s on request', (name) => {
     expect(read(`src/pages/dashboard/${name}`)).toMatch(/^export const prerender = false;$/m);
@@ -46,8 +54,14 @@ describe('the dashboard pages', () => {
     }
   });
 
-  it('sends its styles with the page, not with the public site', () => {
-    expect(siteCss()).not.toMatch(/\.dash-/);
+  it.each(ROUTES)('keeps its styles off %s', (route) => {
+    const $ = page(route);
+    const linked = $('link[rel="stylesheet"]')
+      .toArray()
+      .map((element) => readFileSync(join(dist, $(element).attr('href') ?? ''), 'utf8'));
+    const inline = texts($, 'style');
+    expect(linked.length + inline.length).toBeGreaterThan(0);
+    for (const css of [...linked, ...inline]) expect(css).not.toMatch(/\.dash-/);
   });
 });
 

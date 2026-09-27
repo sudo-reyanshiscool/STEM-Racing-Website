@@ -1,8 +1,22 @@
 // What the team workspace shows, worked out from rows and the season file. No Astro imports.
-import { formatDate, seasonState, type SeasonData } from '../season';
+import { formatDate, SCHOOL_TIME_ZONE, seasonState, type SeasonData } from '../season';
 import type { Db } from './db';
 import { DELIVERABLES, type DeliverableKey, type Status } from './deliverables';
-import { deliverableStatuses, getNote, listLinks, listTasks, type Link, type Task } from './store';
+import {
+  activityDays,
+  deliverableStatuses,
+  getNote,
+  listAnnouncements,
+  listHolidays,
+  listLinks,
+  listMentorNotes,
+  listTasks,
+  type Announcement,
+  type Link,
+  type MentorNote,
+  type Task,
+} from './store';
+import { streak, type Streak } from './streak';
 
 export interface Deadline {
   title: string;
@@ -22,7 +36,15 @@ export interface TaskLine extends Task {
   overdue: boolean;
 }
 
+/** How many announcements the workspace shows until the team asks for the rest. */
+export const ANNOUNCEMENTS_SHOWN = 5;
+
 export interface Workspace {
+  streak: Streak;
+  announcements: Announcement[];
+  /** How many older announcements are not shown. */
+  moreAnnouncements: number;
+  mentorNotes: MentorNote[];
   deadline: Deadline | undefined;
   deliverables: DeliverableLine[];
   doneCount: number;
@@ -81,15 +103,25 @@ export async function loadWorkspace(
   teamId: number,
   season: SeasonData | undefined,
   today: string,
+  options: { allAnnouncements?: boolean } = {},
 ): Promise<Workspace> {
-  const [statuses, tasks, note, links] = await Promise.all([
+  const [statuses, tasks, note, links, announcements, mentorNotes, days, holidays] = await Promise.all([
     deliverableStatuses(db, teamId),
     listTasks(db, teamId),
     getNote(db, teamId),
     listLinks(db, teamId),
+    listAnnouncements(db, teamId, SCHOOL_TIME_ZONE),
+    listMentorNotes(db, teamId, SCHOOL_TIME_ZONE),
+    activityDays(db, teamId, SCHOOL_TIME_ZONE),
+    listHolidays(db),
   ]);
   const deliverables = deliverableLines(statuses);
+  const shown = options.allAnnouncements ? announcements : announcements.slice(0, ANNOUNCEMENTS_SHOWN);
   return {
+    streak: streak(days, holidays, today),
+    announcements: shown,
+    moreAnnouncements: announcements.length - shown.length,
+    mentorNotes,
     deadline: nextDeadline(season, today),
     deliverables,
     doneCount: deliverables.filter((line) => line.status === 'done').length,
