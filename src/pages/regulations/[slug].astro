@@ -1,0 +1,391 @@
+---
+import Button from '../../components/Button.astro';
+import RegSectionView from '../../components/regulations/RegSectionView.astro';
+import Section from '../../components/Section.astro';
+import TextTrack from '../../components/TextTrack.astro';
+import Base from '../../layouts/Base.astro';
+import { getRegDoc, getRegDocs, tableOfContents } from '../../lib/regulations';
+
+export function getStaticPaths() {
+  return getRegDocs().map((doc) => ({ params: { slug: doc.slug }, props: { slug: doc.slug } }));
+}
+
+const { slug } = Astro.props as { slug: string };
+const doc = getRegDoc(slug)!;
+const toc = tableOfContents(doc.sections);
+const others = getRegDocs().filter((other) => other.slug !== doc.slug);
+---
+
+<Base title={doc.title} description={doc.summary}>
+  <Section surface="mesh" mesh="violet" priority class="page-head">
+    <TextTrack slot="bleed" text={doc.track} />
+  </Section>
+
+  <Section surface="dark" labelledby="doc-title" class="doc-intro">
+    <div class="stack">
+      <p class="eyebrow">{doc.edition}</p>
+      <h2 id="doc-title">{doc.title}</h2>
+      <p class="lead">{doc.summary}</p>
+      <div class="actions">
+        <Button href={doc.pdf} external>Download the PDF ({doc.pdfPages} pages)</Button>
+        <Button href="/regulations" variant="ghost">All regulations</Button>
+      </div>
+      <p class="muted doc-intro__note">
+        This page follows the official PDF word for word. If the two ever differ, the PDF governs.{doc.note && ` ${doc.note}`}
+      </p>
+    </div>
+  </Section>
+
+  <Section surface="light" class="doc-body">
+    <div class="doc-layout" data-reg-doc>
+      <aside class="doc-toc" aria-label="Table of contents">
+        <details class="doc-toc__panel" open>
+          <summary class="doc-toc__summary">Contents</summary>
+          <label class="sr-only" for="toc-filter">Filter the contents</label>
+          <input id="toc-filter" class="doc-toc__filter" type="search" placeholder="Filter, e.g. wheels" autocomplete="off" data-toc-filter />
+          <nav aria-label="Contents of this document">
+            <ol class="doc-toc__list" data-toc-list>
+              {
+                toc.map((entry) => (
+                  <li class={`doc-toc__item doc-toc__item--${entry.depth}`}>
+                    <a href={`#${entry.id}`} data-toc-link>
+                      {entry.label && <span class="doc-toc__label">{entry.label}</span>}
+                      <span>{entry.title}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </nav>
+          <p class="doc-toc__empty" data-toc-empty></p>
+        </details>
+      </aside>
+
+      <article class="doc-article" aria-label={doc.title}>
+        {doc.sections.map((section) => <RegSectionView section={section} level={2} />)}
+      </article>
+    </div>
+  </Section>
+
+  <Section surface="dark" labelledby="more-title">
+    <div class="stack">
+      <h2 id="more-title">More regulations</h2>
+      <ul class="grid grid--3">
+        {
+          others.map((other) => (
+            <li class="card stack">
+              <h3>{other.title}</h3>
+              <p>{other.summary}</p>
+              <div class="actions">
+                <Button href={`/regulations/${other.slug}`} variant="ghost">
+                  Read online<span class="sr-only">: {other.title}</span>
+                </Button>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+</Base>
+
+<script>
+  // Progressive: the page reads fine without this. It filters the contents and marks the part being read.
+  const root = document.querySelector<HTMLElement>('[data-reg-doc]');
+  if (root) {
+    const links = [...root.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')];
+    const filter = root.querySelector<HTMLInputElement>('[data-toc-filter]');
+    const empty = root.querySelector<HTMLElement>('[data-toc-empty]');
+
+    filter?.addEventListener('input', () => {
+      const query = filter.value.trim().toLowerCase();
+      let shown = 0;
+      for (const link of links) {
+        const match = query === '' || (link.textContent ?? '').toLowerCase().includes(query);
+        (link.closest('li') as HTMLElement).hidden = !match;
+        if (match) shown += 1;
+      }
+      if (empty) empty.textContent = shown > 0 ? '' : 'Nothing matches.';
+    });
+
+    const byId = new Map(links.map((link) => [link.getAttribute('href')!.slice(1), link]));
+    const headings = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    let current: HTMLAnchorElement | undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!visible) return;
+        const link = byId.get(visible.target.id);
+        if (!link || link === current) return;
+        current?.removeAttribute('aria-current');
+        link.setAttribute('aria-current', 'location');
+        current = link;
+        link.scrollIntoView({ block: 'nearest' });
+      },
+      { rootMargin: '-96px 0px -70% 0px' },
+    );
+    headings.forEach((heading) => observer.observe(heading));
+  }
+</script>
+
+<style>
+  .doc-intro__note {
+    max-width: 60ch;
+    font-size: var(--text-small);
+  }
+
+  .doc-layout {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 64rem) {
+    .doc-layout {
+      grid-template-columns: 19rem minmax(0, 1fr);
+      gap: 3.5rem;
+    }
+  }
+
+  /* Contents */
+  .doc-toc__panel {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card-bg);
+  }
+
+  @media (min-width: 64rem) {
+    .doc-toc {
+      position: sticky;
+      inset-block-start: calc(var(--header-h) + 1rem);
+    }
+
+    .doc-toc__panel {
+      max-height: calc(100vh - var(--header-h) - 2rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
+  .doc-toc__summary {
+    cursor: pointer;
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .doc-toc__filter {
+    display: block;
+    width: 100%;
+    margin-block: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border: 2px solid var(--carbon-500);
+    border-radius: 0.25rem;
+    background: var(--white);
+    color: var(--carbon-shadow);
+    font: inherit;
+  }
+
+  .doc-toc__filter:focus-visible {
+    outline: 3px solid var(--pitlane-pink);
+    outline-offset: 2px;
+  }
+
+  .doc-toc__list {
+    display: grid;
+    gap: 0.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .doc-toc__item[hidden] {
+    display: none;
+  }
+
+  .doc-toc__item a {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    border-inline-start: 3px solid transparent;
+    color: var(--fg);
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .doc-toc__item a:hover {
+    border-inline-start-color: var(--carbon-300);
+  }
+
+  .doc-toc__item a[aria-current='location'] {
+    border-inline-start-color: var(--pitlane-pink);
+    background: var(--surface-light);
+    font-weight: 700;
+  }
+
+  .doc-toc__item--1 {
+    margin-block-start: 0.6rem;
+    font-weight: 700;
+  }
+
+  .doc-toc__item--2 a {
+    padding-inline-start: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .doc-toc__label {
+    flex: none;
+    min-width: 2.5rem;
+    color: var(--fg-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .doc-toc__empty {
+    color: var(--fg-muted);
+  }
+
+  /* Text */
+  .doc-article {
+    min-width: 0;
+    max-width: 52rem;
+    font-size: var(--text-body);
+    line-height: 1.65;
+  }
+
+  .doc-article :global(.reg-section) {
+    scroll-margin-block-start: calc(var(--header-h) + 1rem);
+  }
+
+  .doc-article :global(.reg-section--l2) {
+    margin-block-start: clamp(3rem, 2rem + 4vw, 5rem);
+    padding-block-start: 1.5rem;
+    border-block-start: 4px solid transparent;
+    border-image: var(--gradient-secondary) 1;
+  }
+
+  .doc-article :global(.reg-section--l2:first-child) {
+    margin-block-start: 0;
+  }
+
+  .doc-article :global(.reg-section--l3),
+  .doc-article :global(.reg-section--l4) {
+    margin-block-start: 2rem;
+  }
+
+  .doc-article :global(.reg-section__title) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.9rem;
+  }
+
+  .doc-article :global(.reg-section--l2 > .reg-section__title) {
+    color: var(--fg-strong);
+  }
+
+  .doc-article :global(.reg-section__label) {
+    color: var(--chicane-violet);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .doc-article :global(.reg-section > * + *) {
+    margin-block-start: 1rem;
+  }
+
+  .doc-article :global(.clause) {
+    display: grid;
+    gap: 0.15rem 1rem;
+    scroll-margin-block-start: calc(var(--header-h) + 1rem);
+  }
+
+  @media (min-width: 40rem) {
+    .doc-article :global(.clause) {
+      grid-template-columns: 4.75rem minmax(0, 1fr);
+    }
+  }
+
+  .doc-article :global(.clause__id) {
+    color: var(--chicane-violet);
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.9;
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .doc-article :global(.clause__id:hover) {
+    text-decoration: underline;
+  }
+
+  .doc-article :global(.clause:target) {
+    background: var(--surface-light);
+    box-shadow: -0.75rem 0 0 var(--surface-light), 0.75rem 0 0 var(--surface-light);
+    outline: 2px solid var(--pitlane-pink);
+    outline-offset: 0.25rem;
+  }
+
+  .doc-article :global(.clause__body > * + *) {
+    margin-block-start: 0.75rem;
+  }
+
+  .doc-article :global(.reg-list) {
+    padding-inline-start: 1.4rem;
+  }
+
+  .doc-article :global(.reg-list li + li) {
+    margin-block-start: 0.35rem;
+  }
+
+  .doc-article :global(.reg-table) {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--white);
+  }
+
+  .doc-article :global(.reg-table .table) {
+    min-width: 34rem;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .doc-article :global(.reg-table caption) {
+    padding: 0.85rem 1rem;
+    text-align: start;
+    font-weight: 700;
+  }
+
+  .doc-article :global(.callout) {
+    padding: 1rem 1.25rem;
+    border-inline-start: 6px solid var(--ignite-indigo);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--white);
+  }
+
+  .doc-article :global(.callout--important) {
+    border-inline-start-color: var(--pitlane-pink);
+  }
+
+  .doc-article :global(.reg-figure) {
+    margin-inline: 0;
+  }
+
+  .doc-article :global(.reg-figure img) {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--white);
+  }
+
+  .doc-article :global(.reg-figure figcaption) {
+    margin-block-start: 0.5rem;
+    color: var(--fg-muted);
+    font-size: var(--text-small);
+  }
+</style>

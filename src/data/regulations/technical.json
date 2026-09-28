@@ -1,0 +1,2687 @@
+{
+  "slug": "technical",
+  "track": "Technical",
+  "title": "Technical Regulations",
+  "summary": "What the car must satisfy to race: its dimensions, weights, wings, wheels and safety features, with the points penalty for each rule.",
+  "edition": "India National Finals 2025/26",
+  "pdf": "/regulations/tbs-national-finals-2025-26-technical-regulations.pdf",
+  "pdfPages": 58,
+  "sections": [
+    {
+      "id": "help-text",
+      "label": "",
+      "title": "Help text",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "note",
+          "text": "Please note: any amendments made prior to the event will be indicated using red underlined text."
+        },
+        {
+          "type": "p",
+          "text": "Please read the whole document without assumptions from previous rules documents."
+        },
+        {
+          "type": "p",
+          "text": "When you see green italic text, this is intended to help clarify a regulation or diagram."
+        },
+        {
+          "type": "p",
+          "text": "When you see the PP+ symbol in the margin, this means a rule carries a Proportional Penalty. Find out more about Proportional Penalties and the classification of rules in T2.5."
+        }
+      ]
+    },
+    {
+      "id": "t1",
+      "label": "Article T1",
+      "title": "Definitions",
+      "children": [
+        {
+          "id": "t1-1",
+          "label": "T1.1",
+          "title": "STEM Racing™ India car",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "This is also referred to as ‘the car’. Designed and manufactured according to these regulations for the purpose of participating in races on the STEM Racing™ India track at the National Finals event, powered only by a single 8 grams power unit cartridge. STEM Racing™ India cars are designed to travel the 20-metre race and withstand the physical deceleration required after crossing the finishing line."
+            },
+            {
+              "type": "p",
+              "text": "**A STEM Racing™ India car assembly must only consist of the following components:**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/car-components-numbered.webp",
+              "alt": "Two views of the green STEM Racing India car with numbered call-outs 1 to 11 marking the body, nose cone assembly, rear wing assembly, wheel support systems, tether line guides, surface finish and decals, logo decal, halo and driver helmet.",
+              "caption": "The numbered components of the car listed in T1.1 (the legal ballast, item 12, sits inside the body under the halo)."
+            },
+            {
+              "type": "p",
+              "text": "Adhesives with no dimensional impact are permissible for joining components."
+            },
+            {
+              "type": "p",
+              "text": "Example parts:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "A body encompassing a virtual cargo and a power unit cartridge chamber machined from a single piece of STEM Racing™ Model Block Material",
+                {
+                  "text": "Nose cone assembly (Optionally Replaceable)",
+                  "items": [
+                    "Front wing support structure",
+                    "Front wing(s)",
+                    "End plates"
+                  ]
+                },
+                {
+                  "text": "Rear Wing Assembly",
+                  "items": [
+                    "Rear wing support structure",
+                    "Rear wing(s)",
+                    "End plates"
+                  ]
+                },
+                {
+                  "text": "Front wheel support system(s)",
+                  "items": [
+                    "Front wheel(s) rotating.",
+                    "Wheel support structure non rotating"
+                  ]
+                },
+                {
+                  "text": "Rear wheel support system(s)",
+                  "items": [
+                    "Rear wheel(s) rotating.",
+                    "Wheel support structure non rotating"
+                  ]
+                },
+                "Front tether line guide",
+                "Rear tether line guide",
+                "Surface finishing and decals",
+                "STEM Racing™ India Logo Decal (2)",
+                "Halo",
+                "Drivers Helmet",
+                {
+                  "text": "Legal Ballast",
+                  "items": [
+                    "Refer to T1.22 and T4 for more information"
+                  ]
+                }
+              ],
+              "ordered": true
+            }
+          ]
+        },
+        {
+          "id": "t1-2",
+          "label": "T1.2",
+          "title": "Fully assembled car",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A STEM Racing™ India car, without a power unit cartridge inserted, presented ready for racing, resting on all four wheels on the track surface, free of any external force other than gravity."
+            }
+          ]
+        },
+        {
+          "id": "t1-3",
+          "label": "T1.3",
+          "title": "Body",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The body is a single uninterrupted piece of STEM Racing™ Model Block material existing rear of reference plane A and encompassing both the virtual cargo and power unit cartridge chamber. For dimensional purposes the body also includes any attached decals and surface finishes. Any STEM Racing™ Model Block forward of reference plane A is not defined as body."
+            }
+          ]
+        },
+        {
+          "id": "t1-4",
+          "label": "T1.4",
+          "title": "Power unit cartridge chamber",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The power unit cartridge chamber is a cylindrical clear space bounded around its inner circumference and forward end by car body only. This is where the power unit cartridge is placed for racing."
+            }
+          ]
+        },
+        {
+          "id": "t1-5",
+          "label": "T1.5",
+          "title": "Wing",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A wing on a STEM Racing™ India car is an aerodynamic feature that permits airflow around its minimum required chord surface including its features of a leading and trailing edge across its minimum required span width. A wing is dimensionally defined by the span, chord and thickness. The vertical cross-sectional shape of the wing, parallel to the direction of car travel, is referred to as an aero-foil."
+            },
+            {
+              "type": "p",
+              "text": "Wing cross-section / aero-foil naming terminology:"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wing-terminology-single-vane.webp",
+              "alt": "Diagram of a single vane wing showing the direction of airflow, the end view with thickness, the plan view with chord across the airflow and span at right angles to it, and a 3D view marking leading edge and trailing edge.",
+              "caption": "Wing naming terminology applied to single vane wing (T1.5)."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wing-terminology-multiple-vane.webp",
+              "alt": "Diagram of a multiple vane wing showing airflow direction, end view thickness, plan view chord and span, and a 3D view of overlapping vanes; adjacent vanes must overlap when viewed from above, perpendicular to the track.",
+              "caption": "Wing naming terminology applied to multiple vane wing (T1.5)."
+            }
+          ]
+        },
+        {
+          "id": "t1-6",
+          "label": "T1.6",
+          "title": "Wing support structure and end plate",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T1.6.1",
+              "text": "**Front Wing support Structure** Front wing support structure is a feature forward of reference plane A, that joins a wing(s) to the nose cone."
+            },
+            {
+              "type": "clause",
+              "id": "T1.6.2",
+              "text": "**Rear Wing support Structure** Rear wing support structure is a feature rearward of reference plane B, that joins the wing to the car body."
+            },
+            {
+              "type": "clause",
+              "id": "T1.6.3",
+              "text": "**End Plate** Any structure that forms part of a wing assembly outside of the minimum wing span."
+            }
+          ]
+        },
+        {
+          "id": "t1-7",
+          "label": "T1.7",
+          "title": "Nose cone",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The nose cone is a component of the car, which is used as a wing support structure, that only exists forward of reference plane A. This includes any STEM Racing™ Model Block material or any other materials that continue forward of reference plane A."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/nose-cone-reference-plane-a.webp",
+              "alt": "Two renderings of the front wing assembly, one with a translucent blue reference plane A behind it, and one labelling the nose cone, the end plate and the wing support structure of the wing.",
+              "caption": "The nose cone, end plate and wing support structure forward of reference plane A (T1.7)."
+            }
+          ]
+        },
+        {
+          "id": "t1-8",
+          "label": "T1.8",
+          "title": "Wheel",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A wheel is a single part or assembly of components, cylindrical in form, with its maximum circumference contacting the track surface, allowing forward motion of the car through rotation."
+            }
+          ]
+        },
+        {
+          "id": "t1-9",
+          "label": "T1.9",
+          "title": "Wheel support system",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Wheel support systems are single parts or an assembly of components that connect a wheel to any other part of the car, they MUST be contained within a theoretical cylindrical extrusion defined by the actual diameter of the relative wheels across each axle. These may be sourced from a supplier or manufactured wholly or in part by the team."
+            }
+          ]
+        },
+        {
+          "id": "t1-10",
+          "label": "T1.10",
+          "title": "Tether line guide",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A tether line guide is a key safety component which completely surrounds the track tether line so as to safely connect the car to the tether line during races. A tether line guide can be a component sourced from a supplier or manufactured wholly or in part by the team."
+            }
+          ]
+        },
+        {
+          "id": "t1-11",
+          "label": "T1.11",
+          "title": "Surface finish and decals",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A surface finish on a STEM Racing™ India car is considered to be any applied visible surface covering, of uniform thickness over the profile of a STEM Racing™ India car assembly component. A decal is material adhered to a component or surface finish. To be defined as a decal, 100% of the area of the adhering side must be attached to a surface. Surface finishes and decals are included when measuring the dimensions of any components they feature on."
+            }
+          ]
+        },
+        {
+          "id": "t1-12",
+          "label": "T1.12",
+          "title": "STEM Racing™ India logo decal",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Teams must use a labelled decal to identify Car A and Car B and a blank decal to identify display car(s). The official decals are supplied by STEM Racing India at event registration."
+            },
+            {
+              "type": "p",
+              "text": "This consists of the STEM Racing™ India logo graphic printed on a black or a white adhesive vinyl with a 1mm contrast keyline border, with a horizontal dimension of 30mm and vertical dimension of 15mm. Teams choose to use either the black or white outlined decal so as to provide maximum contrast to the surface color the decal is being adhered to."
+            },
+            {
+              "type": "p",
+              "text": "A team can manufacture and fit their own decals, provided they use the official STEM Racing™ India logo decal artwork which can be downloaded from the below link:\nhttps://drive.google.com/file/d/11t56pArfPVFblFcMD7KTnzL9w_gE142e/view?usp=drive_link"
+            },
+            {
+              "type": "p",
+              "text": "Decal designs:"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/logo-decal-designs.webp",
+              "alt": "The STEM Racing India logo decal in its two versions, one on a white background with a black keyline border and one on a black background, shown side by side with the word OR between them.",
+              "caption": "The two official logo decal designs (T1.12): white with a black keyline, or black."
+            }
+          ]
+        },
+        {
+          "id": "t1-13",
+          "label": "T1.13",
+          "title": "Hand finishing",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Hand finishing is defined as use of a hand powered device (e.g. abrasive paper) for removing only the irregularities that may remain on a CNC machined surface of the car body. These irregularities are often referred to as ‘machined marks’, any hand finishing must be kept to a minimum."
+            }
+          ]
+        },
+        {
+          "id": "t1-14",
+          "label": "T1.14",
+          "title": "Official STEM RACING™ Model Block",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The official STEM Racing™ Model Block Material is a rigid, closed cell foam block processed to the dimensional features as shown by diagrams in the appendix of this document."
+            },
+            {
+              "type": "p",
+              "text": "**IMPORTANT:** all cars entered into the STEM Racing™ India National Finals 2025/26 must be manufactured from STEM RACING™ Model Blocks."
+            }
+          ]
+        },
+        {
+          "id": "t1-15",
+          "label": "T1.15",
+          "title": "Engineering drawings",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Engineering drawings are CAD produced drawings which should be detailed such that, along with relevant CAM programs, could theoretically be used to manufacture the fully assembled car by a third party. Such drawings MUST include all relevant dimensions and material information."
+            },
+            {
+              "type": "p",
+              "text": "Where stated, STEM Racing™ India engineering drawings of a readable scale MUST be clearly dimensioned and identified by **hatching, shading, block color or boundary line** within the engineering drawings to specifically identify and prove compliance for the virtual cargo, front and rear wheel support structures, nose, front and rear wing support structures and front and rear wing surfaces."
+            },
+            {
+              "type": "p",
+              "text": "Clearly labelled **construction or boundary lines** are acceptable to define the boundaries between components such as nose cone, wheel support and wing support structures."
+            },
+            {
+              "type": "p",
+              "text": "Engineering drawings can include: orthographic projection, auxiliary projection, section views, isometric projection, oblique projection, perspective and annotated renderings."
+            },
+            {
+              "type": "p",
+              "text": "It is recommended to label the relevant technical regulations where appropriate (e.g **T9.5.1: 25.0mm**) throughout your Engineering drawings; this makes the job of the scrutineer much easier in identifying the different features of your car."
+            },
+            {
+              "type": "p",
+              "text": "See competition regulations scorecard for mandatory detailed list."
+            }
+          ]
+        },
+        {
+          "id": "t1-16",
+          "label": "T1.16",
+          "title": "Renderings",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Renderings are images intended to illustrate the three-dimensional form of an object. These can be generated in isometric projection, oblique projection, or perspective."
+            }
+          ]
+        },
+        {
+          "id": "t1-17",
+          "label": "T1.17",
+          "title": "Reference planes",
+          "children": [
+            {
+              "id": "t1-17-1",
+              "label": "T1.17.1",
+              "title": "Vertical reference plane",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "To assist with describing dimensions, it is assumed that a two-dimensional invisible plane exists along the length of the power unit cartridge chamber center axis and normal to the track surface. This is known as the vertical reference plane."
+                },
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/vertical-reference-plane.webp",
+                  "alt": "Rendering of the car with a translucent blue vertical reference plane labelled VERTICAL REFERENCE PLANE running along the length of the car through its centre line, normal to the track.",
+                  "caption": "The vertical reference plane (T1.17.1)."
+                }
+              ]
+            },
+            {
+              "id": "t1-17-2",
+              "label": "T1.17.2",
+              "title": "Reference plane A",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "To assist with describing dimensions, it is assumed that a two-dimensional invisible plane exists 16.0mm in front of the front axle center line normal to the track surface. This is known as reference plane A."
+                },
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/reference-plane-a.webp",
+                  "alt": "Two views of the front of the car: a rendering with a blue plane labelled REFERENCE PLANE A ahead of the front wheel, and a side view showing reference plane A 16.0mm in front of the front axle centre line.",
+                  "caption": "Reference plane A, 16.0mm in front of the front axle center line (T1.17.2)."
+                }
+              ]
+            },
+            {
+              "id": "t1-17-3",
+              "label": "T1.17.3",
+              "title": "Reference plane B",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "To assist with describing dimensions, it is assumed that a two-dimensional invisible plane exists 16.0mm to the rear of the rear axle center line normal to the track surface.\nThis is known as reference plane B."
+                },
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/reference-plane-b.webp",
+                  "alt": "Two views of the rear of the car: a rendering with a blue plane labelled REFERENCE PLANE B behind the rear wheel, and a side view showing reference plane B 16.0mm behind the rear axle centre line.",
+                  "caption": "Reference plane B, 16.0mm to the rear of the rear axle center line (T1.17.3)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t1-18",
+          "label": "T1.18",
+          "title": "Additional components",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Any component other than those listed in T1.1 will be considered an additional component."
+            }
+          ]
+        },
+        {
+          "id": "t1-19",
+          "label": "T1.19",
+          "title": "Normal",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The term ‘normal’ can be used in geometry to describe a line or object that is perpendicular or at 90 degrees to another given object. When referring to the term normal in these regulations it is considered to mean:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Being at right angles; perpendicular.",
+                "Perpendicular to the direction of a tangent line of a curve or a tangent plane to a surface."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t1-20",
+          "label": "T1.20",
+          "title": "Full 8-gram power unit cartridge",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A metallic cartridge which contains an 8-gram charge of compressed air. For weights and dimensions refer to appendix v. Official Denford Race Power Pack dimensions."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/power-unit-cartridge-pack.webp",
+              "alt": "Photograph of boxes of Denford CO2 power packs with one box open, showing a row of small metallic compressed air cartridges inside.",
+              "caption": "The 8-gram power unit cartridges as supplied (T1.20)."
+            }
+          ]
+        },
+        {
+          "id": "t1-21",
+          "label": "T1.21",
+          "title": "Halo",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The halo is a driver crash-protection system used in open-wheel racing series, which consists of a curved bar placed to protect the driver's head. The Halo is being introduced to STEM Racing™ India not only to echo real Formula 1® car design but also as a component of a new car deceleration system."
+            },
+            {
+              "type": "p",
+              "text": "The Halo is available to download as a universal 3D part from the below link:\nhttps://drive.google.com/file/d/1LqT9k6uSwtxeE2QIIyHkdd78VseXGfTt/view?usp=drive_link"
+            },
+            {
+              "type": "p",
+              "text": "The Halo MUST be included in the final car design. Detailed Engineering Drawings are available in appendix ix."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/halo-views.webp",
+              "alt": "Six views of the green halo impact protection system: rear, side and front views across the top, a plan view in the middle with a round hole, and two isometric views (top and bottom) beneath.",
+              "caption": "The Halo, shown in rear, side, front, plan and isometric views (T1.21)."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/halo-and-helmet-on-car.webp",
+              "alt": "Rendering of the car with call-outs for the halo with its 6.0mm diameter hole for the helmet, the circular notch for the retardation device and the halo pocket with ballast container, beside a helmet with a 6.0mm diameter spigot.",
+              "caption": "Halo, halo pocket with ballast container and helmet with 6.0mm diameter spigot (T1.21)."
+            },
+            {
+              "type": "p",
+              "text": "The Halo must be well adhered to the body of the car, to achieve this requires a recess or pocket to match the underside of the Halo in the car body. It has been designed so the required recess or pocket can be manufactured using a 1/4\" (6.35mm) ball nose cutter. The Halo and the Helmet are mandatory items and can be made from any material. Please refer to T4.4 for the halo file. Please see Appendix ix for further details."
+            }
+          ]
+        },
+        {
+          "id": "t1-22",
+          "label": "T1.22",
+          "title": "Legal ballast",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "To help achieve the minimum weight, legal ballast may now be added only to the container under the halo, accessible through the halo/helmet aperture (hole). This is the only permitted location for ballast. The ballast can consist of materials such as fishing lead weights or similar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "label": "Article T2",
+      "title": "General principles",
+      "children": [
+        {
+          "id": "t2-1",
+          "label": "T2.1",
+          "title": "Regulations documents",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T2.1.1",
+              "text": "STEM Racing India, issues the regulations, their revisions and amendments made."
+            },
+            {
+              "type": "clause",
+              "id": "T2.1.2",
+              "text": "Technical Regulations - this document. The Technical Regulations document is mainly concerned with those regulations that are directly related to STEM Racing™ India car design and manufacture. Technical regulation article numbers have a ‘T’ prefix."
+            },
+            {
+              "type": "clause",
+              "id": "T2.1.3",
+              "text": "Competition Regulations – a document separates to this one which is mainly concerned with regulations and procedures directly related to judging and the competition event. Competition Regulation article numbers have a ‘C’ prefix."
+            }
+          ]
+        },
+        {
+          "id": "t2-2",
+          "label": "T2.2",
+          "title": "Interpretation of the regulations",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T2.2.1",
+              "text": "The text of a regulation and any related definitions should be considered together for the purpose of interpretation."
+            },
+            {
+              "type": "callout",
+              "tone": "important",
+              "text": "**IMPORTANT:** Diagrams and or images are for illustration purposes only and do not contribute to regulatory compliance."
+            },
+            {
+              "type": "clause",
+              "id": "T2.2.2",
+              "text": "Text clarification - any questions received that are deemed by STEM Racing India to be related to regulation text needing clarification will be answered by STEM Racing India The question received, along with the clarification provided by STEM Racing India, will be published to all competing teams at the same time."
+            }
+          ]
+        },
+        {
+          "id": "t2-3",
+          "label": "T2.3",
+          "title": "Amendments to the regulations",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Any amendments will be announced and released by STEM Racing India by email notification to all the Teams. Any amended text will be indicated thus (using red underlined text)."
+            }
+          ]
+        },
+        {
+          "id": "t2-4",
+          "label": "T2.4",
+          "title": "Classification of regulations",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T2.4.1",
+              "text": "The technical regulations are classified as either: **GENERAL**, **SAFETY**, **PERFORMANCE**.",
+              "blocks": [
+                {
+                  "type": "table",
+                  "head": [
+                    "GENERAL",
+                    "SAFETY",
+                    "PERFORMANCE"
+                  ],
+                  "rows": [
+                    [
+                      "Regulations that shape the way the car fundamentally looks and works, vital to the style of a STEM Racing™ car.",
+                      "Mandatory rules that govern the safe running of the car. Cars must meet these rules to be considered ‘safe to race’.",
+                      "Rules that have a direct impact on the performance of the vehicle, these typically carry the heaviest penalties."
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T2.4.2",
+              "text": "If a race car is judged as being NON-COMPLIANT with any Performance regulation they will be INELIGIBLE for the awards of: ‘Fastest Car’ and ‘Best Engineered Car’. All Performance regulations are highlighted in yellow throughout this document."
+            }
+          ]
+        },
+        {
+          "id": "t2-5",
+          "label": "T2.5",
+          "title": "Compliance with regulations",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T2.5.1",
+              "text": "Points are deducted for non-compliance with the technical regulations as per the penalties as defined in this document. Both race cars are assessed during Specification Judging and points will be deducted for any infringements on either car. These penalties are only applied once, per infringement, per car.\nAfter initial Specification Judging any team with “safety” infringements will be given a **10-minute** service session. See competition regulations for more information."
+            },
+            {
+              "type": "clause",
+              "id": "T2.5.2",
+              "text": "Proportional penalties will be applied to the following regulations:\n**T3.4, T3.5, T3.6, T3.7, T5.2, T5.6, T7.2, T7.3, T7.4, T7.5, T7.11, T8.6, T8.6.2, T8.6.3, T9.5.1, T9.5.2, T9.5.3, T9.5.4**\nThe penalty applied increases proportionally as the margin of non-compliance with the absolute minimum/maximum dimension increases by rounding up the non-compliance to the next complete unit of measure (1.0mm or 1.0g). The penalty is applied once for every complete unit outside of the absolute minimum/maximum dimension. For example:",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/main-car-body-penalty-chart.webp",
+                  "alt": "Step chart of penalty points against rear wing span for T9.5.1, at 2 points per millimetre: 50mm and over scores 0, 49.9 to 49.0mm scores 2, 48.9 to 48.0mm scores 4, 47.9 to 47.0mm scores 6, 46.9 to 46.0mm scores 8 and 45.9 to 45.0mm scores 10.",
+                  "caption": "Worked example of a proportional penalty: T9.5.1 Rear wing span, PERFORMANCE, penalty 2pts per millimeter (T2.5.2)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t2-6",
+          "label": "T2.6",
+          "title": "Design ideas and regulation compliance questions",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Teams are not permitted to seek a ruling from STEM Racing India or any competition officials or judges before the event as to whether a design idea complies with these regulations, any regulatory communication between teams and ICCs or teachers is only for guidance, rulings will only be made by the official judges at the National Finals event. Design compliance to the regulation’s forms part of the competition. As in Formula 1® innovation is encouraged and STEM Racing™ India teams may also find ways of creating design features that push the boundaries of the regulations in order to get an extra competitive edge."
+            }
+          ]
+        },
+        {
+          "id": "t2-7",
+          "label": "T2.7",
+          "title": "Measurements",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T2.7.1",
+              "text": "All dimensions and weights are presented as absolute minimum or maximum, unless stated otherwise. For example:",
+              "blocks": [
+                {
+                  "type": "table",
+                  "head": [
+                    "MIN Weight",
+                    "MIN Dimension",
+                    "MAX Dimension"
+                  ],
+                  "rows": [
+                    [
+                      "Absolute Min: 50.0g",
+                      "Absolute Min: 26.0mm",
+                      "Absolute Max: 34.0mm"
+                    ],
+                    [
+                      "50.0g - PASS",
+                      "26.0mm - PASS",
+                      "34.0mm - PASS"
+                    ],
+                    [
+                      "49.9g - FAIL",
+                      "25.9mm - FAIL",
+                      "34.1mm - FAIL"
+                    ]
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "***Note – Important regulations for Main Car Body (excluding nose cone & rear wing) –**"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    {
+                      "text": "The **Main Car Body**, including the support structure, must have a maximum overall length of 205mm to meet the required design specifications and competition standards.",
+                      "items": [
+                        "**Absolute Max: 205.0mm**"
+                      ]
+                    },
+                    {
+                      "text": "The **Main Car Body** must maintain a minimum thickness of 3.5mm at every point to ensure structural integrity and compliance with competition regulations.",
+                      "items": [
+                        "**Absolute Min: 3.5mm**"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T2.7.2",
+              "text": "**Dimensional measures** - all car component dimensions or weight are inclusive of any applied paint finish or decal. A series of specially manufactured gauges will be used to broadly verify dimensional compliance. Accurate measuring tools, such as vernier calipers, will then be used to closely inspect any dimensions found to be close to the dimensional limits per the initial gauge inspection. IMPORTANT: Some regulations are assessed with a full 8g race cartridge fully inserted into the cartridge chamber. For compliance with these regulations, the **static weight distribution** of the car must be such that the car is capable of **resting on all four (4) wheels** without any outside assistance."
+            },
+            {
+              "type": "clause",
+              "id": "T2.7.3",
+              "text": "**Weight measures** – all weight measurements will be made using the STEM Racing India calibrated electronic competition scales."
+            }
+          ]
+        },
+        {
+          "id": "t2-8",
+          "label": "T2.8",
+          "title": "Benefit of doubt",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The chair of judges will, where appropriate, seek to use ‘benefit of doubt’ when the assessment of compliance is marginal or unclear. In this situation, teams will be given the benefit of doubt rather than a firm penalty if a penalty cannot be clearly measured or identified."
+            }
+          ]
+        },
+        {
+          "id": "t2-9",
+          "label": "T2.9",
+          "title": "Spirit of the competition",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Teams are expected to act in the spirit of the competition, both before and during the STEM Racing™ India National Finals. Any team or individual team member deemed by the chair of judges to be acting outside of the spirit of the competition, can be removed from certain or all aspects of the competition. For example, a team or individual team member attempting to abuse the technical regulations to their advantage may, at the discretion of the chair of judges, be removed from racing and receive no points for this activity. A team or individual team member deemed to be acting in an unsportsmanlike manner towards another team or other persons may be removed from some or all judging areas."
+            },
+            {
+              "type": "p",
+              "text": "The spirit of the competition is simple; embrace and respect the rules and regulations, do your very best to compete legally and fairly, while contributing positively to the STEM Racing™ India National Finals. Make friends, create positive relationships, network professionally and enjoy yourselves."
+            }
+          ]
+        },
+        {
+          "id": "t2-10",
+          "label": "T2.10",
+          "title": "Originality of work",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "STEM Racing India welcomes and endorses innovation and does not consider that plagiarism should play any part in any of the disciplines that make up the competition."
+            },
+            {
+              "type": "p",
+              "text": "Competing teams at all levels of the competition that intentionally plagiarize any part of their assessed work, undermines the credibility and integrity of the STEM Racing™ India challenge and the spirit of the competition."
+            },
+            {
+              "type": "p",
+              "text": "At the STEM Racing™ India National Finals 2025/26, STEM Racing™ India shall be implementing various originality detection methodologies and requesting all competing teams to submit an originality declaration. Further details and associated penalties will be explained in detail in the STEM Racing™ India National Finals 2025/26 competition regulations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t3",
+      "label": "Article T3",
+      "title": "Fully assembled car",
+      "children": [
+        {
+          "id": "t3-1",
+          "label": "T3.1",
+          "title": "Design and manufacture",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts each]**"
+            },
+            {
+              "type": "clause",
+              "id": "T3.1.1",
+              "text": "All STEM Racing™ India cars must be designed and engineered using CAD (Computer Aided Design) and CAM (Computer Aided Manufacture) technology. CAD software used should provide for 3D part modelling, assembly and 3D realistic rendering. We recommend the use of Autodesk Fusion 360 software. The CAM package should allow students to simulate CNC machining processes so they can show evidence of these in their portfolio. We recommend the use of Denford QuickCAM PRO software."
+            },
+            {
+              "type": "clause",
+              "id": "T3.1.2",
+              "text": "The body of all STEM Racing™ India cars must be manufactured via material removal using a CNC router/milling machine. We recommend all teams use a Denford CNC Router. This manufacturing process should occur at your school/college or at a designated manufacturing center/partner site."
+            },
+            {
+              "type": "clause",
+              "id": "T3.1.3",
+              "text": "An official STEM Racing™ holographic sticker from the official STEM Racing™ Model Block for each car must be submitted on the project element submission sheet at the National Finals event registration. STEM Racing India stickers will also be permitted."
+            },
+            {
+              "type": "clause",
+              "id": "T3.1.4",
+              "text": "The individual components of both race cars must be designed with identical geometry."
+            }
+          ]
+        },
+        {
+          "id": "t3-2",
+          "label": "T3.2",
+          "title": "Safe construction",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 10pts each]**"
+            },
+            {
+              "type": "clause",
+              "id": "T3.2.1",
+              "text": "**Specification judging** - all submitted cars will be inspected closely to ensure that they are engineered and constructed safely for the purpose of racing. If the judges rule an aspect of either race car to be unsafe for racing, the team will be required to carry out repairs / modifications to the car(s). Any such repair work will result in a penalty of 10 points per unsafe car."
+            },
+            {
+              "type": "clause",
+              "id": "T3.2.2",
+              "text": "**During racing** – the race officials will routinely inspect cars for safety during scheduled races. If the officials rule a car to be unsafe, a penalty of 10 points will be imposed at the discretion of the Chair of Judges. The team may repair the car as per the Competition Regulations – C10 Car Repairs and Servicing."
+            }
+          ]
+        },
+        {
+          "id": "t3-3",
+          "label": "T3.3",
+          "title": "Defined features",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 20pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The car assembly must only consist of components listed in ARTICLE T1.1."
+            }
+          ]
+        },
+        {
+          "id": "t3-4",
+          "label": "T3.4",
+          "title": "Total width",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts per millimeter]**"
+            },
+            {
+              "type": "p",
+              "text": "Total width is the maximum assembled car width, measured normal to the vertical reference plane, between the outer edges of the widest feature of the car assembly."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 65.0mm / Absolute Max: 85.0mm**"
+            }
+          ]
+        },
+        {
+          "id": "t3-5",
+          "label": "T3.5",
+          "title": "Total height",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts per millimeter]**"
+            },
+            {
+              "type": "p",
+              "text": "Total height is the maximum assembled car height, normal to the vertical reference plane, between the track surface and the highest feature of the car assembly. This is measured with a full 8g power unit cartridge inserted into the cartridge chamber with the car sitting on all four (4) wheels with no outside assistance."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Max. 65.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/total-width-and-height.webp",
+              "alt": "Front view of the car with a vertical arrow labelled Total height Max 65.0mm from the track surface to the top of the rear wing, and a horizontal arrow beneath labelled Total widht Max 85.0mm across the widest part of the car.",
+              "caption": "Total height (T3.5, max 65.0mm) and total width (T3.4, max 85.0mm)."
+            }
+          ]
+        },
+        {
+          "id": "t3-6",
+          "label": "T3.6",
+          "title": "Total weight",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts per gram]**"
+            },
+            {
+              "type": "p",
+              "text": "Total weight is the weight of the car excluding a power unit cartridge. If ruled underweight at car registration and confirmed during initial specification judging using the official competition scales, the above points penalty will be applied. No car will race underweight and ballast will be added to the underside of the car at 0.2g for every 0.1g underweight."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 50.0g**"
+            }
+          ]
+        },
+        {
+          "id": "t3-7",
+          "label": "T3.7",
+          "title": "Track clearance",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 10pts per millimeter]**"
+            },
+            {
+              "type": "p",
+              "text": "Track clearance is the distance between track surface and any car component as listed in T1.1, except wheels. Measured normal to the track surface. This is measured with a full 8g power unit cartridge inserted into the cartridge chamber with the car sitting on all four (4) wheels with no outside assistance."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 1.5mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/track-clearance.webp",
+              "alt": "Front view of the car on the track with a red arrow marking the track clearance of Min 1.5mm between the track surface and the lowest part of the car, the tether line guide, beneath the body.",
+              "caption": "Track clearance, minimum 1.5mm (T3.7)."
+            }
+          ]
+        },
+        {
+          "id": "t3-8",
+          "label": "T3.8",
+          "title": "Status during racing",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The car assembly must be designed so that no items other than those listed in T3.9, or power unit cartridges are removed, replaced or added to the assembly during scheduled race events."
+            }
+          ]
+        },
+        {
+          "id": "t3-9",
+          "label": "T3.9",
+          "title": "Replacement components",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL]**"
+            },
+            {
+              "type": "p",
+              "text": "Any spare / replacement components should be identical in design and geometry to those fitted to the car and must be submitted with the cars at registration. Only the following spare / replacement components are permitted:"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Component",
+                "Max Quantity"
+              ],
+              "rows": [
+                [
+                  "Nose cone & front wing assembly",
+                  "2"
+                ],
+                [
+                  "Rear wing assembly",
+                  "2"
+                ],
+                [
+                  "Front wheels",
+                  "4"
+                ],
+                [
+                  "Front wheel support structure",
+                  "2"
+                ],
+                [
+                  "Rear wheels",
+                  "4"
+                ],
+                [
+                  "Rear wheel support structure",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/spare-components-layout.webp",
+              "alt": "Rendering of a scrutineering bay showing a car in front of racks and stands of spare parts, labelled: rear wheel support x2, front wheel support x2, front wheels x4, rear wheels x4, nose cone assembly x2 and rear wing assembly x2.",
+              "caption": "The permitted spare and replacement components (T3.9)."
+            },
+            {
+              "type": "clause",
+              "id": "T3.9.1",
+              "text": "**Submitted components – [GENERAL]** Only submitted replacement components that are determined by the judges to be identical in design and geometry to those fitted to the cars will be allowed to be used during track repairs or post-race servicing."
+            },
+            {
+              "type": "clause",
+              "id": "T3.9.2",
+              "text": "**Introduced components - [GENERAL | Penalty – 5pts per component]** If any other items need to be introduced for car repairs a 5pt penalty will be incurred per component item."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t4",
+      "label": "Article T4",
+      "title": "Body",
+      "children": [
+        {
+          "id": "t4-1",
+          "label": "T4.1",
+          "title": "Body construction",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 20pts]**"
+            },
+            {
+              "type": "p",
+              "text": "A single continuous piece of CNC manufactured STEM Racing™ Model Block material must exist rear of the reference plane A, encompassing both the virtual cargo and power unit cartridge chamber."
+            }
+          ]
+        },
+        {
+          "id": "t4-2",
+          "label": "T4.2",
+          "title": "Virtual cargo",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 25pts]**"
+            },
+            {
+              "type": "p",
+              "text": "A virtual cargo must be completely encompassed by the body and be wholly positioned between the front and rear wheel center lines. The virtual cargo must have minimum dimensions as shown below, with its top surface located symmetrically about and positioned normal (90 degrees) to the vertical reference plane. The virtual cargo may also share common faces with the car body. All dimensions shown are absolute minimum. The Virtual Cargo can coincide with the legal ballast container but not the halo pocket."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/virtual-cargo-dimensions.webp",
+              "alt": "Four-view drawing of the virtual cargo, a wedge that tapers in plan view: 60 mm long, 55 mm wide at the wide end narrowing to 10 mm, and 10 mm high, with plan, isometric, side and end views.",
+              "caption": "Minimum dimensions of the virtual cargo (T4.2): 60 mm x 55 mm tapering to 10 mm, 10 mm high."
+            }
+          ]
+        },
+        {
+          "id": "t4-3",
+          "label": "T4.3",
+          "title": "Virtual cargo identification",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5 pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The virtual cargo location and compliance MUST be clearly dimensioned (such as from either the front or rear axle center lines and height above the track). The virtual cargo MUST be identified by hatching, shading or block color, or outlined with a contrasting color line within the engineering drawings submitted for scrutineering. Please refer to the example diagram below, showing the virtual cargo clearly highlighted in red:"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/virtual-cargo-identification-example.webp",
+              "alt": "Engineering drawing sheet with isometric, plan, section A-A, front and side views of the car, with the virtual cargo highlighted in red and dimensioned from the axle centre lines; a legend reads Virtual Cargo Location.",
+              "caption": "Example engineering drawing with the virtual cargo highlighted in red (T4.3)."
+            }
+          ]
+        },
+        {
+          "id": "t4-4",
+          "label": "T4.4",
+          "title": "Halo",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T4.4.1",
+              "text": "**Halo – [PERFORMANCE | Penalty – 10 pts]** The Halo (refer ARTICLE T1.21) MUST be included in the car design without any dimensional or surface profile changes. The file can be downloaded from\nhttps://drive.google.com/file/d/1LqT9k6uSwtxeE2QIIyHkdd78VseXGfTt/view?usp=drive_link\nPlease see appendix ix for detailed dimensions.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/halo-file-views.webp",
+                  "alt": "Two views of the halo: a plan view of the green halo with its round hole on the left, and a rendering of the halo seated in its pocket in the car body with the helmet on top, on the right.",
+                  "caption": "The Halo part and its pocket in the body (T4.4.1)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T4.4.2",
+              "text": "**Halo visibility front and side views – [GENERAL | Penalty – 10 pts]** Visibility of the Halo must not be physically obstructed by any other component when viewed in the front or side views.\n**SIDE VIEW** When viewed from the side, everything inside the red outline MUST be visible.\n**FRONT VIEW** When viewed from the front, everything inside the red outline MUST be visible.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/halo-visibility-front-side.webp",
+                  "alt": "Two views of the halo, each enclosed in a red outline that must remain visible: the front view with a 4.0mm dimension at its lower edge, and the side view showing the sloping halo bar with a wheel behind.",
+                  "caption": "Halo visibility in front and side views (T4.4.2). The printed labels above the two views read SIDE VIEW then FRONT VIEW."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T4.4.3",
+              "text": "**Halo visibility top view – [GENERAL | Penalty – 10 pts]** The Halo must not be physically obstructed in the plan view except by the helmet.\n**TOP VIEW** When viewed from the top, everything inside the red outline MUST be visible.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/halo-visibility-top.webp",
+                  "alt": "Top view of the halo outlined in red, with the helmet seated in its hole; everything inside the red outline must be visible from above.",
+                  "caption": "Halo visibility in the top view (T4.4.3)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T4.4.4",
+              "text": "**Halo circular notch height– [SAFETY | Penalty – 5pts]** To be effective the center of the Circular Notch must be 34.0mm (±1.0mm) above the track surface. To achieve this the bottom of the halo pocket must be 24.0mm and parallel to the track surface in the assembled car.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/halo-circular-notch-height.webp",
+                  "alt": "Side view of the car with a vertical dimension line from the track surface up to the centre of the circular notch in the halo, labelled 34.0mm ± 1.0mm above track.",
+                  "caption": "Height of the centre of the circular notch above the track (T4.4.4)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T4.4.5",
+              "text": "**Halo Safety Test– [SAFETY | Penalty – 5pts]** With the car supported on a power unit cartridge a 1kg load will be suspended to give a loading of 2kg (to be reviewed) at point of contact on the Halo circular notch.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/halo-safety-test.webp",
+                  "alt": "Photograph of the halo safety test rig: the car held on a clamp stand by its power unit cartridge, with a weight hanging from a lever arm that bears on the halo circular notch.",
+                  "caption": "The halo safety test rig (T4.4.5)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t4-5",
+          "label": "T4.5",
+          "title": "Helmet",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The Helmet is a standard part designed by STEM Racing™ that MUST be included in the car design without any dimensional changes. The Helmet is available to download as a universal 3D part from the below link:\nhttps://drive.google.com/file/d/1U3kd9Qh7LR_hv_htGgKA1zm3EyGKUKOs/view?usp=drive_link"
+            },
+            {
+              "type": "p",
+              "text": "The helmet may be manufactured out of any material."
+            },
+            {
+              "type": "p",
+              "text": "We suggest that the helmet be painted in the team’s country or hero driver colors"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/helmet-dimensions.webp",
+              "alt": "Front view of the black driver helmet with its spigot, dimensioned 4.0 mm long and 6.0 mm diameter.",
+              "caption": "The helmet and its spigot: 6.0 mm diameter, 4.0 mm long (T4.5)."
+            }
+          ]
+        },
+        {
+          "id": "t4-6",
+          "label": "T4.6",
+          "title": "STEM Racing™ India logo decal location",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "A STEM Racing™ India logo decal (refer ARTICLE T1.12) must be wholly adhered to each side of the car, and be 100% visible in the respective side view. Teams may manufacture their own decals but must use the artwork supplied by STEM Racing India."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/logo-decal-location.webp",
+              "alt": "Side view of the car with the official STEM Racing logo decal, 30.0mm by 15.0mm, on the side of the body, and the alternative black logo decal of the same 30.0mm by 15.0mm size shown at the left.",
+              "caption": "Location and size of the logo decal (T4.6)."
+            }
+          ]
+        },
+        {
+          "id": "t4-7",
+          "label": "T4.7",
+          "title": "Team number",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 2pts]**"
+            },
+            {
+              "type": "p",
+              "text": "After registering for the National Finals event each team shall be issued with their official team number. This must be displayed on the car body between the front edge of the **halo** and reference plane A. The number should be clearly visible in the plan view and a minimum text height of **8mm**. If a team submits their car without the team number, then one will be provided at the world finals event."
+            },
+            {
+              "type": "p",
+              "text": "Teams may additionally include the team number elsewhere on the car such as the rear wing endplates."
+            },
+            {
+              "type": "p",
+              "text": "**Minimum text height: 8.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/team-number-height.webp",
+              "alt": "Rendering of the car with the team number 25 and car letter A on the body ahead of the halo, and a call-out showing the number and letter each with a minimum text height of 8.0mm.",
+              "caption": "Minimum text height of the team number, 8.0mm (T4.7)."
+            }
+          ]
+        },
+        {
+          "id": "t4-8",
+          "label": "T4.8",
+          "title": "Decal thickness",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "This is measured as the total thickness of any decal, excluding any surface finishes."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Max: 0.5mm**"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t5",
+      "label": "Article T5",
+      "title": "Power unit cartridge chamber",
+      "children": [
+        {
+          "id": "t5-1",
+          "label": "T5.1",
+          "title": "Diameter",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "This is the diameter of the power unit cartridge chamber, measured at any point through its minimum depth."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 18.0mm / Absolute Max: 18.5mm**"
+            }
+          ]
+        },
+        {
+          "id": "t5-2",
+          "label": "T5.2",
+          "title": "Distance from track surface",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts per millimetre]**"
+            },
+            {
+              "type": "p",
+              "text": "This is measured with a full 8g power unit cartridge inserted into the cartridge chamber, from the rear center of the power unit cartridge to the track surface, measured normal to the track surface with the car sitting on all four (4) wheels with no outside assistance."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 30.0mm / Absolute Max: 40.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/chamber-distance-from-track.webp",
+              "alt": "Side view of the car with a vertical dimension line from the track surface up to the rear centre of the power unit cartridge, labelled Distance from track surface.",
+              "caption": "Distance from the track surface to the rear center of the cartridge (T5.2)."
+            }
+          ]
+        },
+        {
+          "id": "t5-3",
+          "label": "T5.3",
+          "title": "Depth",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The depth of the chamber is measured parallel to the vertical reference plane anywhere around the chamber circumference from the opening to the chamber end."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 45.0mm / Absolute Max: 58.0mm**"
+            }
+          ]
+        },
+        {
+          "id": "t5-4",
+          "label": "T5.4",
+          "title": "Max angle of chamber",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The absolute maximum angle of the chamber, parallel to the track surface. This is measured with a full 8g power unit cartridge inserted into the cartridge chamber with the car sitting on all four (4) wheels with no outside assistance."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: -3° Absolute Max: 3°**"
+            }
+          ]
+        },
+        {
+          "id": "t5-5",
+          "label": "T5.5",
+          "title": "Chamber safety zone",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 10pts]**"
+            },
+            {
+              "type": "p",
+              "text": "A safety zone of STEM Racing™ Model Block material with a minimum thickness of 3.5mm must be maintained around the minimum chamber depth (see T5.3). The chamber safety zone and connection to the car body will be assessed and if determined below the minimum thickness, may be considered a safety issue at the judge’s discretion, see ARTICLE T3.2."
+            },
+            {
+              "type": "p",
+              "text": "**IMPORTANT:** the entire circumference and depth of the power unit cartridge chamber must not be intersected by any object."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 3.5mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/chamber-safety-zone.webp",
+              "alt": "Front view and section A-A of the car; the section view shows the cartridge chamber surrounded by a yellow-outlined 3.5mm safety zone of model block material, with a legend reading 3.5mm Safety zone.",
+              "caption": "The 3.5mm safety zone around the chamber (T5.5)."
+            },
+            {
+              "type": "p",
+              "text": "(The cartridge chamber should be free of any paint)"
+            }
+          ]
+        },
+        {
+          "id": "t5-6",
+          "label": "T5.6",
+          "title": "Power unit cartridge visibility",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts per millimeter]**"
+            },
+            {
+              "type": "p",
+              "text": "When fully inserted, the power unit cartridge must protrude a minimum of 5.0mm from the rear of the car and be visible in its entirety when viewed radially around the longitudinal centerline of the power unit cartridge."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 5.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/cartridge-protrusion.webp",
+              "alt": "Top view of the car titled T5.6 Minimum protrusion in top, bottom and side view, with a red dimension marking the 5.0mm minimum the power unit cartridge protrudes behind the rear wing.",
+              "caption": "Minimum protrusion of the power unit cartridge, 5.0mm (T5.6)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t6",
+      "label": "Article T6",
+      "title": "Tether line guides",
+      "children": [
+        {
+          "id": "t6-1",
+          "label": "T6.1",
+          "title": "Location",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 10pts]**"
+            },
+            {
+              "type": "p",
+              "text": "Each car must have only two (2) firmly secured tether line guides, one on or up to 10.0mm in front of the front axle center line and one on or up to 10.0mm behind the rear axle center line of the car. The track tether line must **only** pass through the two tether line guides during racing."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/tether-guide-location.webp",
+              "alt": "Plan view of the car with yellow bands marking the zone on each axle centre line, extending 10.0mm forward of the front axle and 10.0mm behind the rear axle, where the tether line guides must sit.",
+              "caption": "The 10.0mm zones for the two tether line guides (T6.1)."
+            }
+          ]
+        },
+        {
+          "id": "t6-2",
+          "label": "T6.2",
+          "title": "Internal dimension",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "This is the minimum and maximum internal measurement of the opening within the guide, which the tether line passes through. This will be measured using a 3.5mm and/or 6.0mm diameter tool."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 3.5mm / Absolute Max: 6.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/tether-guide-internal-diameter.webp",
+              "alt": "Front view of the car with an enlarged view of the ring-shaped tether line guide, labelled Min diameter 3.5mm and Max diameter 6.0mm for the internal opening.",
+              "caption": "Internal diameter of the tether line guide, 3.5mm to 6.0mm (T6.2)."
+            }
+          ]
+        },
+        {
+          "id": "t6-3",
+          "label": "T6.3",
+          "title": "Tether line guide safety",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 10pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The guide holes must be completely closed to prevent the tether line from slipping out during racing. The construction of the tether line guides will be closely examined in relation to safety, please refer to ARTICLE T3.2 for more information. The guides must be robust so as to prevent the diameter or shape changing during racing. The below tether line guide test will be conducted during scrutineering. A 200g weight will be suspended from each tether line guide to check the guides are securely fitted to the car and safe to race."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/tether-guide-safety-test.webp",
+              "alt": "Two renderings of the car hanging by its front and rear tether line guides, each with a hook and a weight pan suspended below, illustrating the 200g tether line guide test.",
+              "caption": "The tether line guide test with a 200g weight on each guide (T6.3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t7",
+      "label": "Article T7",
+      "title": "Wheels and wheel support structures",
+      "children": [
+        {
+          "id": "t7-1",
+          "label": "T7.1",
+          "title": "Number and location",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 25pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The car assembly must include four (4) cylindrical wheels, a maximum of two (2) at the front and a maximum of two (2) at the rear. Opposing wheels must share a common center line / axis."
+            }
+          ]
+        },
+        {
+          "id": "t7-2",
+          "label": "T7.2",
+          "title": "Distance between opposing wheels",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 2.5pts per millimeter per axle]**"
+            },
+            {
+              "type": "p",
+              "text": "This is measured as the innermost distance of the rotating wheel components (other than a rotating axle) between the two (2) opposing wheels measured parallel to the track surface."
+            },
+            {
+              "type": "clause",
+              "id": "T7.2.1",
+              "text": "**Front Axle - Absolute Min: 38.0 mm**"
+            },
+            {
+              "type": "clause",
+              "id": "T7.2.2",
+              "text": "**Rear Axle - Absolute Min: 30.0 mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-distance-front-rear-axle.webp",
+              "alt": "Plan view of the car with call-outs at the front axle and the rear axle marking the innermost distance between the opposing rotating wheels on each axle.",
+              "caption": "Distance between opposing wheels on the front and rear axle (T7.2)."
+            }
+          ]
+        },
+        {
+          "id": "t7-3",
+          "label": "T7.3",
+          "title": "Wheelbase",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty –5pts per millimeter]**"
+            },
+            {
+              "type": "p",
+              "text": "The wheelbase of the vehicle is the distance between the center line of the front and rear wheels as viewed in the side view."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 120.0mm / Absolute Max: 140.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheelbase.webp",
+              "alt": "Side view of the car with a red dimension line between the centres of the front and rear wheels labelled Wheelbase Min 120.0mm / Max 140.0mm.",
+              "caption": "Wheelbase, 120.0mm to 140.0mm (T7.3)."
+            }
+          ]
+        },
+        {
+          "id": "t7-4",
+          "label": "T7.4",
+          "title": "Track contact width",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 2.5pts per millimeter per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "This is measured along the surface of the wheel that makes constant contact with the track surface, excluding any chamfers or fillets."
+            },
+            {
+              "type": "p",
+              "text": "If only one wheel per axle is outside of the minimum or maximum dimension, the point penalty will stand but the regulation is reclassified as General."
+            },
+            {
+              "type": "clause",
+              "id": "T7.4.1",
+              "text": "**Front wheels - Absolute Min: 13.0mm**"
+            },
+            {
+              "type": "clause",
+              "id": "T7.4.2",
+              "text": "**Rear wheels - Absolute Min: 17.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-track-contact-width.webp",
+              "alt": "Diagram of a wheel side-on showing wheel diameter, and three wheels on the track surface with chamfered, square and rounded edges, each with the wheel contact width marked between the chamfers or fillets.",
+              "caption": "Wheel diameter and track contact width for chamfered, square and rounded wheel edges (T7.4)."
+            }
+          ]
+        },
+        {
+          "id": "t7-5",
+          "label": "T7.5",
+          "title": "Diameter",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 2.5pts per millimeter per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "This is the wheel diameter measured across the minimum track contact width rolling surface."
+            },
+            {
+              "type": "p",
+              "text": "If only one wheel per axle is outside of the minimum or maximum dimension, the point penalty will stand but the regulation is reclassified as General."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 28.0mm / Absolute Max: 32.0mm**"
+            }
+          ]
+        },
+        {
+          "id": "t7-6",
+          "label": "T7.6",
+          "title": "Race track contact",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 2.5pts per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "All four (4) wheels must touch the racing surface at the same time across the full track contact width, measured with a full power unit cartridge inserted with the car sitting on all four (4) wheels with no outside assistance. Race track contact must be maintained prior to car launch and during racing."
+            }
+          ]
+        },
+        {
+          "id": "t7-7",
+          "label": "T7.7",
+          "title": "Rolling surface",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 2.5pts per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "The wheel diameter must be consistent across the track contact width. (i.e. no tread like features are permitted)"
+            }
+          ]
+        },
+        {
+          "id": "t7-8",
+          "label": "T7.8",
+          "title": "Rotation",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 5pts per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "To facilitate forward motion of the car during racing all (4) wheels must rotate freely about their axis using a 3° maximum inclined surface."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Max: 3°**"
+            }
+          ]
+        },
+        {
+          "id": "t7-9",
+          "label": "T7.9",
+          "title": "Visibility in top and bottom views",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE]**"
+            },
+            {
+              "type": "p",
+              "text": "The visibility of all wheels must not be physically obscured by any component of the car in the car’s top and bottom elevation views. Car body or any other components must not exist within the dimensions illustrated below. These dimensions must exist from the inside edges of each wheels’ track contact width to the extreme width of the car assembly and a height from track surface of 65.0mm. This is measured, parallel to the vertical reference plane and track surface. Please also refer to T8.6 and T9.6 – Clear Airflow."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Regulation",
+                "Location",
+                "Dimension",
+                "Penalty"
+              ],
+              "rows": [
+                [
+                  "T7.9.1",
+                  "In front of front wheels",
+                  "Absolute Min: 5.0mm",
+                  "2.5pts"
+                ],
+                [
+                  "T7.9.2",
+                  "Behind front wheels",
+                  "Absolute minimum dimensions on diagram below",
+                  "5pts"
+                ],
+                [
+                  "T7.9.3",
+                  "In front of rear wheels",
+                  "Absolute minimum dimensions on diagram below",
+                  "5pts"
+                ],
+                [
+                  "T7.9.4",
+                  "Behind rear wheels",
+                  "Absolute Min: 5.0mm",
+                  "2.5pts"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Scrutineering tools used to define these clearances will be manufactured to dimensions as illustrated below."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-visibility-top-bottom.webp",
+              "alt": "Plan-view template drawing of the four scrutineering clearance zones around the wheels, labelled T7.9.1 to T7.9.4: green 5.0mm by 30.0mm strips ahead of the front wheels and behind the rear wheels, an orange trapezoid behind the front wheels with a 15.0mm and 60 degree edge, and a blue trapezoid ahead of the rear wheels with a 45 degree edge, each 30.0mm wide, with the zones repeated on a top view of the car.",
+              "caption": "Clearance zones that must be free of car body or other components around the wheels (T7.9.1 to T7.9.4)."
+            }
+          ]
+        },
+        {
+          "id": "t7-10",
+          "label": "T7.10",
+          "title": "Visibility in side views",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "The visibility of all wheels must not be physically obscured by any component of the car with the exception of any wheel support systems, in the car’s side elevation views."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-visibility-side.webp",
+              "alt": "Side view of the car with both wheels fully visible and a call-out pointing to external wheel support systems such as hubcaps, which are the only items permitted to cover part of a wheel.",
+              "caption": "Wheel visibility in the side view (T7.10); external wheel support systems such as hubcaps are allowed."
+            }
+          ]
+        },
+        {
+          "id": "t7-11",
+          "label": "T7.11",
+          "title": "Visibility in front view",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts per millimetre]**"
+            },
+            {
+              "type": "p",
+              "text": "The visibility of the front wheels in the car’s front view may only be physically obstructed to a height of 20.0mm from the track surface. This is measured with a full 8g power unit cartridge inserted into the cartridge chamber with the car sitting on all four (4) wheels with no outside assistance."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Max: 20mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-visibility-front.webp",
+              "alt": "Front view of the car with a vertical dimension line at the right marking Max 20.0mm from the track surface, the greatest height to which the front wheels may be obstructed.",
+              "caption": "Front wheels may be obstructed only up to 20.0mm above the track (T7.11)."
+            }
+          ]
+        },
+        {
+          "id": "t7-12",
+          "label": "T7.12",
+          "title": "Wheel support",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts each]**"
+            },
+            {
+              "type": "clause",
+              "id": "T7.12.1",
+              "text": "**Wheel support systems:** Wheel support systems may only exist within the cylindrical volume generated through the diameter of the two (2) opposing wheels. Refer to ARTICLE T3.8 Track clearance.",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/wheel-support-cylindrical-volume.webp",
+                  "alt": "Rendering of the car from below with translucent blue cylinders through each pair of opposing wheels, labelled Cylindrical Volume generated through opposing wheels, the only space wheel support systems may occupy.",
+                  "caption": "The cylindrical volume generated through the diameter of opposing wheels (T7.12.1)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T7.12.2",
+              "text": "**Wheel support systems identification:** The surfaces defining the wheel support structures MUST be dimensioned and identified clearly by hatching, shading or block color within the engineering drawings submitted for scrutineering. (Construction lines are acceptable to define the boundaries between components such as nose cone and wing support structures.) Also refer to the definition in ARTICLE T1.15 for guidance on annotating these features in your Engineering Drawings."
+            }
+          ]
+        },
+        {
+          "id": "t7-13",
+          "label": "T7.13",
+          "title": "Wheel safety test",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[SAFETY | Penalty – 2.5pts per wheel]**"
+            },
+            {
+              "type": "p",
+              "text": "To prevent wheel detachment during racing and encourage good engineering practice a wheel safety test will be carried out."
+            },
+            {
+              "type": "p",
+              "text": "The wheels must be robust so as to prevent the diameter or shape changing during racing. The below wheel test will be conducted during scrutineering. A 100g weight will be suspended from each wheel."
+            },
+            {
+              "type": "p",
+              "text": "To allow for this wheel safety test a minimum clearance (see below) is required from the inner corner of the wheel to the car body."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wheel-safety-test.webp",
+              "alt": "Photograph of the wheel safety test with the car supported by its chamber on a stand and a weight hanging from a wheel, with an enlarged view of the three finger claw gripping the wheel edge and a detail of the clearance the claw needs.",
+              "caption": "The wheel safety test, showing the 3 finger claw on the wheel edge and its clearance detail (T7.13)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t8",
+      "label": "Article T8",
+      "title": "Nose, front wing, end plates and wing support structures",
+      "children": [
+        {
+          "id": "t8-1",
+          "label": "T8.1",
+          "title": "Nose, front wing, end plates and wing support structure identification",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The surfaces defining the nose, front wing(s), end plates and wing support structures must be dimensioned and identified clearly by hatching, shading or block color within the engineering drawings submitted for scrutineering. (Clearly labelled construction lines are acceptable to define the boundaries between components such as nose cone and wing support structure). Also refer to the definition in ARTICLE T1.15 for guidance on annotating these features in your Engineering Drawings."
+            }
+          ]
+        },
+        {
+          "id": "t8-2",
+          "label": "T8.2",
+          "title": "Nose cone assembly dimension",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL | Penalty – 5pts each]**"
+            },
+            {
+              "type": "p",
+              "text": "This is measured in front of and parallel to reference plane A to the extreme front of the fully assembled car. From the Reference plane A the nose cone overhang is 40mm maximum."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Max: 40.0mm**"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/nose-cone-overhang.webp",
+              "alt": "Side view of the car with a dimension marking the nose cone overhang of Max 40.0mm forward of reference plane A, and a 16.0mm dimension between reference plane A and the front wheel centre line.",
+              "caption": "Nose cone overhang, maximum 40.0mm in front of reference plane A (T8.2)."
+            }
+          ]
+        },
+        {
+          "id": "t8-3",
+          "label": "T8.3",
+          "title": "Front wing(s) description and placement",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[General | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The design of the car should resemble an actual F1® car through the inclusion of a wing(s) on the nose of the car. Each wing section must have a leading edge and a trailing edge across its full span. Refer to the definition in ARTICLE T1.5."
+            }
+          ]
+        },
+        {
+          "id": "t8-4",
+          "label": "T8.4",
+          "title": "Front wing(s) construction and rigidity",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[General | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The nose, front wing(s) and any support structures may be manufactured from any separate materials. The wing span dimension must remain unchanged during races (i.e. wings must be rigid, ruled at the judge’s discretion)."
+            }
+          ]
+        },
+        {
+          "id": "t8-5",
+          "label": "T8.5",
+          "title": "Nose, front wing(s), front wing end plates and wing support location",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T8.5.1",
+              "text": "**Nose and wing support structure location - [General | Penalty – 10pts]** The nose and front wing support structure must be in front of reference plane A, no more than 25.0mm above the track surface and no wider than 15mm either side of the center line reference plane.\n**Absolute Max height: 25.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/nose-and-wing-support-location.webp",
+                  "alt": "Plan and side views of the car with a blue zone ahead of reference plane A for the nose and wing support: up to 40.0mm long, 16.0mm from the front wheel centre line, 30.0mm wide overall, at most 25.0mm high and 1.5mm above the track surface.",
+                  "caption": "Zone for the nose and front wing support structure (T8.5.1)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T8.5.2",
+              "text": "**The front wing and front wing end plate location - [General | Penalty – 10pts]** The front wing and front wing end plates must be in front of reference plane A. The front wing must be no more than 20.0mm above the track surface when wider than 15mm either side of the center line.\n**Absolute Max height: 20.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/front-wing-and-end-plate-location.webp",
+                  "alt": "Plan, side and front views showing the front wing zone in cyan and the end plate zone in pink ahead of reference plane A: wing at most 20.0mm high, end plates at most 25.0mm high and 10.0mm wide, with a minimum of 25.0mm per side (50.0mm in total), 1.5mm and 5.0mm above the track.",
+                  "caption": "Zones for the front wing and end plates (T8.5.2 and T8.5.3)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T8.5.3",
+              "text": "**Front wing end plate location - [General | Penalty – 10pts]** The front wing endplates must be positioned outside the minimum legal span, with a maximum width of 10.0mm when measured perpendicular to the vertical reference plane, and must not extend more than 25.0mm above the track surface when positioned outside (beyond) the front wheels.\n**Absolute Max Width: 10.0mm / Absolute Max Height: 25.0mm**\nThe endplates may also play a role in breaking the beam that detects cars crossing the finish line. To maximize accuracy in timing and classification, they should be designed to ensure they reliably trigger the beam as early as possible. Considerations should include their height, width, and position relative to the beam to optimize detection.\nPlease see Appendix i: Start Box and Finish Gate for beam information."
+            }
+          ]
+        },
+        {
+          "id": "t8-6",
+          "label": "T8.6",
+          "title": "Front wing dimensions",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE]**"
+            },
+            {
+              "type": "clause",
+              "id": "T8.6.1",
+              "text": "**Front wing span - [PERFORMANCE | Penalty – 2pts per millimeter]** The front wing span will be measured at right angles to the vertical reference plane along the leading edge, trailing edge, top surface and bottom surface of the wing, whichever is shortest will be considered as the maximum span. Where the front wing span is intersected by another part of the car, the total span is the sum of a maximum of two (2) wing segments, which **must** be no less than 25.0mm each. (See illustration below)\n**Absolute Min: 25.0mm x 2 = 50.0mm or 50.0mm x 1 = 50.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/front-wing-span.webp",
+                  "alt": "Four renderings of front wings, multi vane above and single vane below, each split by the central support into two segments marked Min 25.0mm on each side, shown in perspective on the left and in plan on the right.",
+                  "caption": "Front wing span, minimum 25.0mm on each side of the intersecting part (T8.6.1)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T8.6.2",
+              "text": "**Front wing chord - [PERFORMANCE | Penalty – 1pt per millimeter]** The front wing chord minimum to maximum dimensions must exist throughout the existing wing span. The chord is the distance between the leading edge and trailing edge of up to three elements that must overlap, it will be measured parallel to the vertical reference plane and normal to the track surface. Front wing chord compliancy does not depend on span. Multi vane wings must overlap. (See illustration below and appendix v)\n**Absolute Min: 15.0mm / Absolute Max: 25.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/front-wing-chord.webp",
+                  "alt": "Renderings of a single vane and a multi vane front wing with the vertical reference plane, leading edge and trailing edge marked, and side views showing the chord being measured with callipers between the leading and trailing edges.",
+                  "caption": "How front wing chord is measured (T8.6.2)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T8.6.3",
+              "text": "**Front wing thickness - [PERFORMANCE | Penalty – 1pt per millimeter]** The wing thickness minimum to maximum dimensions **must** exist throughout the wing’s existing span and at a point along the existing chord. Front wing thickness compliancy does not depend on span and / or chord. (See illustration below)\n**Absolute Min: 2.0mm / Absolute Max: 6.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/front-wing-thickness.webp",
+                  "alt": "Two renderings of front wing cross-sections, multi vane on the left and single vane on the right, each with a red line marking the thickness of the wing at a point along its chord.",
+                  "caption": "How front wing thickness is measured (T8.6.3)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t8-7",
+          "label": "T8.7",
+          "title": "Front wing clear airflow",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The front wing(s), measured across its / their minimum existing span, must have a minimum of 5.0mm of clear ‘air’ space to any other part of the car or track surface, measured normal from any part of the wings surface."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 5.0mm**"
+            },
+            {
+              "type": "p",
+              "text": "(To allow for fillet rads where a wing joins a support structure this will be checked with a 5.0mm diameter spherical ball on the end of a 2mm diameter rod.)"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/front-wing-clear-airflow.webp",
+              "alt": "Renderings of single vane and multi vane front wings with a translucent green envelope showing 5.0mm of clear air space around the wing, checked with a 5.0mm diameter spherical ball on the end of a 2mm diameter rod.",
+              "caption": "Clear air space around the front wing, checked with a 5.0mm ball on a 2mm rod (T8.7)."
+            }
+          ]
+        },
+        {
+          "id": "t8-8",
+          "label": "T8.8",
+          "title": "Front wing visibility",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts]**"
+            },
+            {
+              "type": "p",
+              "text": "Visibility of the front wing(s) must not be physically obstructed by any other component when viewed in the front view."
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/front-wing-visibility.webp",
+              "alt": "Front view of the car with a red line pointing to the front wing, labelled Visibility of front wing not physically obstructed in front view.",
+              "caption": "The front wing must be fully visible in the front view (T8.8)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t9",
+      "label": "Article T9",
+      "title": "Rear wing and wing support structures",
+      "children": [
+        {
+          "id": "t9-1",
+          "label": "T9.1",
+          "title": "Rear wing and wing support structure identification",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[General | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The surfaces defining the rear wing and wing support structure(s) **must** be dimensioned and identified clearly by hatching, shading or block color within the engineering drawings submitted for scrutineering. (Clearly labeled construction lines are acceptable to define the boundaries between components such as car body and wheel support structures). Also refer to the definition in ARTICLE T1.15 for guidance on annotating these features in your Engineering Drawings."
+            }
+          ]
+        },
+        {
+          "id": "t9-2",
+          "label": "T9.2",
+          "title": "Rear wing description and placement",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[General | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The design of a STEM Racing™ India car should resemble an actual F1® car through the inclusion of a wing at the rear of the car. To be considered a wing section it must have a leading edge and a trailing edge across its required span. Refer to the definition in ARTICLE T1.5"
+            }
+          ]
+        },
+        {
+          "id": "t9-3",
+          "label": "T9.3",
+          "title": "Rear wing construction and rigidity",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[General | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The rear wing and any support structures may be manufactured from any separate materials. The wing span dimension must remain unchanged during races (i.e. wings must be rigid, ruled at the judge’s discretion)."
+            }
+          ]
+        },
+        {
+          "id": "t9-4",
+          "label": "T9.4",
+          "title": "Rear wing, wing support structure and rear overhang location",
+          "blocks": [
+            {
+              "type": "clause",
+              "id": "T9.4.1",
+              "text": "**Rear wing and wing support structure location [General | Penalty – 10pts]** The whole of the rear wing and any support structure **must** be to the rear of reference plane B."
+            },
+            {
+              "type": "clause",
+              "id": "T9.4.2",
+              "text": "**Rear overhang length [General | Penalty – 5 pts]** This is measured to the rear of and parallel to reference plane B to the extreme rear of the fully assembled car. From the Reference plane B the rear wing and wing support structure overhang is a maximum of 40.0mm.\n**Absolute Max: 40.0mm**"
+            },
+            {
+              "type": "clause",
+              "id": "T9.4.3",
+              "text": "**Rear overhang height [General | Penalty – 5 pts]** This is measured to the rear of reference plane B to the highest point of the fully assembled car from the track surface.\n**Absolute Max: 65.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/rear-overhang.webp",
+                  "alt": "Side view of the car with a cyan zone behind reference plane B, marked Overhang length Max 40.0mm and Overhang height Max 65.0mm, and a 16.0mm dimension between the rear wheel centre line and reference plane B.",
+                  "caption": "Rear overhang length and height limits behind reference plane B (T9.4.2 and T9.4.3)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t9-5",
+          "label": "T9.5",
+          "title": "Rear wing dimensions",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE]**"
+            },
+            {
+              "type": "clause",
+              "id": "T9.5.1",
+              "text": "**Rear wing span - [PERFORMANCE | Penalty - 2pts per millimeter]** The rear wing span will be measured at right angles to the vertical reference plane along the leading edge, trailing edge, top surface or bottom surface of the wing, whichever is shortest will be considered as the maximum span. The rear wing **must** exist as a single, unbroken minimum span of 50.0mm. (See illustration below)\n**Absolute Min: 50.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/rear-wing-span.webp",
+                  "alt": "Renderings of a single vane and a multi vane rear wing with the vertical reference plane, each with a red arrow across the wing labelled Span Min 50.0mm.",
+                  "caption": "Rear wing span, minimum 50.0mm (T9.5.1)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T9.5.2",
+              "text": "**Rear wing chord - [PERFORMANCE | Penalty - 1pt per millimeter]** The rear wing chord minimum to maximum dimensions must exist throughout its existing wing span. The chord is the distance between the leading edge and trailing edge of up to two elements that must overlap, it will be measured parallel to the vertical reference plane and normal to the track surface. Rear wing chord compliancy does not depend on span. Multi vane wings must overlap. (See illustration below and appendix v)\n**Absolute Min: 15.0mm / Absolute Max: 25.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/rear-wing-chord.webp",
+                  "alt": "Renderings of rear wings against the vertical reference plane, with callipers measuring the chord on single and multi vane cross-sections labelled Chord Min 15.0mm and Max 25.0mm; the perspective views are labelled Chord Min 50.0mm.",
+                  "caption": "How rear wing chord is measured with callipers (T9.5.2)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T9.5.3",
+              "text": "**Rear wing thickness - [PERFORMANCE | Penalty - 1pt per millimeter]** The wing thickness minimum to maximum dimensions must exist throughout the wing’s **existing** span and at a point along the existing chord. Rear wing thickness compliancy does not depend on span and / or chord. (See illustration below)\n**Absolute Min: 2.0mm / Absolute Max: 6.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/rear-wing-thickness.webp",
+                  "alt": "Two renderings of rear wing cross-sections held in callipers, single vane and multi vane, each with a red arrow marking the wing thickness labelled Thickness Min 2.0mm Max 6.0mm.",
+                  "caption": "How rear wing thickness is measured (T9.5.3)."
+                }
+              ]
+            },
+            {
+              "type": "clause",
+              "id": "T9.5.4",
+              "text": "**Rear wing height deviation - [GENERAL | Penalty - 1pt per millimeter]** The maximum change in height deviation from the highest point of the wing is 15mm. Measured along the minimum span on the top surface.\n**Absolute maximum height deviation: 15.0mm**",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "/regulations/technical/rear-wing-height-deviation.webp",
+                  "alt": "Rear view of a curved rear wing with a dotted line at the highest point of the wing and a Max Height deviation of 15.0mm marked at the left, measured along the Min Span 50.0mm.",
+                  "caption": "Rear wing height deviation, maximum 15.0mm along the minimum span (T9.5.4)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "t9-6",
+          "label": "T9.6",
+          "title": "Rear wing clear airflow",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 5pts]**"
+            },
+            {
+              "type": "p",
+              "text": "The rear wing, measured across its existing span, must have a minimum of 5.0mm of clear ‘air’ space to any other part of the car or track surface, measured normal from any part of the wings surface."
+            },
+            {
+              "type": "p",
+              "text": "**Absolute Min: 5.0mm**"
+            },
+            {
+              "type": "p",
+              "text": "(This will be checked with a 5.0mm diameter spherical ball on the end of a 2mm diameter rod.)"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/rear-wing-clear-airflow.webp",
+              "alt": "Renderings of multi vane and single vane rear wings with a translucent green envelope labelled 5.0mm Clear around the wing, checked with a 5.0mm diameter ball on the end of a 2mm diameter rod.",
+              "caption": "Clear air space around the rear wing, checked with a 5.0mm ball on a 2mm rod (T9.6)."
+            }
+          ]
+        },
+        {
+          "id": "t9-7",
+          "label": "T9.7",
+          "title": "Rear wing visibility",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[PERFORMANCE | Penalty – 10pts]**"
+            },
+            {
+              "type": "p",
+              "text": "Visibility of the rear wing must not be physically obstructed by any other component when viewed in the front view"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/rear-wing-visibility.webp",
+              "alt": "Front view of the car with a red line pointing to the rear wing, labelled Visibility of rear wing not physically obstructed in front view.",
+              "caption": "The rear wing must be fully visible in the front view (T9.7)."
+            },
+            {
+              "type": "p",
+              "text": "Illustrations for T8 and T9 below:\n(See Appendix iii for more detail, examples and penalties relating to wing span, chord and thickness)"
+            },
+            {
+              "type": "figure",
+              "src": "/regulations/technical/wing-span-illustrations.webp",
+              "alt": "Plan view of the car with red dimension marks across the rear wing (T9.5.1 Rear wing span, illustrated as 1 x 50mm single span) and across the front wing (T8.5.1 Front wing span, illustrated as 2 x 25mm span segments).",
+              "caption": "Rear wing span as one 50mm span and front wing span as two 25mm segments (T9.5.1 and T8.5.1)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t10",
+      "label": "Article T10",
+      "title": "Additional components",
+      "children": [
+        {
+          "id": "t10-1",
+          "label": "T10.1",
+          "title": "Description and placement",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "**[GENERAL]**"
+            },
+            {
+              "type": "p",
+              "text": "Only the power unit cartridge, as positioned by race officials, is permitted to make contact with the launch pods and/or cars prior to and/or during racing. Please refer also to the STEM Racing™ India National Finals 2025/26 Competition Regulations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "appendix-i",
+      "label": "Appendix i",
+      "title": "Start box and finish gate",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The start boxes are designed to sit centrally within each lane of the track.\nThe distance from the emitter center line to the race track surface on both lanes is ~7mm."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/start-box-and-finish-gate.webp",
+          "alt": "Two cross-section drawings of the start box and finish gate, showing the receiver and emitter housings 3mm and 5mm from the beam and a yellow dashed light beam at a height of 7mm from the track surface to the centre of the beam.",
+          "caption": "Start box and finish gate: the light beam runs 7mm above the track surface (Appendix i)."
+        }
+      ]
+    },
+    {
+      "id": "appendix-ii",
+      "label": "Appendix ii",
+      "title": "Official STEM Racing™ Model Block dimensions",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Below: orthographic projection of STEM RACING™ Model Block. All dimensions shown in millimeters"
+        },
+        {
+          "type": "p",
+          "text": "This component is available to download as a universal 3D part from the below link:\nhttps://drive.google.com/file/d/1Pkl5rM2LZHw7w6vUz8_3LgWxHWf94N5x/view?usp=drive_link"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/model-block-drawing.webp",
+          "alt": "Orthographic drawing of the model block, 65.00 wide, 50.00 high and 223.00 long, with an 18.15/18.10 diameter chamber hole 52.00 deep at 32.50 across and 29.00 up, a 6.00 wide by 6.00 deep slot beneath, and two isometric views.",
+          "caption": "Official model block dimensions in millimeters (Appendix ii)."
+        }
+      ]
+    },
+    {
+      "id": "appendix-iii",
+      "label": "Appendix iii",
+      "title": "Front wing compliance examples",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The following table shows how penalty points are awarded for front wing span, chord or thickness dimensions that do not meet the specifications set out in **T8.5.1, T8.5.2 and T8.5.3**."
+        },
+        {
+          "type": "p",
+          "text": "This is not an exhaustive list of all possible wing configurations."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/front-wing-examples-single-vane.webp",
+          "alt": "Three stacked plan and side drawings of single vane front wings. Example 1: span split by a central support, 29.0mm segments over 64.0mm, 20.0mm chord, 6.0mm thick. Example 2: split by the nose, 24.0mm segments over 64.0mm, 20.0mm chord, 2.0mm thick. Example 3: 25.0mm segments over 64.0mm, 19.5mm chord, 1.5mm thick.",
+          "caption": "Drawings for the single vane front wing examples 1 to 3, top to bottom (Appendix iii)."
+        },
+        {
+          "type": "table",
+          "head": [
+            "Example",
+            "T8.5.1 Span (-2pts per mm)",
+            "T8.5.2 Chord (-1pts per mm)",
+            "T8.5.3 Thickness (-1pts per mm)",
+            "Remarks"
+          ],
+          "rows": [
+            [
+              "Example 1",
+              "PASS",
+              "PASS",
+              "PASS",
+              "**Wing span is split by single mounted central wing support.**\nWing span segments are minimum length, therefore PASS\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS."
+            ],
+            [
+              "Example 2",
+              "FAIL",
+              "PASS",
+              "PASS",
+              "**Wing span is split by nose.**\nWing span segments are less than minimum length at trailing edge (rear of wing), therefore FAIL\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS."
+            ],
+            [
+              "Example 3",
+              "PASS",
+              "PASS",
+              "FAIL",
+              "**Wing span is split by nose.**\nWing span segments are minimum length, therefore PASS\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is less than minimum, therefore FAIL."
+            ]
+          ],
+          "caption": "Front Wing Examples – Single Vane"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/front-wing-examples-multiple-vanes.webp",
+          "alt": "Three stacked plan and side drawings of multiple vane front wings, each 64.0mm across with 25.0mm or 24.0mm span segments either side of the central support and 20.0mm chord; the thickness dimensions are 6.0mm, 5.0mm and 7.0mm from top to bottom.",
+          "caption": "Drawings for the multiple vane front wing examples 1 to 3, top to bottom (Appendix iii)."
+        },
+        {
+          "type": "table",
+          "head": [
+            "Example",
+            "T8.5.1 Span (-2pts per mm)",
+            "T8.5.2 Chord (-1pts per mm)",
+            "T8.5.3 Thickness (-1pts per mm)",
+            "Remarks"
+          ],
+          "rows": [
+            [
+              "Example 1",
+              "PASS",
+              "FAIL",
+              "PASS",
+              "**Wing span is split by single mounted central wing support.**\nWing span segments are minimum length (25mm+25mm), therefore PASS\nWing chord is minimum throughout the existing span, but Multi vane wings do not overlap FAIL.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS."
+            ],
+            [
+              "Example 2",
+              "FAIL",
+              "PASS",
+              "PASS",
+              "**Wing span is split by single mounted central wing support.**\nWing span segments are less than minimum length at trailing edge (rear of wing), therefore FAIL\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS."
+            ],
+            [
+              "Example 3",
+              "PASS",
+              "PASS",
+              "FAIL",
+              "**Wing span is split by single mounted central wing support.**\nWing span segments are minimum length (25mm+25mm), therefore PASS\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is over the maximum limit, therefore FAIL."
+            ]
+          ],
+          "caption": "Front Wing Examples – Multiple Vanes"
+        }
+      ]
+    },
+    {
+      "id": "appendix-iv",
+      "label": "Appendix iv",
+      "title": "Rear wing compliance examples",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The following table shows how penalty points are awarded for rear wing span, chord or thickness dimensions that do not meet the specifications set out in **T9.5.1, T9.5.2, T9.5.3, T9.5.4**:"
+        },
+        {
+          "type": "p",
+          "text": "This is not an exhaustive list of all possible wing configurations."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/rear-wing-examples-single-vane.webp",
+          "alt": "Three stacked drawings of single vane rear wings, each with plan, rear and side views and the minimum span of 50.0mm marked. Example 1 has a shallow curve, example 2 a thicker wing, and example 3 a deep semicircular arch that exceeds the height deviation limit.",
+          "caption": "Drawings for the single vane rear wing examples 1 to 3, top to bottom (Appendix iv)."
+        },
+        {
+          "type": "table",
+          "head": [
+            "Example",
+            "T9.5.1 Span (-2pts per mm)",
+            "T9.5.2 Chord (-1pt per mm)",
+            "T9.5.3 Thickness (-1pt per mm)",
+            "T9.5.4 Deviation (-1pt per mm)",
+            "Remarks"
+          ],
+          "rows": [
+            [
+              "Example 1",
+              "PASS",
+              "PASS",
+              "PASS",
+              "PASS",
+              "Wing span is minimum length, therefore PASS.\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS.\nRear wing deviation is below maximum, therefore PASS."
+            ],
+            [
+              "Example 2",
+              "PASS",
+              "PASS",
+              "FAIL",
+              "PASS",
+              "Wing span is minimum length, therefore PASS.\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is more than maximum, therefore FAIL.\nRear wing deviation is below maximum, therefore PASS."
+            ],
+            [
+              "Example 3",
+              "PASS",
+              "FAIL",
+              "PASS",
+              "FAIL",
+              "Wing span is minimum length, therefore PASS.\nWing chord is less than minimum length, therefore FAIL.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS.\nWing deviation exceeds maximum height, therefore FAIL."
+            ]
+          ],
+          "caption": "Rear Wing Examples – Single Vane"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/rear-wing-examples-multiple-vane.webp",
+          "alt": "Three stacked drawings of multiple vane rear wings, each with plan, rear and side views and the minimum span of 50.0mm marked. Example 2 shows a visible gap between the vanes seen from above, and example 3 a deep semicircular arch.",
+          "caption": "Drawings for the multiple vane rear wing examples 1 to 3, top to bottom (Appendix iv)."
+        },
+        {
+          "type": "table",
+          "head": [
+            "Example",
+            "T9.5.1 Span (-2pts per mm)",
+            "T9.5.2 Chord (-1pt per mm)",
+            "T9.5.3 Thickness (-1pt per mm)",
+            "T9.5.4 Deviation (-1pt per mm)",
+            "Remarks"
+          ],
+          "rows": [
+            [
+              "Example 1",
+              "PASS",
+              "PASS",
+              "PASS",
+              "PASS",
+              "Wing span is minimum length, therefore PASS.\nWing chord is minimum throughout the existing span, therefore PASS.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS.\nWing deviation is minimum throughout the existing span, therefore PASS."
+            ],
+            [
+              "Example 2",
+              "PASS",
+              "FAIL",
+              "PASS",
+              "PASS",
+              "Wing span is minimum length, therefore PASS.\nWing chord is minimum throughout the existing span, but Multi vane wings do not overlap FAIL.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS.\nWing deviation is minimum throughout the existing span, therefore PASS."
+            ],
+            [
+              "Example 3",
+              "PASS",
+              "FAIL",
+              "PASS",
+              "FAIL",
+              "Wing span is minimum length, therefore PASS.\nWing chord is less than minimum length, therefore FAIL.\nWing thickness is minimum throughout the wing’s existing span and at a point along the existing chord, therefore PASS.\nWing deviation exceeds maximum height, therefore FAIL."
+            ]
+          ],
+          "caption": "Rear Wing Examples – Multiple Vane"
+        }
+      ]
+    },
+    {
+      "id": "appendix-v",
+      "label": "Appendix v",
+      "title": "Wing overlap",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wing overlap explanation:"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/wing-overlap-and-gap.webp",
+          "alt": "Two pairs of yellow and cyan aerofoil sections. In the first the two elements overlap when viewed from above, with total Chord 15.0 to 25.0mm; in the second there is a gap so they do not overlap, with element chords of 10.0mm and 13.0mm.",
+          "caption": "Overlapping vanes compared with vanes that do not overlap (Appendix v). Some chord labels are partly clipped in the original drawing."
+        },
+        {
+          "type": "p",
+          "text": "How to check if a gap exists between the elements:"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/feeler-gauge-gap-check.webp",
+          "alt": "A feeler gauge held perpendicular to the track between the trailing edge of one element and the leading edge of the next, with dimensions of 7.0mm and 8.0mm for the two elements and a 0.5mm gap between them.",
+          "caption": "Checking for a gap between the elements with a feeler gauge held perpendicular to the track (Appendix v)."
+        }
+      ]
+    },
+    {
+      "id": "appendix-vi",
+      "label": "Appendix vi",
+      "title": "Official Denford Race Power Pack dimensions",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This component is available to download as a universal 3D part from the below link:\nhttps://drive.google.com/file/d/1KbsfMYK1KcdzqSJ2Ba7iLrYNOugVN-VH/view?usp=drive_link"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/power-pack-dimensions.webp",
+          "alt": "Dimensioned drawing of the race power pack cartridge: length 65.00 with a tolerance of +0.5 and -0.5, neck diameter 8.70 (+0.0, -0.1) and body diameter 18.0 (+0.20, -0.25).",
+          "caption": "Official Denford Race Power Pack dimensions in millimeters (Appendix vi)."
+        },
+        {
+          "type": "p",
+          "text": "Full weight of RACE Power Pack: between: 28.9g and 29.4g"
+        }
+      ]
+    },
+    {
+      "id": "appendix-vii",
+      "label": "Appendix vii",
+      "title": "Car deceleration system",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The Deceleration System acts to bring cars to rest once crossing the finish line. STEM Racing™ India will provide Deceleration System which is integrated into the final track section after the finish line."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/deceleration-system.webp",
+          "alt": "Plan and side drawings of the car deceleration system track section, 1500mm long, labelled Car Deceleration System, with the lane narrowing from 60mm at one end, and a side profile rising from 11mm to 38mm above the track surface with three upright posts.",
+          "caption": "The car deceleration system after the finish line (Appendix vii)."
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "text": "Please note:\nThe official STEM Racing™ India deceleration system will be the only permitted stopping system. Please refer to the STEM Racing™ India National Finals 2025/26 Competition Regulations for full details."
+        }
+      ]
+    },
+    {
+      "id": "appendix-viii",
+      "label": "Appendix viii",
+      "title": "Example of component identification",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This is a basic example of component identification. Ensure that the regulation numbers align with the 2025/26 Technical Regulations. For detailed guidance on identifying your components, refer to T1.15."
+        },
+        {
+          "type": "table",
+          "head": [
+            "Colour",
+            "Component"
+          ],
+          "rows": [
+            [
+              "Yellow",
+              "Front / Rear Wings"
+            ],
+            [
+              "Coral red",
+              "Rear Wing Support"
+            ],
+            [
+              "Light blue",
+              "Front Wing end plate"
+            ],
+            [
+              "Red",
+              "Nose Cone"
+            ],
+            [
+              "Blue",
+              "Wheel Support System"
+            ],
+            [
+              "Green",
+              "Halo"
+            ],
+            [
+              "Orange",
+              "Helmet"
+            ],
+            [
+              "Light grey",
+              "Body"
+            ],
+            [
+              "Dark grey",
+              "Wheels"
+            ],
+            [
+              "Pink",
+              "Tether Guides"
+            ]
+          ],
+          "caption": "Colour key"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/component-identification-example.webp",
+          "alt": "Colour-keyed renderings of the car with each component in its own colour and labelled with its rule: T4.1 Body, T4.5 Helmet, T4.4.1 Halo, T9.1 Rear wing, T9.1 Rear Wing Support, T7.1 Wheels, T4.2 Virtual Cargo, T6.1 Tether Guides, T8.1 Front wing, T8.1 Front wing support, T8.1 Nose Cone and T.12.2 Wheel support systems.",
+          "caption": "Example of identifying components in an engineering drawing (Appendix viii). One label is printed as T.12.2 in the original."
+        }
+      ]
+    },
+    {
+      "id": "appendix-ix",
+      "label": "Appendix ix",
+      "title": "Halo and ballast container drawings",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "To accommodate the 'Halo', your car will require a pocket cut (which will include a Ballast container directly below the helmet aperture) the dimensions in the drawing below using a 6.35mm (1/4\") ball nose tool to a depth of 3.175mm."
+        },
+        {
+          "type": "p",
+          "text": "The center of the Halo 'Circular notch' for the retardation device is exactly 10.0 mm above the bottom of the pocket. To be effective the center of the Circular Notch must be 34.0mm ±1.0mm above the track surface. To achieve this the bottom of the pocket must be 24.0mm above the track in the assembled car. Use the dimensions on the diagrams below to check you have manufactured your Halo correctly"
+        },
+        {
+          "type": "p",
+          "text": "**Legal Ballast**"
+        },
+        {
+          "type": "p",
+          "text": "To help achieve the minimum weight, legal ballast may now be added to the legal ballast container under the halo, accessible through the halo/helmet aperture. The Virtual Cargo can coincide with the legal ballast container but not the halo pocket. The helmet should not be glued in place to allow for ballast adjustments before scrutineering."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/halo-and-ballast-drawings.webp",
+          "alt": "Engineering drawings of the halo and its pocket: halo plan 50.0 long, front view 25.0 wide, side view with 10.0 height, R2.0 notch and R3.175 corners, pocket depth 6.35 and 3.175, positions 12.70 and 22.70, and the pocket plan with 30.0, 10.0, 10.0, 12.7, 25.0, 12.5, 18.00 and R6.35 dimensions.",
+          "caption": "Halo, helmet, pocket and legal ballast container dimensions in millimeters (Appendix ix)."
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/halo-and-helmet-with-spigot.webp",
+          "alt": "Rendering of the car labelling the halo with a 6.0mm diameter hole for the helmet, the circular notch for the retardation device and the halo pocket with ballast container, beside the helmet with a 6.0mm diameter spigot and an isometric view of the halo with its 6.0mm hole.",
+          "caption": "Halo with 6.0mm hole, helmet with 6.0mm spigot and isometric view of the halo (Appendix ix)."
+        },
+        {
+          "type": "p",
+          "text": "**Demonstration of compliance of Virtual Cargo and Legal Ballast Container**"
+        },
+        {
+          "type": "figure",
+          "src": "/regulations/technical/virtual-cargo-and-ballast-container.webp",
+          "alt": "Section A-A and side view of the car with the virtual cargo in red and the legal ballast container in orange, dimensioned 21.5 mm, 60.0 mm and 15.0 mm along the body, showing the two overlapping but kept clear of the halo pocket.",
+          "caption": "The virtual cargo (red) and the legal ballast container (orange) may coincide but not the halo pocket (Appendix ix)."
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "text": "Please Remember:\nThe Virtual Cargo can coincide with the legal ballast container but not the halo pocket"
+        }
+      ]
+    },
+    {
+      "id": "clarifications",
+      "label": "",
+      "title": "Clarifications",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "Please ensure that once you receive the STEM Racing™ India National Finals 2025/26 Competition Regulations, you read through them carefully."
+        },
+        {
+          "type": "p",
+          "text": "For Official Technical & Competition Regulations Clarifications please email us at competitions@stemplify.com"
+        },
+        {
+          "type": "p",
+          "text": "**Work hard, see you at the National Finals!**"
+        }
+      ]
+    }
+  ]
+}

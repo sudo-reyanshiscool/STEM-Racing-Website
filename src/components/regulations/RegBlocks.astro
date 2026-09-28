@@ -1,0 +1,103 @@
+---
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import sharp from 'sharp';
+import { inline } from '../../lib/regulations/inline';
+import type { Block } from '../../lib/regulations/types';
+import RegBlocks from './RegBlocks.astro';
+
+interface Props {
+  blocks: Block[];
+}
+
+const { blocks } = Astro.props;
+// Each figure is sized from its file, so the page holds its place while the image loads.
+const sizes = new Map<string, { width?: number; height?: number }>();
+for (const block of blocks) {
+  if (block.type !== 'figure') continue;
+  const { width, height } = await sharp(await readFile(join(process.cwd(), 'public', block.src))).metadata();
+  sizes.set(block.src, { width, height });
+}
+const anchor = (id: string) => id.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+{
+  blocks.map((block) => {
+    switch (block.type) {
+      case 'p':
+        return <p set:html={inline(block.text)} />;
+      case 'clause':
+        return (
+          <div class="clause" id={anchor(block.id)}>
+            <a class="clause__id" href={`#${anchor(block.id)}`} aria-label={`Link to ${block.id}`}>
+              {block.id}
+            </a>
+            <div class="clause__body">
+              <p set:html={inline(block.text)} />
+              {block.blocks && block.blocks.length > 0 && <RegBlocks blocks={block.blocks} />}
+            </div>
+          </div>
+        );
+      case 'list': {
+        const Tag = block.ordered ? 'ol' : 'ul';
+        return (
+          <Tag class="reg-list">
+            {block.items.map((item) =>
+              typeof item === 'string' ? (
+                <li set:html={inline(item)} />
+              ) : (
+                <li>
+                  <span set:html={inline(item.text)} />
+                  {item.items && (
+                    <ul class="reg-list">
+                      {item.items.map((sub) => (
+                        <li set:html={inline(sub)} />
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ),
+            )}
+          </Tag>
+        );
+      }
+      case 'table':
+        return (
+          <div class="table-wrap reg-table" tabindex="0" role="region" aria-label={block.caption ?? 'Table'}>
+            <table class="table">
+              {block.caption && <caption>{block.caption}</caption>}
+              <thead>
+                <tr>
+                  {block.head.map((cell) => (
+                    <th scope="col" set:html={inline(cell)} />
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.rows.map((row) => (
+                  <tr>
+                    {row.map((cell) => (
+                      <td set:html={inline(cell)} />
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      case 'callout':
+        return (
+          <aside class:list={['callout', `callout--${block.tone ?? 'note'}`]}>
+            <p set:html={inline(block.text)} />
+          </aside>
+        );
+      case 'figure':
+        return (
+          <figure class="reg-figure">
+            <img src={block.src} alt={block.alt} {...sizes.get(block.src)} loading="lazy" decoding="async" />
+            {block.caption && <figcaption>{block.caption}</figcaption>}
+          </figure>
+        );
+    }
+  })
+}

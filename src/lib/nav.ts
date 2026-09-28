@@ -21,5 +21,7 @@ export function navItems(eventEnabled: boolean): NavItem[] {
 
 export function isCurrent(pathname: string, href: string): boolean {
   const clean = (value: string) => (value.length > 1 ? value.replace(/\/+$/, '') : value);
+  // The regulations pages sit under Resources.
+  if (href === '/resources' && clean(pathname).startsWith('/regulations')) return true;
   return clean(pathname) === clean(href);
 }

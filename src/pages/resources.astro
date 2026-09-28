@@ -23,6 +23,16 @@ const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').
   <Section surface="dark">
     <div class="stack stack--loose">
       <p class="lead">Documents and links for competing teams.</p>
+      <section class="card stack">
+        <p class="eyebrow">Regulations and guides</p>
+        <p>
+          The National Finals competition and technical regulations, the AI guidance and the project management
+          guide, each set out online with a table of contents.
+        </p>
+        <div class="actions">
+          <Button href="/regulations">Read the regulations</Button>
+        </div>
+      </section>
       {categories.length === 0 && <p>Resources will be added here.</p>}
       {
         categories.map((category) => (

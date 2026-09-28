@@ -1,0 +1,799 @@
+{
+  "slug": "ai-guidance",
+  "track": "AI Guidance",
+  "title": "Using AI Responsibly",
+  "summary": "How teams may use, reference and disclose AI tools in STEM Racing, and how judges treat AI use.",
+  "edition": "2026",
+  "pdf": "/regulations/tbs-ai-guidance-2026.pdf",
+  "pdfPages": 14,
+  "sections": [
+    {
+      "id": "s1",
+      "label": "1",
+      "title": "Using AI responsibly",
+      "children": [
+        {
+          "id": "s1-1",
+          "label": "1.1",
+          "title": "The core message",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Artificial Intelligence is changing the way we design, learn, and compete, and in STEM Racing, it’s part of the future we’re building together. AI can help you think faster, design smarter, and tell your story more powerfully than ever before. But with great technology comes great responsibility."
+            },
+            {
+              "type": "callout",
+              "tone": "important",
+              "text": "YOU CAN USE EVERY TOOL — BUT YOU MUST UNDERSTAND EVERY OUTCOME."
+            },
+            {
+              "type": "p",
+              "text": "AI is an incredible partner in creativity, research, and engineering, yet it’s only as powerful as the mind behind it. You are encouraged to explore every technology available to you, but remember: if you can’t explain how something works, you can’t claim it as your own. Understanding is ownership."
+            },
+            {
+              "type": "callout",
+              "tone": "important",
+              "text": "BE TRANSPARENT. ALWAYS TELL JUDGES HOW AI WAS USED."
+            },
+            {
+              "type": "p",
+              "text": "AI should enhance your ideas, not replace them. Whenever you use AI in your project, whether for concept sketches, data summaries, or presentation design, include a short note or appendix in your portfolio to show honesty and accountability."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "label": "2",
+      "title": "Introduction",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Innovation sits at the heart of STEM Racing™. From the first sketch of a car body to the final race down the 20-metre track, teams are encouraged to think creatively, use new technologies, and engineer bold solutions."
+        },
+        {
+          "type": "p",
+          "text": "Artificial Intelligence (AI) tools now offer new ways to design, research, and present ideas. Used responsibly, they can enhance learning and efficiency. Misused, they can undermine originality and the spirit of fair competition."
+        },
+        {
+          "type": "p",
+          "text": "This guide explains how teams may use, reference, and disclose AI tools ethically in all areas of the STEM Racing Challenge. It draws on global academic integrity standards and official STEM Racing Regulations to help every team innovate confidently while protecting their credibility and compliance."
+        }
+      ],
+      "children": [
+        {
+          "id": "s2-1",
+          "label": "2.1",
+          "title": "Understanding AI in the STEM Racing context",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Definitions:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Artificial Intelligence (AI)** – a system capable of performing tasks that normally require human intelligence, such as pattern recognition, decision-making, or natural-language processing.",
+                "**Generative AI** – an AI model (for example, GPT-based chatbots or image generators) that creates new text, images, code, or data based on patterns in existing information.",
+                "**Machine Learning** – algorithms that allow systems to learn from data and improve automatically through experience.",
+                "**Natural Language Processing (NLP)** – the technology enabling AI systems to understand and generate human language."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2-2",
+          "label": "2.2",
+          "title": "Common AI tools used by teams",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The following categories illustrate common types of AI-powered tools that teams may use in support of their project work."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Category",
+                "Example Tools",
+                "Typical Applications in STEM Racing"
+              ],
+              "rows": [
+                [
+                  "Research & Writing",
+                  "ChatGPT, Elicit, Consensus",
+                  "Summarising scientific papers, generating research questions, outlining reports"
+                ],
+                [
+                  "Design & Engineering",
+                  "Autodesk AI assistants, Ansys Discovery",
+                  "Concept suggestions, aerodynamic analysis support"
+                ],
+                [
+                  "Project Management",
+                  "ClickUp AI, Notion AI, Microsoft Copilot",
+                  "Drafting timelines, risk logs, progress summaries"
+                ],
+                [
+                  "Marketing & Enterprise",
+                  "Canva Magic Studio, DALL·E, Midjourney",
+                  "Generating poster concepts, social-media visuals"
+                ],
+                [
+                  "Language & Editing",
+                  "Grammarly, DeepL Write",
+                  "Improving clarity and grammar in written work"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "This list is illustrative, not exhaustive. Any AI-powered tool used in the development of a STEM Racing project must be disclosed in accordance with Section 4."
+            },
+            {
+              "type": "p",
+              "text": "Teams must record the specific tool name and version used at the time of use within the AI Assistance and Verification Log (see Appendix). The use of a tool not listed above does not exempt teams from disclosure obligations."
+            },
+            {
+              "type": "callout",
+              "tone": "important",
+              "text": "TEAMS SHOULD REMEMBER THAT THESE TOOLS SUPPORT HUMAN CREATIVITY - THEY DO NOT REPLACE IT."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "label": "3",
+      "title": "Core principles for responsible AI use",
+      "children": [
+        {
+          "id": "s3-1",
+          "label": "3.1",
+          "title": "Integrity and originality",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "All work presented at the STEM Racing World Finals must represent the team’s own ideas, designs, and understanding. AI may assist, but the final creative and technical decisions must belong to the team. This aligns with:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Competition Regulations C2.18 – Plagiarism (work must be original and credited appropriately).",
+                "Technical Regulations T2.10 – Originality of Work (all CAD, CAM data, and text must be produced by the team)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3-2",
+          "label": "3.2",
+          "title": "Transparency",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Teams must be open about any use of AI in written or visual work. A simple acknowledgement (see Section 4) ensures honesty and helps judges understand how technology was integrated."
+            }
+          ]
+        },
+        {
+          "id": "s3-3",
+          "label": "3.3",
+          "title": "Verification and human oversight",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "AI-generated outputs may contain factual errors, embedded bias, fabricated references, or technically plausible but incorrect claims. Teams remain fully responsible for verifying all AI-assisted content before submission. Verification requirements differ depending on the project area."
+            },
+            {
+              "type": "p",
+              "text": "For **Design & Engineering**, technical claims must be supported by credible engineering sources such as peer-reviewed journals, recognised aerospace or physics textbooks, manufacturer datasheets, official software outputs, or validated testing data. Performance claims should be supported by real calculations, simulations, or physical testing where applicable."
+            },
+            {
+              "type": "p",
+              "text": "For **Materials and Manufacturing**, teams should reference manufacturer datasheets, material property databases, or verified engineering standards."
+            },
+            {
+              "type": "p",
+              "text": "For **Project Management**, timelines, risk analysis methods, and budgeting frameworks should be cross-checked against recognised methodologies or documented project practices."
+            },
+            {
+              "type": "p",
+              "text": "For **Marketing & Enterprise**, market statistics, demographic data, and financial projections must be supported by credible business reports, official data sources, or clearly cited research."
+            },
+            {
+              "type": "p",
+              "text": "For **Performance Benchmarks**, teams should reference official competition records, published STEM Racing data, or verified test results."
+            },
+            {
+              "type": "p",
+              "text": "Teams must not rely solely on AI-generated citations or statistics without independently confirming their authenticity."
+            },
+            {
+              "type": "p",
+              "text": "AI systems may generate inaccurate, fabricated, or unverifiable information, including:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fabricated academic references",
+                "Invented statistics",
+                "Incorrect technical explanations",
+                "Misattributed quotes or data",
+                "Plausible but inaccurate scientific reasoning"
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Such errors remain the responsibility of the team."
+            },
+            {
+              "type": "p",
+              "text": "**Verification Checklist**\nFor every significant AI-assisted output, teams should complete the following process:"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Identify the original source referenced (if any).",
+                "Assess the credibility of the source.",
+                "Cross-reference the claim against at least one independent source where appropriate.",
+                "Confirm alignment with competition regulations and technical constraints.",
+                "Record verification steps in the AI Assistance and Verification Log (see Appendix)."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Failure to conduct appropriate verification may result in a Competition Integrity Breach under Section 7."
+            }
+          ]
+        },
+        {
+          "id": "s3-4",
+          "label": "3.4",
+          "title": "Accountability",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Each team member remains responsible for the content submitted.\nJudges may ask teams to explain how AI tools were used and verified. Failure to provide clear answers could affect scoring."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "label": "4",
+      "title": "Referencing and acknowledging AI use",
+      "children": [
+        {
+          "id": "s4-1",
+          "label": "4.1",
+          "title": "Why reference AI?",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Referencing AI sources follows international academic practice and prevents plagiarism. It demonstrates transparency, allows others to reproduce your process, and upholds the “Spirit of the Competition”."
+            }
+          ]
+        },
+        {
+          "id": "s4-2",
+          "label": "4.2",
+          "title": "How to reference AI tools",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "When an AI tool contributes text, imagery, or data, include an in-text acknowledgement and a full reference in your portfolio or appendix."
+            },
+            {
+              "type": "callout",
+              "tone": "note",
+              "text": "**Example 1 – Text Assistance (Harvard Style)**\nText generated using ChatGPT (OpenAI, 2026) in response to the prompt “Explain aerodynamic drag in model racing cars.” Reviewed and edited by Team Velocity.\n**Reference List Entry:**\nOpenAI (2026) ChatGPT [large language model]. Version 5. Available at: https://chat.openai.com (Accessed 10 Jan 2026)."
+            },
+            {
+              "type": "callout",
+              "tone": "note",
+              "text": "**Example 2 – Image Generation (APA 7th Style)**\nImage produced with DALL·E (OpenAI, 2026) based on the prompt “Team logo concept showing carbon fibre texture and blue aerodynamic flow lines.” Modified in Adobe Illustrator by the team."
+            },
+            {
+              "type": "callout",
+              "tone": "note",
+              "text": "**Example 3 – Research Summarisation**\nInformation retrieved from Consensus (2026) AI research platform. All cited papers were reviewed manually to confirm accuracy."
+            }
+          ]
+        },
+        {
+          "id": "s4-3",
+          "label": "4.3",
+          "title": "Where to place AI acknowledgements",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "All AI use must be clearly documented and attached to the team’s portfolio submission."
+            },
+            {
+              "type": "p",
+              "text": "AI acknowledgements may appear within the main body of the portfolio (e.g., footnotes or parenthetical references) and in presentation materials (e.g., slide footnotes or verbal disclaimers). However, in addition to any inline acknowledgements, all teams are required to complete and attach the official STEM Racing™ AI Assistance and Verification Log as an appendix to their portfolio (see Appendix: AI Assistance and Verification Log Template)."
+            },
+            {
+              "type": "p",
+              "text": "The AI Assistance and Verification Log must document each instance of AI use within the project and include the following mandatory fields: date of use, AI tool and version, project area, prompt or task description, description of how the output was used and modified, verification steps undertaken, and the responsible team member."
+            },
+            {
+              "type": "p",
+              "text": "The completed log must be submitted as part of the portfolio for judging. Failure to include the log where AI tools have been used may be treated as a transparency breach under Section 7. The official template provided by STEM Racing™ must be used without modification, except for the addition of rows where necessary (see Appendix: AI Assistance and Verification Log Template)."
+            }
+          ]
+        },
+        {
+          "id": "s4-4",
+          "label": "4.4",
+          "title": "Recommended referencing resources",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Most global institutions now require AI disclosure and citation."
+            },
+            {
+              "type": "p",
+              "text": "Recommended authorities:"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Resource",
+                "Description",
+                "Citation Example"
+              ],
+              "rows": [
+                [
+                  "APA (2024 AI Citation Guidelines)",
+                  "Covers how to cite ChatGPT or generative AI outputs",
+                  "ChatGPT. (2026, January 15). Response to a question about AI referencing. OpenAI. https://chat.openai.com/"
+                ],
+                [
+                  "IEEE Ethics in AI Guidelines",
+                  "Standard for ethical use of AI-generated data",
+                  "IEEE SA P7000 Series – Model Transparency and AI Ethics"
+                ],
+                [
+                  "Elsevier AI Author Policy (2024)",
+                  "Defines permissible AI use in research writing",
+                  "https://www.elsevier.com/about/policies/artificial-intelligence"
+                ],
+                [
+                  "Nature Editorial Standards for AI",
+                  "Cites generative AI as “tools,” not “authors”",
+                  "Include tool version (e.g., “Generated using GPT-5, OpenAI”)"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "**AI Ethics & Research Integrity Resources**\nFor teams producing AI-based designs, predictions, or reports:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "UNESCO Recommendation on the Ethics of Artificial Intelligence (2021): https://unesdoc.unesco.org",
+                "OECD AI Principles (adopted by 46 countries): https://oecd.ai/en/ai-principles",
+                "EU AI Act (2025 updates): Ethical compliance and transparency regulations."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "label": "5",
+      "title": "Ethical limits and examples of acceptable use",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The use of Artificial Intelligence (AI) tools in STEM Racing projects is encouraged only when it enhances learning, creativity, and efficiency—not when it replaces the team’s own work."
+        },
+        {
+          "type": "p",
+          "text": "All project elements submitted for judging must be wholly created and understood by the team, as outlined in the official STEM Racing World Finals Regulations. Teams must also uphold the Spirit of the Competition, which values honesty, originality, and fair collaboration."
+        },
+        {
+          "type": "p",
+          "text": "AI can be a valuable aid for research, idea generation, or improving clarity, but teams must always ensure that final designs, portfolios, presentations, and data reflect their own reasoning and technical decisions. Below is a summary of what constitutes acceptable and unacceptable use across key project areas, for example:"
+        },
+        {
+          "type": "table",
+          "head": [
+            "Category",
+            "Acceptable Use",
+            "Unacceptable Use"
+          ],
+          "rows": [
+            [
+              "Text",
+              "Using AI to brainstorm ideas, refine writing style, or correct grammar, summarising research notes or feedback",
+              "Submitting AI-generated text as original team work or copying descriptions without review or understanding"
+            ],
+            [
+              "Images",
+              "Using AI tools to draft visual ideas (e.g. pit display layouts or branding concepts) with proper attribution",
+              "Entering AI-generated artwork as original design without credit or explanation"
+            ],
+            [
+              "Data",
+              "Using AI to analyse or visualise genuine team-collected results",
+              "Fabricating or altering test data, simulation outputs, or results"
+            ],
+            [
+              "Design",
+              "Using AI to explore or compare design concepts that are then modelled and validated by the team",
+              "Using or submitting AI-generated CAD models or renderings directly without modification"
+            ],
+            [
+              "Code & Software",
+              "Using AI to debug code, explain programming concepts, or generate boilerplate that the team understands and modifies",
+              "Submitting AI-generated control algorithms or sensor logic without the team being able to explain the code line by line"
+            ],
+            [
+              "Verbal Presentation",
+              "Using AI to brainstorm presentation structure, refine talking points, or practise Q&A preparation",
+              "Reading from AI-generated scripts verbatim or using AI to generate answers to anticipated judge questions without understanding"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Teams should clearly acknowledge AI assistance in their portfolios or presentations, explaining how it was used and how the team verified or built upon the results. Transparency demonstrates integrity and understanding."
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "label": "6",
+      "title": "The core principle: understanding what you produce",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Artificial Intelligence can be a powerful assistant; it can suggest ideas, speed up research, or help visualise designs. However, in STEM Racing™ competitions, the real measure of success is understanding."
+        },
+        {
+          "type": "p",
+          "text": "You are welcome to use any AI or digital tool available, provided that:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "You know what the tool is doing.",
+            "You understand why it produces certain results.",
+            "You can explain those results clearly to the judges."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "When a judge asks, “Why did your AI suggest this shape?” or “How did this image represent your brand values?” The team must answer confidently and accurately."
+        },
+        {
+          "type": "p",
+          "text": "Relying on AI without comprehension shows a lack of learning, which contradicts the spirit of the competition."
+        },
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "IN STEM RACING, TECHNOLOGY IS AN ASSISTANT — NOT A SUBSTITUTE FOR UNDERSTANDING."
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "label": "7",
+      "title": "Academic integrity and judging compliance",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Artificial Intelligence use is compatible with STEM Racing’s educational mission only when students remain the original authors, decision-makers, and accountable owners of their work. AI may support student development, but it must not replace student understanding, authorship, or accountability."
+        }
+      ],
+      "children": [
+        {
+          "id": "s7-1",
+          "label": "7.1",
+          "title": "Judging assessment criteria",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Across all judging categories, Design & Engineering, Project Management, Enterprise, and Verbal Presentation, judges are instructed to assess three core principles: understanding, transparency, and integrity."
+            },
+            {
+              "type": "p",
+              "text": "With respect to understanding, judges must determine whether team members can clearly explain how AI tools were used in the development of their work, whether they can justify why specific outputs, designs, or wording were selected, and whether they demonstrate genuine technical and conceptual ownership of any AI-assisted outcomes."
+            },
+            {
+              "type": "p",
+              "text": "In assessing transparency, judges must evaluate whether AI usage has been clearly disclosed within the team’s portfolio, appendix, or presentation, and whether the scope and extent of AI involvement have been accurately and honestly described."
+            },
+            {
+              "type": "p",
+              "text": "In relation to integrity, judges must consider whether the submitted work reflects authentic student decision-making, whether technical claims, simulations, data, and designs are verifiable, and whether the team has avoided plagiarism, fabricated references, or unverifiable outputs."
+            },
+            {
+              "type": "p",
+              "text": "Material or deliberate failure to meet these standards may constitute a Competition Integrity Breach."
+            }
+          ]
+        },
+        {
+          "id": "s7-2",
+          "label": "7.2",
+          "title": "Authenticity, transparency, and demonstrated understanding",
+          "children": [
+            {
+              "id": "s7-2-1",
+              "label": "7.2.1",
+              "title": "Principle",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "The STEM Racing World Finals assesses student understanding, application, and ownership of work. The use of AI tools is permitted unless otherwise restricted, provided that all submitted work reflects genuine student understanding and authorship."
+                },
+                {
+                  "type": "p",
+                  "text": "Judges shall assess teams based on demonstrated understanding using the official scorecards. AI use in itself shall not result in a penalty."
+                }
+              ]
+            },
+            {
+              "id": "s7-2-2",
+              "label": "7.2.2",
+              "title": "Assessment through existing scorecards",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Judges will evaluate all submitted work through the published judging criteria."
+                },
+                {
+                  "type": "p",
+                  "text": "Where a team is unable to clearly explain, justify, or demonstrate understanding of submitted work, this shall be reflected in the score awarded within the relevant judging category. No additional penalty shall be applied where reduced marks appropriately reflect the level of demonstrated understanding."
+                }
+              ]
+            },
+            {
+              "id": "s7-2-3",
+              "label": "7.2.3",
+              "title": "Mandatory disclosure requirement",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Where AI tools have been used in the development of any submitted work, teams must complete and attach the official STEM Racing™ AI Assistance and Verification Log as part of their portfolio submission (see Appendix)."
+                },
+                {
+                  "type": "p",
+                  "text": "The AI Assistance Log is a mandatory submission component. Where AI has been used but no log is submitted, the judging panel shall notify the team and provide a reasonable opportunity to complete the log prior to final scoring."
+                },
+                {
+                  "type": "p",
+                  "text": "If a completed log is not provided following notification, scores in the affected judging categories may be capped at a maximum of 80% of available marks to reflect the incomplete nature of the submission. This adjustment applies only to categories where undisclosed AI use is identified."
+                },
+                {
+                  "type": "callout",
+                  "tone": "important",
+                  "text": "HONEST DISCLOSURE OF AI USE WILL NOT NEGATIVELY AFFECT A TEAM’S SCORE."
+                }
+              ]
+            },
+            {
+              "id": "s7-2-4",
+              "label": "7.2.4",
+              "title": "Integrity review (exceptional circumstances)",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Separate integrity action shall only be considered where there is clear evidence of:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Deliberate misrepresentation of authorship",
+                    "Fabricated technical data, simulations, or results",
+                    "Plagiarism (including AI-assisted concealment)",
+                    "Submission of work without demonstrable student understanding or involvement"
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "In such cases, the team may receive a score of zero in the affected category."
+                },
+                {
+                  "type": "p",
+                  "text": "Any decision under this clause must be reviewed and confirmed by the Chair of Judges. The ICC and supervising teacher will be formally notified. Teams will always be given the opportunity to explain their work before any integrity decision is made."
+                }
+              ]
+            },
+            {
+              "id": "s7-2-5",
+              "label": "7.2.5",
+              "title": "Proportionality",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "Judges must distinguish between:"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "A quality or depth issue (to be reflected in normal scoring under 7.2.2),",
+                    "A disclosure omission (to be addressed through the notification process under 7.2.3), and",
+                    "An integrity or authenticity breach (to be reviewed under 7.2.4)."
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "Integrity sanctions are expected to be rare and applied only where evidence is clear and material. The purpose of this framework is to encourage responsible use of AI, not to discourage its adoption."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7-3",
+          "label": "7.3",
+          "title": "Escalation and decision process",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "If judges identify a concern regarding AI use or academic integrity, the issue will be reviewed by the judging panel and referred to the Chair of Judges, where required."
+            },
+            {
+              "type": "p",
+              "text": "Teams will always be given the opportunity to explain their work and demonstrate understanding of how AI was used."
+            },
+            {
+              "type": "p",
+              "text": "After considering the team’s explanation, a decision will be made in accordance with this Article and formally recorded."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "label": "8",
+      "title": "Final reminder",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AI tools can expand what’s possible, but only your understanding earns the marks. Use every tool you can, explore every idea, but when you stand before the judges:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Be ready to explain what you did,",
+            "Why you did it,",
+            "And what you learned."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "AI CAN ACCELERATE YOUR PROCESS, BUT COMPREHENSION DRIVES YOUR PERFORMANCE.\nYOU MAY USE ALL THE TOOLS — BUT YOU MUST UNDERSTAND THE OUTCOMES."
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "label": "9",
+      "title": "References",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cover image - CHAT GPT (2026). Digital illustration showing AI technology and a STEM Racing car concept, created with DALL·E in ChatGPT. DALL·E (v2). Retrieved January 15, 2026."
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "label": "10",
+      "title": "Appendix",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "AI Assistance and Verification Log (Available to download here)"
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "appendix-log",
+          "label": "10.1",
+          "title": "AI Assistance and Verification Log",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "STEM Racing™ — Portfolio Appendix Template"
+            },
+            {
+              "type": "table",
+              "caption": "Team details",
+              "head": [
+                "Team Name",
+                "Team Number",
+                "Country",
+                "Judging Category",
+                "Date Prepared"
+              ],
+              "rows": [
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Instructions: Complete one row for each instance where an AI tool was used in your project.\nThis log should be included as an appendix in your portfolio submission. All entries must be completed before the final submission to the judges."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Entry #",
+                "Date",
+                "AI Tool & Version",
+                "Prompt / Task Description",
+                "How Output Was Used & Modified",
+                "Verification Steps Taken",
+                "Responsible Team Member"
+              ],
+              "rows": [
+                [
+                  "Example",
+                  "15 Jan 2026",
+                  "ChatGPT (GPT-4o)",
+                  "“Explain how wing angle affects downforce on a model racing car at speeds under 10 m/s”",
+                  "Used AI explanation to inform our wing angle range (5°–15°). Team then ran our own wind tunnel tests and selected 10° based on results.",
+                  "Cross-checked with NASA aero basics page. Validated through team testing.",
+                  "A. Smith (Design Lead)"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Teams may add additional rows as needed."
+            },
+            {
+              "type": "p",
+              "text": "**Team Declaration**\nWe confirm that all AI tool usage in our project has been documented in this log.\nWe understand that the content generated by AI tools can explain our reasoning to judges and have verified all AI outputs against reliable sources. All final creative and technical decisions are our own."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Team Manager",
+                "Teacher/Mentor Approval"
+              ],
+              "rows": [
+                [
+                  "Name",
+                  "Name"
+                ],
+                [
+                  "Role",
+                  "Role"
+                ],
+                [
+                  "Signature",
+                  "Signature"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

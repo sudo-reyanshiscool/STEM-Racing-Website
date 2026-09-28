@@ -16,6 +16,11 @@ export const ROUTES = [
   '/season',
   '/resources',
   '/support',
+  '/regulations',
+  '/regulations/competition',
+  '/regulations/technical',
+  '/regulations/ai-guidance',
+  '/regulations/project-management',
   ...(eventEnabled() ? ['/event'] : []),
   '/404',
 ];

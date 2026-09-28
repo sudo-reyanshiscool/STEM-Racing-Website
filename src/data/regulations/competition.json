@@ -1,0 +1,4471 @@
+{
+ "slug": "competition",
+ "track": "Competition",
+ "title": "Competition Regulations",
+ "summary": "How the STEM Racing India National Finals 2026 is judged, scored and raced: entry rules, six judging categories worth 1000 points, race procedure, protests and awards.",
+ "edition": "India National Finals 2026",
+ "pdf": "/regulations/tbs-national-finals-2025-26-competition-regulations.pdf",
+ "pdfPages": 54,
+ "sections": [
+  {
+   "id": "amendments",
+   "label": "",
+   "title": "Amendments to these regulations",
+   "blocks": [
+    {
+     "type": "callout",
+     "tone": "note",
+     "text": "Please note: any amendments made prior to the event will be indicated using red strikethrough text. New text will be indicated using blue text."
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "label": "Article C1",
+   "title": "Definitions",
+   "children": [
+    {
+     "id": "c1-1",
+     "label": "C1.1",
+     "title": "National Finals event",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The National Finals event is managed by STEM Racing™ India and is held over several days to include various programmed social and competition activities. The event aims to provide all participants with an educational and personal development ‘Experience of a Lifetime’. Specifically, the competition aims to determine the National Finals Champions of STEM Racing™ India according to the 2026 STEM Racing™ India National Finals Technical and Competition regulations."
+      }
+     ]
+    },
+    {
+     "id": "c1-2",
+     "label": "C1.2",
+     "title": "STEM Racing™ In-Country Co-Ordinator (ICC)",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Person/s and/or an organization approved by STEM Racing™ to manage and co-ordinate STEM Racing™ within a specified country or region of the world."
+      }
+     ]
+    },
+    {
+     "id": "c1-3",
+     "label": "C1.3",
+     "title": "Parc fermé",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "A secure area where all submitted cars and components are held to prevent unauthorized handling but to allow technical inspections to be conducted by the Judges. (Literal meaning in French of ‘closed park’)."
+      }
+     ]
+    },
+    {
+     "id": "c1-4",
+     "label": "C1.4",
+     "title": "Competition Program",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The competition program will detail the schedule of judging activities for all teams."
+      }
+     ]
+    },
+    {
+     "id": "c1-5",
+     "label": "C1.5",
+     "title": "National Finals terms and conditions for entry",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "This is a document issued by STEM Racing™ India which constitutes an agreement between STEM Racing™, ICC’s and supervising teachers regarding participation by teams in the National Finals event."
+      }
+     ]
+    },
+    {
+     "id": "c1-6",
+     "label": "C1.6",
+     "title": "Key performance indicators (KPI’s)",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "These are portions of text that feature on the scorecards within a corresponding points range. The KPI’s describe the type of evidence the Judges will be looking for in order to score the team appropriately."
+      }
+     ]
+    },
+    {
+     "id": "c1-7",
+     "label": "C1.7",
+     "title": "Car race time value",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "A ‘car race time’ value is the actual time taken for a STEM Racing™ India car to travel the track from start to finish, measured from the instant the start box fires to when the car breaks the finish line timing beam. In the case of reaction races, the ‘car race time’ value is calculated as the ‘total race time’ value displayed on the electronic start gate minus the ‘reaction time’ value displayed for that race. *Note- In virtual races, the car’s race time is counted as the total race time."
+      }
+     ]
+    },
+    {
+     "id": "c1-8",
+     "label": "C1.8",
+     "title": "Total race time value",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The ‘total race time’ value is displayed in the total time field on the electronic start gate at the conclusion of every race. This time is the sum of the ‘car race time’ value and any ‘reaction time’ value displayed on the electronic start gate."
+      }
+     ]
+    },
+    {
+     "id": "c1-9",
+     "label": "C1.9",
+     "title": "Reaction time value",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "A ‘reaction time’ value is the time recorded from the instant the five (5) start lights extinguish to the instant the start trigger is activated by the driver. This value is displayed in the reaction time field on the electronic start gate. *Note- For virtual races, the race will run in automatic mode."
+      }
+     ]
+    },
+    {
+     "id": "c1-10",
+     "label": "C1.10",
+     "title": "Project elements",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "These are any materials and resources that the team presents as part of its entry for any judging activity."
+      }
+     ]
+    },
+    {
+     "id": "c1-11",
+     "label": "C1.11",
+     "title": "Race event",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The National Finals competition includes three separate race events. These are: Reaction Racing 1, Reaction Racing 2, and Knock-out Racing."
+      }
+     ]
+    },
+    {
+     "id": "c1-12",
+     "label": "C1.12",
+     "title": "Engineering drawings",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Engineering drawings are CAD produced drawings, which along with relevant CAM program, could theoretically be used to manufacture the fully assembled car by a third party. Such drawings must include all relevant dimensions, tolerances and material information. STEM Racing™ India engineering drawings must include detail to specifically identify and prove compliance for the virtual cargo and wing surfaces. Engineering drawings can include: orthographic projection, auxiliary projection, section views, isometric projection, oblique projection, perspective and annotated renderings."
+      }
+     ]
+    },
+    {
+     "id": "c1-13",
+     "label": "C1.13",
+     "title": "Renderings",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Renderings are images intended to illustrate the three-dimensional form of an object. These can be generated in isometric projection, oblique projection or perspective."
+      }
+     ]
+    },
+    {
+     "id": "c1-14",
+     "label": "C1.14",
+     "title": "Digital Upload Folder",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "This is a specific digital upload folder, where all digitally submitted work must be uploaded to STEM Racing™ India. Everyone will receive a link of Digital Upload Folder, which will be provided by email directly to competing teams after team registration."
+      }
+     ]
+    },
+    {
+     "id": "c1-15",
+     "label": "C1.15",
+     "title": "Partnerships",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "A partnership can be defined as a collaborative relationship between organizations. The purpose of this relationship is to work toward shared goals through a division of labor that all parties agree on."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "label": "Article C2",
+   "title": "General information",
+   "children": [
+    {
+     "id": "c2-1",
+     "label": "C2.1",
+     "title": "Competing teams",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.1.1",
+       "text": "Each team must consist of a minimum of 3 students to a maximum of 6. If a student's date of birth falls after the 1st of January 2006 and they turned the age of 19 in the year the event takes place, they are eligible to compete."
+      },
+      {
+       "type": "clause",
+       "id": "C2.1.2",
+       "text": "Only members of the official competing team (maximum 6) are permitted to wear the team’s uniform."
+      },
+      {
+       "type": "clause",
+       "id": "C2.1.3",
+       "text": "During the competition, only the official core team members (maximum of 6) can represent the team, Pit Display presentation, Scrutineering, Verbal Presentation, Design & Engineering judging, Project Management, Enterprise judging, racing, presentations, competition activities and any direct communication with the Chair of Judges or Event/Competition Directors."
+      },
+      {
+       "type": "clause",
+       "id": "C2.1.4",
+       "text": "Team members and team adults/coordinators are requested to join in virtual format through there official name registered in the competition and they must adhere to C2.1.3."
+      }
+     ]
+    },
+    {
+     "id": "c2-2",
+     "label": "C2.2",
+     "title": "Competition program, team number and team name",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.2.1",
+       "text": "STEM Racing™ India will issue the competition program showing all scheduled judging activities, with judging times listed against team competition numbers."
+      },
+      {
+       "type": "clause",
+       "id": "C2.2.2",
+       "text": "STEM Racing™ India will determine the team number each team will be allocated. These team numbers will correspond with those published in the competition program."
+      },
+      {
+       "type": "clause",
+       "id": "C2.2.3",
+       "text": "No teams participating in the challenge are permitted to use any of the Formula One Word Marks (shown below) in their team name, logo, domain name, and/or any social media handle. For example, “Infinity F1” is not allowed and should be changed to something similar such as “Infinity” or “Team Infinity”. No team will be permitted to use any of the prohibited word marks within their team name when participating in STEM Racing™ India from 2017 onwards.",
+       "blocks": [
+        {
+         "type": "callout",
+         "tone": "note",
+         "text": "The STEM RACING Logo, STEM RACING, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trademarks of Formula One Licensing BV, a Formula 1 company. All rights reserved"
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C2.2.4",
+       "text": "Before event teams will be asked to define their official team’s name and their “short” team’s name. The official team’s name will be used to identify your team by default. Please refer to C2.2.3 for guidance on creating a suitable team name. The short name is the name that will be displayed for your team where space is limited (for example, small on-screen graphics). This must be no more than 15 characters (including spaces) and be typed exactly as you want the name to appear."
+      },
+      {
+       "type": "clause",
+       "id": "C2.2.5",
+       "text": "Prohibited characters – Teams may be asked to alter their team and organization names if they contain special characters outside of A-Z, a-z, 0-9 as these may cause issues with data processing. Some of the reserved characters are listed below. These may be amended at any point by STEM Racing™ India Superscript or subscript characters will also be ignored.",
+       "blocks": [
+        {
+         "type": "list",
+         "items": [
+          {
+           "text": "Team names **must not** include following reserved characters:",
+           "items": [
+            "< (less than)",
+            "> (greater than)",
+            ": (colon)",
+            "\" (double quote)",
+            "/ (forward slash)",
+            "\\ (backslash)",
+            "| (vertical bar or pipe)",
+            "? (question mark)",
+            "* (asterisk)"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c2-3",
+     "label": "C2.3",
+     "title": "Team responsibilities",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.3.1",
+       "text": "Teams must read the National Finals Technical Regulations carefully to ensure their cars comply with those regulations."
+      },
+      {
+       "type": "clause",
+       "id": "C2.3.2",
+       "text": "Teams must read the National Finals Competition Regulations (this document) carefully to ensure that all project elements satisfy these regulations and that they understand the requirements and procedures for all aspects of the competition and judging."
+      },
+      {
+       "type": "clause",
+       "id": "C2.3.3",
+       "text": "During the competition it is the team’s responsibility to ensure that team members are present at the correct time and location for all scheduled activities."
+      }
+     ]
+    },
+    {
+     "id": "c2-4",
+     "label": "C2.4",
+     "title": "Role and responsibility of supervising teacher/adult",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.4.1",
+       "text": "All the supervising teachers/adults should carefully read and understand the terms and conditions for participation to the STEM Racing™ India National Finals event, and must have explained all relevant information within this agreement to their team/s."
+      },
+      {
+       "type": "clause",
+       "id": "C2.4.2",
+       "text": "It is the primary responsibility of any event accredited supervising teacher/adult to ensure duty of care/well-being for all their student team members, as appropriate for their home country legislation. Any concerns arising during the event in relation to this should be brought to the attention of the STEM Racing™ India Event Directors immediately."
+      },
+      {
+       "type": "clause",
+       "id": "C2.4.3",
+       "text": "Any incident considered inappropriate will be brought to the attention of the Chair of Judges and 10 penalty points may be applied to their associated team."
+      }
+     ]
+    },
+    {
+     "id": "c2-5",
+     "label": "C2.5",
+     "title": "Regulations documents",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.5.1",
+       "text": "STEM Racing™ India issues the regulations, their revisions and amendments made."
+      },
+      {
+       "type": "clause",
+       "id": "C2.5.2",
+       "text": "Competition Regulations – (This document). The Competition Regulations document is mainly concerned with regulations and procedures directly related to judging and the competition event. Competition Regulation articles have ‘C’ prefix."
+      },
+      {
+       "type": "clause",
+       "id": "C2.5.3",
+       "text": "Technical Regulations – A document; separate to this one which is mainly concerned with those regulations that are directly related to STEM Racing™ India car design and manufacture. Technical Regulation articles have a ‘T’ prefix."
+      }
+     ]
+    },
+    {
+     "id": "c2-6",
+     "label": "C2.6",
+     "title": "Interpretation of the regulations",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.6.1",
+       "text": "The final text of these regulations is in English, should any dispute arise over their interpretation, the regulation text, diagrams and any related definitions should be considered together for the purpose of interpretation."
+      },
+      {
+       "type": "clause",
+       "id": "C2.6.2",
+       "text": "Text clarification - Any frequently asked questions that are deemed by STEM Racing™ India to be related to text needing clarification will be answered. The question and the clarification will be published to all teams at the same time."
+      }
+     ]
+    },
+    {
+     "id": "c2-7",
+     "label": "C2.7",
+     "title": "Supplementary competition regulations",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Other documents may be issued by STEM Racing™ India that provide teams with further logistic and other important event information. Any supplementary regulations will be issued to all lead teachers and team managers, where the team manager has supplied STEM Racing™ India with a contact email address. Copies of all supplementary regulations issued will be available online either via email or social media pages."
+      }
+     ]
+    },
+    {
+     "id": "c2-8",
+     "label": "C2.8",
+     "title": "Design ideas and regulation compliance queries",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams are not permitted to seek a ruling from STEM Racing™ India or any competition official or judge before the event as to whether a design idea complies with the regulations. Rulings will only be made by the Judges at the National Finals event. Design compliance to the regulation’s forms part of the competition. As in Formula 1®, innovation is encouraged, and STEM Racing™ India teams may also find, sometimes controversial, ways of creating design features by pushing the boundaries in order to get an extra competitive edge."
+      }
+     ]
+    },
+    {
+     "id": "c2-9",
+     "label": "C2.9",
+     "title": "Team partnerships",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.9.1",
+       "text": "STEM Racing™ India teams are encouraged to develop mentoring partnerships with businesses, industry, or higher education organizations throughout their project."
+      },
+      {
+       "type": "clause",
+       "id": "C2.9.2",
+       "text": "All design work, text and scripting for all project elements presented for assessment must be wholly undertaken and created by the team. This includes all CAD and CAM data, electronic portfolio and graphic content."
+      },
+      {
+       "type": "clause",
+       "id": "C2.9.3",
+       "text": "All aspects of any partnerships should also be represented in the team’s portfolio. For project elements produced utilizing some outside assistance, teams should be able to demonstrate to the Judges a high level of understanding of, and justification for, any of the processes used."
+      },
+      {
+       "type": "clause",
+       "id": "C2.9.4",
+       "text": "‘Common sense’ will prevail for project elements or components that a team has purchased from a supplier. E.g. bearings, screw eye, display hardware. Teams should be able to explain and justify why a specific component was selected / purchased over other similar available components."
+      }
+     ]
+    },
+    {
+     "id": "c2-10",
+     "label": "C2.10",
+     "title": "Mandatory project elements required for National Finals entry",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Following is a summary of the mandatory elements required for judging:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Two (2) identical STEM Racing™ India cars including all optional replacement components",
+        "One (1) digital copy of the Design & Engineering Portfolio",
+        "One (1) digital copy of the Project Management Portfolio",
+        "One (1) digital copy of Enterprise Portfolio",
+        "A Pit Display",
+        "A 10-minute Verbal Presentation",
+        "A set of engineering drawings including orthographic and 3D renders for Scrutineering judging.",
+        "A digital team logo",
+        "All relevant CAD data and access to CAD software",
+        "Car Submission Checklist which must include the official STEM RACING Model Block holographic stickers"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "The above list is detailed in the remainder of ARTICLE C2."
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.1",
+       "text": "Cars - Each team must produce two (2) identical STEM Racing™ India race cars."
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.2",
+       "text": "Portfolios - Each team must produce:",
+       "blocks": [
+        {
+         "type": "list",
+         "items": [
+          "One (1) digital copy A3, 11-page (maximum) Design & Engineering portfolio",
+          "One (1) digital copy A3, 12-page (maximum) Enterprise portfolio",
+          "One (1) digital copy A3, 7-page (maximum) Project Management portfolio"
+         ]
+        },
+        {
+         "type": "p",
+         "text": "Portfolios must be presented in an A3 (or equivalent) sized format. Refer to ARTICLE, C5, C6 & C7 of these regulations along with the Design & Engineering, Project Management and Enterprise judging scorecards for portfolio requirements."
+        },
+        {
+         "type": "p",
+         "text": "If you have any issues uploading your documents, you can also submit them by email to competitions@stemplify.com. It is recommended that when creating PDF files, teams consider embedding any unusual font types they may have used within their documents to help ensure they display correctly when opened by the Judges."
+        },
+        {
+         "type": "p",
+         "text": "The following file conventions must be adhered to:"
+        },
+        {
+         "type": "list",
+         "items": [
+          "Documents must be submitted in separate single Portable Document Format (PDF) files.",
+          "PDF files must be no greater than 40MB in size for the email option and no greater than 40MB for the STEM Racing™ India upload folder option.",
+          "Text included in the PDF files must be **highlightable** to facilitate the similarity checking process. STEM Racing™ India reserves the right to impose a penalty of up to 20 points to any team failing to comply with this request at the discretion of the chair of judges."
+         ]
+        },
+        {
+         "type": "p",
+         "text": "The files must be named:\n“**teamnumber_teamname_design&engineering.pdf**”,\n“**teamnumber_teamname_projectmanagement.pdf**”\n“**teamnumber_teamname_enterprise.pdf**”\n“**teamnumber_teamname_render.pdf**”\n“**teamnumber_teamname_engineeringdrawings.pdf**” so they can be recognized easily when submitted.\nFor example: “**T01_STEMRACINGIndia_projectmanagement.pdf**”."
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.3",
+       "text": "Pit display -Each team must comply to pit display dimension/regulations to present it in virtual format. Refer to ARTICLE C7 for further pit display specifications and content requirements."
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.4",
+       "text": "Verbal Presentation - Teams will be required to deliver a Verbal Presentation in relation to their project to the Judges. The presentation must not last longer than 10 minutes. Teams should bring their own laptop with any slide show or other multimedia files that need to be shown as part of their Verbal Presentation. Refer to ARTICLE C8 of these regulations for details regarding presentation content and other requirements."
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.5",
+       "text": "Electronic data - Teams must submit all additional project data as specified below:",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "Data submitted must include:"
+        },
+        {
+         "type": "p",
+         "text": "All CAD parts and assembly files to assist the scrutineering process.\nThe files must be named: “**teamnumber_teamname_filename**”, so they can be recognized easily when submitted. For example: “**T01_STEMRACINGIndia_fullcar_assembly.stl**”."
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.6",
+       "text": "Engineering Drawings (refer to ARTICLE C1.12) and Renderings (refer to ARTICLE C1.13) for Specification Judging. Teams must submit a digital copy of any engineering drawings and renderings of their car assembly and parts they wish to be referenced by the Engineering and Specification Judges.",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "Each team must produce:"
+        },
+        {
+         "type": "list",
+         "items": [
+          "One (1) digital copy of A4 Engineering drawings including orthographic view",
+          "One (1) digital copy of A4 3D car renders"
+         ]
+        },
+        {
+         "type": "p",
+         "text": "**Mandatory table of contents for Engineering Drawings**"
+        },
+        {
+         "type": "p",
+         "text": "Teams **MUST** include the following Engineering Drawing Table of Contents"
+        },
+        {
+         "type": "list",
+         "ordered": true,
+         "items": [
+          "Orthographic drawings with detailed dimensions of fully assembled car indicating regulation compliance",
+          {
+           "text": "Exploded isometric drawing with key to main components",
+           "items": [
+            "a. Car body",
+            "b. Virtual cargo",
+            "c. Chamber",
+            "d. Tether line guides",
+            "e. Front wheels / wheel support system",
+            "f. Rear wheels / Wheel support system",
+            "g. Nose cone",
+            "h. Front wing / support structure",
+            "i. Rear wing / support structure"
+           ]
+          },
+          "Orthographic drawings with detailed dimensions of virtual cargo including a sectioned view.",
+          "Location of official STEM Racing™ India decals dimensioned from key structural parts (e.g. wheel center).",
+          "Chamber details including wall thickness and depth.",
+          "Orthographic drawings with detailed dimensions of tether line guides.",
+          "Orthographic drawings of wheels with sectioned view and detailed dimensions.",
+          "Orthographic drawings with detailed dimensions of front wheels / wheel support system.",
+          "Orthographic drawings with detailed dimensions of rear wheels / wheel support system.",
+          "Orthographic drawings with detailed dimensions of nose cone.",
+          "Orthographic drawings with detailed dimensions of front wing and support structure highlighting wing surface/boundary.",
+          "Orthographic drawings with detailed dimensions of rear wing and support structure highlighting wing surface/boundary.",
+          "Detailed description of intended quality and finish in relation to individual components /assembled car."
+         ]
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C2.10.7",
+       "text": "Computer for Design & Engineering judging - a computer with the CAD software used by the team and with all CAD parts and assembly data should be used during the Design & Engineering judging session so that the team can demonstrate their CAD work and better explain how they engineered their car design."
+      }
+     ]
+    },
+    {
+     "id": "c2-11",
+     "label": "C2.11",
+     "title": "Team registration",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.11.1",
+       "text": "Teams are required to register with STEM Racing™ India through TEAM ACKNOWLEDGEMENT FORM. The team manager and supervising adult for each team must submit their project elements."
+      },
+      {
+       "type": "clause",
+       "id": "C2.11.2",
+       "text": "Official STEM Racing™ India 30x15mm car decals will be provided for teams that have not manufactured their own. These decals must be fitted to each of the two submitted cars by the STEM Racing™ India team during Specification judging. You can download the decal artwork here."
+      }
+     ]
+    },
+    {
+     "id": "c2-12",
+     "label": "C2.12",
+     "title": "Submission of project elements",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C2.12.1",
+       "text": "A time and location will be shared, where each team must submit their project elements. This will occur well before judging commences. Following is a list of the elements which must be submitted by each team:",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "**PHYSICAL PROJECT ELEMENTS**"
+        },
+        {
+         "type": "list",
+         "items": [
+          "One (1) nominated Car A identified using a white or black background STEM Racing™ India ‘Car A’ logo decal",
+          "One (1) nominated Car B identified using a white or black background STEM Racing™ India ‘Car B’ logo decal",
+          {
+           "text": "Optional Replacement Components",
+           "items": [
+            "Nose cone & front wing assembly – maximum of two (2)",
+            "Rear wing assembly – maximum of two (2)",
+            "Front wheels – maximum of four (4)",
+            "Front wheel support structure – maximum of two (2)",
+            "Rear wheels – maximum of four (4)",
+            "Rear wheel support structure – maximum of two (2)"
+           ]
+          },
+          "Project Elements Submission Checklist, which must include the official STEM RACING Model Block holographic sticker."
+         ]
+        },
+        {
+         "type": "p",
+         "text": "**DIGITAL COPY OF PROJECT ELEMENTS**"
+        },
+        {
+         "type": "list",
+         "items": [
+          "1 x digital copy of A3, 11-page (1-page front cover + 10 pages of content) Design & Engineering Portfolio",
+          "1 x digital copy of A3, 12-page (1-page front cover + 10 pages of content + 1 page back cover) Enterprise Portfolio",
+          "1 x digital copy of A3, 7-page (1-page front cover + 6 pages of content) Project Management Portfolio",
+          "Digital copy A4 Engineering drawings (with mandatory table of contents)",
+          "Digital copy A4 Car renders for Scrutineering judging",
+          "Electronic copy of all additional project data",
+          "Annexure C and Annexure D (Optional)"
+         ]
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C2.12.2",
+       "text": "During project submission, each team car will be weight on the official National Finals scales."
+      },
+      {
+       "type": "clause",
+       "id": "C2.12.3",
+       "text": "Small colored ‘dot’ stickers (approximately 5mm in diameter) and supplied by STEM Racing™ India, will be adhered to the underside of each car. The stickers will feature the team’s competition number."
+      },
+      {
+       "type": "clause",
+       "id": "C2.12.4",
+       "text": "Once cars and replacement components have been submitted, they are considered as being in parc fermé."
+      }
+     ]
+    },
+    {
+     "id": "c2-13",
+     "label": "C2.13",
+     "title": "Project elements to be retained by STEM Racing™ India",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "It is a condition of National Finals entry that each team permits STEM Racing™ India to retain one (1) car. Teams also permit STEM Racing™ India to use any of these project elements for marketing purposes and/or publication as exemplar projects for reference by others."
+      }
+     ]
+    },
+    {
+     "id": "c2-14",
+     "label": "C2.14",
+     "title": "Benefit of doubt",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Chair of Judges will, where appropriate, seek to use ‘benefit of doubt’ when the assessment of compliance is marginal or unclear. In this situation, teams will be given the benefit of doubt rather than a firm penalty if a penalty cannot be clearly measured or identified."
+      }
+     ]
+    },
+    {
+     "id": "c2-15",
+     "label": "C2.15",
+     "title": "Spirit of the competition",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams are expected to act in the spirit of the competition, both before and during the STEM Racing™ India National Finals. Any team deemed by the Chair of Judges to be acting outside of the spirit of the competition, can be removed from certain or all aspects of the competition. For example, a team attempting to abuse the technical regulations to their advantage may, at the discretion of the Chair of Judges, be removed from racing and receive no points for this activity. A team deemed to be acting in an unsportsmanlike manner towards another team or other persons may be removed from some or all judging areas."
+      },
+      {
+       "type": "p",
+       "text": "The spirit of the competition is simple; embrace and respect the rules and regulations, do your very best to compete legally and fairly, while contributing positively to the STEM Racing™ India National Finals. Make friends, create positive relationships, network professionally and enjoy yourselves."
+      }
+     ]
+    },
+    {
+     "id": "c2-16",
+     "label": "C2.16",
+     "title": "Plagiarism",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Plagiarism within any project work submitted by teams is not permitted. All teams must complete the Originality Declaration as part of their online team registration. Where plagiarism has been detected, the Chair of Judges may choose to penalize or exclude the team from that element of the competition."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "label": "Article C3",
+   "title": "Competition and judging format",
+   "children": [
+    {
+     "id": "c3-1",
+     "label": "C3.1",
+     "title": "Competition program",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C3.1.1",
+       "text": "Each team will be judged as per the competition program. The competition program will be formulated by STEM Racing™ India to best and fairly accommodate all judging and other competition activities. Teams will rotate around judging activities as per this program, with each rotation usually of 20 minutes in duration."
+      },
+      {
+       "type": "clause",
+       "id": "C3.1.2",
+       "text": "Judging Streams – The competition program will normally be divided into multiple parallel judging streams (Stream A, Stream B, Stream C and Stream D), to help ensure quality judging time intervals within the event time constraints. A number of strategies are implemented within the judging process, including judge briefings and judge reviews for cross-moderation to ensure there is consistency across the judging streams."
+      }
+     ]
+    },
+    {
+     "id": "c3-2",
+     "label": "C3.2",
+     "title": "Judging categories",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "There are six (6) main judging categories, each with its own team of Judges/officials and specified judging activities as detailed in further articles."
+      },
+      {
+       "type": "list",
+       "items": [
+        "Specification & Scrutineering Judging",
+        "Design & Engineering Judging",
+        "Project Management Judging",
+        "Enterprise Judging",
+        "Verbal Presentation Judging",
+        "Racing"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c3-3",
+     "label": "C3.3",
+     "title": "Judging scorecards",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The STEM Racing™ India National Finals judging scorecards provide detailed information in relation to what the Judges will be looking for. They include key performance indicators, which are referred to by the Judges in awarding points during judging activities. The 2026 National Finals judging scorecards can be found in the appendix of this document. Please read the whole document without assumptions from previous rules documents."
+      },
+      {
+       "type": "callout",
+       "tone": "important",
+       "text": "READING THE SCORECARDS CAREFULLY IS IMPORTANT. THEY PROVIDE CRITICAL INFORMATION FOR TEAMS AS TO WHAT NEEDS TO BE PRESENTED FOR EACH JUDGING CATEGORY."
+      }
+     ]
+    },
+    {
+     "id": "c3-4",
+     "label": "C3.4",
+     "title": "National Finals Champions",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The STEM Racing™ India National Finals Champions perpetual trophy will be awarded to the team with the highest sum total from all judging categories (ARTICLE C3.5). In the case of a tied points score, the team with the highest Knock-out score will be determined the winner."
+      },
+      {
+       "type": "callout",
+       "tone": "important",
+       "text": "THE CHAIR OF JUDGE’S DECISION IS FINAL"
+      }
+     ]
+    },
+    {
+     "id": "c3-5",
+     "label": "C3.5",
+     "title": "Point allocations",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Points will be awarded to teams across six (6) categories with maximum possible scores as detailed in the following table:"
+      },
+      {
+       "type": "table",
+       "caption": "National Finals Judging Categories and Point Allocations",
+       "head": [
+        "Judging category",
+        "Scored area",
+        "Points"
+       ],
+       "rows": [
+        [
+         "Specification & Scrutineering Judging",
+         "Specifications",
+         "100 points"
+        ],
+        [
+         "Specification & Scrutineering Judging",
+         "Engineering Drawings",
+         "20 points"
+        ],
+        [
+         "Specification & Scrutineering Judging",
+         "3D Renders",
+         "20 points"
+        ],
+        [
+         "Specification & Scrutineering Judging",
+         "Quality of Finish and Assembly",
+         "20 points"
+        ],
+        [
+         "Design & Engineering Judging",
+         "Design & Engineering Portfolio",
+         "180 points"
+        ],
+        [
+         "Project Management Judging",
+         "Initiating",
+         "35 points"
+        ],
+        [
+         "Project Management Judging",
+         "Planning",
+         "25 points"
+        ],
+        [
+         "Project Management Judging",
+         "Executing",
+         "20 points"
+        ],
+        [
+         "Project Management Judging",
+         "Monitor and Controlling",
+         "10 points"
+        ],
+        [
+         "Enterprise Judging",
+         "Enterprise Portfolio Only Assessment",
+         "100 points"
+        ],
+        [
+         "Enterprise Judging",
+         "Team Identity",
+         "20 points"
+        ],
+        [
+         "Enterprise Judging",
+         "Pit Display",
+         "60 points"
+        ],
+        [
+         "Verbal Presentation Judging",
+         "Technique",
+         "60 points"
+        ],
+        [
+         "Verbal Presentation Judging",
+         "Composition",
+         "40 points"
+        ],
+        [
+         "Verbal Presentation Judging",
+         "Subject Matter",
+         "40 points"
+        ],
+        [
+         "Racing",
+         "Reaction Racing",
+         "105 points"
+        ],
+        [
+         "Racing",
+         "Knock-Out Racing",
+         "135 points"
+        ],
+        [
+         "Racing",
+         "Fastest Car Bonus",
+         "10 points"
+        ],
+        [
+         "**TOTAL**",
+         "",
+         "**1000 points**"
+        ]
+       ]
+      },
+      {
+       "type": "callout",
+       "tone": "note",
+       "text": "The Rules Committee may at their discretion add point scoring judging categories into the event. This would be completed under controlled conditions during the competition."
+      }
+     ]
+    },
+    {
+     "id": "c3-6",
+     "label": "C3.6",
+     "title": "Classification of technical regulations",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C3.6.1",
+       "text": "The technical regulations are classified as either: GENERAL, SAFETY, PERFORMANCE.",
+       "blocks": [
+        {
+         "type": "table",
+         "head": [
+          "GENERAL",
+          "SAFETY",
+          "PERFORMANCE"
+         ],
+         "rows": [
+          [
+           "Regulations that shape the way the car fundamentally looks and works, vital to the style of a STEM Racing™ India car.",
+           "Mandatory rules that govern the safe running of the car. Cars must meet these rules to be considered ‘safe to race’.",
+           "Rules that have a direct impact on the performance of the vehicle, these typically carry the heaviest penalties."
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C3.6.2",
+       "text": "If a race car is judged as being NON-COMPLIANT with any Performance regulation they will be **INELIGIBLE** for the awards of: ‘**Fastest Car**’ and ‘**Best Engineered Car**’.",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "If a race car is judged as being NON-COMPLIANT with any Performance regulation, racing leaderboards will show an “under investigation” symbol next to the team’s race time."
+        },
+        {
+         "type": "p",
+         "text": "For the Knock-out Competition, should there be any teams with Performance regulation failure(s) for both cars seeded in the top 16 teams then they will only be permitted to race in round one of the knock-out competition and will be automatically knocked out during round one regardless of the race result."
+        },
+        {
+         "type": "p",
+         "text": "All Performance regulations are highlighted in yellow throughout the Technical Regulations Document:"
+        },
+        {
+         "type": "p",
+         "text": "**T3.3, T3.6, T4.2, T4.4.1, T5.6, T7.2, T7.3, T7.4, T7.5, T7.6, T7.7, T7.8, T7.9, T7.10, T7.11, T8.6.1, T8.6.2, T8.6.3, T8.7, T8.8, T9.5.1, T9.5.2, T9.5.3, T9.6, T9.7.**"
+        },
+        {
+         "type": "p",
+         "text": "For more information regarding Compliance with regulations, please consult T2.5 of the Technical Regulations document."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "label": "Article C4",
+   "title": "Specification & scrutineering judging (160 points)",
+   "children": [
+    {
+     "id": "c4-1",
+     "label": "C4.1",
+     "title": "What will be judged?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Specification & Scrutineering judging is a detailed inspection process where BOTH race cars plus the optional replacement components are assessed for compliance with the STEM Racing™ India National Finals Technical Regulations. The Engineering drawings, renderings and quality of finish & assembly will also be assessed. Refer to the scrutineering and specification judging scorecards for scoring details."
+      },
+      {
+       "type": "clause",
+       "id": "C4.1.1",
+       "text": "Optional replacement components must be identical in design to those fitted to both cars (Car A & Car B) and must be submitted with the cars. Only the following replacement components are permitted:",
+       "blocks": [
+        {
+         "type": "list",
+         "items": [
+          "Nose cone & front wing assembly – maximum of two (2)",
+          "Rear wing assembly – maximum of two (2)",
+          "Front wheels – maximum of four (4)",
+          "Front wheel support structure – maximum of two (2)",
+          "Rear wheels – maximum of four (4)",
+          "Rear wheel support structure – maximum of two (2)",
+          "Halo & Helmet – maximum of two (2)"
+         ]
+        },
+        {
+         "type": "p",
+         "text": "Submitted replacement components that are determined by the Judges to not be identical to that which are fitted to the car will not be allowed to be used. Submitted components will remain in parc fermé."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c4-2",
+     "label": "C4.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams must ensure that their cars (Car A & Car B) and any optional replacement components are complete and ready for specification judging and racing before they are submitted. Notice is also drawn to the performance regulations, refer ARTICLE C3.6. Teams must have also submitted an electronic copy of all specified project data such as scrutineering engineering drawings, which may all be referenced. Refer ARTICLE C2.10"
+      }
+     ]
+    },
+    {
+     "id": "c4-3",
+     "label": "C4.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "This inspection will take place once the car is submitted. Teams will proceed through virtual judging rooms for rectification at the time of scrutineering judging."
+      }
+     ]
+    },
+    {
+     "id": "c4-4",
+     "label": "C4.4",
+     "title": "Judging process/procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams begin specification judging with a full allocation of 100 points. Any infringements of the Technical Regulation articles, on either car, will result in points being deducted as detailed in the Technical Regulations."
+      },
+      {
+       "type": "p",
+       "text": "In addition, the engineering drawings, renderings, and overall quality of finish and assembly will be assessed, though this evaluation will occur behind closed doors. Refer to the scrutineering and specification judging scorecards for detailed scoring criteria."
+      },
+      {
+       "type": "p",
+       "text": "**CONTINUAL ASSESSMENT**\nSpot checks of the cars may take place at any point during the competition. STEM Racing reserves the right to review specification results if necessary. Teams will be informed of any changes to the initial assessment, and an appeal window may be made available at the discretion of the Chair of Judges."
+      }
+     ]
+    },
+    {
+     "id": "c4-5",
+     "label": "C4.5",
+     "title": "Safe/Fit to race fix",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams that have been judged during scrutineering to have incurred a Safe/Fit to Race regulation from the list below will be provided with a special 10-minute car service time also called rectification, prior to the commencement of racing. Cars must meet these rules to be considered ‘Safe/Fit to race. If during this service time the car can be modified so as to comply with the failed regulation(s), the team will then only incur HALF the point’s penalty for that infringement, without being classified as having incurred a SAFETY infringement."
+      },
+      {
+       "type": "p",
+       "text": "**T3.2 T4.4.4, T4.4.5, T5.1, T5.3, T5.4, T5.5, T5.6, T6.1, T6.2, T6.3 and T7.13**"
+      }
+     ]
+    },
+    {
+     "id": "c4-6",
+     "label": "C4.6",
+     "title": "Specification judging decision appeals",
+     "blocks": [
+      {
+       "type": "callout",
+       "tone": "note",
+       "text": "**From the World Finals 2026 Competition Regulations.** This clause is listed in the contents of the India National Finals PDF but its text is missing from the body of that PDF. The wording below is the World Finals text (it names the World Finals contact and refers to \"racing day 2\"). Check the timings and contact with STEM Racing™ India before relying on it."
+      },
+      {
+       "type": "clause",
+       "id": "C4.6.1",
+       "text": "**Scrutineering Decision Appeals**\nThese must be submitted within two hours of the team completing their specification review judging. Other rules for submitting these will be the same as for protests."
+      },
+      {
+       "type": "clause",
+       "id": "C4.6.2",
+       "text": "**Submitting a Protest**\nAny protest issues must only be submitted by the team manager by email (global-admin@stemracing.com) to an Event Director, who will register this and immediately submit it to the Chair of Judges. This must occur no later than 21:00 (local time) on racing day 2. Any protest or appeals submitted after this time may be disregarded. The Chair of Judges' decision related to any protest is final."
+      },
+      {
+       "type": "p",
+       "text": "Teams should carefully consider their grounds for submitting a protest or appeal. Any protest or appeal that is unsuccessful, with the Judges initial decision remaining unchanged, will result in the team having a 15-point penalty applied against their total score."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "label": "Article C5",
+   "title": "Design & engineering judging (180 points)",
+   "children": [
+    {
+     "id": "c5-1",
+     "label": "C5.1",
+     "title": "What will be judged?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Design & Engineering Judges will examine each team’s 11-page Design & Engineering portfolio so that they can assess the teams' car design and use of CAD/CAM technologies along with the quality of manufacture of both race cars submitted. The specific areas to be assessed are:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Design Concepts",
+        "CAD 3D Modelling",
+        "Application of Computer Aided Analysis",
+        "Use of CAM/CNC",
+        "Other Manufacturing & Assembly",
+        "Research & Development",
+        "Testing",
+        "Design Process Evaluation",
+        "Document Presentation"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Refer to the Design & Engineering judging scorecard for key performance indicator information."
+      }
+     ]
+    },
+    {
+     "id": "c5-2",
+     "label": "C5.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "A laptop needs to be ready for presentation in the Design & Engineering judging along with any other items which may help the team explain any engineering or manufacturing concepts. The Design & Engineering Judges will not have access to the team pit display for judging purposes. Teams may choose to, but do not need to take their display (3rd) car to the Design & Engineering judging. Preparation should include careful reading of the scorecard. The key performance indicators for the design process, application of CAD / CAM, analysis and associated data organization, describe what the Judges will be looking for."
+      }
+     ]
+    },
+    {
+     "id": "c5-3",
+     "label": "C5.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "This judging session must be attended by the team manager and team design and manufacturing engineers as a minimum."
+      }
+     ]
+    },
+    {
+     "id": "c5-4",
+     "label": "C5.4",
+     "title": "Judging process / procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams will be awarded points as per the key performance indicators shown on the Design & Engineering scorecard. Judges will review the Design & Engineering portfolio in a ‘closed to teams’ session programmed before the commencement of scheduled judging sessions. The scheduled Design & Engineering judging interview session will focus on the overall engineering and design of the car. This is an informal interview where Judges will ask the team to demonstrate their CAD / CAM work and query teams on what they have done. The quality of car manufacture and car assembly will be judged during a separate ‘closed to teams’ session."
+      }
+     ]
+    },
+    {
+     "id": "c5-5",
+     "label": "C5.5",
+     "title": "Design & Engineering Portfolio requirements",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Design & Engineering portfolio must be in a digital copy of A3 or similar size. The portfolio is limited to 11 pages (1-page front cover + 10 pages of content). This can be a single page front cover plus 10 single sided. If a portfolio comprises more than 11 pages, the Judges will only review the first 11 pages for assessment purposes. There MUST be content related to the use of CAM and CNC manufacturing included in the portfolio and this will be referenced by the Engineering Judges. Content related to the car, design ideas, design development, research, testing and evaluation should be presented within the portfolio."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "label": "Article C6",
+   "title": "Project management judging (90 points)",
+   "children": [
+    {
+     "id": "c6-1",
+     "label": "C6.1",
+     "title": "What will be judged?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Project Management judges will examine each team’s 7-page Project Management Portfolio so that they can assess the following specific areas."
+      },
+      {
+       "type": "p",
+       "text": "Project Management:"
+      },
+      {
+       "type": "list",
+       "items": [
+        {
+         "text": "Initiating",
+         "items": [
+          "Initiation Process",
+          "Project schedule"
+         ]
+        },
+        {
+         "text": "Planning",
+         "items": [
+          "Budget & Resource management",
+          "Roles and Responsibilities"
+         ]
+        },
+        {
+         "text": "Executing",
+         "items": [
+          "Team & Stakeholder Communications",
+          "Risk Management"
+         ]
+        },
+        {
+         "text": "Monitor and Controlling",
+         "items": [
+          "Monitoring & Controlling"
+         ]
+        }
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Refer to the Project Management scorecard for detailed point scoring and key performance indicator information."
+      }
+     ]
+    },
+    {
+     "id": "c6-2",
+     "label": "C6.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Each team must prepare one (1) Project Management portfolio as per ARTICLE C2.10. Most importantly, teams need to read the Project Management judging scorecard carefully to ensure that all areas to be assessed are included within the context of their Project Management portfolio."
+      }
+     ]
+    },
+    {
+     "id": "c6-3",
+     "label": "C6.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All team members must be present during the PM judging session at the time of Pit Display."
+      }
+     ]
+    },
+    {
+     "id": "c6-4",
+     "label": "C6.4",
+     "title": "Judging process / procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Project Management judging will take place during dedicated judging session. Team members may be asked questions by Judges to help them find certain content and/or seek further explanation. In addition to the scheduled judging session, the Judges will also be given time to conduct pre-judging and review of each team Project Management portfolio."
+      }
+     ]
+    },
+    {
+     "id": "c6-5",
+     "label": "C6.5",
+     "title": "Project Management Portfolio requirements",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Project Management Portfolio must be in a digital copy of A3 or similar size. The **Project Management portfolio** is limited to 7 pages (1-page front cover + 6 pages of content). This can be a single page front cover plus 6 single sided. If the portfolio comprises more than 7 pages, the Judges will only review the first 7 pages for assessment purposes."
+      },
+      {
+       "type": "p",
+       "text": "For Project Management, teams are asked to detail their project management processes employed with the delivery of the STEM Racing™ Project. The STEM Racing™ Project Management Guide should be used for reference. You can find the guide here.\nThe number of pages allocated to each key performance indicators is at the discretion of each team."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "label": "Article C7",
+   "title": "Enterprise judging (180 points)",
+   "children": [
+    {
+     "id": "c7-1",
+     "label": "C7.1",
+     "title": "What will be judged?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Enterprise Judges will examine each team 12-page Enterprise Portfolio and Pit Display so that they can assess the following specific areas."
+      },
+      {
+       "type": "list",
+       "items": [
+        {
+         "text": "Enterprise Portfolio only assessment:",
+         "items": [
+          "Marketing Strategy & Materials",
+          "Sponsorship & Return on Investment",
+          "Digital Media Proficiency",
+          "Sustainability",
+          "Document Presentation"
+         ]
+        },
+        {
+         "text": "Pit Display",
+         "items": [
+          "Design Process (Documented in Enterprise Portfolio)",
+          "Content, Clarity, and Impact",
+          "Functionality & User Experience execution"
+         ]
+        },
+        {
+         "text": "Team Identity",
+         "items": [
+          "Overall Team Identity"
+         ]
+        }
+       ]
+      },
+      {
+       "type": "p",
+       "text": "The Pit Display Criteria (Design Process, Content, Clarity and Impact and Functionality & user experience) will primarily be based on the Pit display, Pit display designs, enterprise portfolio and the interviews with the Enterprise judges."
+      },
+      {
+       "type": "p",
+       "text": "The Overall Team Identity will be assessed based by looking at all aspects of the team’s identity. This will be primarily based on the Pit display, enterprise portfolio and the interviews with the Enterprise judges. Judges may also review other documentation, such as the engineering and project management portfolios and images of the car to confirm the team’s identity has been applied consistently."
+      },
+      {
+       "type": "p",
+       "text": "Refer to the Enterprise scorecard for detailed point scoring and key performance indicator information."
+      }
+     ]
+    },
+    {
+     "id": "c7-2",
+     "label": "C7.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Each team must prepare one (1) Enterprise Portfolio and Pit Display as per ARTICLE C2.10. Most importantly, teams need to read the Enterprise judging scorecard carefully to ensure that all areas to be assessed are included within the context of their Enterprise portfolio and Pit Display."
+      },
+      {
+       "type": "p",
+       "text": "It is each team’s decision how and where each area is presented. Teams should be mindful of the time constraints of judging when making these decisions."
+      }
+     ]
+    },
+    {
+     "id": "c7-3",
+     "label": "C7.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All team members must be present during the display judging session."
+      }
+     ]
+    },
+    {
+     "id": "c7-4",
+     "label": "C7.4",
+     "title": "Judging process / procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Enterprise judging will take place during dedicated judging session. Team members may be asked questions by Judges to help them find certain content and/or seek further explanation. In addition to the scheduled judging session, the Judges will also be given time to conduct pre-judging and review of each teams Enterprise Portfolio."
+      }
+     ]
+    },
+    {
+     "id": "c7-5",
+     "label": "C7.5",
+     "title": "Enterprise Portfolio requirements",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Enterprise Portfolios must be in a digital copy of A3 or similar size."
+      },
+      {
+       "type": "p",
+       "text": "The Enterprise portfolio is limited to 12 pages (1-page front cover + 10 pages of content + 1 page back cover). This can be a single page front cover plus 10 single sided or 5 double sided sheets and a single page back cover. If the portfolio comprises more than 12 pages, the Judges will only review the first 11 pages for assessment purposes. The back cover of the portfolio should include the STEM Racing™ India logo, the team logo and a team photo."
+      },
+      {
+       "type": "list",
+       "items": [
+        "Marketing Strategy & Materials\nFor the marketing element, teams are asked to summaries their approach and reasoning to gaining awareness via marketing activities.",
+        "Sponsorship & Return on Investment (ROI)\nFor this element, teams are asked to explain their engagement with sponsors, explaining the relationship and benefits. Teams should also explain their activities linked to return of investment.",
+        "Digital Media Proficiency\nFor this element, teams are asked to outline their approach and reasoning for social media platforms, electronic mailings, website, and other online communications. The Digital Media element within the document will be assessed in conjunction with a review of the team’s Digital Media campaign executed.",
+        "Sustainability\nFor this criterion, teams are to outline their sustainability strategy and activities which give consideration to economic, environmental, and social factors."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "The number of pages allocated to each key performance indicators is at the discretion of each team."
+      }
+     ]
+    },
+    {
+     "id": "c7-6",
+     "label": "C7.6",
+     "title": "Pit Display setup and parameters",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C7.6.1",
+       "text": "The Team Pit Display is at the heart of a STEM Racing™ India event. It is the base of a team and says everything about a Team’s identity, USP (Unique Selling Point), brand and design development journey. Display spaces are normally of approximate dimensions 2m wide x 1m deep x 2.4m high. The precise space description and dimensions will be announced closer to the event as “Pit Display Regulation”."
+      },
+      {
+       "type": "clause",
+       "id": "C7.6.2",
+       "text": "No part of the teams completed Pit Display is allowed to protrude beyond the dimensions of their allocated pit space. This includes anything that might protrude above the pit space highest point e.g. flags. A penalty of up to 10 points may be applied at the chair of judge’s discretion."
+      },
+      {
+       "type": "clause",
+       "id": "C7.6.3",
+       "text": "STEM Racing™ India and/or the Chair of Judges may instruct a team to take action to remove display inclusions deemed to be inappropriate."
+      },
+      {
+       "type": "clause",
+       "id": "C7.6.4",
+       "text": "As part of our sustainability objectives, teams will no longer be able to send pit displays as freight to National Finals 2026 event. If your team attempts to freight anything to the STEM Racing™ India, we will refuse delivery."
+      },
+      {
+       "type": "clause",
+       "id": "C7.6.5",
+       "text": "All pit display materials must be virtually presentable, by the team, into the National Finals event."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "label": "Article C8",
+   "title": "Verbal presentation judging (140 points)",
+   "children": [
+    {
+     "id": "c8-1",
+     "label": "C8.1",
+     "title": "What will be judged?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Verbal Presentation Judges will assess each teams’ 10-minute Verbal Presentation across the areas of technique, composition and subject matter:"
+      },
+      {
+       "type": "list",
+       "items": [
+        {
+         "text": "Technique",
+         "items": [
+          "Engagement & Presentation Dynamics",
+          "Team Contribution"
+         ]
+        },
+        {
+         "text": "Composition",
+         "items": [
+          "Content Quality, Relevance & Subject Understanding",
+          "Time, Clarity and structure of content"
+         ]
+        },
+        {
+         "text": "Subject",
+         "items": [
+          "Innovation – detail key innovations related to car design, project management, marketing or any other aspect of the team’s project",
+          "Collaboration – detail any partnerships or mentoring from outside the team and justify in terms of improving project outcomes",
+          "STEM Racing™ India learning journey"
+         ]
+        }
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Refer to the Verbal Presentation judging scorecard for detailed point scoring and key performance indicator information."
+      }
+     ]
+    },
+    {
+     "id": "c8-2",
+     "label": "C8.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Each team is required to prepare a Verbal Presentation as per the requirements at ARTICLE C2.10. Teams need to have all presentation resources tested and ready with them for Verbal Presentation judging. Most importantly, teams should read the Verbal Presentation judging scorecard carefully to ensure their Verbal Presentation features all elements and content that the Verbal Presentation Judges will be looking for."
+      }
+     ]
+    },
+    {
+     "id": "c8-3",
+     "label": "C8.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All team members must be present during the Verbal Presentation judging session."
+      }
+     ]
+    },
+    {
+     "id": "c8-4",
+     "label": "C8.4",
+     "title": "Judging process / procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Verbal Presentation judging is scheduled for the same duration of other judging sessions, usually 20 minutes. Teams will be given an opportunity at the start of their time to set-up and test their laptop and any other presentation technologies and resources. The team will inform the Judges when they are ready to begin. The Judges start timing the 10-minute duration and will provide a discreet time warning signal when one minute of presentation time remains. The team will be asked to cease presenting when the time limit has been reached. At the conclusion of the teams’ presentation time, the Judges may choose to provide some feedback and / or ask any clarifying questions they feel necessary."
+      }
+     ]
+    },
+    {
+     "id": "c8-5",
+     "label": "C8.5",
+     "title": "Verbal presentation judging provisions",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "STEM Racing™ India will provide a dedicated private space, such as a virtual meeting room, where each team will deliver their presentation to the Judges."
+      }
+     ]
+    },
+    {
+     "id": "c8-6",
+     "label": "C8.6",
+     "title": "Verbal presentation video recordings",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The Verbal Presentations of all teams will be used for the purpose of judging review and/or may be used for post event publicity and promotional purposes by STEM Racing™ India."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "label": "Article C9",
+   "title": "Racing (250 points)",
+   "children": [
+    {
+     "id": "c9-1",
+     "label": "C9.1",
+     "title": "What races will be conducted?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The STEM Racing™ India National Finals racing points will be awarded through the staging of two types of race events:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Reaction Racing – automatic launch mode, 4 races in total, each car will race in one lane once over the 2 sessions.",
+        "Knock-out Competition Races – automatic launch mode, one race in each lane per round of competition (Qualification for the Knock-out, please see C9.7.1)."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Reaction racing will be split over two sessions of two races. The 'car race time' value from all reaction races will determine the Fastest Car Award (refer C9.6). The knock-out competition is the last of the scheduled races. Refer to ARTICLE C3.5 and further information following for details on how points are calculated and awarded."
+      }
+     ]
+    },
+    {
+     "id": "c9-2",
+     "label": "C9.2",
+     "title": "Team preparation",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C9.2.1",
+       "text": "Teams should be familiar with the operation of the STEM Racing™ India Race System. There will normally be a section demonstration track within the venue where teams can practice race starts during free time prior to their scheduled races."
+      },
+      {
+       "type": "clause",
+       "id": "C9.2.2",
+       "text": "Start line car staging – Race Judges will be responsible for staging the car at the start line. Team members are not permitted to adjust the car’s alignment themselves but may request a single realignment by the judges. Under no circumstances may team members interfere with the Power Unit Cartridge or the vertical alignment of the start box. At the end of the staging process, all four wheels of the car must be in contact with the track surface."
+      },
+      {
+       "type": "clause",
+       "id": "C9.2.3",
+       "text": "Teams must ensure that both cars are race ready."
+      },
+      {
+       "type": "callout",
+       "tone": "note",
+       "text": "**From the World Finals 2026 Competition Regulations.** C9.4(e) and C9.7.2(f) in this document say \"see C9.2.4\". In the World Finals numbering, the start line car staging rule is C9.2.4. In this document the same rule is **C9.2.2** (above), and there is no C9.2.4."
+      }
+     ]
+    },
+    {
+     "id": "c9-3",
+     "label": "C9.3",
+     "title": "Who needs to attend?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All team members must be present during their scheduled racing sessions."
+      }
+     ]
+    },
+    {
+     "id": "c9-4",
+     "label": "C9.4",
+     "title": "Reaction race procedure",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Cars are launched in manual / driver reaction mode during two racing sessions, each comprising of one race total per team, one (1) race in each lane. The TOTAL RACE TIME displayed and the REACTION TIME displayed for each race is recorded. The reaction races will be conducted as follows:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "a) Teams race in order as shown in the competition program. To begin racing, the lowest team number will start in lane 1. All cars will be loaded onto the track, Car A first then Car B.",
+        "b) One team member to track finish for deceleration system control.",
+        "c) Judge arms Start Box - SAFETY ON.",
+        "d) Race 1 (Car A) - Judge sets cars on track/tether line and inserts Power unit cartridge – makes initial start box adjustments.",
+        "e) Please see C9.2.4 for more detail.",
+        "f) Driver and team stands trackside with corresponding lane start trigger.",
+        "g) Judge checks deceleration system is ready, all team members to stand in designated safety zone as instructed by track judges, track is clear for racing, team information on race system is correct, switches Start Box - SAFETY OFF.",
+        "h) Judge presses the start system reset button – cars are launched by driver pressing start trigger.",
+        "i) Judge records TOTAL RACE TIME and REACTION TIME displayed on start gate.",
+        "j) Team member at finish moves car into storage zone at the end of the track.",
+        "k) Race 2 (Car B) conducted in same lane as above, driver can be inter-changed as nominated.",
+        "l) Team member at finish control returns car and empty power unit cartridge along track to the start with minimum handling.",
+        "m) Judges remove cars from tether line and change lanes, team information on race system is correct.",
+        "n) Cars removed from track and returned to Parc Fermé."
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c9-5",
+     "label": "C9.5",
+     "title": "Reaction race scoring",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All two (2) ‘total race times’ recorded from the reaction races are considered. The fastest of these two (2) times is used in the following formulae to calculate the points awarded:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Fastest ‘total race time’ = 105 pts",
+        "2nd fastest ‘total race time’ = 100 pts",
+        "3rd fastest ‘total race time’ = 95 pts",
+        "Slowest ‘total race time’ = 5 pts",
+        "Base Time = 120% of 3rd fastest ‘total race time’",
+        "4th fastest and all other teams score points using the following formula:",
+        "Team Points = 5 + (90 / (Base Time – fastest ‘total race time’)) x (Base Time – teams fastest ‘total race time’)",
+        "Any team with a best ‘total race time’ that is slower than the base time will score 5 points. To further discriminate between any teams scoring 5 points, a deduction of 1 point will be made for any did not finish (DNF) reaction race result."
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c9-6",
+     "label": "C9.6",
+     "title": "Knock-out race scoring",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The ‘car race times’ recorded during racing will be considered. From the races, the team’s best ‘car race time’ will be considered. This time is used to calculate the points awarded:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Eliminated in Round 1 (Round of 16) = 26 pts",
+        "Eliminated in Round 2 (Round of 8) = 52 pts",
+        "Eliminated in Quarter Final = 85 pts",
+        "Eliminated in Semi Final = 106 pts",
+        "Knock-out Winner = 135 pts",
+        "All remaining team’s will get 10 pts.",
+        "A deduction will be made of 2.5 points for any did not finish (DNF) Knock-out result."
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C9.6.1",
+       "text": "Fastest Car Race Time Bonus",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "A 10-point bonus will be awarded to the team with the single fastest ‘car race time’ value from all time-trial races."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c9-7",
+     "label": "C9.7",
+     "title": "Knock-out Competition",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams will take part in a knock-out (single elimination) competition. Teams will be issued the knock-out competition seeding and competition bracket prior to the race event commencing. The number of participating teams will be confirmed closer to the event."
+      },
+      {
+       "type": "clause",
+       "id": "C9.7.1",
+       "text": "Seeding - The seeding order for the first knock-out round is determined through seeding all teams using the average fastest ‘total race time’ they achieved from the Knock-out racing event."
+      },
+      {
+       "type": "clause",
+       "id": "C9.7.2",
+       "text": "Knock-out competition procedure - During the knock-out competition one race car will be used. Cars are launched in manual / driver reaction mode, with one (1) race in the knock-out. The team with the fastest ‘total race time’, as displayed on the start gate, from the races conducted, is the winner of that knock-out round.",
+       "blocks": [
+        {
+         "type": "p",
+         "text": "The knock-out competition will be conducted as follows:"
+        },
+        {
+         "type": "list",
+         "items": [
+          "a) Teams race in order of the competition draw. Top of draw in lane 1.",
+          "b) Prior to the cars being set on the track for each round, each team will be required to nominate which car (A or B) they will use for their race.",
+          "c) One team member to track finish for deceleration system control.",
+          "d) Judge arms start box - SAFETY ON – makes initial start box adjustments.",
+          "e) Race 1 - Judge sets all cars on track / tether line and inserts power unit cartridge",
+          "f) A team member is then allowed 30 seconds to ‘fine tune’ the alignment of their car, please see C9.2.4 for more detail. The deceleration system must also be set during this time.",
+          "g) Driver stands trackside with corresponding lane start trigger.",
+          "h) Judge checks deceleration system is ready, all team members to stand in designated safety zone as instructed by track judges, team information on race system is correct, track is clear for racing, switches start box - SAFETY OFF",
+          "i) Judge presses the start system reset button – cars are launched by driver pressing start trigger.",
+          "j) Judge records TOTAL RACE TIME displayed on start gate.",
+          "k) Check team information on race system is correct",
+          "l) Cars removed from track and returned to Parc Fermé."
+         ]
+        }
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**C9.7.2** Knock-out competition scoring example. This will depend on the number of competing teams."
+      },
+      {
+       "type": "p",
+       "text": "Points are awarded based on the round of competition a team is eliminated as follows:"
+      },
+      {
+       "type": "list",
+       "items": [
+        "Eliminated in Round 1 (Round of 16) = 26 pts",
+        "Eliminated in Round 2 (Round of 8) = 52 pts",
+        "Eliminated in Quarter Final = 85 pts",
+        "Eliminated in Semi Final = 106 pts",
+        "Knock-out Winner = 135 pts"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c9-8",
+     "label": "C9.8",
+     "title": "DNF (Did not Finish) race results",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Damage or part separation occurring during a race, before the car crosses the finish line, (e.g. wheel or any other part of the car separating), or a car not crossing the finish line at all, effects in a DNF race result. The Judges may refer to video evidence to verify a DNF result."
+      }
+     ]
+    },
+    {
+     "id": "c9-9",
+     "label": "C9.9",
+     "title": "False Starts",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C9.9.1",
+       "text": "A false start (jump start) occurs when the driver depresses the trigger button before the 5 start gate lights have extinguished. The screen will display a false start message."
+      },
+      {
+       "type": "clause",
+       "id": "C9.9.2",
+       "text": "All reaction false starts will incur a 2.5 point penalty and by default forfeit that race. This penalty does not apply to knock-out racing."
+      },
+      {
+       "type": "clause",
+       "id": "C9.9.3",
+       "text": "During knock-out racing – If one team false starts (jump starts), the other team should continue to race as normal. The team who false started forfeits that race, scoring a DNF, and the other team’s time is recorded."
+      },
+      {
+       "type": "clause",
+       "id": "C9.9.4",
+       "text": "During any manual / driver starts, if a driver false starts and distracts the other driver the race will be re-run and the driver who caused the distraction will forfeit their race."
+      },
+      {
+       "type": "clause",
+       "id": "C9.9.5",
+       "text": "Distractions outside of the race start area will be assessed by the lead track judge and track officials to determine if the race should be re-run. All competitors must, and other spectators will be instructed to, keep noise down to a minimum and to not use flash photography."
+      }
+     ]
+    },
+    {
+     "id": "c9-10",
+     "label": "C9.10",
+     "title": "Track, tether line and timing system information",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C9.10.1",
+       "text": "The STEM Racing™ India Elevated Race Track, supplied by Denford Ltd will be used. The official length of the track, from start line to finish is 20 meters. A monofilament tether line of diameter 0.6mm, fixed at the finish end, passes down the center of each lane. At the start end the line passes through 90 degrees over a single pulley",
+       "blocks": [
+        {
+         "type": "callout",
+         "tone": "important",
+         "text": "IMPORTANT: Teams are not permitted to add anything to the race track or race system. This includes the car staging area."
+        }
+       ]
+      },
+      {
+       "type": "clause",
+       "id": "C9.10.2",
+       "text": "Launch/Timing - The STEM Racing™ India Launch/Timing System will be used for launching cars and timing races and driver reaction times to 1/1000th of a second."
+      }
+     ]
+    },
+    {
+     "id": "c9-11",
+     "label": "C9.11",
+     "title": "Car Deceleration Systems",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C9.11.1",
+       "text": "Teams must use the deceleration system. The Deceleration System acts to bring cars to rest once crossing the finish line. STEM Racing™ India will provide a Deceleration System which is integrated into the final track section after the finish line."
+      },
+      {
+       "type": "clause",
+       "id": "C9.11.2",
+       "text": "The final 350mm of the track after deceleration systems is reserved for a storage zone to store raced cars before they are returned to the track start."
+      }
+     ]
+    },
+    {
+     "id": "c9-12",
+     "label": "C9.12",
+     "title": "Race Power Packs",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Compressed gas cartridges to be used for all National Finals competition races will be supplied by STEM Racing™ India. Each race cartridge will be separately weighed before competition to ensure that all race cartridges used for races are within a weight range of 0.5 grams. All race cartridges will be kept in a temperature-controlled environment of 21 degrees Celsius."
+      }
+     ]
+    },
+    {
+     "id": "c9-13",
+     "label": "C9.13",
+     "title": "Car weight checks",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Cars will have their weight checked at the race track prior to commencing a race event. This is done to ensure each car remains at a legal weight during all races. If a car is judged to have gone under weight whilst stored in parc fermé, the Judges will add ballast to return the car weight to what it was when first submitted to parc fermé, without penalty."
+      }
+     ]
+    },
+    {
+     "id": "c9-14",
+     "label": "C9.14",
+     "title": "Judges handling cars",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The race Judges will not be required to comply with any special car handling requests made of them by teams. This includes use of any special gloves or tools."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "label": "Article C10",
+   "title": "Car repairs and car servicing",
+   "children": [
+    {
+     "id": "c10-1",
+     "label": "C10.1",
+     "title": "Car repairs",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C10.1.1",
+       "text": "All damage issues and related repair work during racing is at the Judge’s discretion and may be referred to the scrutineering Judges and/or Chair of Judges for a final decision."
+      },
+      {
+       "type": "clause",
+       "id": "C10.1.2",
+       "text": "No items can be removed or added to a car during racing, other than Power unit cartridges, except in the case of a repair."
+      },
+      {
+       "type": "clause",
+       "id": "C10.1.3",
+       "text": "No penalty is applied for damage incurred during knock-out racing or a car’s final race of any race event."
+      }
+     ]
+    },
+    {
+     "id": "c10-2",
+     "label": "C10.2",
+     "title": "Car servicing",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C10.2.1",
+       "text": "Teams will be scheduled time to carry out penalty-free maintenance and repairs on their race cars in the designated car service area. There will be a car service session after race session. The duration of each car service session will be confirmed closer to the event."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.2",
+       "text": "A shorter car service session will be allowed between further rounds of the knockout competition."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.3",
+       "text": "Only team members and Judges are allowed to enter the car service area."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.4",
+       "text": "Tool kits are allowed to be taken into car service. Teams must supply all of their own tools and other necessary resources. Judges will not be able to assist teams with any additional resource requirements."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.5",
+       "text": "Maintenance and alterations can only be made to the front and rear wings, nose cone, tether line guides, wheels and wheel support systems. The car body MUST NOT be modified or substituted."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.6",
+       "text": "Each team will be required to complete a car service log form, declaring any maintenance or repair work completed. This will be validated by the Judges."
+      },
+      {
+       "type": "clause",
+       "id": "C10.2.7",
+       "text": "Teams must hand their race cars and completed car service log to the service area Judges BEFORE the conclusion of their scheduled service interval. A penalty will apply for exceeding the scheduled service time limit of 5 points for every minute late."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c11",
+   "label": "Article C11",
+   "title": "Protests",
+   "children": [
+    {
+     "id": "c11-1",
+     "label": "C11.1",
+     "title": "Scrutineering decision appeals",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "These must be submitted within two hours of the team completing their specification judging. Other rules for submitting these will be the same as for protests."
+      }
+     ]
+    },
+    {
+     "id": "c11-2",
+     "label": "C11.2",
+     "title": "Submitting a protest",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Any protest issues must be submitted by the team manager to an Event Director, who will register this and immediately lodge it with the Chair of Judges. This must occur by the date and time stated in the event supplementary regulations. Any protest or appeals submitted after this time may be disregarded. All protests must be lodged in writing via the official protest form available from the Event Directors."
+      },
+      {
+       "type": "p",
+       "text": "The Chair of Judges decision related to any protest is final."
+      }
+     ]
+    },
+    {
+     "id": "c11-3",
+     "label": "C11.3",
+     "title": "Unsuccessful protests",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams should carefully consider their grounds for submitting a protest or appeal. Any protest or appeal that is unsuccessful, with the Judges initial decision remaining unchanged, will result in the team having a **15-point penalty** applied against their total score."
+      },
+      {
+       "type": "callout",
+       "tone": "important",
+       "text": "THE CHAIR OF JUDGE’S DECISION IS FINAL"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c12",
+   "label": "Article C12",
+   "title": "Judges",
+   "children": [
+    {
+     "id": "c12-1",
+     "label": "C12.1",
+     "title": "Overview",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "There will be six (6) teams of Judges plus officials that form the entire judging panel. Each judging team will have one Judge appointed as the Lead Judge. Judges are nominees from ICC’s and other education and industry experts invited by STEM Racing™ India. All Judges sign a ‘declaration’ and code of conduct to ensure there are no conflicts of interest with respect to Judges and the teams they are judging."
+      }
+     ]
+    },
+    {
+     "id": "c12-2",
+     "label": "C12.2",
+     "title": "Chair of Judges",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "An independent authority appointed by STEM Racing™ India to oversee all judging procedures. The Chair of Judges will determine the final judging decision where a protest has been submitted or other judging issue needs resolution. The Chair of Judges will also preside over a meeting of all Lead Judges to ratify the final results along with nominations and winners for relevant awards."
+      }
+     ]
+    },
+    {
+     "id": "c12-3",
+     "label": "C12.3",
+     "title": "The Judging teams",
+     "blocks": [
+      {
+       "type": "clause",
+       "id": "C12.3.1",
+       "text": "Specification & Scrutineering Judges - will assess both race cars plus the rendered images and engineering drawings as per the Specification & Scrutineering scorecards."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.2",
+       "text": "Design & Engineering Judges - will assess each team as per the Design & Engineering scorecard."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.3",
+       "text": "Verbal Presentation Judges – will assess each team as per the Verbal Presentation scorecard."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.4",
+       "text": "Project Management– will assess each team as per the Project Management scorecard."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.5",
+       "text": "Enterprise Judges – will assess each team as per the Enterprise and Pit Display and Team identity scorecards."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.6",
+       "text": "Race officials – will oversee and rule on all race events and any incidents."
+      },
+      {
+       "type": "clause",
+       "id": "C12.3.7",
+       "text": "Car servicing officials – will oversee all car service activities and rule on any infringements that may occur."
+      }
+     ]
+    },
+    {
+     "id": "c12-4",
+     "label": "C12.4",
+     "title": "Judging Decisions",
+     "blocks": [
+      {
+       "type": "callout",
+       "tone": "important",
+       "text": "THE DECISION OF THE JUDGES AND OFFICIALS IS FINAL."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c13",
+   "label": "Article C13",
+   "title": "Awards",
+   "children": [
+    {
+     "id": "c13-1",
+     "label": "C13.1",
+     "title": "Awards Celebration",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "The National Finals awards will be presented at the Awards Celebration."
+      }
+     ]
+    },
+    {
+     "id": "c13-2",
+     "label": "C13.2",
+     "title": "Participation Recognition",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All students will receive an official participation certificate."
+      }
+     ]
+    },
+    {
+     "id": "c13-3",
+     "label": "C13.3",
+     "title": "List of awards to be presented",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "All awards below will be presented to the team that achieves the highest score in each category taken from the scorecards unless otherwise indicated (*) below. (this list may be amended at the discretion of STEM Racing™ India)."
+      },
+      {
+       "type": "list",
+       "ordered": true,
+       "items": [
+        "National Finals Champions – STEM Racing™ India",
+        "2nd Place",
+        "3rd Place",
+        "Best Collaboration Team Award*",
+        "Best Newcomer Award",
+        "Best Engineered Car Award",
+        "Scrutineering Award",
+        "Sponsorship & Marketing Award*",
+        "Innovative Thinking Award*",
+        "Chair of Judges Award*",
+        "Research and Development Award*",
+        "Fastest Car Award",
+        "Team Identity Award*",
+        "Pit Display Award*",
+        "Verbal Presentation Award*",
+        "Project Management Award*",
+        "Digital Media Award*",
+        "Knockout Champions",
+        "Women in Motorsport Award*",
+        "Sustainability Award*"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "appendix",
+   "label": "Appendix",
+   "title": "Appendix",
+   "blocks": [
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      "Awards Matrix",
+      "2026 National Finals Scorecards",
+      "Pit Display Reference Dimensions",
+      "Project Submission Checklist",
+      "Table of contents for engineering drawings"
+     ]
+    }
+   ],
+   "children": [
+    {
+     "id": "awards-matrix",
+     "label": "",
+     "title": "Awards Matrix",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Please find below a matrix that shows which judging categories contribute towards each award:"
+      },
+      {
+       "type": "table",
+       "caption": "Awards Matrix",
+       "head": [
+        "Judges",
+        "Heading",
+        "Sub Heading",
+        "National Finals Champions",
+        "2nd Place",
+        "3rd Place",
+        "Best Collaboration",
+        "Best Newcomer",
+        "Best Engineered Car",
+        "Scrutineering Award",
+        "Sponsorship & Marketing Award",
+        "Innovative Thinking Award",
+        "Team Identity Award",
+        "Pit Display Award",
+        "Verbal Presentation Award",
+        "Sustainability Award",
+        "Research & Development Award",
+        "Digital Media Award",
+        "Project Management Award",
+        "Fastest Car Award"
+       ],
+       "rows": [
+        [
+         "Scrutineering",
+         "Scrutineering",
+         "Specifications",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Scrutineering",
+         "Scrutineering",
+         "Engineering Drawings",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Scrutineering",
+         "Scrutineering",
+         "Rendering",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Scrutineering",
+         "Scrutineering",
+         "Quality of Finish and Assembly",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Design Concepts",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "3D Modelling",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Application of CAA",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Use of CAM/CNC",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Other Manufacturing & Assembly",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Research & Development",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Testing",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Design Process Evaluation",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering",
+         "Design & Engineering Portfolio",
+         "Document Presentation",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Project Management",
+         "Initiating",
+         "Initiation Process",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Initiating",
+         "Project Schedule",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Planning",
+         "Budget and Resource Management",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Planning",
+         "Roles and Responsibilities",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Executing",
+         "Team & Stakeholder Comm.",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Executing",
+         "Risk Management",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Project Management",
+         "Mon. and Cont.",
+         "Monitoring & Controlling",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Enterprise",
+         "Marketing Strategy & Materials",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Enterprise",
+         "Sponsorship & return in Investment",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Enterprise",
+         "Digital Media Proficiency",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Enterprise",
+         "Sustainability",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Enterprise",
+         "Document Presentation",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Team Identity",
+         "Overall Team Identity",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "●",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Pit Display",
+         "Pit Display Design Process",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Pit Display",
+         "Pit Display Content Clarity and Impact",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise",
+         "Pit Display",
+         "Functionality & User Experience",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Technique",
+         "Engagement & Presentation",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Technique",
+         "Team Contribution",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Composition",
+         "Content Quality, Relevance & Subject",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Composition",
+         "Time, Clarity and Structure of Content",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Subject",
+         "Innovation",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Subject",
+         "Collaboration",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Verbal Presentation",
+         "Subject",
+         "STEM Racing™ Learning Experiences",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Racing",
+         "Racing",
+         "Knock-outs",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●"
+        ],
+        [
+         "Racing",
+         "Racing",
+         "Reaction",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "●"
+        ],
+        [
+         "Racing",
+         "Racing",
+         "Damage During Racing",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "●",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         "",
+         ""
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "scorecard-scrutineering",
+     "label": "",
+     "title": "Scrutineering Judging Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Scrutineering",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Engineering Drawings**",
+         "**0 1 2 3 4 5**\nLittle or no detail, Little or no annotation.\nNo table of contents.\nNo regulation compliance was shown.",
+         "**6 7 8 9 10**\nBasic views included.\nSome dimensions are included but not sufficient annotations.\nInsufficient regulation compliance was shown.\nA basic table of contents.",
+         "**11 12 13 14 15**\nMultiple views including First or Third-angle orthographic projection matching the final car.\nSome parts or materials are represented.\nSome Regulation compliance shown (eg T. 4.2 Virtual Cargo identification.)\nGood table of contents.",
+         "**16 17 18 19 20**\nFirst or Third-angle orthographic projection matching the final car and unrendered isometric view or similar. Additional views to show sufficient detail.\nParts list/bill of materials.\nExcellent regulation compliance shown (eg T.4.2 Virtual Cargo identification.)\nComplete and ordered table of contents."
+        ],
+        [
+         "**Rendering**",
+         "**0 1 2 3 4 5**\nPoor quality renders.\nInsufficient views.",
+         "**6 7 8 9 10**\nMultiple views.\nSome inconsistencies matching the final car.",
+         "**11 12 13 14 15**\nMultiple views.\nGood match to the final car Good render technique.",
+         "**16 17 18 19 20**\nMultiple views. Perfect match to the final car including branding.\nRealistic environment and lighting High-end render technique."
+        ],
+        [
+         "**Quality of Finish and Assembly**",
+         "**0 1 2 3 4 5**\nPoor finish and assembly.\nNo justification for intended quality and finish documented in the final page of the engineering drawings document.",
+         "**6 7 8 9 10**\nReasonable finish with some inconsistencies.\nReasonable assembly.\nSome justification for intended quality and finish is documented in the final page of the engineering drawings document.",
+         "**11 12 13 14 15**\nGood overall intended finish. Intended quality and assembly with attention to detail.\nJustification for intended quality and finish is well documented in the final page of the engineering drawings document.",
+         "**16 17 18 19 20**\nIntended quality, assembly and finish on all components is exceptional. The two cars are identical.\nJustification for intended quality and finish is comprehensively documented in the final page of the engineering drawings document."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Scrutineering Total =** /60"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-design-engineering",
+     "label": "",
+     "title": "Design & Engineering Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Design & Engineering Portfolio Only Assessment",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Design Concepts**",
+         "**0 1 2 3 4 5**\nSingle or minimal concepts for car components with no links to research. No relevance to final car.",
+         "**6 7 8 9 10**\nBasic concepts of car components with limited links to research. Limited relevance to final car.",
+         "**11 12 13 14 15**\nGood technically inspired ideas that are relevant for different car components linked to research.",
+         "**16 17 18 19 20**\nExcellent technically inspired ideas for multiple car components with research-detailed. Relevance of the concept strongly justified."
+        ],
+        [
+         "**3D Modelling**",
+         "**0 1 2 3 4 5**\nMinimal application of 3D modelling techniques. Only final design 3D modelled.",
+         "**6 7 8 9 10**\nBasic use of 3D modelling tools and techniques.\nMore than 1 design included with different iterations.",
+         "**11 12 13 14 15**\nGood use of advanced 3D modelling tools, showcasing skill and technique. Dimensional constraints of the STEM RACING model block considered. Design approach explained.\nDesign for manufacture considerations noted. (ie fillets, tolerance of machining).",
+         "**16 17 18 19 20**\nExpert use of a wide range of complex 3D modelling techniques, demonstrating exceptional skill and innovation.\nDesign for manufacture directs process. (ie machining tool availability, fit clearances).\nQuality of CAD surfaces analyzed."
+        ],
+        [
+         "**Application of Computer Aided Analysis**",
+         "**0 1 2 3 4 5**\nPoor choice and no justification of simulation parameters.\nWeak analysis with poorly presented/no results.\nNo design choices made based on FEA/CFD study.",
+         "**6 7 8 9 10**\nLimited choice and justification of simulation parameters.\nLimited analysis and results.\nLittle to no design choices made based on FEA/CFD study.",
+         "**11 12 13 14 15**\nWell-justified choice and understanding of simulation Good analysis with clear, well-presented results.\nSome design choices made based on FEA/CFD study.",
+         "**16 17 18 19 20**\nExcellent choice & understanding of simulation parameters.\nDetailed analysis with clear, well-presented results.\nProven design improvements made based on FEA/CFD study."
+        ],
+        [
+         "**Use of CAM/CNC**",
+         "**0 1 2 3 4 5**\nNo or minimal evidence of CAM/CNC understanding or manufacturing.",
+         "**6 7 8 9 10**\nBasic evidence of CAM/CNC processes and manufacturing.",
+         "**11 12 13 14 15**\nGood use and understanding of CAM/CNC processes to achieve manufacturing goals.\nManufacturing issues noted with limited problem solving.",
+         "**16 17 18 19 20**\nEvidence of excellent understanding of CAM/CNC technologies. Appropriate techniques and processes used to achieve manufacturing goals.\nManufacturing issues discussed with innovative problem-solving solutions."
+        ],
+        [
+         "**Other Manufacturing & Assembly**",
+         "**0 1 2 3 4 5**\nNo or minimal manufacturing presented.\nNo or minimal consideration of quality assurance and workplace safety documented.\nNo or minimal justification of outsourcing.",
+         "**6 7 8 9 10**\nThe manufacturing process is mentioned without detail.\nBasic consideration of quality assurance and workplace safety documented.\nBasic justification of outsourcing.",
+         "**11 12 13 14 15**\nGood manufacturing process and stages described.\nGood consideration of quality assurance and workplace safety documented.\nAppropriate use of manufacturing resources documented (i.e. tools, finishes, jigs, fixtures).\nOutsourcing clearly explained and justified.",
+         "**16 17 18 19 20**\nDetails all manufacturing stages and processes.\nQuality assurance and workplace safety considerations evident.\nAppropriate outsourcing justified with make vs buy analysis."
+        ],
+        [
+         "**Research & Development**",
+         "**0 1 2 3 4 5**\nNo or limited evidence of R&D.",
+         "**6 7 8 9 10**\nBasic evidence of R&D with some principles considered.",
+         "**11 12 13 14 15**\nSome scientific & mathematical theories and principles considered. Logical research based design developments explained and justified.",
+         "**16 17 18 19 20**\nRelevant R&D throughout the entire product design & development cycle. Design concept developments refined and justified from research & test findings."
+        ],
+        [
+         "**Testing**",
+         "**0 1 2 3 4 5**\nNo or little evidence of testing on the fully assembled car and individual components.",
+         "**6 7 8 9 10**\nLimited testing.\nSome evidence of method and outcomes on the fully assembled car and individual components.",
+         "**11 12 13 14 15**\nGood testing. Different evidence of method and outcomes.\nSome evidence of virtual and physical testing on the fully assembled car and individual components.",
+         "**16 17 18 19 20**\nAppropriate testing with excellent methods and outcomes documented.\nComprehensive evidence of virtual and physical testing on the fully assembled car and individual components."
+        ],
+        [
+         "**Design Process Evaluation**",
+         "**0 1 2 3 4 5**\nNo or limited Ideas or process evaluations at different stages.\nNo or limited documentation of evaluation-linked improvement actions.",
+         "**6 7 8 9 10**\nBasic Ideas or process evaluations at different stages.\nBasic documentation of evaluation-linked improvement actions.",
+         "**11 12 13 14 15**\nMultiple Ideas or process evaluations at different stages.\nGood documentation of evaluation-linked improvement actions.",
+         "**16 17 18 19 20**\nExcellent ongoing idea evaluations linked to improvement actions.\nComprehensive documentation of evaluation-linked improvement actions."
+        ],
+        [
+         "**Document Presentation**",
+         "**0 1 2 3 4 5**\nDifficult to follow with basic presentation standard.",
+         "**6 7 8 9 10**\nBasic organization.",
+         "**11 12 13 14 15**\nGood and clear structure, well organized.",
+         "**16 17 18 19 20**\nHigh impact and professional throughout.\nConsistent and clear organization."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Design & Engineering Portfolio Only Assessment Total =** /180"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-project-management",
+     "label": "",
+     "title": "Project Management Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Project Management Assessment – Initiating",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Initiation Process**",
+         "**0 1 2 3 4 5**\nNo or limited evidence of an Initiation process.",
+         "**6 7 8 9 10**\nEvidence of an Initiation process with goals and deliverables identified, leading to a basic scope statement.",
+         "**11 12 13 14 15**\nEvidence of an Initiation process including Kick-off meeting. Project charter created with goals and deliverables identified. Good scope statement developed, identifying acceptance criteria for each deliverable.",
+         "**16 17 18 19 20**\nKick-off meeting evidenced. Detailed Project Charter created, clearly defining all deliverables.\nComprehensive scope statement developed, identifying acceptance criteria for each deliverable."
+        ],
+        [
+         "**Project Schedule**",
+         "**0 1 2 3**\nNo or limited evidence of tasks to be completed.",
+         "**4 5 6 7**\nEvidence of a project schedule, showing a breakdown of time required to complete essential tasks.",
+         "**8 9 10 11**\nClear evidence of a project schedule and Work Breakdown Structure. Detailed Gantt chart created to identify all tasks, dependencies, and time estimations. Resource allocation is included for major project phases.",
+         "**12 13 14 15**\nComprehensive project schedule with detailed Work Breakdown Structure and Gantt chart. All tasks, dependencies, and time estimations are clearly identified. Key dependencies are identified, and critical path analysis is included."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Initiating Total** /35"
+      },
+      {
+       "type": "table",
+       "caption": "Planning",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Budget and Resource Management**",
+         "**0 1 2 3**\nNo or limited evidence of strategies to manage budget and/or resources.",
+         "**4 5 6 7**\nSome evidence of resources required and how they are to be acquired and managed.\nSome evidence of budgeting.",
+         "**8 9 10 11**\nClear evidence of budgeting and use of basic accounting methods to track expenditure. Identification of where, when, and how resources are to be acquired and used. Initial cost estimates for major project components.",
+         "**12 13 14 15**\nComprehensive budgeting with detailed cost breakdown and methods for tracking expenditure.\nThorough resource management plan, including procurement strategies, resource allocation, and utilization forecasts. Cost-benefit analysis for key project decisions."
+        ],
+        [
+         "**Roles and Responsibilities**",
+         "**0 1 2**\nNo or limited evidence of clear roles and responsibilities within team.",
+         "**3 4**\nTeam roles and responsibilities identified, with some evidence of task and/or activity breakdown.",
+         "**5 6 7**\nTeam members identified and a structured team created with defined job functions and appropriate responsibilities.\nEvidence of a basic Responsibility Assignment ('RACI') Matrix.",
+         "**8 9 10**\nHighly structured team with clearly defined job functions, skill requirements, and detailed responsibilities. Comprehensive RACI Matrix covering all project activities. Evidence of a team development plan and strategies for managing team dynamics."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Planning Total** /25"
+      },
+      {
+       "type": "table",
+       "caption": "Executing",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Team & Stakeholder Communications**",
+         "**0 1 2**\nNo or limited evidence of engagement between team members and stakeholders.",
+         "**3 4**\nEvidence of a communication plan and engagements between team members and with stakeholders.",
+         "**5 6 7**\nClear communication plan implemented between team members and stakeholders. Key stakeholders registered and reported to regularly. Multiple communication tools used effectively.",
+         "**8 9 10**\nComprehensive communication strategy with tailored approaches for different stakeholder groups. Regular, documented communication with all stakeholders using diverse, appropriate channels. Evidence of feedback loops and continuous improvement in communication processes. Stakeholder engagement matrix utilized to manage relationships."
+        ],
+        [
+         "**Risk Management**",
+         "**0 1 2**\nNo or limited evidence of risk identification and management.",
+         "**3 4**\nEvidence of risk identification and response management plans in place.",
+         "**5 6 7**\nClear evidence identifying all relevant risks, area(s) of impact and response planning.\nAssessment of impact on resources, timing, scope and quality.",
+         "**8 9 10**\nComprehensive risk management strategy including detailed risk register, risk analysis, and prioritization. Proactive risk strategies implemented with contingency plans. Regular risk reviews and updates throughout the project lifecycle. Evidence of opportunity management alongside risk management."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Executing Total** /20"
+      },
+      {
+       "type": "table",
+       "caption": "Monitoring and Controlling",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Monitoring & Controlling**",
+         "**0 1 2**\nNo or limited or isolated project evaluation.",
+         "**3 4**\nOngoing evaluation of most areas. Documented evidence of problems identified and suggested solutions.",
+         "**5 6 7**\nRegular 'Status Reports', documenting tasks signed off and highlighting areas of concern.\nScope creep identified with a clear action plan for tasks that overrun.\nKey performance indicators (KPIs) tracked and reported.",
+         "**8 9 10**\nRegular and detailed project tracking processes consistently applied. Comprehensive 'Status Reports' include: Analysis of work completed versus resources used, Comparison of planned versus actual progress, Predictions of future project performance, Clear procedures for managing project changes, with all modifications documented."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Monitoring and Controlling Total** /10"
+      },
+      {
+       "type": "p",
+       "text": "**Initiating + Planning + Executing + Monitoring and Controlling = Project Management Total =** /90"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-enterprise",
+     "label": "",
+     "title": "Enterprise Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Enterprise Portfolio Only Assessment",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Marketing Strategy & Materials**",
+         "**0 1 2 3 4 5**\nLack of coherent marketing strategy, poorly developed marketing materials, and minimal content relevance.",
+         "**6 7 8 9 10**\nPartially coherent marketing strategy, average quality marketing materials, needs enhancement in content relevance.",
+         "**11 12 13 14 15**\nGood marketing strategy, reasonably developed marketing materials, and satisfactory content relevance.",
+         "**16 17 18 19 20**\nWell-defined marketing strategy, high-quality marketing materials, and highly relevant content."
+        ],
+        [
+         "**Sponsorship & Return on Investment (ROI)**",
+         "**0 1 2 3 4 5**\nNo or incomplete Sponsor/partner hierarchy.\nLimited understanding of sponsorship.\nNo evidence of ROI.",
+         "**6 7 8 9 10**\nBasic Sponsor/partner hierarchy and benefits included.\nPartial understanding of sponsorship.\nSome evidence of return of investment (ROI) to relevant sponsors.",
+         "**11 12 13 14 15**\nA range of sponsor/partner hierarchy and benefits identified. Good understanding of sponsorship, reasonable investment, and satisfactory ROI to relevant sponsors.",
+         "**16 17 18 19 20**\nSponsor/partner hierarchy and benefits detailed and justified.\nRange of relevant sponsors/partners showing mutually beneficial relationships.\nCreative activities linked to return of investment (ROI)."
+        ],
+        [
+         "**Digital Media Proficiency**",
+         "**0 1 2 3 4 5**\nLimited understanding and utilization of digital media platforms.\nMinimal engagement with audience, and ineffective content creation.",
+         "**6 7 8 9 10**\nPartial understanding and use of digital media platforms.\nSome evidence of strategy documented.\nAudience engagement needs improving.",
+         "**11 12 13 14 15**\nGood understanding and utilization of digital media platforms. Good execution in line with documented strategy. Reasonable engagement, and content creation.",
+         "**16 17 18 19 20**\nStrong understanding and effective utilization of digital media platforms in line with documented plans.\nHigh audience engagement, and impressive content creation."
+        ],
+        [
+         "**Sustainability**",
+         "**0 1 2 3 4 5**\nNo or limited understanding and implementation of sustainable practices.\nNo or minimal awareness of environmental impact.",
+         "**6 7 8 9 10**\nPartial understanding and inconsistent implementation of sustainable practices.\nNeeds improvement in awareness of environmental impact.\nSome evidence of implementation.",
+         "**11 12 13 14 15**\nGood understanding and moderate implementation of sustainable practices.\nSome awareness of environmental impact.\nImplementation documented considering different factors such as economic, environmental, and social.",
+         "**16 17 18 19 20**\nStrong understanding and effective implementation of sustainable practices.\nHigh awareness of environmental impact and active involvement in sustainability initiatives considering economic, environmental, and social factors."
+        ],
+        [
+         "**Document Presentation**",
+         "**0 1 2 3 4 5**\nPoor formatting, lack of structure.\nMinimal visual appeal in the document.",
+         "**6 7 8 9 10**\nAverage formatting with some structure.\nNeeds improvement in the document visual appeal.",
+         "**11 12 13 14 15**\nGood formatting, structured document.\nSatisfactory document visual appeal.\nGood organization.",
+         "**16 17 18 19 20**\nExcellent formatting, well-structured document, and highly appealing visually.\nHigh impact and professional throughout.\nConsistent and clear organization."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Enterprise Portfolio Only Assessment Total** /100"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-pit-display-team-identity",
+     "label": "",
+     "title": "Pit Display & Team Identity Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Pit Display Assessment",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Pit Display Design Process (Documented in Enterprise portfolio)**",
+         "**0 1 2 3 4 5**\nLimited planning and execution, lack of innovation, and minimal attention to detail in the design process.",
+         "**6 7 8 9 10**\nSome planning and execution.\nInsufficient innovation.\nNeeds improvement in attention to design details.\nSome ideas development documented.",
+         "**11 12 13 14 15**\nDifferent ideas & justification of design.\nGood evidence of development considering factors including team identity, budget, sustainability and time constraints with consideration to functionality and user experience.",
+         "**16 17 18 19 20**\nA range of ideas, clearly justified, creative final design.\nComprehensive evidence of development considering factors including team identity, budget, sustainability and time constraints with consideration to functionality and user experience."
+        ],
+        [
+         "**Pit Display Content Clarity and Impact**",
+         "**0 1 2 3 4 5**\nRepetition of Portfolio contents.\nDisorganised layout.\nLittle or no evidence of marketing materials.\nMinimal information about the team's work.",
+         "**6 7 8 9 10**\nPartially informative content.\nThe pit display is not enhanced by Multimedia or Marketing materials.\nThe Pit display needs more clarity detailing the team's work.",
+         "**11 12 13 14 15**\nGood organisation and impact.\nMultimedia is used to enhance the display, with some marketing material on display.\nClear and effective presentation and messaging about the team’s work.",
+         "**16 17 18 19 20**\nClean, well-organised with high impact. Highly professional with attention to detail.\nExcellent integration of technology, multimedia and marketing materials.\nComprehensive information about the team's work."
+        ],
+        [
+         "**Functionality & User Experience execution**",
+         "**0 1 2 3 4 5**\nNon-functional or poorly functional design, inconvenient user experience.\nLacks impact, and minimal overall visitor impression.",
+         "**6 7 8 9 10**\nBasic functionality, average user experience, needs improvement in functionality and overall visitor impression.",
+         "**11 12 13 14 15**\nGood functionality, and satisfactory user experience.\nInnovative Pit display and positive visitor impression.",
+         "**16 17 18 19 20**\nExcellent functionality, seamless user experience, and impressive innovation across the Pit Display.\nA very positive impression on visitors."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Pit Display Total =** /60"
+      },
+      {
+       "type": "table",
+       "caption": "Team Identity",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Overall Team Identity**",
+         "**0 1 2 3 4 5**\nInconsistent, limited or obscure identity through project elements.\nWeak team cohesion, lack of shared identity.",
+         "**6 7 8 9 10**\nPartial team cohesion, and inconsistent shared identity through project elements.",
+         "**11 12 13 14 15**\nGood team identity is consistent through various project components e.g. car matches team uniform.",
+         "**16 17 18 19 20**\nExcellent and highly effective team identity. Team ‘brand’ consistently applied through all project elements."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Team Identity Total** /20"
+      },
+      {
+       "type": "p",
+       "text": "**Pit Display Total + Team Identity Total =** /80"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-verbal-presentation",
+     "label": "",
+     "title": "Verbal Presentation Scorecard",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Technique",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Engagement & Presentation Dynamics**",
+         "**0 1 2 3 4 5**\nMonotonous presentation, lack of visual aids, and minimal interaction with audience.\nPoor delivery technique.",
+         "**6 7 8 9 10**\nLimited team dynamics, some visual aids.\nLimited delivery technique and interaction with the audience.",
+         "**11 12 13 14 15**\nGood team dynamics, effective visual aids, Good delivery and interaction with the audience.",
+         "**16 17 18 19 20**\nExcellent engagement, captivating and highly interactive delivery, and strong audience connection.\nExceptional team dynamics, and impactful visual aids."
+        ],
+        [
+         "**Team Contribution**",
+         "**0 1 2 3 4 5**\nSingle team member taking the lead in presentation.",
+         "**6 7 8 9 10**\nMinimal team participation during the presentation.",
+         "**11 12 13 14 15**\nGood contributions from most team members.",
+         "**16 17 18 19 20**\nExcellent teamwork with all members participating effectively."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Technique Total** /40"
+      },
+      {
+       "type": "table",
+       "caption": "Composition",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Content Quality, Relevance & Subject Understanding**",
+         "**0 1 2 3 4 5**\nIrrelevant or outdated content, lack of depth, and poor relevance.\nUnclear explanations.",
+         "**6 7 8 9 10**\nPartially relevant content, some depth, needs improvement in quality and explanations.",
+         "**11 12 13 14 15**\nRelevant content, good depth, and reasonably high-quality information. Clear explanations.",
+         "**16 17 18 19 20**\nHighly relevant content, profound depth, and exceptional quality information with articulate explanations."
+        ],
+        [
+         "**Time, Clarity and structure of content**",
+         "**0 1 2 3 4 5**\nSevere time management issues, with significant rushing or excessive time taken.\nLess than 8 minutes or more than 12 minutes.\nIncoherent structure, unclear message, and disorganized content.",
+         "**6 7 8 9 10**\nTime management issues are evident, with noticeable rushing or excessive time taken.\nLess than 9 minutes or more than 11 minutes.\nPartially clear structure, some coherence, needs better content organization.",
+         "**11 12 13 14 15**\nGood flow and time management of each topic with minimal rushing or excessive time taken.\nClear structure, coherent flow, and organized content.",
+         "**16 17 18 19 20**\nExcellent time management and balance of each topic without exceeding the time limit.\nExcellent structure, crystal-clear message (concept), and highly organized content.\nExcellent attention to detail."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Composition Total** /40"
+      },
+      {
+       "type": "table",
+       "caption": "Subject",
+       "head": [
+        "Criterion",
+        "Lowest band",
+        "Second band",
+        "Third band",
+        "Top band"
+       ],
+       "rows": [
+        [
+         "**Innovation**",
+         "**0 1 2 3 4 5**\nLittle project innovation presented with no justifications.",
+         "**6 7 8 9 10**\nAverage project innovations are described but with no justification.",
+         "**11 12 13 14 15**\nGood project innovations are described and justified and connected to competition elements.",
+         "**16 17 18 19 20**\nExcellent innovations related to competition elements, or other aspects with high positive project impact."
+        ],
+        [
+         "**Collaboration**",
+         "**0 1 2 3 4 5**\nNone or Little collaboration with industry or higher education mentioned.",
+         "**6 7 8 9 10**\nSome collaboration with industry or higher education is mentioned.",
+         "**11 12 13 14 15**\nGood description of collaboration with industry and higher education.",
+         "**16 17 18 19 20**\nExcellent justification of collaborations with industry and higher education.\nLinks to learning and project outcomes."
+        ],
+        [
+         "**STEM Racing™ learning journey**",
+         "**0 1 2 3 4 5**\nNo or limited real reflections discussed.",
+         "**6 7 8 9 10**\nBasic explanation of some learning outcomes for some team members.",
+         "**11 12 13 14 15**\nGood explanation of some learning outcomes for all team members.",
+         "**16 17 18 19 20**\nA range of personal, life-long learning and career skills acquired and identified as project outcomes for all team members."
+        ]
+       ]
+      },
+      {
+       "type": "p",
+       "text": "**Subject Total** /60"
+      },
+      {
+       "type": "p",
+       "text": "**Technique Total + Composition Total + Subject Total = Verbal Presentation Total =** /140"
+      }
+     ]
+    },
+    {
+     "id": "scorecard-specifications",
+     "label": "",
+     "title": "Specifications Scorecard",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "For clarification on individual regulations, refer to the National Finals Technical Regulations. Please enter ✓ for a pass and F for a fail"
+      },
+      {
+       "type": "p",
+       "text": "(8g Pack) – measured with full 8g race power pack cartridges"
+      },
+      {
+       "type": "p",
+       "text": "The printed scorecard also has columns for recording results: Initial Scrutineering (Car A, Car B, CoJ CS), Amendments (Car A, Car B, CoJ CS) and Remarks."
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T3 – FULLY ASSEMBLED CAR",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T3.1.1",
+         "Designed and engineered using CAD / CAM",
+         "",
+         "-5"
+        ],
+        [
+         "T3.1.2",
+         "Body manufactured using CNC only",
+         "Check unfinished body",
+         "-5"
+        ],
+        [
+         "T3.1.3",
+         "F1 in Schools holographic sticker",
+         "Must be supplied",
+         "-5"
+        ],
+        [
+         "T3.1.4",
+         "Race cars identical geometry",
+         "Visual check",
+         "-5"
+        ],
+        [
+         "T3.2.1",
+         "Safe Construction – Specification judging",
+         "Check T3.2.1",
+         "-10"
+        ],
+        [
+         "T3.3",
+         "Defined features",
+         "Check T1.1",
+         "-20"
+        ],
+        [
+         "T3.4",
+         "Total width",
+         "Min: 65 Max: 85",
+         "-5"
+        ],
+        [
+         "T3.5",
+         "Total height (8g Pack)",
+         "Max: 65",
+         "-5"
+        ],
+        [
+         "T3.6",
+         "Total weight",
+         "Min: 50.0g",
+         "-10"
+        ],
+        [
+         "T3.7",
+         "Track clearance (8g Pack)",
+         "Min: 1.5",
+         "-10"
+        ],
+        [
+         "T3.8",
+         "Status during racing",
+         "Nothing removed",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Replacement Components",
+         "Identical to fitted",
+         ""
+        ],
+        [
+         "T3.9",
+         "Nose Cone & Front Wing Assembly",
+         "Max: 2",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Rear Wing Assembly",
+         "Max: 2",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Front Wheels",
+         "Max: 4",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Front Wheel Support Structure",
+         "Max: 2",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Rear Wheels",
+         "Max: 4",
+         "-5"
+        ],
+        [
+         "T3.9",
+         "Rear Wheel Support Structure",
+         "Max: 2",
+         "-5"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T4 – BODY",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T4.1",
+         "Body construction",
+         "F1 Model Block only",
+         "-20"
+        ],
+        [
+         "T4.2",
+         "Virtual cargo – See T4.2 for dims",
+         "Between axles",
+         "-25"
+        ],
+        [
+         "T4.3",
+         "Virtual cargo identification",
+         "Check Eng. drawing",
+         "-5"
+        ],
+        [
+         "T4.4.1",
+         "Halo",
+         "Halo exists",
+         "-10"
+        ],
+        [
+         "T4.4.2",
+         "Halo visibility front and side views",
+         "Side & front view",
+         "-10"
+        ],
+        [
+         "T4.4.3",
+         "Halo visibility",
+         "Refer to Article T1.21",
+         "-10"
+        ],
+        [
+         "T4.4.4",
+         "Halo circular notch height",
+         "34.0 (±1.0)",
+         "-5"
+        ],
+        [
+         "T4.4.5",
+         "Halo safety test",
+         "1kg test, safe to race",
+         "-5"
+        ],
+        [
+         "T4.5",
+         "Helmet",
+         "Included",
+         "-5"
+        ],
+        [
+         "T4.6",
+         "F1 in Schools logo decal location",
+         "Between Front & Rear wheels 100% Visible",
+         "-5"
+        ],
+        [
+         "T4.7",
+         "Team Number",
+         "Min: 8.0",
+         "-2"
+        ],
+        [
+         "T4.8",
+         "Decal Thickness",
+         "Max: 0.5",
+         "-5"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T5 – RACE POWER PACK CARTRIDGE CHAMBER",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T5.1",
+         "Diameter",
+         "Min: 18 Max: 18.5",
+         "-5"
+        ],
+        [
+         "T5.2",
+         "Distance from track surface (8g Pack)",
+         "Min: 30 Max: 40",
+         "-5"
+        ],
+        [
+         "T5.3",
+         "Depth",
+         "Min: 45 Max: 58",
+         "-5"
+        ],
+        [
+         "T5.4",
+         "Max angle of chamber (8g Pack)",
+         "Min: -3° Max: 3°",
+         "-5"
+        ],
+        [
+         "T5.5",
+         "Chamber safety zone (8g Pack)",
+         "Min: 3",
+         "-10"
+        ],
+        [
+         "T5.6",
+         "Power unit cartridge visibility (8g Pack)",
+         "Min: 5mm top view",
+         "-10"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T6 – TETHER LINE GUIDES",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T6.1",
+         "Location",
+         "10mm in front / front axle\n10mm behind / rear axle",
+         "-10"
+        ],
+        [
+         "T6.2",
+         "Internal diameter",
+         "Min: 3.5 Max: 6",
+         "-5"
+        ],
+        [
+         "T6.3",
+         "Tether line guide safety",
+         "200g test, safe to race",
+         "-10"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T7 – WHEELS AND WHEEL SUPPORT STRUCTURES",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T7.1",
+         "Number and location",
+         "4, 2 x 2",
+         "-25"
+        ],
+        [
+         "T7.2.1",
+         "Distance between opposing wheels – Front",
+         "Front Min: 38",
+         "-2.5"
+        ],
+        [
+         "T7.2.2",
+         "Distance between opposing wheels – Rear",
+         "Rear Min: 30",
+         "-2.5"
+        ],
+        [
+         "T7.3",
+         "Wheelbase",
+         "Min: 120 Max: 140",
+         "-5"
+        ],
+        [
+         "T7.4",
+         "Track contact width",
+         "Front Min: 13\nRear Min: 17\nexc. chamfer/fillet",
+         "-2.5 per wheel"
+        ],
+        [
+         "T7.5",
+         "Diameter",
+         "Min: 28\nMax: 32",
+         "-2.5 per wheel"
+        ],
+        [
+         "T7.6",
+         "Racetrack contact (8g Pack)",
+         "All 4 in contact",
+         "-2.5 per wheel"
+        ],
+        [
+         "T7.7",
+         "Rolling surface",
+         "Consistent, no tread",
+         "-2.5 per wheel"
+        ],
+        [
+         "T7.8",
+         "Rotation",
+         "Abs. Max rolling incline: 3°",
+         "-5 per wheel"
+        ],
+        [
+         "T7.9",
+         "Visibility in top and bottom views",
+         "In front of front wheels",
+         "-2.5"
+        ],
+        [
+         "T7.9",
+         "Visibility in top and bottom views",
+         "Behind front wheels",
+         "-5"
+        ],
+        [
+         "T7.9",
+         "Visibility in top and bottom views",
+         "In front of rear wheels",
+         "-5"
+        ],
+        [
+         "T7.9",
+         "Visibility in top and bottom views",
+         "Behind rear wheels",
+         "-2.5"
+        ],
+        [
+         "T7.10",
+         "Visibility in side views",
+         "Side views",
+         "-10"
+        ],
+        [
+         "T7.11",
+         "Visibility in front view (8g Pack)",
+         "Max obscured 20mm",
+         "-10"
+        ],
+        [
+         "T7.12.1",
+         "Wheel support systems",
+         "Cylindrical volume",
+         "-5"
+        ],
+        [
+         "T7.12.2",
+         "Wheel support systems identification",
+         "Check Eng. drawing",
+         "-5"
+        ],
+        [
+         "T7.13",
+         "Wheel Safety Test",
+         "100g test per wheel",
+         "-2.5\n-2.5\n-2.5\n-2.5"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T8 – NOSE, FRONT WING AND WING SUPPORT STRUCTURES",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T8.1",
+         "Nose, front wing & wing support structure identification",
+         "Check Eng. drawing",
+         "-5"
+        ],
+        [
+         "T8.2",
+         "Nose cone assembly dimension",
+         "Max: 40",
+         "-5"
+        ],
+        [
+         "T8.3",
+         "Front wing(s) description and placement",
+         "Wings exist",
+         "-5"
+        ],
+        [
+         "T8.4",
+         "Front wing(s) construction and rigidity",
+         "Span constant during racing + rigid",
+         "-5"
+        ],
+        [
+         "T8.5.1",
+         "Nose and wing support structure location",
+         "In front of Reference Plane A & below 25mm",
+         "-10"
+        ],
+        [
+         "T8.5.2",
+         "Front wing and front wing end plate location",
+         "In front of Reference Plane A & below 20mm",
+         "-10"
+        ],
+        [
+         "T8.5.3",
+         "Front wing and end plate location",
+         "Outside the minimum legal span",
+         "-10"
+        ],
+        [
+         "T8.6.1",
+         "Front wing span",
+         "Min: 50",
+         "-2"
+        ],
+        [
+         "T8.6.2",
+         "Front wing chord",
+         "Min: 15 Max: 25",
+         "-1"
+        ],
+        [
+         "T8.6.3",
+         "Front wing thickness",
+         "Min: 2 Max: 6",
+         "-1"
+        ],
+        [
+         "T8.7",
+         "Front wing clear airflow",
+         "5mm clear ‘air’ space",
+         "-5"
+        ],
+        [
+         "T8.8",
+         "Front wing visibility",
+         "Visible and not obstructed in front view",
+         "-10"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "ARTICLE T9 – REAR WING AND WING SUPPORT STRUCTURES",
+       "head": [
+        "Reg",
+        "Regulation Overview",
+        "Min/Max Quick Guide",
+        "Penalty per Car"
+       ],
+       "rows": [
+        [
+         "T9.1",
+         "Rear wing and wing support structure identification",
+         "Check Eng drawing",
+         "-5"
+        ],
+        [
+         "T9.2",
+         "Rear wing(s) description and placement",
+         "Wings exist",
+         "-5"
+        ],
+        [
+         "T9.3",
+         "Rear wing(s) construction and rigidity",
+         "Span constant during racing + rigid",
+         "-5"
+        ],
+        [
+         "T9.4.1",
+         "Rear wing and wing support structure location",
+         "Wing + Support rear of reference plane B",
+         "-10"
+        ],
+        [
+         "T9.4.2",
+         "Rear overhang length",
+         "Max 40",
+         "-5"
+        ],
+        [
+         "T9.4.3",
+         "Rear overhang height",
+         "Max: 65",
+         "-5"
+        ],
+        [
+         "T9.5.1",
+         "Rear wing span",
+         "Min: 50",
+         "-2"
+        ],
+        [
+         "T9.5.2",
+         "Rear wing chord",
+         "Min: 15 Max: 25",
+         "-1"
+        ],
+        [
+         "T9.5.3",
+         "Rear wing thickness",
+         "Min: 2 Max: 6",
+         "-1"
+        ],
+        [
+         "T9.5.4",
+         "Rear wing height deviation",
+         "Max: 15",
+         "-1"
+        ],
+        [
+         "T9.6",
+         "Rear wing clear airflow",
+         "Min: 5",
+         "-5"
+        ],
+        [
+         "T9.7",
+         "Rear wing visibility",
+         "Visible and not obstructed in front view",
+         "-10"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "race-procedure-flowchart",
+     "title": "Race procedure & troubleshooting flowchart",
+     "blocks": [
+      {
+       "type": "callout",
+       "tone": "note",
+       "text": "**From the World Finals 2026 Competition Regulations.** The contents of the India National Finals PDF list this flowchart, but the PDF does not include it. It is the World Finals version (page 57). It mentions CO2 cartridges, whereas the Technical Regulations describe compressed air, and it is for reaction races."
+      },
+      {
+       "type": "figure",
+       "src": "/regulations/competition/race-procedure-flowchart-world-finals.webp",
+       "alt": "Flowchart of a reaction race from weighing the cars to moving Car B to the launch area, with decision points for deceleration system ready, race run ok, car launch ok, breakage, safety left on and start box ok. The steps are listed in text below.",
+       "caption": "Race procedure and troubleshooting flowchart, from the World Finals 2026 Competition Regulations, page 57."
+      },
+      {
+       "type": "p",
+       "text": "**The flowchart in text**"
+      },
+      {
+       "type": "list",
+       "ordered": true,
+       "items": [
+        "Reaction Race starts.",
+        "Weigh cars and record on weight check sheet.",
+        "Load cars onto track as per race schedule. Lowest team number in Lane 1.",
+        "Drivers and teams stand trackside with corresponding start lane trigger.",
+        "One team member from each team to track finish for deceleration system control.",
+        "Race 1 (Car A): Judge sets car on track and tether line and inserts CO2 cartridge.",
+        "Judge arms Start Box (SAFETY ON) and makes initial adjustments.",
+        "Team member is allowed 30 seconds to 'fine tune' staging of the car.",
+        {
+         "text": "Deceleration system ready?",
+         "items": [
+          "No: wait until the deceleration system is ready. Change CO2 cartridge if long delay. Then continue.",
+          "Yes: continue."
+         ]
+        },
+        "SAFETY OFF. Cross check other lane.",
+        "Judge presses start system reset button.",
+        {
+         "text": "Race run ok?",
+         "items": [
+          "Yes: record reaction times and finish times. Then race 1 and 3: move cars into storage zone; race 2 and 4: return to track start and remove from tether line. Move Car B to launch area, and return to the step where the Judge arms the Start Box.",
+          "No: ask whether the car launch was ok."
+         ]
+        },
+        {
+         "text": "Car launch ok?",
+         "items": [
+          "Yes: was there a breakage? If yes, was it before the finish line? Before the finish line: check with officials or video footage, then ask whether it was verified before the line (Yes: record DNF against the race, then record breakage information; No: check with the Chair of Judges before proceeding). After the finish line: record breakage information. Then move cars into storage zone as above.",
+          "No: ask whether SAFETY was left on."
+         ]
+        },
+        {
+         "text": "SAFETY left on?",
+         "items": [
+          "Yes: record reaction time, run an automatic race for the affected car, and record track time plus reaction time.",
+          "No: check the Start Box. Start Box ok? Yes: record reaction time, run an automatic race for the affected car, and record track time plus reaction time. No: check with the Chair of Judges before proceeding."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "pit-display-reference-dimensions",
+     "label": "",
+     "title": "Pit Display Reference Dimensions",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams must design their pit displays using the **estimated** dimensions stated below. Detailed dimensions will be confirmed closer to event. At the discretion of the Chair of Judges, a penalty of up to 20 points may be applied for teams working outside these dimensions."
+      },
+      {
+       "type": "figure",
+       "src": "/regulations/competition/pit-display-reference-dimensions.webp",
+       "alt": "Perspective drawing of an open-fronted pit display booth beside a standing person for scale. Arrows mark the booth as 200 cm wide, 100 cm deep and 240 cm high, and a magenta outline marks a 30 cm deep header band across the top of the front. A label inside the booth repeats: 200 cm wide, 100 cm depth, 240 cm height.",
+       "caption": "Pit display reference dimensions, as drawn in the PDF."
+      },
+      {
+       "type": "table",
+       "caption": "BOOTH",
+       "head": [
+        "Dimension",
+        "Size"
+       ],
+       "rows": [
+        [
+         "Wide",
+         "200Cm"
+        ],
+        [
+         "Depth",
+         "100Cm"
+        ],
+        [
+         "Height",
+         "240Cm"
+        ],
+        [
+         "Header band across the top (marked in magenta)",
+         "30cm"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "submission-checklist",
+     "label": "",
+     "title": "Project Element Submission Checklist",
+     "blocks": [
+      {
+       "type": "table",
+       "caption": "Project Element Submission Checklist",
+       "head": [
+        "Project Element",
+        "Checked by Team",
+        "Received by STEM Racing™",
+        "Comments: (Completed by STEM Racing™ Officials only)"
+       ],
+       "rows": [
+        [
+         "A4 Engineering drawings (1)",
+         "",
+         "",
+         ""
+        ],
+        [
+         "A4 Car renders (1)",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Design & Engineering Portfolios (1)",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Enterprise Portfolios (1)",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Project Management Portfolios (1)",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Team Partnerships declaration",
+         "",
+         "",
+         "Must be submitted digitally"
+        ],
+        [
+         "Electronic copy of all data",
+         "",
+         "",
+         "Must be submitted digitally"
+        ],
+        [
+         "**RACE CARS:**",
+         "",
+         "",
+         ""
+        ],
+        [
+         "1 x Car A (Ready-to-Race)",
+         "",
+         "",
+         "Weight: g"
+        ],
+        [
+         "1 x Car B (Ready-to-Race)",
+         "",
+         "",
+         "Weight: g"
+        ],
+        [
+         "1 x Halo and 1 x Helmet identical to those used on car A & B",
+         "",
+         "",
+         "Must be separate components"
+        ],
+        [
+         "1 x Fully machined, unfinished, unassembled STEM RACING model block car body",
+         "",
+         "",
+         ""
+        ],
+        [
+         "**OPTIONAL COMPONENTS: (Maximum of three car sets per item)**",
+         "",
+         "",
+         ""
+        ],
+        [
+         "Nose cone & front wing assembly",
+         "",
+         "",
+         "Maximum of two (2) - Sets Submitted:"
+        ],
+        [
+         "Rear wing assembly",
+         "",
+         "",
+         "Maximum of two (2) - Sets Submitted:"
+        ],
+        [
+         "Front wheels",
+         "",
+         "",
+         "Maximum of four (4) - Sets Submitted:"
+        ],
+        [
+         "Front wheel support structure",
+         "",
+         "",
+         "Maximum of two (2) - Sets Submitted:"
+        ],
+        [
+         "Rear wheels",
+         "",
+         "",
+         "Maximum of four (4) - Sets Submitted:"
+        ],
+        [
+         "Rear wheel support structure",
+         "",
+         "",
+         "Maximum of two (2) - Sets Submitted:"
+        ],
+        [
+         "1 x Official STEM RACING Model Block Holographic Stickers",
+         "Sticker here",
+         "Sticker here",
+         "Car Body sticker here"
+        ]
+       ]
+      },
+      {
+       "type": "table",
+       "caption": "Sign-off",
+       "head": [
+        "SIGN-OFF BY",
+        "TEAM MEMBER:",
+        "STEM RACING™ OFFICIAL:"
+       ],
+       "rows": [
+        [
+         "Name",
+         "",
+         ""
+        ],
+        [
+         "Signature",
+         "",
+         ""
+        ]
+       ]
+      },
+      {
+       "type": "figure",
+       "src": "/regulations/competition/project-element-submission-checklist.webp",
+       "alt": "The printed Project Element Submission Checklist form: a table with columns for the project element, a tick box for the team, a tick box for STEM Racing officials and a comments column, covering the paperwork, the two race cars, optional replacement components, the holographic sticker circles and the sign-off boxes.",
+       "caption": "The checklist as printed in the PDF."
+      }
+     ]
+    },
+    {
+     "id": "engineering-drawings-contents",
+     "label": "",
+     "title": "Mandatory table of Content for Engineering Drawings",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Teams MUST include the following Engineering Drawing Table of Contents"
+      },
+      {
+       "type": "list",
+       "ordered": true,
+       "items": [
+        "Orthographic drawings with detailed dimensions of fully assembled car indicating regulation compliance",
+        {
+         "text": "Exploded isometric drawing with key to main components",
+         "items": [
+          "a. Car body",
+          "b. Virtual cargo",
+          "c. Chamber",
+          "d. Tether line guides",
+          "e. Front wheels / wheel support system",
+          "f. Rear wheels / Wheel support system",
+          "g. Nose cone",
+          "h. Front wing / support structure",
+          "i. Rear wing / support structure"
+         ]
+        },
+        "Orthographic drawings with detailed dimensions of virtual cargo including a sectioned view.",
+        "Location of official STEM Racing™ India decals dimensioned from key structural parts (eg wheel centre).",
+        "Chamber details including wall thickness and depth.",
+        "Orthographic drawings with detailed dimensions of tether line guides.",
+        "Orthographic drawings of wheels with sectioned view and detailed dimensions.",
+        "Orthographic drawings with detailed dimensions of front wheels / wheel support system.",
+        "Orthographic drawings with detailed dimensions of rear wheels / wheel support system.",
+        "Orthographic drawings with detailed dimensions of nose cone.",
+        "Orthographic drawings with detailed dimensions of front wing and support structure highlighting wing surface/boundary.",
+        "Orthographic drawings with detailed dimensions of rear wing and support structure highlighting wing surface/boundary.",
+        "Detailed description of intended quality and finish in relation to individual components / assembled car."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "note": "Three boxes marked \"From the World Finals 2026 Competition Regulations\" hold text the India National Finals PDF leaves out or gets wrong; they are the only additions."
+}
