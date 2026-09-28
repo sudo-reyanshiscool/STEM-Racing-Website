@@ -116,6 +116,7 @@ for (const [name, source] of Object.entries(meshes)) {
 // 4. Track shapes and pattern.
 const shapes = join(graphics, 'Shapes', 'RGB', 'SVG');
 await copy(join(shapes, 'Colour', 'STEM Racing Shapes_Pink RGB.svg'), join(brand, 'shapes', 'shape-pink.svg'));
+await copy(join(shapes, 'Colour', 'STEM Racing Shapes_Blue RGB.svg'), join(brand, 'shapes', 'shape-blue.svg'));
 await copy(join(shapes, 'Colour', 'STEM Racing Shapes_Yellow RGB.svg'), join(brand, 'shapes', 'shape-yellow.svg'));
 await copy(join(shapes, 'Black', 'STEM Racing Shapes_Black 1 RGB.svg'), join(brand, 'shapes', 'shape-black-1.svg'));
 await copy(

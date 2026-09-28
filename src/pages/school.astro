@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import shapeBlue from '../assets/brand/shapes/shape-blue.svg';
 import Section from '../components/Section.astro';
 import TextTrack from '../components/TextTrack.astro';
 import Timeline from '../components/Timeline.astro';
@@ -36,7 +37,7 @@ const items = heritage.map((entry) => ({
     </div>
   </Section>
 
-  <Section surface="light" labelledby="heritage-title">
+  <Section surface="light" labelledby="heritage-title" class="heritage-section">
     <div class="stack stack--loose">
       <div class="stack">
         <h2 id="heritage-title">TBS on the world stage</h2>
@@ -48,7 +49,54 @@ const items = heritage.map((entry) => ({
           )
         }
       </div>
-      <Timeline items={items} />
+      <div class="heritage">
+        <Timeline items={items} />
+        <img
+          class="heritage__shape"
+          src={shapeBlue.src}
+          width={shapeBlue.width}
+          height={shapeBlue.height}
+          alt=""
+          loading="lazy"
+        />
+      </div>
     </div>
   </Section>
 </Base>
+
+<style>
+  .heritage {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .heritage__shape {
+    display: none;
+  }
+
+  /* The shape is drawn large and runs off the right edge of the page; the section crops it. */
+  :global(.heritage-section) {
+    overflow-x: clip;
+  }
+
+  @media (min-width: 64rem) {
+    .heritage {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 3rem;
+    }
+
+    .heritage__shape {
+      display: block;
+      position: sticky;
+      inset-block-start: calc(var(--header-h) + 1rem);
+      z-index: -1;
+      justify-self: end;
+      width: 42rem;
+      max-width: none;
+      height: auto;
+      margin-inline-end: -17rem;
+      pointer-events: none;
+    }
+  }
+</style>

@@ -30,6 +30,7 @@ describe('brand artwork', () => {
       'logo/tbs-mono-white.png',
       'patterns/pattern-jagged.png',
       'shapes/shape-black-1.svg',
+      'shapes/shape-blue.svg',
       'shapes/shape-pink.svg',
       'shapes/shape-yellow.svg',
       'signifier/signifier-colour.png',
@@ -73,6 +74,15 @@ describe('brand artwork', () => {
     expect(svg).toContain('viewBox="0 0 801.43 878.01"');
     expect(svg.match(/<path /g)).toHaveLength(1);
     for (const hex of colours) expect(svg).toContain(hex);
+  });
+});
+
+describe('the blue shape', () => {
+  it('is the supplied file, unchanged, and lies on its side', () => {
+    const svg = readFileSync(join(brand, 'shapes', 'shape-blue.svg'), 'utf8');
+    expect(svg).toContain('viewBox="0 0 878.01 801.43"');
+    expect(svg.match(/<path /g)).toHaveLength(1);
+    for (const hex of ['#009ee2', '#0080c8', '#005ca8']) expect(svg).toContain(hex);
   });
 });
 
