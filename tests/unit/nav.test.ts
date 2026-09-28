@@ -10,18 +10,19 @@ describe('navItems', () => {
       { href: '/season', label: 'Season' },
       { href: '/resources', label: 'Resources' },
       { href: '/support', label: 'Support' },
+      { href: '/dashboard', label: 'Team Login' },
     ]);
   });
 
   it('adds Event at the end only when the event is enabled', () => {
     expect(navItems(true).at(-1)).toEqual({ href: '/event', label: 'Event' });
-    expect(navItems(true)).toHaveLength(7);
+    expect(navItems(true)).toHaveLength(8);
     expect(navItems(false).some((item) => item.href === '/event')).toBe(false);
   });
 
   it('returns a fresh list each time', () => {
     navItems(false).push({ href: '/x', label: 'X' });
-    expect(navItems(false)).toHaveLength(6);
+    expect(navItems(false)).toHaveLength(7);
   });
 });
 

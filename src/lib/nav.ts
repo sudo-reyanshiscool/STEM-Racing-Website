@@ -12,6 +12,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: '/season', label: 'Season' },
   { href: '/resources', label: 'Resources' },
   { href: '/support', label: 'Support' },
+  { href: '/dashboard', label: 'Team Login' },
 ];
 
 export function navItems(eventEnabled: boolean): NavItem[] {

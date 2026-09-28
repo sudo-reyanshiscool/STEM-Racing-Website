@@ -18,11 +18,11 @@ describe('the public site beside the dashboard', () => {
 
   it.each(ROUTES)('links to the sign-in page from the footer of %s', (route) => {
     const $ = page(route);
-    expect(texts($, '.site-footer a[href="/dashboard"]')).toEqual(['Team sign-in']);
+    expect(texts($, '.site-footer a[href="/dashboard"]')).toEqual(['Team Login']);
   });
 
-  it('keeps the dashboard out of the main navigation', () => {
-    expect(page('/')('.site-nav a[href^="/dashboard"]')).toHaveLength(0);
+  it('links to the sign-in page from the main navigation', () => {
+    expect(texts(page('/'), '.site-nav a[href="/dashboard"]')).toEqual(['Team Login']);
   });
 });
 
