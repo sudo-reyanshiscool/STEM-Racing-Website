@@ -22,10 +22,10 @@ describe('resources', () => {
   });
 
   it.each([
-    '/downloads/tbs-national-finals-2025-26-competition-regulations.pdf',
-    '/downloads/tbs-national-finals-2025-26-technical-regulations.pdf',
-    '/downloads/tbs-ai-guidance-2026.pdf',
-    '/downloads/tbs-project-management-guide-2026.pdf',
+    '/regulations/tbs-competition-regulations.pdf',
+    '/regulations/tbs-technical-regulations.pdf',
+    '/regulations/tbs-ai-guidance.pdf',
+    '/regulations/tbs-project-management-guide.pdf',
   ])('publishes the TBS document at %s', (fileUrl) => {
     expect(resources.some((resource) => resource.fileUrl === fileUrl)).toBe(true);
     const bytes = readFileSync(join(root, 'public', fileUrl));

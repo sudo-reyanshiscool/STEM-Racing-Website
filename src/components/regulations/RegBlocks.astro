@@ -63,7 +63,7 @@ const anchor = (id: string) => id.toLowerCase().replace(/[^a-z0-9]+/g, '-').repl
       }
       case 'table':
         return (
-          <div class="table-wrap reg-table" tabindex="0" role="region" aria-label={block.caption ?? 'Table'}>
+          <div class:list={['table-wrap', 'reg-table', { 'reg-table--wide': block.head.length >= 8 }]} tabindex="0" role="region" aria-label={block.caption ?? 'Table'}>
             <table class="table">
               {block.caption && <caption>{block.caption}</caption>}
               <thead>

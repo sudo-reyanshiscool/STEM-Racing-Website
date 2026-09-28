@@ -16,7 +16,7 @@ const next = Math.min(level + 1, 4) as 3 | 4;
 
 <section class:list={['reg-section', `reg-section--l${level}`]} id={section.id} aria-labelledby={`${section.id}-h`}>
   <Heading class="reg-section__title" id={`${section.id}-h`}>
-    {section.label && <span class="reg-section__label">{section.label}</span>}
+    {section.label && <span class="reg-section__label">{section.label}</span>}{' '}
     <span>{section.title}</span>
   </Heading>
   {section.blocks && section.blocks.length > 0 && <RegBlocks blocks={section.blocks} />}

@@ -1,10 +1,10 @@
 ---
-import Button from '../../components/Button.astro';
-import RegSectionView from '../../components/regulations/RegSectionView.astro';
-import Section from '../../components/Section.astro';
-import TextTrack from '../../components/TextTrack.astro';
-import Base from '../../layouts/Base.astro';
-import { getRegDoc, getRegDocs, tableOfContents } from '../../lib/regulations';
+import Button from '../../../components/Button.astro';
+import RegSectionView from '../../../components/regulations/RegSectionView.astro';
+import Section from '../../../components/Section.astro';
+import TextTrack from '../../../components/TextTrack.astro';
+import Base from '../../../layouts/Base.astro';
+import { getRegDoc, getRegDocs, tableOfContents } from '../../../lib/regulations';
 
 export function getStaticPaths() {
   return getRegDocs().map((doc) => ({ params: { slug: doc.slug }, props: { slug: doc.slug } }));
@@ -31,7 +31,7 @@ const others = getRegDocs().filter((other) => other.slug !== doc.slug);
         <Button href="/regulations" variant="ghost">All regulations</Button>
       </div>
       <p class="muted doc-intro__note">
-        This page follows the official PDF word for word. If the two ever differ, the PDF governs.{doc.note && ` ${doc.note}`}
+        This page follows the official TBS regulations word for word, and the PDF is the same text with a cover. If it ever differs from the official document, the official document governs.{doc.note && ` ${doc.note}`}
       </p>
     </div>
   </Section>

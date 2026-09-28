@@ -1,0 +1,393 @@
+---
+// The print version of a regulations document. Only served while developing; scripts/make-regulation-pdfs.mjs
+// opens it in Chrome and saves the PDF. It is left out of the built site.
+import '../../../styles/tokens.css';
+import '../../../styles/fonts.css';
+import '../../../styles/global.css';
+import meshHot from '../../../assets/brand/gradients/mesh-hot.png';
+import colourWhite from '../../../assets/brand/logo/tbs-colour-white.png';
+import RegSectionView from '../../../components/regulations/RegSectionView.astro';
+import { getRegDoc, getRegDocs, tableOfContents } from '../../../lib/regulations';
+
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  return getRegDocs().map((doc) => ({ params: { slug: doc.slug }, props: { slug: doc.slug } }));
+}
+
+const { slug } = Astro.props as { slug: string };
+const doc = getRegDoc(slug)!;
+const toc = tableOfContents(doc.sections);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>{doc.title} | STEM Racing TBS</title>
+  </head>
+  <body class="print">
+    <section class="cover">
+      <img class="cover__bg" src={meshHot.src} alt="" />
+      <img class="cover__logo" src={colourWhite.src} width={colourWhite.width} height={colourWhite.height} alt="STEM Racing, The British School" />
+      <div class="cover__text">
+        <p class="cover__edition">{doc.edition}</p>
+        <p class="cover__title">{doc.title}</p>
+        <p class="cover__summary">{doc.summary}</p>
+      </div>
+      <p class="cover__foot">
+        STEM Racing at The British School, New Delhi. Set out from the official PDF, which governs.
+        {doc.note && ` ${doc.note}`}
+      </p>
+    </section>
+
+    <nav class="contents" aria-label="Contents">
+      <h2 class="contents__title">Contents</h2>
+      <ol>
+        {
+          toc.map((entry) => (
+            <li class={`contents__item contents__item--${entry.depth}`}>
+              <a href={`#${entry.id}`}>
+                {entry.label && <span class="contents__label">{entry.label}</span>}{' '}
+                <span>{entry.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <main class="doc">
+      {doc.sections.map((section) => <RegSectionView section={section} level={2} />)}
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  @page {
+    size: A4 portrait;
+    margin: 26mm 16mm 20mm;
+  }
+
+  @page cover {
+    margin: 0;
+  }
+
+  @page wide {
+    size: A4 landscape;
+    margin: 26mm 16mm 18mm;
+  }
+
+  html {
+    background: var(--white);
+  }
+
+  body.print {
+    margin: 0;
+    background: var(--white);
+    color: var(--carbon-shadow);
+    font-size: 9.5pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.print a {
+    text-decoration: none;
+  }
+
+  /* Cover */
+  /* The bottom 13mm of the cover page stays white, where the page number is printed. */
+  .cover {
+    page: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 210mm;
+    height: 284mm;
+    padding: 20mm 18mm 16mm;
+    overflow: hidden;
+    background: var(--carbon-shadow);
+    color: var(--white);
+    break-after: page;
+  }
+
+  .cover__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+  }
+
+  .cover > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover__bg {
+    position: absolute;
+  }
+
+  .cover__logo {
+    width: 58mm;
+    height: auto;
+  }
+
+  .cover__edition {
+    margin: 0 0 6mm;
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .cover__title {
+    max-width: 150mm;
+    margin: 0;
+    font-size: 40pt;
+    line-height: 1.02;
+    color: var(--white);
+  }
+
+  .cover__summary {
+    max-width: 130mm;
+    margin: 8mm 0 0;
+    font-size: 13pt;
+    line-height: 1.4;
+  }
+
+  .cover__foot {
+    max-width: 150mm;
+    margin: 0;
+    font-size: 8.5pt;
+    line-height: 1.45;
+  }
+
+  /* Contents */
+  .contents {
+    break-after: page;
+  }
+
+  .contents__title {
+    margin: 0 0 6mm;
+    font-size: 24pt;
+    color: var(--chicane-violet);
+  }
+
+  .contents ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contents__item a {
+    display: flex;
+    gap: 3mm;
+    color: var(--carbon-shadow);
+  }
+
+  .contents__item--1 {
+    margin-top: 2.5mm;
+    font-weight: 700;
+  }
+
+  .contents__item--2 {
+    padding-left: 10mm;
+    font-size: 9pt;
+  }
+
+  .contents__label {
+    flex: none;
+    min-width: 18mm;
+    color: var(--chicane-violet);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Text */
+  .doc h2,
+  .doc h3,
+  .doc h4 {
+    break-after: avoid;
+    color: var(--carbon-shadow);
+    line-height: 1.15;
+  }
+
+  .doc .reg-section--l2 {
+    margin-top: 10mm;
+  }
+
+  /* The rule sits on the heading, so it is not repeated when the article runs onto the next page. */
+  .doc .reg-section--l2 > .reg-section__title {
+    padding-top: 4mm;
+    border-top: 1.2mm solid var(--pitlane-pink);
+    border-image: var(--gradient-secondary) 1;
+  }
+
+  .doc .reg-section--l3,
+  .doc .reg-section--l4 {
+    margin-top: 6mm;
+  }
+
+  .doc h2 {
+    font-size: 19pt;
+  }
+
+  .doc h3 {
+    font-size: 13pt;
+  }
+
+  .doc h4 {
+    font-size: 11pt;
+  }
+
+  /* Block, not flex, so the space between the number and the title stays in the text (and in the PDF bookmarks). */
+  .doc .reg-section__title {
+    display: block;
+  }
+
+  .doc .reg-section__label {
+    margin-right: 1.5mm;
+    color: var(--chicane-violet);
+  }
+
+  .doc .reg-section > * + * {
+    margin-top: 3mm;
+  }
+
+  .doc p {
+    margin: 0;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .doc .clause {
+    display: grid;
+    grid-template-columns: 17mm minmax(0, 1fr);
+    gap: 1mm 3mm;
+    break-inside: avoid-page;
+  }
+
+  .doc .clause:has(.clause) {
+    break-inside: auto;
+  }
+
+  .doc .clause__id {
+    color: var(--chicane-violet);
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1.9;
+  }
+
+  .doc .clause__body > * + * {
+    margin-top: 2mm;
+  }
+
+  .doc .reg-list {
+    margin: 0;
+    padding-left: 5mm;
+  }
+
+  .doc .reg-list li + li {
+    margin-top: 1mm;
+  }
+
+  .doc .callout {
+    padding: 3mm 4mm;
+    border-left: 1.5mm solid var(--ignite-indigo);
+    background: var(--surface-light);
+    break-inside: avoid;
+  }
+
+  .doc .callout--important {
+    border-left-color: var(--pitlane-pink);
+  }
+
+  .doc .reg-table {
+    overflow: visible;
+    border: 0;
+  }
+
+  .doc .reg-table--wide {
+    page: wide;
+    break-before: page;
+    break-after: page;
+  }
+
+  .doc .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+  }
+
+  .doc .reg-table--wide .table {
+    font-size: 6.5pt;
+  }
+
+  .doc .reg-table--wide .table th {
+    font-size: 5.5pt;
+    letter-spacing: 0;
+  }
+
+  .doc .reg-table--wide .table th,
+  .doc .reg-table--wide .table td {
+    padding: 1.2mm 1mm;
+  }
+
+  .doc .table caption {
+    padding-bottom: 2mm;
+    text-align: left;
+    font-weight: 700;
+    font-size: 9pt;
+  }
+
+  .doc .table th,
+  .doc .table td {
+    padding: 1.4mm 2mm;
+    border: 0.2mm solid var(--carbon-300);
+    color: var(--carbon-shadow);
+    vertical-align: top;
+  }
+
+  .doc .table th {
+    background: var(--carbon-shadow);
+    color: var(--white);
+    font-size: 7pt;
+    letter-spacing: 0.05em;
+  }
+
+  .doc .table thead {
+    display: table-header-group;
+  }
+
+  .doc .table tr {
+    break-inside: avoid;
+  }
+
+  .doc .reg-figure {
+    margin: 0;
+    break-inside: avoid;
+  }
+
+  .doc .reg-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: 170mm;
+    width: auto;
+    height: auto;
+    border: 0.2mm solid var(--carbon-100);
+  }
+
+  .doc .reg-figure figcaption {
+    margin-top: 1.5mm;
+    color: var(--carbon-500);
+    font-size: 8pt;
+  }
+</style>
