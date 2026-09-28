@@ -11,6 +11,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: '/teams', label: 'Teams' },
   { href: '/season', label: 'Season' },
   { href: '/resources', label: 'Resources' },
+  { href: '/regulations', label: 'Regulations' },
   { href: '/support', label: 'Support' },
   { href: '/dashboard', label: 'Team Login' },
 ];
@@ -21,7 +22,7 @@ export function navItems(eventEnabled: boolean): NavItem[] {
 
 export function isCurrent(pathname: string, href: string): boolean {
   const clean = (value: string) => (value.length > 1 ? value.replace(/\/+$/, '') : value);
-  // The regulations pages sit under Resources.
-  if (href === '/resources' && clean(pathname).startsWith('/regulations')) return true;
+  // Each regulations document sits under the Regulations page.
+  if (href === '/regulations' && clean(pathname).startsWith('/regulations/')) return true;
   return clean(pathname) === clean(href);
 }

@@ -9,6 +9,7 @@ describe('navItems', () => {
       { href: '/teams', label: 'Teams' },
       { href: '/season', label: 'Season' },
       { href: '/resources', label: 'Resources' },
+      { href: '/regulations', label: 'Regulations' },
       { href: '/support', label: 'Support' },
       { href: '/dashboard', label: 'Team Login' },
     ]);
@@ -16,17 +17,22 @@ describe('navItems', () => {
 
   it('adds Event at the end only when the event is enabled', () => {
     expect(navItems(true).at(-1)).toEqual({ href: '/event', label: 'Event' });
-    expect(navItems(true)).toHaveLength(8);
+    expect(navItems(true)).toHaveLength(9);
     expect(navItems(false).some((item) => item.href === '/event')).toBe(false);
   });
 
   it('returns a fresh list each time', () => {
     navItems(false).push({ href: '/x', label: 'X' });
-    expect(navItems(false)).toHaveLength(7);
+    expect(navItems(false)).toHaveLength(8);
   });
 });
 
 describe('isCurrent', () => {
+  it('marks Regulations on each regulations document', () => {
+    expect(isCurrent('/regulations/technical', '/regulations')).toBe(true);
+    expect(isCurrent('/regulations/technical', '/resources')).toBe(false);
+  });
+
   it('matches with or without a trailing slash', () => {
     expect(isCurrent('/school', '/school')).toBe(true);
     expect(isCurrent('/school/', '/school')).toBe(true);

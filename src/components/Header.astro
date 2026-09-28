@@ -209,4 +209,14 @@ const pathname = Astro.url.pathname;
       gap: 1.75rem;
     }
   }
+  /* Eight links: tighten the spacing so they stay on one row from 60rem. */
+  @media (min-width: 60rem) and (max-width: 71.99rem) {
+    .site-nav__list {
+      gap: 1rem;
+    }
+
+    .site-nav__link {
+      letter-spacing: 0.06em;
+    }
+  }
 </style>

@@ -51,7 +51,7 @@ describe.each(ROUTES)('%s', (route) => {
     const current = $('nav[aria-label="Main"] a[aria-current="page"]')
       .toArray()
       .map((link) => $(link).attr('href'));
-    expect(current).toEqual(route === '/' || route === '/404' ? [] : [route.startsWith('/regulations') ? '/resources' : route]);
+    expect(current).toEqual(route === '/' || route === '/404' ? [] : [route.startsWith('/regulations/') ? '/regulations' : route]);
   });
 
   it('gives every image a text alternative and a size', () => {
