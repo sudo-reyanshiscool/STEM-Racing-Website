@@ -371,6 +371,33 @@ const toc = tableOfContents(doc.sections);
     break-inside: avoid;
   }
 
+  /* Each rubric scorecard gets a page to itself, and is set small enough to fit on it. */
+  .doc section[id^='scorecard-']:not(#scorecard-specifications) {
+    break-before: page;
+    break-after: page;
+    break-inside: avoid;
+    font-size: 7.5pt;
+  }
+
+  .doc section[id^='scorecard-']:not(#scorecard-specifications) .table {
+    font-size: 6.5pt;
+    line-height: 1.3;
+  }
+
+  .doc section[id^='scorecard-']:not(#scorecard-specifications) .table th,
+  .doc section[id^='scorecard-']:not(#scorecard-specifications) .table td {
+    padding: 1mm 1.4mm;
+  }
+
+  /* Four tables and their totals: set a little smaller so the whole scorecard fits its page. */
+  .doc #scorecard-project-management {
+    zoom: 0.8;
+  }
+
+  .doc #scorecard-specifications {
+    break-before: page;
+  }
+
   .doc .reg-figure {
     margin: 0;
     break-inside: avoid;

@@ -22,12 +22,12 @@ const docs = [
 
 mkdirSync(out, { recursive: true });
 
-// The TBS lockup on every page. 10mm high, above the brand minimum, with clear space of half its height around it.
+// The STEM Racing India logo on every page. Trimmed of its built-in margin, 10mm high, above the brand minimum.
 const logo = (
-  await sharp('src/assets/brand/logo/tbs-colour-black.png').resize({ width: 360 }).flatten({ background: '#ffffff' }).jpeg({ quality: 88 }).toBuffer()
+  await sharp('src/assets/brand/logo/stem-racing-india-colour-black.png').trim().resize({ height: 160 }).flatten({ background: '#ffffff' }).jpeg({ quality: 88 }).toBuffer()
 ).toString('base64');
 
-const headerTemplate = `<div style="width:100%;box-sizing:border-box;padding:7mm 16mm 0;"><img alt="STEM Racing, The British School" style="height:10mm;display:block" src="data:image/jpeg;base64,${logo}" /></div>`;
+const headerTemplate = `<div style="width:100%;box-sizing:border-box;padding:7mm 16mm 0;"><img alt="STEM Racing India" style="height:10mm;display:block" src="data:image/jpeg;base64,${logo}" /></div>`;
 const browser = await puppeteer.launch({ executablePath: chrome, headless: true });
 try {
   for (const [slug, coverPage, name, fileName] of docs) {
