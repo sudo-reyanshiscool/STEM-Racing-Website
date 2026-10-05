@@ -16,7 +16,7 @@ function walk(dir: string): string[] {
     });
 }
 
-const logos = ['tbs-colour-white.png', 'tbs-colour-black.png', 'tbs-mono-white.png', 'tbs-mono-black.png'];
+const logos = ['stem-racing-india-colour-white.png', 'stem-racing-india-colour-black.png', 'stem-racing-india-mono-white.png', 'stem-racing-india-mono-black.png'];
 
 describe('brand artwork', () => {
   it('holds the approved files and nothing else', () => {
@@ -24,10 +24,10 @@ describe('brand artwork', () => {
       'gradients/mesh-hot.png',
       'gradients/mesh-pink-orange.png',
       'gradients/sr-gradient.png',
-      'logo/tbs-colour-black.png',
-      'logo/tbs-colour-white.png',
-      'logo/tbs-mono-black.png',
-      'logo/tbs-mono-white.png',
+      'logo/stem-racing-india-colour-black.png',
+      'logo/stem-racing-india-colour-white.png',
+      'logo/stem-racing-india-mono-black.png',
+      'logo/stem-racing-india-mono-white.png',
       'patterns/pattern-jagged.png',
       'shapes/shape-black-1.svg',
       'shapes/shape-blue.svg',

@@ -5,7 +5,7 @@ import '../../../styles/tokens.css';
 import '../../../styles/fonts.css';
 import '../../../styles/global.css';
 import meshHot from '../../../assets/brand/gradients/mesh-hot.png';
-import colourWhite from '../../../assets/brand/logo/tbs-colour-white.png';
+import colourWhite from '../../../assets/brand/logo/stem-racing-india-colour-white.png';
 import RegSectionView from '../../../components/regulations/RegSectionView.astro';
 import { getRegDoc, getRegDocs, tableOfContents } from '../../../lib/regulations';
 
@@ -29,7 +29,7 @@ const toc = tableOfContents(doc.sections);
   <body class="print">
     <section class="cover">
       <img class="cover__bg" src={meshHot.src} alt="" />
-      <img class="cover__logo" src={colourWhite.src} width={colourWhite.width} height={colourWhite.height} alt="STEM Racing, The British School" />
+      <img class="cover__logo" src={colourWhite.src} width={colourWhite.width} height={colourWhite.height} alt="STEM Racing India" />
       <div class="cover__text">
         <p class="cover__edition">{doc.edition}</p>
         <p class="cover__title">{doc.title}</p>

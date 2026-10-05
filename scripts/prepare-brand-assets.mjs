@@ -39,12 +39,11 @@ async function copy(from, to) {
 //    and swapping one for another never stretches or shifts the artwork.
 const LOGO_WIDTH = 1200;
 const logos = {
-  'tbs-colour-white.png': 'TBS_Full Colour White.png',
-  'tbs-colour-black.png': 'TBS_Full Colour Black.png',
-  'tbs-mono-white.png': 'TBS_White_White.png',
-  'tbs-mono-black.png': 'TBS_Black.png',
+  'stem-racing-india-colour-white.png': 'STEM Racing TM_Location_Logo_RGB_India_Full Colour White.png',
+  'stem-racing-india-colour-black.png': 'STEM Racing TM_Location_Logo_RGB_India_Full Colour Black.png',
+  'stem-racing-india-mono-black.png': 'STEM Racing TM_Location_Logo_RGB_India_Black.png',
 };
-const logoSource = (name) => join(graphics, 'Logos', 'TBS', name);
+const logoSource = (name) => join(graphics, 'Logos', 'Shared with WF teams - DO NOT MOVE', 'LOCALISED LOGOS', 'India', 'RGB', 'PNG', name);
 
 const boxes = [];
 for (const name of Object.values(logos)) {
@@ -67,6 +66,15 @@ for (const [name, source] of Object.entries(logos)) {
     .resize({ width: LOGO_WIDTH })
     .png({ compressionLevel: 9 })
     .toFile(to);
+  done(to);
+}
+
+// The India pack has no white mono file, so make it from the black one: same shape, every pixel white.
+{
+  const to = await target(join(brand, 'logo', 'stem-racing-india-mono-white.png'));
+  const { data, info } = await sharp(join(brand, 'logo', 'stem-racing-india-mono-black.png')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  for (let i = 0; i < data.length; i += 4) data[i] = data[i + 1] = data[i + 2] = 255;
+  await sharp(data, { raw: info }).png({ compressionLevel: 9 }).toFile(to);
   done(to);
 }
 
